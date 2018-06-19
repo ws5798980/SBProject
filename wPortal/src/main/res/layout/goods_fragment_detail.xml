@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+     >
+     <LinearLayout 
+         android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:orientation="vertical" >
+    <RelativeLayout
+        android:id="@+id/viewpager_rela"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        
+        android:background="@color/white" >
+
+        <com.rs.mobile.wportal.view.CustomViewPager
+            android:id="@+id/goods_fragemnt_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" >
+        </com.rs.mobile.wportal.view.CustomViewPager>
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:orientation="horizontal" >
+        </RadioGroup>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingLeft="@dimen/marginx2"
+        android:paddingRight="@dimen/marginx2" >
+
+        <RelativeLayout
+            android:id="@+id/goods_fragment_rela_001"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/fragment_goods_text_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:paddingBottom="@dimen/margin"
+                android:paddingTop="@dimen/margin"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_b" />
+
+            <!--<ImageView-->
+                <!--android:id="@+id/goods_fragment_share"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:src="@drawable/icon_share" />-->
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/goods_fragment_line_001"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/goods_fragment_rela_001"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin"
+            android:paddingTop="@dimen/margin" >
+
+            <TextView
+                android:id="@+id/goods_fragment_text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_b" />
+
+            <TextView
+                android:id="@+id/goods_fragment_text_2_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_b" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/marginx2"
+                android:text="@string/sm_text014"
+                android:textColor="@color/inputblack"
+                android:textSize="@dimen/text_size_ms"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/goods_fragment_text_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/inputblack"
+                android:textSize="@dimen/text_size_ms"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/goods_fragment_text_3_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/inputblack"
+                android:textSize="@dimen/text_size_ms"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/goods_fragment_rela_002"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/goods_fragment_line_001"
+            android:paddingBottom="@dimen/margin"
+            android:paddingTop="@dimen/margin" >
+
+            <TextView
+                android:id="@+id/goods_fragment_text_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/inputblack"
+                android:textSize="@dimen/text_size_m" />
+
+            <TextView
+                android:id="@+id/goods_fragment_text_4_stock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/marginx2"
+                android:layout_toRightOf="@+id/goods_fragment_text_4"
+                android:textColor="@color/inputblack"
+                android:textSize="@dimen/text_size_m" />
+
+            <TextView
+                android:id="@+id/goods_fragment_text_4_deliver"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/marginx2"
+                android:layout_toRightOf="@+id/goods_fragment_text_4_stock"
+                android:textColor="@color/inputblack"
+                android:textSize="@dimen/text_size_m"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/goods_fragment_text_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text=""
+                android:textColor="@color/inputblack"
+                android:textSize="@dimen/text_size_m"
+                android:visibility="gone"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/goods_fragment_rela_003"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/goods_fragment_rela_002"
+            android:paddingBottom="@dimen/margin"
+            android:paddingTop="@dimen/margin" >
+
+            <TextView
+                android:id="@+id/goods_fragment_text_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:text="@string/sm_text015"
+                android:textColor="@color/red"
+                android:textSize="@dimen/text_size_m"
+                android:visibility="gone"/>
+
+           <!--  <TextView
+                android:id="@+id/goods_fragment_text_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_toLeftOf="@+id/goods_fragment_amountview"
+                android:text="@string/sm_text_amount"
+                android:textColor="@color/inputblack"
+                android:textSize="@dimen/text_size_s" />
+
+            <AmountView
+                android:id="@+id/goods_fragment_amountview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true" >
+            </AmountView> -->
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:paddingBottom="@dimen/marginx2"
+        android:paddingLeft="@dimen/marginx2"
+        android:paddingRight="@dimen/marginx2"
+        android:paddingTop="@dimen/marginx2" >
+
+        <TextView
+            android:id="@+id/goods_fragment_text_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:drawableLeft="@drawable/icon_selected"
+            android:drawablePadding="@dimen/margin"
+            android:textSize="@dimen/text_size_m" />
+            <!--android:text="@string/sm_text_timelimited_1"-->
+
+        <TextView
+            android:id="@+id/goods_fragment_text_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:drawableLeft="@drawable/icon_selected"
+            android:drawablePadding="@dimen/margin"
+            android:textSize="@dimen/text_size_m" />
+            <!--android:text="@string/sm_text_timelimited_2"-->
+
+        <TextView
+            android:id="@+id/goods_fragment_text_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawableLeft="@drawable/icon_selected"
+            android:drawablePadding="@dimen/margin"
+            android:textSize="@dimen/text_size_m" />
+            <!--android:text="@string/sm_text_timelimited_3"-->
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/line_change"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/marginx2" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_buy" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marginx2"
+            android:text="@string/sm_text_exchange"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_ms" />
+
+        <TextView
+            android:id="@+id/goods_fragment_text_11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marginx2"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_ms" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:padding="@dimen/marginx2" >
+
+        <TextView
+            android:id="@+id/goods_fragment_text_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/inputblack"
+            android:textSize="@dimen/text_size_ms"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/goods_fragment_text_13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/inputblack"
+            android:textSize="@dimen/text_size_ms" />
+    </RelativeLayout>
+</LinearLayout>
+</ScrollView>

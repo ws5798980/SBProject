@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="90dp"
+        android:background="@drawable/img_bg3"
+        android:orientation="vertical"
+        android:weightSum="2"
+        android:layout_height="80dp">
+
+        <LinearLayout
+            android:id="@+id/layout_1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="营业中"
+                android:layout_marginLeft="10dp"
+                android:textSize="12sp"
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/textblack"/>
+
+            <ImageView
+                android:id="@+id/img_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginTop="3dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/icon_state_02"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="@color/greywhite2"/>
+
+        <LinearLayout
+            android:id="@+id/layout_2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_marginBottom="3dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="打烊中"
+                android:layout_marginLeft="10dp"
+                android:textSize="12sp"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/textblack"/>
+
+            <ImageView
+                android:id="@+id/img_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_gravity="center_vertical"
+                android:visibility="gone"
+                android:src="@drawable/icon_state_02"/>
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+    
+
+
+
+
+
+</RelativeLayout>

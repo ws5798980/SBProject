@@ -1,0 +1,54 @@
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/marginx2"
+    android:paddingRight="@dimen/marginx2"
+    android:paddingTop="@dimen/margin"
+    android:paddingBottom="@dimen/margin"
+    android:background="#ffffff">
+    
+	<TextView
+        android:id="@+id/ticket_kind"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="#666666"
+        android:textSize="@dimen/text_size_m" />
+
+    <TextView
+        android:id="@+id/m_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/marginx2"
+	    android:paddingRight="@dimen/marginx2"
+        android:text="-"
+        android:textColor="#fca73d"
+        android:textSize="@dimen/text_size_tb" />
+
+    <TextView
+        android:id="@+id/count_edit_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#f2f2f2"
+        android:paddingBottom="@dimen/margin"
+        android:paddingLeft="@dimen/marginx4"
+        android:paddingRight="@dimen/marginx4"
+        android:paddingTop="@dimen/margin"
+        android:textColor="#666666"
+        android:textSize="@dimen/text_size_m" 
+        android:text="1"/>
+
+    <TextView
+        android:id="@+id/p_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/marginx2"
+	    android:paddingRight="@dimen/marginx2"
+        android:text="+"
+        android:textColor="#fca73d"
+        android:textSize="@dimen/text_size_b" />
+    
+</LinearLayout >

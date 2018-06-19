@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dip"
+        android:background="@drawable/img_login_bg"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/close_btn"
+                android:layout_width="59dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dip"
+                app:srcCompat="@drawable/icon_allreturn" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="115dp"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:id="@+id/login_tab_btn"
+                    android:layout_width="196dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom">
+
+                    <TextView
+                        android:id="@+id/login_text_view"
+                        android:layout_width="195dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/login"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/text_size_mb" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/membership_tab_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:gravity="bottom">
+
+                    <TextView
+                        android:id="@+id/membership_text_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="@string/membership"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/text_size_b" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/Login_Tryangle"
+                    android:layout_width="195dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/icon_return_001_rs" />
+
+                <ImageView
+                    android:id="@+id/Member_Tryangle"
+                    android:layout_width="195dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    app:srcCompat="@drawable/icon_return_001_rs" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Login scr -->
+
+    <LinearLayout
+        android:id="@+id/login_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="300dip"
+            android:layout_height="60dip"
+            android:layout_marginTop="50dip"
+            android:background="@color/common_bg1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="2dip"
+            android:paddingLeft="2dip"
+            android:paddingRight="2dip"
+            android:paddingTop="2dip"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/id_edt_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/icon_telnumber_rs"
+                android:hint="@string/msg_pls_input_yourphone"
+                android:inputType="phone" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="300dip"
+            android:layout_height="60dip"
+            android:layout_marginTop="5dip"
+            android:background="@color/common_bg1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="2dip"
+            android:paddingLeft="2dip"
+            android:paddingRight="2dip"
+            android:paddingTop="2dip"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/pw_edt_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white"
+                android:drawableLeft="@drawable/icon_password_rs"
+                android:hint="@string/msg_pls_input_yourpassword"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/login_btn"
+            android:layout_width="300dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60px"
+            android:background="#21c043"
+            android:gravity="center"
+            android:text="@string/login"
+            android:textColor="#FFFFFF"
+            android:textSize="@dimen/text_size_tmb" />
+
+        <TextView
+            android:id="@+id/forget_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30px"
+            android:gravity="center"
+            android:text="@string/common1_text007"
+            android:textSize="@dimen/text_size_mb"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/app_ver_login"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_horizontal|bottom"
+            android:paddingBottom="@dimen/marginx4"
+            android:textColor="#999999"
+            android:textSize="@dimen/text_size_m" />
+
+    </LinearLayout>
+
+    <!-- Member Ship Scr -->
+
+    <LinearLayout
+        android:id="@+id/membership_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <android.support.v7.widget.CardView
+                android:id="@+id/btn_member1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardBackgroundColor="@android:color/white"
+                card_view:cardElevation="3dp"
+                card_view:cardUseCompatPadding="true">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_personal_sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="개인 회원"
+                        android:textSize="16sp"
+                        android:textColor="#333333"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:id="@+id/btn_member2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardBackgroundColor="@android:color/white"
+                card_view:cardElevation="3dp"
+                card_view:cardUseCompatPadding="true">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_enterprise_sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="기업 회원"
+                        android:textSize="16sp"
+                        android:textColor="#333333"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <android.support.v7.widget.CardView
+                android:id="@+id/btn_member3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardBackgroundColor="@android:color/white"
+                card_view:cardElevation="3dp"
+                card_view:cardUseCompatPadding="true">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_producer_sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="생산자 회원"
+                        android:textSize="16sp"
+                        android:textColor="#333333"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:id="@+id/btn_member4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardBackgroundColor="@android:color/white"
+                card_view:cardElevation="3dp"
+                card_view:cardUseCompatPadding="true">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_team_sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="가맹점 회원"
+                        android:textSize="16sp"
+                        android:textColor="#333333"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <android.support.v7.widget.CardView
+                android:id="@+id/btn_member5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardBackgroundColor="@android:color/white"
+                card_view:cardElevation="3dp"
+                card_view:cardUseCompatPadding="true">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_store_sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="단체 회원"
+                        android:textSize="16sp"
+                        android:textColor="#333333"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:id="@+id/btn_member6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                card_view:cardCornerRadius="10dp"
+                card_view:cardBackgroundColor="@android:color/white"
+                card_view:cardElevation="3dp"
+                card_view:cardUseCompatPadding="true">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center">
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_manager_sp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="상품관리자 회원"
+                        android:textSize="16sp"
+                        android:textColor="#333333"/>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5">
+        </LinearLayout>
+        <!--&lt;!&ndash; Member Ship ID Input &ndash;&gt;-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="300dip"-->
+            <!--android:layout_height="60dip"-->
+            <!--android:layout_marginTop="20dip"-->
+            <!--android:background="@color/common_bg1"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:paddingBottom="2dip"-->
+            <!--android:paddingLeft="2dip"-->
+            <!--android:paddingRight="2dip"-->
+            <!--android:paddingTop="2dip"-->
+            <!--android:visibility="visible">-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/id_edt_text_m"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@android:color/white"-->
+                <!--android:drawableLeft="@drawable/icon_telnumber_rs"-->
+                <!--android:gravity="center_vertical|left"-->
+                <!--android:hint="@string/msg_pls_input_yourphone"-->
+                <!--android:imeOptions="actionNext"-->
+                <!--android:inputType="phone"-->
+                <!--android:maxLength="15"-->
+                <!--android:nextFocusDown="@+id/pw_edt_text_m"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:textColorHint="#999999"-->
+                <!--android:textSize="@dimen/text_size_b" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--&lt;!&ndash; Member Ship Auth SMS Number Input &ndash;&gt;-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="300dip"-->
+            <!--android:layout_height="60dip"-->
+            <!--android:layout_marginTop="5dip"-->
+            <!--android:background="@color/common_bg1"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:paddingBottom="2dip"-->
+            <!--android:paddingLeft="2dip"-->
+            <!--android:paddingRight="2dip"-->
+            <!--android:paddingTop="2dip">-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/sms_edt_text_m"-->
+                <!--android:layout_width="210dip"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@android:color/white"-->
+                <!--android:drawableLeft="@drawable/icon_verification_code"-->
+                <!--android:gravity="center_vertical|left"-->
+                <!--android:hint="@string/msg_pls_input_verificode"-->
+                <!--android:imeOptions="actionSend"-->
+                <!--android:inputType="number"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:textColorHint="#999999"-->
+                <!--android:textSize="17sp" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/sms_btn"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@android:color/white"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/receive_vercode"-->
+                <!--android:textColor="#21c043"-->
+                <!--android:textSize="@dimen/text_size_m" />-->
+        <!--</LinearLayout>-->
+
+        <!--&lt;!&ndash; Member Ship Password Input &ndash;&gt;-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="300dip"-->
+            <!--android:layout_height="60dip"-->
+            <!--android:layout_marginTop="5dip"-->
+            <!--android:background="@color/common_bg1"-->
+            <!--android:gravity="center"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:paddingBottom="2dip"-->
+            <!--android:paddingLeft="2dip"-->
+            <!--android:paddingRight="2dip"-->
+            <!--android:paddingTop="2dip">-->
+
+            <!--<EditText-->
+                <!--android:id="@+id/pw_edt_text_m"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@android:color/white"-->
+                <!--android:drawableLeft="@drawable/icon_password_rs"-->
+                <!--android:gravity="center_vertical|left"-->
+                <!--android:hint="@string/msg_pls_input_yourpassword"-->
+                <!--android:imeOptions="actionNext"-->
+                <!--android:inputType="textPassword"-->
+                <!--android:nextFocusDown="@+id/pw_edt_text_m_check"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:textColorHint="#999999"-->
+                <!--android:textSize="17sp" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--&lt;!&ndash;  Member Ship Command Code &ndash;&gt;-->
+        <!--&lt;!&ndash;LinearLayout-->
+            <!--android:layout_width="300dip"-->
+            <!--android:layout_height="60dip"-->
+            <!--android:layout_marginTop="5dip"-->
+            <!--android:background="@color/common_bg1"-->
+            <!--android:gravity="center"-->
+            <!--android:paddingBottom="2dip"-->
+            <!--android:paddingLeft="2dip"-->
+            <!--android:paddingRight="2dip"-->
+            <!--android:paddingTop="2dip">-->
+
+        <!--</LinearLayout&ndash;&gt;-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/memership_btn"-->
+            <!--android:layout_width="300dip"-->
+            <!--android:layout_height="80px"-->
+            <!--android:layout_margin="@dimen/marginx4"-->
+            <!--android:layout_marginTop="60px"-->
+            <!--android:background="#21c043"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/membership"-->
+            <!--android:textColor="@android:color/white"-->
+            <!--android:textSize="@dimen/text_size_tmb" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/app_ver_memvership"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="fill_parent"-->
+            <!--android:gravity="center_horizontal|bottom"-->
+            <!--android:paddingBottom="@dimen/marginx4"-->
+            <!--android:textColor="#999999"-->
+            <!--android:textSize="@dimen/text_size_m" />-->
+
+    </LinearLayout>
+
+</LinearLayout>

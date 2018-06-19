@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#f2f2f2">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/marginx2" >
+
+        <TextView
+            android:id="@+id/text_orderTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_m" />
+
+        <TextView
+            android:id="@+id/text_orderStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_m" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:divider="@color/white"
+        android:dividerHeight="@dimen/margin" 
+        android:layout_marginTop="1dip">
+    </ListView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/marginx2" >
+
+        <TextView
+            android:id="@+id/text_totoal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="#333333" 
+            android:textSize="@dimen/text_size_m"/>
+    </RelativeLayout>
+
+    <LinearLayout android:id="@+id/order_process_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/marginx2" 
+        android:gravity="right|center_vertical">
+         <TextView
+            android:id="@+id/delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:background="@drawable/bg_black_stroke_solid_white_cor_2"
+            android:gravity="center"
+            android:padding="@dimen/margin"
+            android:text="@string/ht_text_detail012"
+            android:textSize="@dimen/text_size_m"
+            android:minEms="4"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:background="@drawable/bg_black_stroke_solid_white_cor_2"
+            android:gravity="center"
+            android:padding="@dimen/margin"
+            android:text="@string/cancel_order"
+            android:textSize="@dimen/text_size_m"
+            android:minEms="4"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/payment_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_black_stroke_solid_white_cor_2"
+            android:gravity="center"
+            android:padding="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:text="@string/payment"
+            android:textColor="@color/inputblack"
+            android:textSize="@dimen/text_size_m"
+            android:minEms="4"
+            android:visibility="gone" />
+        <TextView
+            android:id="@+id/payment_btnAgain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_black_stroke_solid_white_cor_2"
+            android:gravity="center"
+            android:padding="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin"
+            android:text="@string/payment_again"
+            android:textColor="@color/inputblack"
+            android:textSize="@dimen/text_size_m"
+            android:minEms="4"
+            android:visibility="gone" />
+        <com.rs.mobile.wportal.view.TimerTextView
+            android:id="@+id/payment_btn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_red_stroke_solid_white_cor_2"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/margin"
+            android:padding="@dimen/margin"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_m"
+            android:lines="1"
+            android:visibility="gone"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,240 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From Common:
+* ic_launcher-web.png
+* proguard-project.txt
+From GridPagerLib:
+* proguard-project.txt
+From PagerSlidingTabStrip-master:
+* ic_launcher-web.png
+* proguard-project.txt
+From WPortal:
+* proguard-project.txt
+From library:
+* LICENSE
+* pom.xml
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:23.4.0
+android-support-v7-appcompat.jar => com.android.support:appcompat-v7:23.4.0
+gson-2.8.0.jar => com.google.code.gson:gson:2.8.0
+
+Potentially Missing Dependency:
+-------------------------------
+When we replaced the following .jar files with a Gradle dependency, we
+inferred the dependency version number from the filename. This
+specific version may not actually be available from the repository.
+If you get a build error stating that the dependency is missing, edit
+the version number to for example "+" to pick up the latest version
+instead. (This may require you to update your code if the library APIs
+have changed.)
+
+gson-2.8.0.jar => version 2.8.0 in com.google.code.gson:gson:2.8.0
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+android-support-v7-appcompat => [com.android.support:appcompat-v7:23.4.0]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In GridPagerLib:
+* AndroidManifest.xml => gridPagerLib/src/main/AndroidManifest.xml
+* assets/ => gridPagerLib/src/main/assets
+* res/ => gridPagerLib/src/main/res/
+* src/ => gridPagerLib/src/main/java/
+In PagerSlidingTabStrip-master:
+* AndroidManifest.xml => pagerSlidingTabStripmaster/src/main/AndroidManifest.xml
+* assets/ => pagerSlidingTabStripmaster/src/main/assets
+* res/ => pagerSlidingTabStripmaster/src/main/res/
+* src/ => pagerSlidingTabStripmaster/src/main/java/
+In fbcore:
+* AndroidManifest.xml => fbcore/src/main/AndroidManifest.xml
+* assets/ => fbcore/src/main/assets
+* libs/fbcore-v0.7.0.jar => fbcore/libs/fbcore-v0.7.0.jar
+* res/ => fbcore/src/main/res
+* src/ => fbcore/src/main/java
+In drawee:
+* AndroidManifest.xml => drawee/src/main/AndroidManifest.xml
+* assets/ => drawee/src/main/assets
+* libs/drawee-v0.7.0.jar => drawee/libs/drawee-v0.7.0.jar
+* res/ => drawee/src/main/res/
+* src/ => drawee/src/main/java
+In imagepipeline:
+* AndroidManifest.xml => imagepipeline/src/main/AndroidManifest.xml
+* assets/ => imagepipeline/src/main/assets
+* libs/arm64-v8a/libbitmaps.so => imagepipeline/src/main/jniLibs/arm64-v8a/libbitmaps.so
+* libs/arm64-v8a/libgifimage.so => imagepipeline/src/main/jniLibs/arm64-v8a/libgifimage.so
+* libs/arm64-v8a/libimagepipeline.so => imagepipeline/src/main/jniLibs/arm64-v8a/libimagepipeline.so
+* libs/arm64-v8a/libmemchunk.so => imagepipeline/src/main/jniLibs/arm64-v8a/libmemchunk.so
+* libs/arm64-v8a/libwebp.so => imagepipeline/src/main/jniLibs/arm64-v8a/libwebp.so
+* libs/arm64-v8a/libwebpimage.so => imagepipeline/src/main/jniLibs/arm64-v8a/libwebpimage.so
+* libs/armeabi-v7a/libbitmaps.so => imagepipeline/src/main/jniLibs/armeabi-v7a/libbitmaps.so
+* libs/armeabi-v7a/libgifimage.so => imagepipeline/src/main/jniLibs/armeabi-v7a/libgifimage.so
+* libs/armeabi-v7a/libimagepipeline.so => imagepipeline/src/main/jniLibs/armeabi-v7a/libimagepipeline.so
+* libs/armeabi-v7a/libmemchunk.so => imagepipeline/src/main/jniLibs/armeabi-v7a/libmemchunk.so
+* libs/armeabi-v7a/libwebp.so => imagepipeline/src/main/jniLibs/armeabi-v7a/libwebp.so
+* libs/armeabi-v7a/libwebpimage.so => imagepipeline/src/main/jniLibs/armeabi-v7a/libwebpimage.so
+* libs/armeabi/libbitmaps.so => imagepipeline/src/main/jniLibs/armeabi/libbitmaps.so
+* libs/armeabi/libgifimage.so => imagepipeline/src/main/jniLibs/armeabi/libgifimage.so
+* libs/armeabi/libimagepipeline.so => imagepipeline/src/main/jniLibs/armeabi/libimagepipeline.so
+* libs/armeabi/libmemchunk.so => imagepipeline/src/main/jniLibs/armeabi/libmemchunk.so
+* libs/armeabi/libwebp.so => imagepipeline/src/main/jniLibs/armeabi/libwebp.so
+* libs/armeabi/libwebpimage.so => imagepipeline/src/main/jniLibs/armeabi/libwebpimage.so
+* libs/bolts-android-1.1.4.jar => imagepipeline/libs/bolts-android-1.1.4.jar
+* libs/imagepipeline-v0.7.0.jar => imagepipeline/libs/imagepipeline-v0.7.0.jar
+* libs/library-2.4.0.jar => imagepipeline/libs/library-2.4.0.jar
+* libs/x86/libbitmaps.so => imagepipeline/src/main/jniLibs/x86/libbitmaps.so
+* libs/x86/libgifimage.so => imagepipeline/src/main/jniLibs/x86/libgifimage.so
+* libs/x86/libimagepipeline.so => imagepipeline/src/main/jniLibs/x86/libimagepipeline.so
+* libs/x86/libmemchunk.so => imagepipeline/src/main/jniLibs/x86/libmemchunk.so
+* libs/x86/libwebp.so => imagepipeline/src/main/jniLibs/x86/libwebp.so
+* libs/x86/libwebpimage.so => imagepipeline/src/main/jniLibs/x86/libwebpimage.so
+* libs/x86_64/libbitmaps.so => imagepipeline/src/main/jniLibs/x86_64/libbitmaps.so
+* libs/x86_64/libgifimage.so => imagepipeline/src/main/jniLibs/x86_64/libgifimage.so
+* libs/x86_64/libimagepipeline.so => imagepipeline/src/main/jniLibs/x86_64/libimagepipeline.so
+* libs/x86_64/libmemchunk.so => imagepipeline/src/main/jniLibs/x86_64/libmemchunk.so
+* libs/x86_64/libwebp.so => imagepipeline/src/main/jniLibs/x86_64/libwebp.so
+* libs/x86_64/libwebpimage.so => imagepipeline/src/main/jniLibs/x86_64/libwebpimage.so
+* res/ => imagepipeline/src/main/res
+* src/ => imagepipeline/src/main/java
+In fresco:
+* AndroidManifest.xml => fresco/src/main/AndroidManifest.xml
+* assets/ => fresco/src/main/assets
+* libs/fresco-v0.7.0.jar => fresco/libs/fresco-v0.7.0.jar
+* res/ => fresco/src/main/res
+* src/ => fresco/src/main/java
+In library:
+* AndroidManifest.xml => library/src/main/AndroidManifest.xml
+* assets/ => library/src/main/assets
+* res/ => library/src/main/res/
+* src/ => library/src/main/java/
+* src/.DS_Store => library/src/main/resources/.DS_Store
+* src/com/.DS_Store => library/src/main/resources/com/.DS_Store
+* src/com/handmark/.DS_Store => library/src/main/resources/com/handmark/.DS_Store
+* src/com/handmark/pulltorefresh/.DS_Store => library/src/main/resources/com/handmark/pulltorefresh/.DS_Store
+In Common:
+* AndroidManifest.xml => common/src/main/AndroidManifest.xml
+* assets/ => common/src/main/assets/
+* libs/SocialSDK_QQ_Simplify.jar => common/libs/SocialSDK_QQ_Simplify.jar
+* libs/SocialSDK_Sina_Simplify.jar => common/libs/SocialSDK_Sina_Simplify.jar
+* libs/SocialSDK_WeChat_Simplify.jar => common/libs/SocialSDK_WeChat_Simplify.jar
+* libs/UPPayAssistEx.jar => common/libs/UPPayAssistEx.jar
+* libs/UPPayPluginExPro.jar => common/libs/UPPayPluginExPro.jar
+* libs/Xg_sdk_v2.47_20161026_0936.jar => common/libs/Xg_sdk_v2.47_20161026_0936.jar
+* libs/ZBarDecoder.jar => common/libs/ZBarDecoder.jar
+* libs/adapter-rxjava-2.2.0.jar => common/libs/adapter-rxjava-2.2.0.jar
+* libs/alipaySdk-20161222.jar => common/libs/alipaySdk-20161222.jar
+* libs/android-support-v7-recyclerview.jar => common/libs/android-support-v7-recyclerview.jar
+* libs/arm64-v8a/libZBarDecoder.so => common/src/main/jniLibs/arm64-v8a/libZBarDecoder.so
+* libs/arm64-v8a/libentryexpro.so => common/src/main/jniLibs/arm64-v8a/libentryexpro.so
+* libs/arm64-v8a/libiconv.so => common/src/main/jniLibs/arm64-v8a/libiconv.so
+* libs/arm64-v8a/libtpnsSecurity.so => common/src/main/jniLibs/arm64-v8a/libtpnsSecurity.so
+* libs/arm64-v8a/libuptsmaddon.so => common/src/main/jniLibs/arm64-v8a/libuptsmaddon.so
+* libs/arm64-v8a/libxguardian.so => common/src/main/jniLibs/arm64-v8a/libxguardian.so
+* libs/armeabi-v7a/libZBarDecoder.so => common/src/main/jniLibs/armeabi-v7a/libZBarDecoder.so
+* libs/armeabi-v7a/libentryexpro.so => common/src/main/jniLibs/armeabi-v7a/libentryexpro.so
+* libs/armeabi-v7a/libiconv.so => common/src/main/jniLibs/armeabi-v7a/libiconv.so
+* libs/armeabi-v7a/libtpnsSecurity.so => common/src/main/jniLibs/armeabi-v7a/libtpnsSecurity.so
+* libs/armeabi-v7a/libuptsmaddon.so => common/src/main/jniLibs/armeabi-v7a/libuptsmaddon.so
+* libs/armeabi-v7a/libxguardian.so => common/src/main/jniLibs/armeabi-v7a/libxguardian.so
+* libs/armeabi/libZBarDecoder.so => common/src/main/jniLibs/armeabi/libZBarDecoder.so
+* libs/armeabi/libentryexpro.so => common/src/main/jniLibs/armeabi/libentryexpro.so
+* libs/armeabi/libiconv.so => common/src/main/jniLibs/armeabi/libiconv.so
+* libs/armeabi/libtpnsSecurity.so => common/src/main/jniLibs/armeabi/libtpnsSecurity.so
+* libs/armeabi/libuptsmaddon.so => common/src/main/jniLibs/armeabi/libuptsmaddon.so
+* libs/armeabi/libxguardian.so => common/src/main/jniLibs/armeabi/libxguardian.so
+* libs/converter-gson-2.2.0.jar => common/libs/converter-gson-2.2.0.jar
+* libs/core-3.2.1-all.jar => common/libs/core-3.2.1-all.jar
+* libs/jg_filter_sdk_1.1.jar => common/libs/jg_filter_sdk_1.1.jar
+* libs/libammsdk.jar => common/libs/libammsdk.jar
+* libs/mips/libZBarDecoder.so => common/src/main/jniLibs/mips/libZBarDecoder.so
+* libs/mips/libiconv.so => common/src/main/jniLibs/mips/libiconv.so
+* libs/mips64/libZBarDecoder.so => common/src/main/jniLibs/mips64/libZBarDecoder.so
+* libs/mips64/libiconv.so => common/src/main/jniLibs/mips64/libiconv.so
+* libs/okhttp-3.6.0.jar => common/libs/okhttp-3.6.0.jar
+* libs/okio-1.11.0.jar => common/libs/okio-1.11.0.jar
+* libs/retrofit-2.2.0.jar => common/libs/retrofit-2.2.0.jar
+* libs/rxandroid-1.2.1.jar => common/libs/rxandroid-1.2.1.jar
+* libs/rxjava-1.2.7.jar => common/libs/rxjava-1.2.7.jar
+* libs/uk-co-senab-photoview.jar => common/libs/uk-co-senab-photoview.jar
+* libs/umeng-analytics-v6.1.2.jar => common/libs/umeng-analytics-v6.1.2.jar
+* libs/umeng_social_api.jar => common/libs/umeng_social_api.jar
+* libs/umeng_social_net.jar => common/libs/umeng_social_net.jar
+* libs/umeng_social_shareboard.jar => common/libs/umeng_social_shareboard.jar
+* libs/umeng_social_tool.jar => common/libs/umeng_social_tool.jar
+* libs/wup-1.0.0.E-SNAPSHOT.jar => common/libs/wup-1.0.0.E-SNAPSHOT.jar
+* libs/x86/libZBarDecoder.so => common/src/main/jniLibs/x86/libZBarDecoder.so
+* libs/x86/libiconv.so => common/src/main/jniLibs/x86/libiconv.so
+* libs/x86_64/libZBarDecoder.so => common/src/main/jniLibs/x86_64/libZBarDecoder.so
+* libs/x86_64/libiconv.so => common/src/main/jniLibs/x86_64/libiconv.so
+* lint.xml => common/lint.xml
+* res/ => common/src/main/res/
+* src/ => common/src/main/java/
+* src/.DS_Store => common/src/main/resources/.DS_Store
+* src/com/.DS_Store => common/src/main/resources/com/.DS_Store
+* src/com.rs/.DS_Store => common/src/main/resources/com.rs/.DS_Store
+* src/com.rs/mobile/.DS_Store => common/src/main/resources/com.rs/mobile/.DS_Store
+* src/com.rs/mobile/common/.DS_Store => common/src/main/resources/com.rs/mobile/common/.DS_Store
+* src/com.rs/mobile/common/network/.DS_Store => common/src/main/resources/com.rs/mobile/common/network/.DS_Store
+* src/com.rs/mobile/common/qrcode/.DS_Store => common/src/main/resources/com.rs/mobile/common/qrcode/.DS_Store
+In WPortal:
+* AndroidManifest.xml => wPortal/src/main/AndroidManifest.xml
+* assets/ => wPortal/src/main/assets/
+* libs/ycaidl.jar => wPortal/libs/ycaidl.jar
+* lint.xml => wPortal/lint.xml
+* res/ => wPortal/src/main/res/
+* src/ => wPortal/src/main/java/
+* src/.DS_Store => wPortal/src/main/resources/.DS_Store
+* src/com.rs/mobile/wportal/network/rt/.DS_Store => wPortal/src/main/resources/com.rs/mobile/wportal/network/rt/.DS_Store
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)

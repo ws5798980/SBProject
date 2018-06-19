@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#b5555555" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#E9EFF2"
+            android:orientation="vertical"
+            android:padding="20dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <com.rs.mobile.common.view.AnimationLinearLayout
+                    android:id="@+id/share_longliao"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_share_white"
+                        android:padding="5dp"
+                        android:src="@drawable/umeng_longliao" 
+                        android:contentDescription="@drawable/umeng_socialize_wechat"/>
+                    
+                    <TextView 
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="龙聊"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        />
+                    
+                </com.rs.mobile.common.view.AnimationLinearLayout>
+                
+                 <com.rs.mobile.common.view.AnimationLinearLayout
+                    android:id="@+id/share_weixin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_share_white"
+                        android:padding="5dp"
+                        android:src="@drawable/umeng_socialize_wechat" 
+                        android:contentDescription="@drawable/umeng_socialize_wechat"/>
+                    
+                    <TextView 
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="微信"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        />
+                    
+                    
+                    
+                </com.rs.mobile.common.view.AnimationLinearLayout>
+                 <com.rs.mobile.common.view.AnimationLinearLayout
+                    android:id="@+id/share_pyq"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_share_white"
+                        android:padding="5dp"
+                        android:src="@drawable/umeng_socialize_wxcircle" 
+                        android:contentDescription="@drawable/umeng_socialize_wechat"/>
+                    
+                    <TextView 
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="朋友圈"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        />
+                    
+                    
+                    
+                </com.rs.mobile.common.view.AnimationLinearLayout>
+                 <com.rs.mobile.common.view.AnimationLinearLayout
+                    android:id="@+id/share_fav"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_share_white"
+                        android:padding="5dp"
+                        android:src="@drawable/umeng_socialize_fav" 
+                        android:contentDescription="@drawable/umeng_socialize_wechat"/>
+                    
+                    <TextView 
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="微信收藏"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        />
+                    
+                    
+                    
+                </com.rs.mobile.common.view.AnimationLinearLayout>
+            </LinearLayout>
+            
+            
+            
+                        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal" >
+
+                <com.rs.mobile.common.view.AnimationLinearLayout
+                    android:id="@+id/share_qq"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_share_white"
+                        android:padding="5dp"
+                        android:src="@drawable/umeng_socialize_qq" 
+                        android:contentDescription="@drawable/umeng_socialize_wechat"/>
+                    
+                    <TextView 
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="QQ"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        />
+                    
+                </com.rs.mobile.common.view.AnimationLinearLayout>
+                
+                 <com.rs.mobile.common.view.AnimationLinearLayout
+                    android:id="@+id/share_qq_space"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_share_white"
+                        android:padding="5dp"
+                        android:src="@drawable/umeng_socialize_qzone" 
+                        android:contentDescription="@drawable/umeng_socialize_wechat"/>
+                    
+                    <TextView 
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="QQ空间"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        />
+                    
+                    
+                    
+                </com.rs.mobile.common.view.AnimationLinearLayout>
+                 <com.rs.mobile.common.view.AnimationLinearLayout
+                    android:id="@+id/share_sina"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center" >
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@drawable/bg_share_white"
+                        android:padding="5dp"
+                        android:src="@drawable/umeng_socialize_sina" 
+                        android:contentDescription="@drawable/umeng_socialize_wechat"/>
+                    
+                    <TextView 
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="新浪"
+                        android:textColor="#333333"
+                        android:textSize="14sp"
+                        />
+                    
+                    
+                    
+                </com.rs.mobile.common.view.AnimationLinearLayout>
+                 <com.rs.mobile.common.view.AnimationLinearLayout
+                    android:id="@+id/share_more"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center" >
+
+                    
+                    
+                    
+                </com.rs.mobile.common.view.AnimationLinearLayout>
+            </LinearLayout>
+            
+            
+        </LinearLayout>
+
+        <com.rs.mobile.common.view.AnimationLinearLayout
+            android:id="@+id/share_calse"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@color/white"
+            android:gravity="center" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="取消分享"
+                android:textColor="#333333"
+                android:textSize="16dp" />
+        </com.rs.mobile.common.view.AnimationLinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

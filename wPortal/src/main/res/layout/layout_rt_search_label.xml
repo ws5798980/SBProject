@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llLabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <!--
+        默认Label的padding=>内边距(包括left、top、right、bottom)为@dimen/padding_label_view(10dp)
+        默认Label的margin=>外边距(包括left、top、right、bottom)为@dimen/margin_between_labels(5dp)
+        默认Label的background为@color/label_normal_bg(#fff4fa)
+     -->
+
+    <TextView
+        android:id="@+id/tvLabel"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:includeFontPadding="false"
+        />
+    <!--
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/label_title_size</item>
+     -->
+
+    <ImageView
+        android:id="@+id/ivCross"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"/>
+    <!--
+        <item name="android:paddingLeft">@dimen/padding_icon_cross</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:src">@android:drawable/ic_delete</item>
+     -->
+
+</LinearLayout>
+

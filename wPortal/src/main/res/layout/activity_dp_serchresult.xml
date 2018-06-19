@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/toolbar_dp_search2" />
+
+    <LinearLayout
+        android:id="@+id/line_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/navigation_area"
+        android:layout_marginTop="1dip"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/marginx2"
+        android:paddingTop="@dimen/marginx2" >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_001"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textview_001"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dp_text_general"
+                android:textColor="@color/textcolor_dp_tabhost_tabspec_selected"
+                android:textSize="@dimen/text_size_m" 
+                android:drawableRight="@drawable/dp_icon_22"
+                android:drawablePadding="@dimen/margin"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_002"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textview_002"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dp_text_sales"
+                android:textSize="@dimen/text_size_m" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_003"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textview_003"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/dp_text_price"
+                android:textSize="@dimen/text_size_m"
+                android:drawableRight="@drawable/dp_icon_sj" 
+                android:drawablePadding="@dimen/margin"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.handmark.pulltorefresh.library.PullToRefreshGridView
+            android:id="@+id/sv_serch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="1dp"
+            android:horizontalSpacing="2dp"
+            android:verticalSpacing="2dp"
+            android:numColumns="2"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+    		app:ptrShowIndicator="false"
+            app:ptrAnimationStyle="flip"
+            app:ptrMode="both" >
+        </com.handmark.pulltorefresh.library.PullToRefreshGridView>
+        <ListView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lv_select"
+            android:background="@color/white"
+            android:visibility="gone"></ListView>
+        <TextView android:id="@+id/tv_tips"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/dp_text_030"
+            android:textSize="@dimen/text_size_mb"
+            android:textColor="@color/textcolor_dp_666"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+</LinearLayout>

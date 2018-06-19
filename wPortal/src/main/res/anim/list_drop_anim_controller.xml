@@ -1,0 +1,4 @@
+<layoutAnimation xmlns:android="http://schemas.android.com/apk/res/android"
+	android:animationOrder="normal"
+	android:animation="@anim/list_drop_anim">
+</layoutAnimation>

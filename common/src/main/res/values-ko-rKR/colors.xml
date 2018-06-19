@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 背景颜色 -->
+    <color name="common_bg">#F0F2F5</color>
+    <color name="common_bg1">#f7f8f9</color>
+    <color name="blue">#4A90E2</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white90">#90FFFFFF</color>
+    <color name="whitebb">#bbFFFFFF</color>
+    <color name="b9">#9b9b9b</color>
+    <color name="black">#000000</color>
+    <color name="deep_gray">#dcdddd</color>
+    <color name="found_text_color">#353535</color>
+    <color name="found_description_color">#aaaaaa</color>
+    <color name="found_divide_color">#d9d9d9</color>
+    
+    <color name="light_blue">#ADD8E6</color>
+    <!-- 提示输入黑 -->
+    <color name="hintblack">#9B9B9B</color>
+    <color name="hui">#e1e1e1</color>
+    <!-- 输入黑 -->
+    <color name="inputblack">#4A4A4A</color>
+    <!-- 主题蓝 -->
+    <color name="mainblue">#ff8f3b</color>
+    <color name="mainblue001">#008000</color>
+    <!-- 字体红 -->
+    <color name="red">#DB4F2D</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent55">#55000000</color>
+    <color name="transparent20">#20000000</color>
+    <!-- s扫描 -->
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <!-- 自定义加减控件 -->
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="divider">#ffd2d2d2</color>
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <color name="background_window">#FFE5E5E5</color>
+
+    <color name="select_kr_menu">#fca73d</color>
+    <color name="unselect_kr_menu">#333333</color>
+    
+    <!-- rt -->
+    <color name="textcolor_rt_tabhost_tabspec_selected">#ED3E42</color>   <!-- 点餐Main页下方Tab字体选中颜色 -->
+    <color name="textcolor_rt_tabhost_tabspec_normal">#5F646E</color>  <!-- 点餐Main页下方Tab字体未选中颜色 -->
+    <color name="backgroundColor_rt_window">#F4F4F4</color> <!-- 点餐界面window的背景色 -->
+    <color name="textColor_rt_toolbar_title">#333333</color> <!-- 点餐Toolbar中Title的textColor -->
+    <color name="textColor_rt_gridseller_sellertype">#666666</color> <!-- 点餐Main页上方商家类型的textColor -->
+    <color name="textColor_rt_selleritem_sellername">#424242</color> <!-- 点餐商家列表中商家名称的 textColor -->
+    <color name="backgroundColor_rt_red_button">#ED3E42</color> <!-- 点餐中红色按钮的backgroundColors -->
+    <color name="textColor_rt_lightest">#999999</color> <!-- 点餐字体中最浅灰色的字体颜色 -->
+    <color name="textColor_rt_sellerdetail_comment_rate">#ff8933</color>
+    <color name="textColor_rt_sellerdetail_comment_score">#9a9a9a</color>
+    
+    <!--dp-->
+    <color name="textcolor_dp_tabhost_tabspec_selected">#ED3E42</color>   <!-- Main页下方Tab字体选中颜色 -->
+    <color name="textcolor_dp_tabhost_tabspec_normal">#666666</color>  <!-- Main页下方Tab字体未选中颜色 -->
+    <color name="textcolor_dp_333">#333333</color>  <!-- 最深色 -->
+    <color name="textcolor_dp_666">#666666</color>  <!-- 次深色 -->
+    <color name="textcolor_dp_999">#999999</color>  <!-- 最浅色 -->
+    <color name="backgroundColor_dp_window">#F4F4F4</color> <!-- 百货界面window的背景色 -->
+    <color name="textColor_dp_toolbar_title">#333333</color> <!-- 百货Toolbar中Title的textColor -->
+   <!--  ht -->
+    <color name="textcolor_ht_tabhost_tabspec_selected">#a983e8</color>   <!-- Main页下方Tab字体选中颜色 -->
+    <color name="textcolor_ht_tabhost_tabspec_normal">#666666</color>  <!-- Main页下方Tab字体未选中颜色 -->
+    <color name="textcolor_ht_333">#333333</color>  <!-- 最深色 -->
+    <color name="textcolor_ht_666">#666666</color>  <!-- 次深色 -->
+    <color name="textcolor_ht_999">#999999</color>  <!-- 最浅色 -->
+    <color name="backgroundColor_ht_window">#F4F4F4</color> <!-- 百货界面window的背景色 -->
+    <color name="textColor_ht_toolbar_title">#333333</color> <!-- 百货Toolbar中Title的textColor -->
+    <color name="textColor_ht_score">#fcc900</color> <!-- 百货Toolbar中Title的textColor -->
+    <color name="ht_city_bg">#edeff0</color>
+    <color name="ht_yellow">#fccb0b</color>
+    <color name="ht_yellow_1">#faffbd</color>
+    <color name="normal_day">#ff999999</color>
+    <color name="selected_day_background">#E75F49</color>
+    <color name="selected_day_text">#fff2f2f2</color>
+</resources>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f2f4f6" >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white" >
+
+        <ImageView
+            android:id="@+id/mk_car_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@drawable/icon_allreturn"
+            android:padding="15dp"
+            android:src="@drawable/icon_allreturn" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="订单详情"
+            android:textColor="@color/inputblack"
+            android:textSize="18sp" />
+
+        
+    </RelativeLayout>
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+   <TextView android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:textColor="@color/mk_text_click"
+       android:textSize="14sp"
+       android:text="订单商品"
+       android:padding="@dimen/marginx2"/>
+   <ListView android:id="@+id/lv"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@color/white"
+       ></ListView>
+   <TextView android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:textColor="@color/mk_text_click"
+       android:textSize="14sp"
+       android:text="订单信息"
+       android:padding="@dimen/marginx2"/>
+   <RelativeLayout android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:padding="@dimen/marginx2"
+       android:background="@color/white">
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="14sp"
+           android:textColor="@color/textcolor_dp_999"
+           android:text="订单编号"/>
+       <TextView
+           android:id="@+id/order_num" 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="14sp"
+           android:layout_alignParentRight="true"
+           android:textColor="@color/textcolor_dp_333"
+           />
+   </RelativeLayout>
+   <RelativeLayout android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:padding="@dimen/marginx2"
+       android:layout_marginTop="1dp"
+       android:background="@color/white">
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="14sp"
+           android:textColor="@color/textcolor_dp_999"
+           android:text="订单时间"/>
+       <TextView
+           android:id="@+id/order_date" 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="14sp"
+           android:layout_alignParentRight="true"
+           android:textColor="@color/textcolor_dp_333"
+           />
+   </RelativeLayout>
+   <RelativeLayout android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="1dp"
+       android:padding="@dimen/marginx2"
+       android:background="@color/white">
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="14sp"
+           android:textColor="@color/textcolor_dp_999"
+           android:text="总金额"/>
+       <TextView
+           android:id="@+id/order_amout" 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="14sp"
+           android:layout_alignParentRight="true"
+           android:textColor="@color/textcolor_dp_333"
+           />
+   </RelativeLayout>
+   <LinearLayout android:id="@+id/qr_line"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical">
+      <TextView android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:textColor="@color/mk_text_click"
+       android:textSize="14sp"
+       android:text="取单二维码"
+       android:padding="@dimen/marginx2"/> 
+       <RelativeLayout android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@color/white"
+           android:padding="10dp">
+           <ImageView android:id="@+id/qr_img"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_centerInParent="true"/>
+       </RelativeLayout>
+   </LinearLayout>
+   </LinearLayout>
+   </ScrollView>
+</LinearLayout>

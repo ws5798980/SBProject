@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:paddingLeft="@dimen/marginx3"
+    android:paddingRight="@dimen/marginx3" >
+
+    <TextView
+        android:id="@+id/tv_deleteorder"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:gravity="center_vertical|left"
+        android:paddingRight="@dimen/marginx2"
+        android:text="@string/rt_text049"
+        android:textColor="@color/textColor_rt_toolbar_title"
+        android:textSize="@dimen/text_size_m" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:divider="@drawable/divider_rt_transparent_vertical_line_large"
+        android:gravity="center_vertical|right"
+        android:orientation="horizontal"
+        android:showDividers="middle" >
+
+        <TextView
+            android:id="@+id/tv_again"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/bg_rt_reserve_bottombtn_black"
+            android:clickable="true"
+            android:gravity="center"
+            android:paddingLeft="@dimen/marginx3"
+            android:paddingRight="@dimen/marginx3"
+            android:text="@string/rt_text050"
+            android:textColor="@color/textColor_rt_toolbar_title"
+            android:textSize="@dimen/text_size_m" />
+
+        <TextView
+            android:id="@+id/tv_checkcomment"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/bg_rt_reserve_bottombtn_black"
+            android:clickable="true"
+            android:gravity="center"
+            android:paddingLeft="@dimen/marginx3"
+            android:paddingRight="@dimen/marginx3"
+            android:text="@string/rt_text056"
+            android:textColor="@color/textColor_rt_toolbar_title"
+            android:textSize="@dimen/text_size_m" />
+    </LinearLayout>
+
+</RelativeLayout>

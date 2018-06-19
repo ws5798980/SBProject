@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 用RadioButton实现的选择器背景图片 -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/selectshixin"
+        android:state_checked="true"
+        android:state_enabled="true">
+    </item>
+    <item android:drawable="@drawable/selectkongxin">
+    </item>
+
+</selector>

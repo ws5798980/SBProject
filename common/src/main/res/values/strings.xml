@@ -1,0 +1,497 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+
+    <string name="app_name">联合商家</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="ok">确认</string>
+    <string name="reset">重置</string>
+    <string name="complete">完成</string>
+    <string name="finish">终止</string>
+    <string name="cancel">取消</string>
+    <string name="delete">删除</string>
+    <string name="alert">通知</string>
+    <string name="more">展开</string>
+    <string name="hide">收起</string>
+    <string name="time">Time</string>
+    <string name="date">Date</string>
+    <string name="msg_delete">确定要删除吗</string>
+    <string name="sure">确定</string>
+    <string name="skip">跳过</string>
+    <string name="icon_01">网上商城</string>
+    <string name="icon_02">奢厨餐厅</string>
+    <string name="icon_03">奢厨生鲜</string>
+    <string name="icon_04">酒店</string>
+    <string name="icon_05">我的钱包</string>
+    <string name="icon_06">停车</string>
+    <string name="icon_07">龙聊</string>
+    <string name="icon_08">狂乐传媒</string>
+    <string name="sm_name">奢厨</string>
+    <string name="toolbar_mycrazymedia">我的狂乐</string>
+    <string name="toolbar_vote">投票活动</string>
+    <string name="toolbar_selfticket">自助购票</string>
+    <string name="toolbar_onlinevedio">在线视频</string>
+    <string name="toolbar_highlights">精彩推荐</string>
+    <string name="cm_voteaction">投票活动</string>
+    <string name="cm_movie">在线视频</string>
+    <string name="cm_more">更多</string>
+    <string name="cm_mediapromote">视频推荐</string>
+    <string name="servings">/份</string>
+    <string name="msg_must_login">请登陆后使用</string>
+
+    <!-- freshmaket -->
+    <string name="sm_my_order">我的订单</string>
+    <string name="sm_cheatpoints">赚积分</string>
+    <string name="sm_coupon">优惠券</string>
+    <string name="sm_favorites">收藏夹</string>
+    <string name="sm_incharge">充值</string>
+    <string name="sm_qr">扫一扫</string>
+    <string name="sm_custom_service">在线客服</string>
+    <string name="sm_address">收货地址</string>
+    <string name="sm_most_fresh">最新鲜</string>
+    <string name="sm_detail_1">好东西何须去远方</string>
+    <string name="sm_detail_2">人气生鲜</string>
+    <string name="sm_detail_3">让大伙替你选</string>
+    <string name="sm_detail_4">今日特惠</string>
+    <string name="sm_detail_5">每日精选</string>
+    <string name="sm_newgoods">新品尝鲜</string>
+    <string name="sm_limited_buying">限量抢购</string>
+    <string name="sm_everybody_want_buy">大家都喜欢买</string>
+    <string name="sm_homepage">首页</string>
+    <string name="sm_store">附近商家</string>
+    <string name="sm_activity">活动</string>
+    <string name="sm_classify">分类</string>
+    <string name="sm_shoppingcart">购物车</string>
+    <string name="sm_mine">我的</string>
+    <string name="msg_ready_to_service">服务准备中.</string>
+    <string name="title_finish">终止</string>
+    <string name="msg_finish_app">要终止吗？</string>
+    <string name="sm_text_amount">购买数量</string>
+    <string name="sm_text_sold">已售：</string>
+    <string name="sm_text_timelimited_1">限时配送</string>
+    <string name="sm_text_timelimited_2">24小时退\换货</string>
+    <string name="sm_text_timelimited_3">自提免运费</string>
+    <string name="sm_text_exchange">换购：</string>
+    <string name="sm_text_service">客服</string>
+    <string name="sm_text_collection">收藏</string>
+    <string name="sm_text_my_collection">我的收藏夹</string>
+    <string name="sm_text_storage">储存方式：</string>
+    <string name="sm_text_good_code">商品编号：</string>
+    <string name="sm_text_add_to_shoppingcart">加入购物车</string>
+    <string name="sm_text_to_buy">立即购买</string>
+    <string name="sm_text_all_evalute">全部评价</string>
+    <string name="sm_text_well_evalute">好评</string>
+    <string name="sm_text_normal_evalute">中评</string>
+    <string name="sm_text_bad_evalute">差评</string>
+    <string name="sm_text_img_evalute">晒图</string>
+    <string name="sm_text_to_evalute">发表评价</string>
+    <string name="sm_text_evaluate">评价</string>
+    <string name="sm_text_chang_evaluate">修改评价</string>
+    <string name="sm_text_score">评分</string>
+    <string name="sm_text_hint_evalute">写下购物体会帮助其他小伙伴～</string>
+    <string name="sm_text_to_evaluting">立即发表</string>
+    <string name="sm_text_to_select">全选</string>
+    <string name="sm_text_totoal">总计:</string>
+    <string name="sm_text_delete">删除</string>
+    <string name="sm_text_add_favorate">加入收藏</string>
+    <string name="sm_text_edit">编辑</string>
+    <string name="sm_text_confirm_order">确认订单</string>
+    <string name="sm_text_receiver">收货人</string>
+    <string name="sm_text_good_classify">商品清单</string>
+    <string name="sm_text_good_number">购买数量</string>
+    <string name="sm_text_good_time">选择时间</string>
+    <string name="sm_text_pay_way">支付方式</string>
+    <string name="sm_text_pay_way_yucheng">宇成支付</string>
+    <string name="sm_text_pay_way_wechat">微信支付</string>
+    <string name="sm_text_pay_way_alipay">支付宝</string>
+    <string name="sm_text_pay_way_unionpay">银行卡支付</string>
+    <string name="sm_text_balance">账户余额:</string>
+    <string name="sm_text_incharge">立即充值</string>
+    <string name="sm_text_totoal_money">总金额</string>
+    <string name="sm_text_commit_order">提交订单</string>
+    <string name="sm_text_plz_choosegoods">您还没选择商品</string>
+    <string name="sm_text_serch">搜索</string>
+    <string name="sm_text_tips">提示</string>
+    <string name="sm_text_nomoney">余额不足</string>
+    <string name="sm_text_tocharge">去充值</string>
+    <string name="sm_text_addressdetail">您还没有设置收获地址，请设置收获地址</string>
+    <string name="sm_text_plz_choose_good">请选择商品</string>
+    <!-- selecttime -->
+    <string name="sm_text_receive_time">取货时间:</string>
+    <string name="sm_text_tomorrow">明天</string>
+    <string name="sm_text_tomorrowafter">后天</string>
+    <string name="sm_text_tomorrowafter_after">大后天</string>
+    <string name="sm_text_time_rule">23:59钱下单，次日可送达</string>
+    <string name="sm_text_morning">上午    9:30--12:00</string>
+    <string name="sm_text_afternoon">下午    16:00--19:00</string>
+
+    <!-- address -->
+    <string name="sm_text_address">收货地址</string>
+    <string name="sm_text_my_station">自提站点</string>
+    <string name="sm_text_default">设置默认</string>
+    <string name="sm_text_add_address">新增地址</string>
+    <string name="sm_text_address_detail">自提站点：配送到宇成站点，生鲜商品存放于保鲜柜</string>
+    <string name="sm_text_mycity">当前城市：</string>
+    <string name="sm_text_changsha">长沙</string>
+    <string name="sm_text_phone">联系电话</string>
+    <string name="sm_text_set_default">设置默认</string>
+    <string name="sm_text_district">所在地区</string>
+    <string name="sm_text_plz_choose">请您选择</string>
+    <string name="sm_text_address_detail1">详细地址</string>
+    <string name="plz_input">请输入</string>
+    <string name="sm_text_save_address">保存地址</string>
+    <string name="sm_text_select_city">选择城市</string>
+    <string name="sm_text_else">其他</string>
+    <string name="sm_text_confirm">确定</string>
+    <string name="sm_text_history">历史搜索</string>
+    <string name="sm_text_sort">综合排序</string>
+    <string name="sm_text_sale_number">销量优先</string>
+    <string name="plz_fill_text">信息不完整</string>
+    <string name="sm_text_nogoods">抱歉，没有找到商品</string>
+    <string name="sm_text_returnrule">退货规则</string>
+
+    <!-- order -->
+    <string name="all">全部</string>
+    <string name="no_pay">待付款</string>
+    <string name="no_send">待发货</string>
+    <string name="wait_pick">待自提</string>
+    <string name="no_sign">待收货</string>
+    <string name="no_evaluate">待评价</string>
+    <string name="order_bewrite1">共</string>
+    <string name="order_bewrite2">件商品，总计：</string>
+    <string name="no_order">抱歉，没有相关订单</string>
+
+    <!-- coupon -->
+    <string name="sm_coupon1">奢厨优惠券</string>
+    <string name="sm_coupon_usable">可用优惠券</string>
+    <string name="sm_coupon_disable">不可用优惠券</string>
+    <string name="sm_deadline">使用期限</string>
+    <string name="sm_use">使用</string>
+
+    <!-- points -->
+    <string name="my_points">我的积分</string>
+    <string name="all_points">全部明细</string>
+    <string name="cheat_points">收入明细</string>
+    <string name="cost_points">支出明细</string>
+    <string name="points">积分</string>
+    <string name="points_detail">小积分大用途，每日签到和订单评价获取更多积分</string>
+
+    <!-- my -->
+    <string name="coupon">优惠券</string>
+    <string name="my_evaluate">我的评价</string>
+    <string name="my_sugesst">建议反馈</string>
+    <string name="about_us">关于我们</string>
+    <string name="back_payment">退货/退款</string>
+    <string name="back_payment_detail">退货详情</string>
+    <string name="back_payment_code">退货编号: </string>
+    <string name="back_payment_time">申请退货时间: </string>
+    <string name="back_payment_classify">退货类型: </string>
+    <string name="back_payment_status">退货状态: </string>
+    <string name="back_payment_money">退还金额: </string>
+    <!-- logistics -->
+    <string name="check_logistics">查看物流</string>
+    <string name="logistics_state">物流状态</string>
+    <string name="logistics_code">运单编号</string>
+    <string name="logistics_count">货物数量</string>
+    <string name="logistics_detail">物流详情</string>
+    <string name="success">收货成功</string>
+
+    <!-- orderdetail -->
+    <string name="order_detail">订单详情</string>
+    <string name="order_code">订单号</string>
+    <string name="pay_ment">支付方式</string>
+    <string name="send_time">配送时间</string>
+    <string name="order_money">订单总额</string>
+    <string name="freight">快递费</string>
+    <string name="good_freight">+运费</string>
+    <string name="good_coupon">-商品优惠</string>
+    <string name="good_point">-积分</string>
+    <string name="freight1">配送方式</string>
+    <string name="pay_money">实付款</string>
+    <string name="call_service">联系客服</string>
+    <string name="confirm_pick">确认收货</string>
+    <string name="money">元</string>
+    <string name="cancel_order">取消订单</string>
+    <string name="sm_ver">生鲜奢厨版本v</string>
+    <string name="payment">付款</string>
+    <string name="payment_again">再次购买</string>
+    <string name="cancel_back">取消</string>
+    <string name="order_detail_intro">请在订单提交后尽快完成支付，超时订单将自动取消</string>
+
+    <!-- 最新鲜，新品，特惠列表 -->
+    <string name="best_fresh_detail">人说好</string>
+    <string name="best_fresh">最新鲜</string>
+    <string name="today_fresh">今日特惠</string>
+    <string name="hot_fresh">人气生鲜</string>
+    <string name="new_fresh">新品尝鲜</string>
+    <string name="right_to_buy">立即抢购</string>
+
+    <!-- 分类列表 -->
+    <string name="sm_classify_child">分类列表</string>
+    <string name="sm_classify_list">商品列表</string>
+    <string name="sm_classify_hot">热卖</string>
+    <string name="sm_classify_new">最新</string>
+    <string name="sm_classify_sold">销量</string>
+    <string name="sm_classify_price">价格</string>
+    <!-- 退货退款 -->
+
+    <string name="apply_to_return">申请退换货</string>
+    <string name="return_good_money">退货/退款</string>
+    <string name="return_change_good">换货</string>
+    <string name="return_money">退款</string>
+    <string name="return_send_money">退运费</string>
+    <string name="return_send_money_detail">商品原因，请输入退款原因</string>
+    <string name="reason_to_retrun">退款原因</string>
+    <string name="plz_choose_reason">请选择退款原因</string>
+    <string name="money_to_return">退款金额</string>
+    <string name="detail_to_return">退款说明</string>
+    <string name="plz_detail_to_return">请输入退款说明</string>
+    <string name="upload_three_pic">上传照片最多三张</string>
+    <string name="plz_input_more">请填入完整信息</string>
+    <string name="confirm_commit">确认提交</string>
+    <string name="change_address">编辑地址</string>
+
+    <!-- XListView -->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time">上次更新时间：</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <string name="xlistview_footer_loading">加载中...</string>
+    <string name="xlistview_no_more_data">亲，已经到底了！</string>
+    <string name="rmb"></string>
+
+    <!-- error -->
+    <string name="title_network_error">网络连接失败</string>
+    <string name="msg_network_error">网络不可用，无法与服务器通讯。请连接到移动数据网络或者WiFi</string>
+
+    <!-- login -->
+    <string name="login">登录</string>
+    <string name="membership">新用户</string>
+    <string name="msg_pls_input_yourphone">请输入您的手机号码</string>
+    <string name="msg_pls_input_yournewpw">设置新密码</string>
+    <string name="msg_pls_confirm_newpw">确认新密码</string>
+    <string name="msg_pls_input_yourpasswork">请设置登录密码</string>
+    <string name="msg_pls_input_verificode">请输入短信验证码</string>
+    <string name="receive_vercode">接收验证码</string>
+    <string name="second">second</string>
+    <string name="msg_pls_input_yourpassword">请输入登录密码</string>
+    <string name="msg_pls_input_yourpassword_check">请再次输入密码</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="phone_or_password_wrong">手机号或者密码不正确</string>
+    <string name="vercode_wrong_tryagain">验证码错误,请重试</string>
+    <string name="phone_wrong">手机号码不正确</string>
+    <string name="vercode_is_send">验证码已经发送，请注意查收</string>
+    <string name="msg_empty_id">请输入ID</string>
+    <string name="msg_empty_pw">请输入密码</string>
+    <string name="msg_empty_sms">请先接受验证码</string>
+    <string name="msg_equals_pw">两次密码输入不一致</string>
+    <string name="title_pay_pw">支付密码温馨提示</string>
+    <string name="msg_pay_pw">尊敬的用户，您的初始支付密码为您的手机号码后6位数！</string>
+
+    <!-- persnal_center -->
+    <string name="persnal_center">个人中心</string>
+    <string name="bookmark">我的收藏</string>
+    <string name="share">我的分享</string>
+    <string name="reply">我的信息</string>
+    <string name="setting">设置</string>
+    <string name="pic_area">更改头像</string>
+    <string name="sex_area">性别</string>
+    <string name="name_area">昵称</string>
+    <string name="logout_area">退出账号</string>
+    <string name="man">男</string>
+    <string name="woman">女</string>
+    <string name="required">必选</string>
+    <string name="Option">可选</string>
+    <string name="plz_select_option">请选择商品的属性</string>
+    <string name="reply_tab">评论</string>
+    <string name="sweet_tab">点赞</string>
+    <string name="msg_have_sweet">我点过的赞</string>
+    <string name="msg_sweet">点赞了你这条评论</string>
+    <string name="original_reply">原文</string>
+    <string name="myshop">我的店铺</string>
+    <string name="myorder">订单管理</string>
+    <string name="todaysale">今日销售数据</string>
+
+    <!-- gps -->
+    <string name="gps_msg_title">定位服务</string>
+    <string name="gps_msg">允许“奢龙网”在您使用该应用时访问您的位置吗？</string>
+    <string name="gps_setting_cancel">不允许</string>
+    <string name="gps_setting_go">去设置</string>
+    <!-- takephoto -->
+    <string name="all_pic">全部图片</string>
+    <string name="preview_without_num">预览</string>
+    <string name="preview_with_num">预览(%1$d)</string>
+    <string name="choose_pic_finish">完成</string>
+    <string name="choose_pic_finish_with_num">完成(%1$d/%2$d)</string>
+    <string name="choose_pic_num_out_of_index">你最多只能选择%1$d张照片</string>
+    <string name="choose_pic">选择</string>
+    <string name="not_choose_any_pick">你还没有选择任何图片</string>
+    <string name="uploading_images">正在批量上传</string>
+    <!-- kr -->
+    <string name="kr_title">我的狂乐</string>
+    <string name="kr_vod_search_hint">搜索视频名称</string>
+    <string name="kr_category">全部分类</string>
+    <string name="kr_sort">选择排序 : </string>
+    <string name="kr_sort_title">默认</string>
+    <string name="kr_sort_time">最新更新</string>
+    <string name="kr_sort_sweet">最多观看</string>
+    <string name="kr_search_history">搜索历史 </string>
+    <string name="kr_search_ranking">热门搜索</string>
+    <string name="kr_search_type_vod">搜视频</string>
+    <string name="kr_search_type_vote">搜活动</string>
+    <string name="kr_type_vote_all">全部</string>
+    <string name="kr_type_vote_before">未开始</string>
+    <string name="kr_type_vote_live">进行中</string>
+    <string name="kr_type_vote_after">已结束</string>
+    <string name="kr_play_ticket">演出门票</string>
+    <string name="kr_movie_ticket">电影票</string>
+    <string name="kr_vod_purchar">我买的视频</string>
+    <string name="kr_play_purchar">我买的票</string>
+    <string name="kr_vote_purchar">我投的票</string>
+    <string name="kr_setting_btn_001">我的收藏</string>
+    <string name="kr_setting_btn_002">历史记录</string>
+    <string name="kr_setting_btn_003">离线缓存</string>
+    <string name="kr_setting_btn_004">我的消息</string>
+    <string name="kr_setting_btn_005">账单记录</string>
+    <string name="kr_setting_btn_006">设置</string>
+    <string name="kr_setting_login">立即登录</string>
+    <string name="kr_play_title">演艺中心</string>
+    <string name="kr_movie_title">电影院</string>
+    <string name="kr_movie_live">正在上映</string>
+    <string name="kr_movie_expire">即将上映</string>
+    <string name="kr_movie_rating">分</string>
+    <string name="kr_movie_booking">购票</string>
+    <string name="kr_person_count">张</string>
+    <string name="kr_ticket_before">未开演</string>
+    <string name="kr_ticket_after">已结束</string>
+    <string name="kr_my_balance_001">当前余额(元)</string>
+    <string name="kr_my_balance_002">充值</string>
+    <string name="kr_my_balance_003">余额 ：</string>
+    <string name="kr_play_only_wifi">允许在移动网络下播放视频</string>
+    <string name="kr_download_only_wifi">允许在移动网路下缓存</string>
+    <string name="kr_memory_state">清理缓存</string>
+    <string name="kr_movie_detail">电影详情</string>
+    <string name="kr_movie_intro">剧情介绍</string>
+    <string name="kr_movie_production_team">主创人员</string>
+    <string name="kr_movie_appraisal">热门影评</string>
+    <string name="kr_movie_appraisal_write">写影评</string>
+    <string name="kr_movie_purchase">立即购票</string>
+    <string name="kr_movie_start">上映日期</string>
+    <string name="kr_vote_ranking">排名</string>
+    <string name="kr_vote_name">名称</string>
+    <string name="kr_vote_count">票数</string>
+    <string name="kr_vote_result">投票</string>
+    <string name="kr_vote_detail_title">活动详情</string>
+    <string name="kr_vote_detail_content">活动详情</string>
+    <string name="kr_vote_detail_period">活动时间</string>
+    <string name="kr_vote_msg">需要为所选的项目投票吗?</string>
+    <string name="kr_voted_msg">已经参与投票</string>
+    <string name="kr_vote">投票</string>
+    <string name="kr_vote_detail">项目详情</string>
+    <string name="kr_vote_detail_vote">我要支持</string>
+    <string name="kr_vote_detail_photos">项目图片</string>
+    <string name="kr_vote_detail_detail">项目详情</string>
+    <string name="kr_vote_detail_voted_persons">投票记录</string>
+    <string name="kr_vote_detail_001">当前排名</string>
+    <string name="kr_vote_detail_002">当前得票</string>
+    <string name="kr_vote_detail_vote_btn">我要支持</string>
+    <string name="kr_vote_complete">投票完成</string>
+    <string name="kr_concert_detail_title">演出详情</string>
+    <string name="kr_concert_detial_001">选择场次</string>
+    <string name="kr_concert_detial_002">选择档次</string>
+    <string name="kr_concert_detial_003">演出介绍</string>
+    <string name="kr_concert_detial_004">演出详情</string>
+    <string name="kr_concert_order_btn">选好了，去付款</string>
+    <string name="lc_title">定位地区</string>
+    <string name="lc_detail_title">选择商场</string>
+    <string name="lc_current_location">当前定位 : </string>
+    <string name="lc_current_city">定位城市</string>
+    <string name="lc_import_city">已开通城市</string>
+    <string name="lc_next_page">切换商场 ></string>
+
+    <!-- 点餐 -->
+    <string name="rt_main_homepage_tab">首页</string>
+    <string name="rt_main_order_tab">订单</string>
+    <string name="rt_main_mine_tab">我的</string>
+    <string name="rt_toolbar_cancel">取消</string>
+    <string name="rt_cancel_apply">取消申请</string>
+    <string name="rt_commit_logistic">填写物流</string>
+    <string name="rt_check_process">查看进程</string>
+    <string name="rt_toolbar_sellername">商家名称</string>
+    <string name="rt_seller_list_01">/人</string>
+    <string name="rt_seller_list_02">已接待 :</string>
+    <string name="rt_search_history">历史搜索</string>
+    <string name="rt_seller_detail_title">订餐</string>
+    <string name="rt_sum">共</string>
+    <string name="rt_pay">选好了</string>
+    <string name="rt_delete_all">清空购物车</string>
+    <string name="rt_empty_cart">购物车是空的</string>
+    <string name="rt_menu">菜单</string>
+    <string name="rt_empty_msg">请输入所有的信息后再预定</string>
+    <string name="rt_mine_favorates">我的收藏</string>
+    <string name="rt_mine_comments">我的评价</string>
+
+    <!-- 오더 상세 -->
+    <string name="order_detail_title">订单确认</string>
+    <string name="order_detail_info_01">餐厅地址</string>
+    <string name="order_detail_info_02">餐厅电话</string>
+    <string name="order_detail_order_number">订单编号</string>
+    <string name="order_detail_order_count">样菜品</string>
+    <string name="order_detail_order_time">就餐时间</string>
+    <string name="order_detail_order_extra_01">就餐人数</string>
+    <string name="order_detail_pay">提交订单</string>
+    <string name="order_detail_select_pay_way">请选择支付方式</string>
+    <string name="order_point_msg_01">可用</string>
+    <string name="order_point_msg_02">积分抵￥</string>
+    <string name="order_coupon_msg_01">使用奢厨优惠券</string>
+    <string name="order_coupon_msg_02">省</string>
+    <string name="order_coupon_msg_03">元优惠券</string>
+
+    <!-- 쿠폰 -->
+    <string name="rt_coupon_title">优惠券</string>
+    <string name="rt_coupon_use">使用</string>
+    <string name="rt_coupon_use_time">使用期限</string>
+    <string name="rt_coupon_use_msg_01">满</string>
+    <string name="rt_coupon_use_msg_02">使用</string>
+
+    <string name="menu_settings">Settings</string>
+    <string name="entryTitle">接入方式选择</string>
+    <string name="apk">apk接入</string>
+    <string name="jar">银联sdk接入</string>
+    <string name="payBYAPK">APK接入</string>
+    <string name="payBYJAR">JAR接入</string>
+
+    <!-- add -->
+    <string name="common1_text001">修改密码</string>
+    <string name="common1_text002">旧密码</string>
+    <string name="common1_text003">设置新密码</string>
+    <string name="common1_text004">确认新密码</string>
+    <string name="common1_text005">确认修改</string>
+    <string name="common1_text006">确认重置</string>
+    <string name="common1_text007">忘记密码？</string>
+    <string name="common1_text008">照相</string>
+    <string name="common1_text009">本地获取</string>
+    <string name="common1_text010">取消扫描</string>
+    <string name="common1_text011">请输入支付密码</string>
+    <string name="common1_text012">取消</string>
+    <string name="common1_text013">确定</string>
+    <string name="common1_text014">秒</string>
+    <string name="common1_text015">网络连接错误</string>
+    <string name="common1_text016"></string>
+    <string name="common1_text017"></string>
+    <string name="rs_location_wehi">威海</string>
+    <string name="rs_command_number">推荐人 ID</string>
+
+    <string name="no_address">您还没有收货地址哦！</string>
+    <string name="no_collection">您还没有收藏哦！</string>
+    <string name="refresh">立即刷新</string>
+    <string name="payment_password">输入支付密码</string>
+
+    <string name="neworder">新订单</string>
+    <string name="done">已完成</string>
+    <string name="ordergoods">订单商品</string>
+    <string name="orderclose">收起</string>
+    <string name="orderopen">打开</string>
+</resources>

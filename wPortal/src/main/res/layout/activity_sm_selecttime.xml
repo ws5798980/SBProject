@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/navigation_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:padding="@dimen/marginx2" >
+
+        <LinearLayout
+            android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin"
+            android:paddingRight="@dimen/marginx4"
+            android:paddingTop="@dimen/margin" >
+
+            <ImageView
+                android:id="@+id/branch_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_back" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/sm_text_good_time"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_b" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/img_logo"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/marginx2" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sm_text_receive_time"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_m" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:text="@string/sm_text_time_rule"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_ms" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/marginx2" >
+
+        <TextView
+            android:id="@+id/textTime_001"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginx2"
+            android:textColor="@color/mainblue001"
+            android:textSize="@dimen/text_size_m" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/text_week_001"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/inputblack"
+                android:textSize="@dimen/text_size_ms" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/sm_text_tomorrow"
+                android:textColor="@color/mainblue001"
+                android:textSize="@dimen/text_size_ms" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/marginx2" >
+
+        <CheckBox
+            android:id="@+id/checkBox_001"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/checkbox_bg"
+            android:drawablePadding="@dimen/marginx2"
+            android:paddingLeft="0dp"
+            android:text="@string/sm_text_morning"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_m" />
+
+        <CheckBox
+            android:id="@+id/checkBox_002"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginx2"
+            android:button="@null"
+            android:drawableLeft="@drawable/checkbox_bg"
+            android:drawablePadding="@dimen/marginx2"
+            android:paddingLeft="0dp"
+            android:text="@string/sm_text_afternoon"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_m" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/marginx2" >
+
+        <TextView
+            android:id="@+id/textTime_002"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginx2"
+            android:textColor="@color/mainblue001"
+            android:textSize="@dimen/text_size_m" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/text_week_002"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/inputblack"
+                android:textSize="@dimen/text_size_ms" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/sm_text_tomorrowafter"
+                android:textColor="@color/mainblue001"
+                android:textSize="@dimen/text_size_ms" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/marginx2" >
+
+        <CheckBox
+            android:id="@+id/checkBox_003"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/checkbox_bg"
+            android:drawablePadding="@dimen/marginx2"
+            android:paddingLeft="0dp"
+            android:text="@string/sm_text_morning"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_m" />
+
+        <CheckBox
+            android:id="@+id/checkBox_004"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginx2"
+            android:button="@null"
+            android:drawableLeft="@drawable/checkbox_bg"
+            android:drawablePadding="@dimen/marginx2"
+            android:paddingLeft="0dp"
+            android:text="@string/sm_text_afternoon"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_m" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/marginx2" >
+
+        <TextView
+            android:id="@+id/textTime_003"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/marginx2"
+            android:textColor="@color/mainblue001"
+            android:textSize="@dimen/text_size_m" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/text_week_003"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:textColor="@color/inputblack"
+                android:textSize="@dimen/text_size_ms" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/sm_text_tomorrowafter_after"
+                android:textColor="@color/mainblue001"
+                android:textSize="@dimen/text_size_ms" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/marginx2" >
+
+        <CheckBox
+            android:id="@+id/checkBox_005"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:drawableLeft="@drawable/checkbox_bg"
+            android:drawablePadding="@dimen/marginx2"
+            android:paddingLeft="0dp"
+            android:text="@string/sm_text_morning"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_m" />
+
+        <CheckBox
+            android:id="@+id/checkBox_006"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginx2"
+            android:button="@null"
+            android:drawableLeft="@drawable/checkbox_bg"
+            android:drawablePadding="@dimen/marginx2"
+            android:paddingLeft="0dp"
+            android:text="@string/sm_text_afternoon"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_m" />
+    </LinearLayout>
+
+</LinearLayout>

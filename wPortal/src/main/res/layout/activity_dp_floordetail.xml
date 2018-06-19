@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/toolbar_rt_base1" />
+    
+      <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/sv_homepage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+    	app:ptrShowIndicator="false"
+        app:ptrAnimationStyle="flip"
+        app:ptrMode="both" >
+    
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/viewpager_rela"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white" >
+
+            <com.rs.mobile.wportal.view.CustomViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true" >
+            </com.rs.mobile.wportal.view.CustomViewPager>
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/text_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="@dimen/margin"
+            android:padding="@dimen/marginx2"
+            android:textColor="@color/textcolor_dp_666"
+            android:textSize="@dimen/text_size_m"
+            android:background="@color/white" />
+
+        <HorizontalScrollView
+            android:id="@+id/horizontal_scroll_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin"
+            android:layout_marginTop="@dimen/marginx2"
+            android:layout_weight="1"
+             android:background="@color/white"
+             android:paddingTop="@dimen/marginx2"
+            android:paddingBottom="@dimen/marginx2"
+            android:scrollbars="none" >
+
+            <LinearLayout
+                android:id="@+id/horizontal_scroll_area"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" 
+                android:background="@color/white"/>
+        </HorizontalScrollView>
+
+        <GridView
+            android:id="@+id/gv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="1dp"
+            android:numColumns="4"
+            android:scrollbars="@null"
+            android:verticalSpacing="1dp"
+            android:layout_marginBottom="@dimen/margin" >
+        </GridView>
+
+        <TextView
+            android:id="@+id/text_001"
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/marginx2"
+            android:text="@string/dp_text_goodprimotion"
+            android:textColor="@color/textcolor_dp_tabhost_tabspec_selected"
+            android:textSize="@dimen/text_size_mb" />
+
+        <GridView
+            android:id="@+id/gv1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:horizontalSpacing="1dp"
+            android:numColumns="3"
+            android:scrollbars="@null"
+            android:verticalSpacing="1dp" >
+        </GridView>
+
+        <TextView
+            android:id="@+id/text_002"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/marginx2"
+             android:text="@string/dp_text_goodprimotion1"
+            android:textColor="@color/textcolor_dp_tabhost_tabspec_selected"
+            android:textSize="@dimen/text_size_mb" />
+        <GridView android:id="@+id/gv2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:horizontalSpacing="1dp"
+            android:numColumns="2"
+            android:scrollbars="@null"
+            android:verticalSpacing="1dp"
+            ></GridView>
+    </LinearLayout>
+
+     </com.handmark.pulltorefresh.library.PullToRefreshScrollView> 
+
+</LinearLayout>

@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+<string name="app_name">함께가게</string>
+<string name="hello_world">Hello world!</string>
+<string name="action_settings">Settings</string>
+<string name="ok">확인</string>
+<string name="reset">초기화</string>
+<string name="complete">완료</string>
+<string name="finish">중지</string>
+<string name="cancel">취소</string>
+<string name="delete">삭제</string>
+<string name="alert">알림</string>
+<string name="more">더보기</string>
+<string name="hide">접히기</string>
+<string name="time">Time</string>
+<string name="date">Date</string>
+<string name="msg_delete">삭제하시겠습니까?</string>
+<string name="sure">확인</string>
+<string name="skip">넘어가기</string>
+<string name="icon_01">온라인 쇼핑몰</string>
+<string name="icon_02">신선외식</string>
+<string name="icon_03">신선마트</string>
+<string name="icon_04">호텔</string>
+<string name="icon_05">나의지갑</string>
+<string name="icon_06">주차</string>
+<string name="icon_07">메신저</string>
+<string name="icon_08">광락미디어</string>
+<string name="sm_name">신선</string>
+<string name="toolbar_mycrazymedia">나의광락</string>
+<string name="toolbar_vote">투표활동</string>
+<string name="toolbar_selfticket">셀프예약</string>
+<string name="toolbar_onlinevedio">온라인비디오</string>
+<string name="toolbar_highlights">인기추천</string>
+<string name="cm_voteaction">투표활동</string>
+<string name="cm_movie">온라인비디오</string>
+<string name="cm_more">더보기</string>
+<string name="cm_mediapromote">추천비디오</string>
+<string name="servings">/분</string>
+<string name="msg_must_login">로그인후에 사용하세요</string>
+
+<!-- freshmaket -->
+<string name="sm_my_order">나의 오더</string>
+<string name="sm_cheatpoints">포인트</string>
+<string name="sm_coupon">쿠폰</string>
+<string name="sm_favorites">복마크</string>
+<string name="sm_incharge">충전</string>
+<string name="sm_qr">스캔하기</string>
+<string name="sm_custom_service">고객센터</string>
+<string name="sm_address">배송지</string>
+<string name="sm_most_fresh">최신선</string>
+<string name="sm_detail_1">베스트상품 다 여기에 있습니다</string>
+<string name="sm_detail_2">인기신선</string>
+<string name="sm_detail_3">골라주기</string>
+<string name="sm_detail_4">오늘 특가</string>
+<string name="sm_detail_5">매일 정선</string>
+<string name="sm_newgoods">신상</string>
+<string name="sm_limited_buying">한정득템</string>
+<string name="sm_everybody_want_buy">인기 판매 상품</string>
+<string name="sm_homepage">메인</string>
+<string name="sm_store">주변상가</string>
+<string name="sm_activity">이벤트</string>
+<string name="sm_classify">카테고리</string>
+<string name="sm_shoppingcart">장바구니 </string>
+<string name="sm_mine">나의</string>
+<string name="msg_ready_to_service">서비스 준비중.</string>
+<string name="title_finish">중지</string>
+<string name="msg_finish_app">중지하시겠습니까？</string>
+<string name="sm_text_amount">구매수량</string>
+<string name="sm_text_sold">판매량：</string>
+<string name="sm_text_timelimited_1">시간한정 배송</string>
+<string name="sm_text_timelimited_2">24시간내 교환/환불</string>
+<string name="sm_text_timelimited_3">방문수령 배달료 면제</string>
+<string name="sm_text_exchange">교환구매：</string>
+<string name="sm_text_service">고객센터</string>
+<string name="sm_text_collection">복마크</string>
+<string name="sm_text_my_collection">찜하기</string>
+<string name="sm_text_storage">보관방법：</string>
+<string name="sm_text_good_code">상품코드：</string>
+<string name="sm_text_add_to_shoppingcart">장바구니 담기</string>
+<string name="sm_text_to_buy">즉시구매</string>
+<string name="sm_text_all_evalute">전체평가</string>
+<string name="sm_text_well_evalute">좋음</string>
+<string name="sm_text_normal_evalute">일반</string>
+<string name="sm_text_bad_evalute">나쁨</string>
+<string name="sm_text_img_evalute">이미지</string>
+<string name="sm_text_to_evalute">평가등록</string>
+<string name="sm_text_evaluate">평가</string>
+<string name="sm_text_chang_evaluate">평가수정</string>
+<string name="sm_text_score">평점</string>
+<string name="sm_text_hint_evalute">구매후기를 작성하세요～</string>
+<string name="sm_text_to_evaluting">즉시발표</string>
+<string name="sm_text_to_select">전체</string>
+<string name="sm_text_totoal">총계:</string>
+<string name="sm_text_delete">삭제</string>
+<string name="sm_text_add_favorate">찜하기</string>
+<string name="sm_text_edit">편집</string>
+<string name="sm_text_confirm_order">오더확인</string>
+<string name="sm_text_receiver">수령인</string>
+<string name="sm_text_good_classify">상품리스트</string>
+<string name="sm_text_good_number">구매수량</string>
+<string name="sm_text_good_time">시간선택</string>
+<string name="sm_text_pay_way">결제방식</string>
+<string name="sm_text_pay_way_yucheng">우성페이</string>
+<string name="sm_text_pay_way_wechat">위챗페이</string>
+<string name="sm_text_pay_way_alipay">알리페이</string>
+<string name="sm_text_pay_way_unionpay">은행카드결제</string>
+<string name="sm_text_balance">잔액:</string>
+<string name="sm_text_incharge">즉시충전</string>
+<string name="sm_text_totoal_money">즉시충전</string>
+<string name="sm_text_commit_order">주문확인</string>
+<string name="sm_text_plz_choosegoods">아직 상품을 안 골랐습니다</string>
+<string name="sm_text_serch">검색</string>
+<string name="sm_text_tips">알림</string>
+<string name="sm_text_nomoney">잔액 부족</string>
+<string name="sm_text_tocharge">충전하러 가기</string>
+<string name="sm_text_addressdetail">배송지 먼저 설정하세요</string>
+<string name="sm_text_plz_choose_good">상품을 먼저선택하세요</string>
+<!-- selecttime -->
+<string name="sm_text_receive_time">수령 시간:</string>
+<string name="sm_text_tomorrow">내일</string>
+<string name="sm_text_tomorrowafter">모레</string>
+<string name="sm_text_tomorrowafter_after">글피</string>
+<string name="sm_text_time_rule">23:59전 주문하면 다음날 배송가능</string>
+<string name="sm_text_morning">오전    9:30--12:00</string>
+<string name="sm_text_afternoon">오후    16:00--19:00</string>
+
+<!-- address -->
+<string name="sm_text_address">배송지</string>
+<string name="sm_text_my_station">방문수령지</string>
+<string name="sm_text_default">기본배송지로 설정</string>
+<string name="sm_text_add_address">배송지 추가</string>
+<string name="sm_text_address_detail">방문수령지：우성 수령지점으로 배송완료,신선제품은 내장고에 보관중</string>
+<string name="sm_text_mycity">현재 도시：</string>
+<string name="sm_text_changsha">장사</string>
+<string name="sm_text_phone">연락처</string>
+<string name="sm_text_set_default">기본값으로 설정</string>
+<string name="sm_text_district">소재 지역</string>
+<string name="sm_text_plz_choose">선택하세요</string>
+<string name="sm_text_address_detail1">상세주소</string>
+<string name="plz_input">입력하세요</string>
+<string name="sm_text_save_address">배송지 저장</string>
+<string name="sm_text_select_city">도시선택</string>
+<string name="sm_text_else">기타</string>
+<string name="sm_text_confirm">확인</string>
+<string name="sm_text_history">역사검색</string>
+<string name="sm_text_sort">종합순번</string>
+<string name="sm_text_sale_number">판매량순</string>
+<string name="plz_fill_text">정보가 부족합니다</string>
+<string name="sm_text_nogoods">죄송하지만 상품을 못 찾았습니다</string>
+<string name="sm_text_returnrule">환불규칙</string>
+
+<!-- order -->
+<string name="all">전체</string>
+<string name="no_pay">결제대기</string>
+<string name="no_send">배송준비</string>
+<string name="wait_pick">방문수령대기</string>
+<string name="no_sign">배송중</string>
+<string name="no_evaluate">배송완료</string>
+<string name="order_bewrite1">총</string>
+<string name="order_bewrite2">건 합계：</string>
+<string name="no_order">죄송하지만 관련 오더가 없습니다</string>
+
+<!-- coupon -->
+<string name="sm_coupon1">신선쿠폰</string>
+<string name="sm_coupon_usable">사용가능쿠폰</string>
+<string name="sm_coupon_disable">사용불가 쿠폰</string>
+<string name="sm_deadline">사용기한</string>
+<string name="sm_use">사용</string>
+
+<!-- points -->
+<string name="my_points">나의포인트</string>
+<string name="all_points">전체내역</string>
+<string name="cheat_points">수입내역</string>
+<string name="cost_points">지출내역</string>
+<string name="points">포인트</string>
+<string name="points_detail">매일 출석체크와 평가를 통해 포인트 받기</string>
+
+<!-- my -->
+<string name="coupon">쿠폰</string>
+<string name="my_evaluate">나의평가</string>
+<string name="my_sugesst">의견</string>
+<string name="about_us">About us</string>
+<string name="back_payment">교환/환불</string>
+<string name="back_payment_detail">환불내역</string>
+<string name="back_payment_code">환불번호: </string>
+<string name="back_payment_time">환불신청시간: </string>
+<string name="back_payment_classify">환불유형: </string>
+<string name="back_payment_status">환불상태: </string>
+<string name="back_payment_money">환불금액: </string>
+<!-- logistics -->
+<string name="check_logistics">물류조회</string>
+<string name="logistics_state">물류상태</string>
+<string name="logistics_code">물류번호</string>
+<string name="logistics_count">화물수량</string>
+<string name="logistics_detail">물류내역</string>
+<string name="success">수령성공</string>
+
+<!-- orderdetail -->
+<string name="order_detail">오더내역</string>
+<string name="order_code">오더번호</string>
+<string name="pay_ment">결제방식</string>
+<string name="send_time">배송시간</string>
+<string name="order_money">오더총금액</string>
+<string name="freight">택배비</string>
+<string name="good_freight">+배송비</string>
+<string name="good_coupon">-상품혜택</string>
+<string name="good_point">-포인트</string>
+<string name="freight1">배송비</string>
+<string name="pay_money">최총결제금액</string>
+<string name="call_service">고객센터연결</string>
+<string name="confirm_pick">수령확인</string>
+<string name="money">위안</string>
+<string name="cancel_order">오더취소</string>
+<string name="sm_ver">신선마트 버전v</string>
+<string name="payment">결제</string>
+<string name="payment_again">재구매</string>
+<string name="cancel_back">취소</string>
+<string name="order_detail_intro">오더 확인 한 후에 빠른 결제 부탁 드립니다, 시간 초과시 오더가 자동 취소됩니다. </string>
+
+<!--최신선，신상，특가리스트 -->
+<string name="best_fresh_detail">좋은 평가</string>
+<string name="best_fresh">최신선</string>
+<string name="today_fresh">오늘 특가</string>
+<string name="hot_fresh">인기신선</string>
+<string name="new_fresh">신상맛보기</string>
+<string name="right_to_buy">즉시 득템</string>
+
+<!--카테고리리스트 -->
+<string name="sm_classify_child">카테고리리스트</string>
+<string name="sm_classify_list">상품리스트</string>
+<string name="sm_classify_hot">인기</string>
+<string name="sm_classify_new">최신</string>
+<string name="sm_classify_sold">판매량</string>
+<string name="sm_classify_price">가격</string>
+<!--退货退款 -->
+
+<string name="apply_to_return">교환/환불 신청</string>
+<string name="return_good_money">교환/환불</string>
+<string name="return_change_good">교환</string>
+<string name="return_money">환불</string>
+<string name="return_send_money">배송비환불</string>
+<string name="return_send_money_detail">상품원인,환불원인을 입력하세요</string>
+<string name="reason_to_retrun">환불원인</string>
+<string name="plz_choose_reason">환불원인을 선택하세요</string>
+<string name="money_to_return">환불금액</string>
+<string name="detail_to_return">환불설명</string>
+<string name="plz_detail_to_return">환불설명을 입력하세요</string>
+<string name="upload_three_pic">이미지 최대3장 가능</string>
+<string name="plz_input_more">완전한 정보를 입력하세요</string>
+<string name="confirm_commit">제출확인</string>
+<string name="change_address">주소편집</string>
+
+<!-- XListView -->
+<string name="xlistview_header_hint_normal">리프레시</string>
+<string name="xlistview_header_hint_ready">데이타리프레시</string>
+<string name="xlistview_header_hint_loading">로딩중...</string>
+<string name="xlistview_header_last_time">최근업데이드시간：</string>
+<string name="xlistview_footer_hint_normal">더보기</string>
+<string name="xlistview_footer_hint_ready">더보기 로딩</string>
+<string name="xlistview_footer_loading">로딩중...</string>
+<string name="xlistview_no_more_data">이미 마지막입니다！</string>
+<string name="rmb"></string>
+
+<!-- error -->
+<string name="title_network_error">인터넷통신실패</string>
+<string name="msg_network_error">인터넷연결 실패，서버와 통신할 수 없어서 데이터 혹은 wifi를 연결하세요 </string>
+
+<!-- login -->
+<string name="login">로그인</string>
+<string name="membership">회원가입</string>
+<string name="msg_pls_input_yourphone">핸드폰 번호 입력하세요</string>
+<string name="msg_pls_input_yournewpw">새 비밀번호를 입력하세요</string>
+<string name="msg_pls_confirm_newpw">새 비밀번호를  확인하세요</string>
+<string name="msg_pls_input_yourpasswork">로그인 비밀번호 설정하세요</string>
+<string name="msg_pls_input_verificode">인증번호 입력하세요</string>
+<string name="receive_vercode">인증번호 받기</string>
+<string name="second">second</string>
+<string name="msg_pls_input_yourpassword">로그인 비밀번호 입력하세요</string>
+<string name="msg_pls_input_yourpassword_check">비밀번호 다시  입력하세요</string>
+<string name="forget_password">비밀번호 찾기</string>
+<string name="phone_or_password_wrong">핸드폰번호 혹은 비밀번호 잘 못 입력했습니다</string>
+<string name="vercode_wrong_tryagain">인증번호 틀립니다,다시 입력하세요证码错误 </string>
+<string name="phone_wrong">핸드폰 번호 잘 못 입력했습니다</string>
+<string name="vercode_is_send">인증번호 이미 보냈습니다 확인하세요</string>
+<string name="msg_empty_id">ID입력하세요</string>
+<string name="msg_empty_pw">비밀번호 입력하세요</string>
+<string name="msg_empty_sms">인증번호 먼저 받으세요</string>
+<string name="msg_equals_pw">두 번 입력한 비밀번호 다릅니다</string>
+<string name="title_pay_pw">결제비밀번호 알림</string>
+<string name="msg_pay_pw">존경하는 유저님,당신의 결제 비밀번호는 핸드폰 번호 뒷 6자리입니다！</string>
+
+<!-- persnal_center -->
+<string name="persnal_center">개인중심</string>
+<string name="bookmark">나의복마크</string>
+<string name="share">나의공유</string>
+<string name="reply">나의정보</string>
+<string name="setting">설정</string>
+<string name="pic_area">프로필 사진 변경</string>
+<string name="sex_area">성별</string>
+<string name="name_area">닉네임</string>
+<string name="logout_area">로그아옷</string>
+<string name="man">남</string>
+<string name="woman">여</string>
+<string name="required">필수선택</string>
+<string name="Option">선택 사항</string>
+<string name="plz_select_option">상품을 먼저선택하세요</string>
+<string name="reply_tab">평가</string>
+<string name="sweet_tab">좋아요</string>
+<string name="msg_have_sweet">내가 누른 좋아요</string>
+<string name="msg_sweet">내가 받은 좋아요</string>
+<string name="original_reply">원본</string>
+
+<!-- gps -->
+<string name="gps_msg_title">위치 추적</string>
+<string name="gps_msg">“써롱망”은 당신은 앱 사용하는 기간에 당신의 위치를 추적하는 것을 허용합니까? </string>
+<string name="gps_setting_cancel">허용하지 않다</string>
+<string name="gps_setting_go">설정하러 가기</string>
+<!-- takephoto -->
+<string name="all_pic">전체이미지</string>
+<string name="preview_without_num">프리뷰</string>
+<string name="preview_with_num">프리뷰(%1$d)</string>
+<string name="choose_pic_finish">완료</string>
+<string name="choose_pic_finish_with_num">완료(%1$d/%2$d)</string>
+<string name="choose_pic_num_out_of_index">최대%1$d이미지 선택가능</string>
+<string name="choose_pic">선택</string>
+<string name="not_choose_any_pick">선택한 이미지 없습니다</string>
+<string name="uploading_images">대량 업로드중</string>
+<!-- kr -->
+<string name="kr_title">나의광락</string>
+<string name="kr_vod_search_hint">비디오 제목 검색</string>
+<string name="kr_category">전체카테고리</string>
+<string name="kr_sort">순서선택 : </string>
+<string name="kr_sort_title">기본값</string>
+<string name="kr_sort_time">최신 업로드</string>
+<string name="kr_sort_sweet">최대 인기</string>
+<string name="kr_search_history">검색역사</string>
+<string name="kr_search_ranking">인기검색</string>
+<string name="kr_search_type_vod">비디오 검색</string>
+<string name="kr_search_type_vote">이벤트 검색</string>
+<string name="kr_type_vote_all">전체</string>
+<string name="kr_type_vote_before">시작전</string>
+<string name="kr_type_vote_live">진행중</string>
+<string name="kr_type_vote_after">마감</string>
+<string name="kr_play_ticket">공연티켓</string>
+<string name="kr_movie_ticket">영화티켓</string>
+<string name="kr_vod_purchar">내가 구매한 동영상</string>
+<string name="kr_play_purchar">내가 구매한 티켓</string>
+<string name="kr_vote_purchar">나가 투표한 것</string>
+<string name="kr_setting_btn_001">나의 복마크</string>
+<string name="kr_setting_btn_002">역사기록</string>
+<string name="kr_setting_btn_003">다운로드</string>
+<string name="kr_setting_btn_004">나의소식</string>
+<string name="kr_setting_btn_005">계산서기록</string>
+<string name="kr_setting_btn_006">설정</string>
+<string name="kr_setting_login">즉시로그인</string>
+<string name="kr_play_title">공연 센터</string>
+<string name="kr_movie_title">영화관</string>
+<string name="kr_movie_live">개봉중</string>
+<string name="kr_movie_expire">곧 개봉</string>
+<string name="kr_movie_rating">분</string>
+<string name="kr_movie_booking">티켓 구매</string>
+<string name="kr_person_count">장</string>
+<string name="kr_ticket_before">시작전</string>
+<string name="kr_ticket_after">마감</string>
+<string name="kr_my_balance_001">현재 잔액(위안)</string>
+<string name="kr_my_balance_002">충전</string>
+<string name="kr_my_balance_003">잔액：</string>
+<string name="kr_play_only_wifi">데이터 사용시 이 동영상 플레이하는 것을 허용합니다</string>
+<string name="kr_download_only_wifi"> 사용시 이 동영상 다운로드하는 것을 허용합니다 </string>
+<string name="kr_memory_state">캐쉬클리어</string>
+<string name="kr_movie_detail">영화상세</string>
+<string name="kr_movie_intro">내용소개</string>
+<string name="kr_movie_production_team">출연인원</string>
+<string name="kr_movie_appraisal">인기후기</string>
+<string name="kr_movie_appraisal_write">후기 쓰기</string>
+<string name="kr_movie_purchase">즉시티켓 구매</string>
+<string name="kr_movie_start">개봉일자</string>
+<string name="kr_vote_ranking">순위</string>
+<string name="kr_vote_name">명칭</string>
+<string name="kr_vote_count">표수</string>
+<string name="kr_vote_result">투표</string>
+<string name="kr_vote_detail_title">이벤트내역</string>
+<string name="kr_vote_detail_content">이벤트내역</string>
+<string name="kr_vote_detail_period">이벤트시간</string>
+<string name="kr_vote_msg">선택한 항목에게 투표하시겠습니까?</string>
+<string name="kr_voted_msg">이미 투표했습니다</string>
+<string name="kr_vote">투표</string>
+<string name="kr_vote_detail">항목상세</string>
+<string name="kr_vote_detail_vote">지원합니다</string>
+<string name="kr_vote_detail_photos">항목이미지</string>
+<string name="kr_vote_detail_detail">항목상세</string>
+<string name="kr_vote_detail_voted_persons">투표기록</string>
+<string name="kr_vote_detail_001">현재순위</string>
+<string name="kr_vote_detail_002">현재 표수</string>
+<string name="kr_vote_detail_vote_btn">지원하겠습니다</string>
+<string name="kr_vote_complete">투표완료</string>
+<string name="kr_concert_detail_title">공연상세</string>
+<string name="kr_concert_detial_001">횟수선택</string>
+<string name="kr_concert_detial_002">등급선택</string>
+<string name="kr_concert_detial_003">공연소개</string>
+<string name="kr_concert_detial_004">공연상세</string>
+<string name="kr_concert_order_btn">결제하러 가기</string>
+<string name="lc_title">위치 추적</string>
+<string name="lc_detail_title">백화점선택</string>
+<string name="lc_current_location">현재 위치 : </string>
+<string name="lc_current_city">현재 도시</string>
+<string name="lc_import_city">이미 개통한 도시</string>
+<string name="lc_next_page">백화점 바꾸기></string>
+
+<!--点餐 -->
+<string name="rt_main_homepage_tab">메인</string>
+<string name="rt_main_order_tab">오더</string>
+<string name="rt_main_mine_tab">나의</string>
+<string name="rt_toolbar_cancel">취소</string>
+<string name="rt_cancel_apply">취소신청</string>
+<string name="rt_commit_logistic">물류 작성</string>
+<string name="rt_check_process">진행과정 조회</string>
+<string name="rt_toolbar_sellername">상가 명칭</string>
+<string name="rt_seller_list_01">/인</string>
+<string name="rt_seller_list_02">이미 접대 :</string>
+<string name="rt_search_history">역사검색</string>
+<string name="rt_seller_detail_title">주문</string>
+<string name="rt_sum">총</string>
+<string name="rt_pay">선택 완료</string>
+<string name="rt_delete_all">장바구니 비우기</string>
+<string name="rt_empty_cart">장바구니가 비워 있습니다</string>
+<string name="rt_menu">메뉴</string>
+<string name="rt_empty_msg">모든 정보 입력한 후에 주문확인하세요</string>
+<string name="rt_mine_favorates">나의복마크</string>
+<string name="rt_mine_comments">나의평가</string>
+
+<!--오더상세 -->
+<string name="order_detail_title">오더확인</string>
+<string name="order_detail_info_01">식당주소</string>
+<string name="order_detail_info_02">식당 전화번호</string>
+<string name="order_detail_order_number">오더번호</string>
+<string name="order_detail_order_count">개 요리</string>
+<string name="order_detail_order_time">사용시간</string>
+<string name="order_detail_order_extra_01">인원수</string>
+<string name="order_detail_pay">주문확인</string>
+<string name="order_detail_select_pay_way">결제방식 선택하세요</string>
+<string name="order_point_msg_01">사용가능</string>
+<string name="order_point_msg_02">포인트로 ￥</string>
+<string name="order_coupon_msg_01">쿠폰 사용</string>
+<string name="order_coupon_msg_02">공제</string>
+<string name="order_coupon_msg_03">위안 쿠폰</string>
+
+<!--쿠폰 -->
+<string name="rt_coupon_title">쿠폰</string>
+<string name="rt_coupon_use">사용</string>
+<string name="rt_coupon_use_time">사용기한</string>
+<string name="rt_coupon_use_msg_01">만</string>
+<string name="rt_coupon_use_msg_02">사용</string>
+
+<string name="menu_settings">Settings</string>
+<string name="entryTitle">연결방식선택</string>
+<string name="apk">apk연결</string>
+<string name="jar">은련sdk연결</string>
+<string name="payBYAPK">APK연결</string>
+<string name="payBYJAR">JAR연결</string>
+<!-- add -->
+<string name="common1_text001">비밀번호변경</string>
+<string name="common1_text002">이전비밀번호</string>
+<string name="common1_text003">신규비밀번호 설정</string>
+<string name="common1_text004">신규비밀번호 확인</string>
+<string name="common1_text005">변경 확인</string>
+<string name="common1_text006">재설정 확인</string>
+<string name="common1_text007">비밀번호 잃어버렸습니까？</string>
+<string name="common1_text008">사진 찍기</string>
+<string name="common1_text009">앨범</string>
+<string name="common1_text010">스캔취소</string>
+<string name="common1_text011">결제비밀번호를 입력하세요</string>
+<string name="common1_text012">취소</string>
+<string name="common1_text013">확인</string>
+<string name="common1_text014">초</string>
+<string name="common1_text015">통신 오류</string>
+<string name="rs_location_wehi">위해</string>
+<!--string name="command_number_hint1">추천인 ID</string-->
+
+    <string name="no_address">배송주소가 없습니다.</string>
+    <string name="no_collection">찜한 내용이 없습니다.</string>
+    <string name="refresh">다시고침</string>
+    <string name="payment_password">비밀번호를 입력해주세요</string>
+</resources>

@@ -1,0 +1,38 @@
+<!-- 通用布局  工具栏  1 -->
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/common_toolbar_radiogroup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="horizontal"
+    
+    android:gravity="center_vertical"
+    android:background="#ffffff" >
+    <RadioButton
+        android:id="@+id/common_toolbar_2_home"
+        android:checked="true"
+        style="@style/Common_Toolbar_RadioButton"
+		android:drawableTop="@drawable/toolbar_sm_homepage"
+		android:text="@string/sm_homepage"
+		android:textColor="@color/mainblue001"
+		android:paddingLeft="0dp"/>
+    <RadioButton
+        android:id="@+id/common_toolbar_2_classify"
+        style="@style/Common_Toolbar_RadioButton"
+		android:drawableTop="@drawable/toolbar_sm_classification"
+		android:text="@string/sm_store"
+		android:paddingLeft="0dp"/>
+    <RadioButton
+        android:id="@+id/common_toolbar_2_shoppingcart"
+        style="@style/Common_Toolbar_RadioButton"
+		android:drawableTop="@drawable/toolbar_sm_shopingcart"
+		android:text="@string/sm_shoppingcart"
+		android:paddingLeft="0dp"/>
+    <RadioButton
+        android:id="@+id/common_toolbar_2_mine"
+        style="@style/Common_Toolbar_RadioButton"
+		android:drawableTop="@drawable/toolbar_sm_my"
+		android:text="@string/sm_mine"
+		android:paddingLeft="0dp"/>
+</RadioGroup>

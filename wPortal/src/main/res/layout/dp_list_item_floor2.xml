@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+         
+            <RelativeLayout
+                android:id="@+id/rela_002"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="12.5dp"
+                android:padding="@dimen/marginx2" >
+
+                <TextView
+                    android:id="@+id/floor_num1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="2 F"
+                    android:textColor="@color/textcolor_dp_tabhost_tabspec_selected"
+                    android:textSize="@dimen/text_size_b" />
+
+                <TextView
+                    android:id="@+id/level_name1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx3"
+                    android:layout_toRightOf="@+id/floor_num1"
+                    android:layout_centerVertical="true"
+                    android:text="ddddd"
+                    android:textColor="@color/textcolor_dp_333"
+                    android:textSize="@dimen/text_size_m" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_into" />
+            </RelativeLayout>
+
+            <com.rs.mobile.common.view.WImageView
+                android:id="@+id/banner_005"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                fresco:roundedCornerRadius="5dp"
+                fresco:viewAspectRatio="2.9" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <com.rs.mobile.common.view.WImageView
+                    android:id="@+id/banner_006"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:viewAspectRatio="1" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/backgroundColor_dp_window" />
+                 
+                <com.rs.mobile.common.view.WImageView
+                    android:id="@+id/banner_007"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:viewAspectRatio="1" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/backgroundColor_dp_window" />
+
+                <com.rs.mobile.common.view.WImageView
+                    android:id="@+id/banner_008"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:viewAspectRatio="1" />
+            </LinearLayout>
+
+        </LinearLayout>  
+
+

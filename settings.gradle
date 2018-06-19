@@ -1,0 +1,5 @@
+include ':gridPagerLib'
+include ':pagerSlidingTabStripmaster'
+include ':library'
+include ':common'
+include ':wPortal'

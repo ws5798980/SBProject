@@ -1,0 +1,114 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="horizontal"
+    android:padding="@dimen/margin" >
+
+    <com.rs.mobile.common.view.WImageView
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_weight="1" />
+
+    <RelativeLayout
+        android:id="@+id/content_area"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_weight="0.4" >
+
+        <LinearLayout
+            android:id="@+id/title_area"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:gravity="center_vertical|left"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/title_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:textColor="#333333"
+                android:textSize="@dimen/text_size_m" />
+
+            <ImageView
+                android:id="@+id/icon_3d"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:background="@drawable/icon_3d" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/content_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title_area"
+            android:layout_marginTop="@dimen/margin"
+            android:ellipsize="end"
+            android:lineSpacingExtra="@dimen/margin"
+            android:maxLines="1"
+            android:textColor="#cccccc"
+            android:textSize="@dimen/text_size_ms" />
+
+        <TextView
+            android:id="@+id/actor_text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/content_text_view"
+            android:layout_marginTop="@dimen/margin"
+            android:ellipsize="end"
+            android:lineSpacingExtra="@dimen/margin"
+            android:maxLines="1"
+            android:textColor="#cccccc"
+            android:textSize="@dimen/text_size_ms" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <RatingBar
+                android:id="@+id/rationg_bar"
+                style="@style/movie_rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:rating="0"
+                android:stepSize="0.5" />
+
+            <TextView
+                android:id="@+id/point_text_view"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:layout_weight="1"
+                android:textColor="#fea63e"
+                android:textSize="@dimen/text_size_m" />
+
+            <TextView
+                android:id="@+id/booking_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/marginx2"
+                android:background="@drawable/bg_green_round"
+                android:gravity="center"
+                android:paddingLeft="@dimen/marginx2"
+                android:paddingRight="@dimen/marginx2"
+                android:text="@string/kr_movie_booking"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/text_size_m" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

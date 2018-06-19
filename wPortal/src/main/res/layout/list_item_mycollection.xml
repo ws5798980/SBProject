@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:padding="@dimen/marginx2" >
+
+    <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="@drawable/checkbox_bg"
+        android:button="@null" />
+
+    <com.rs.mobile.common.view.WImageView
+        android:id="@+id/shopingcart_item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/marginx2"
+        android:layout_marginRight="@dimen/marginx2"
+        android:layout_toRightOf="@+id/checkbox"
+        
+        fresco:roundedCornerRadius="5dp"
+        fresco:viewAspectRatio="1" />
+
+    <TextView
+        android:id="@+id/text_goodsname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/shopingcart_item_image"
+        android:textColor="#333333"
+        android:textSize="@dimen/text_size_m"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/shopingcart_item_image" >
+
+        <TextView
+            android:id="@+id/textprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/red" 
+            android:textSize="@dimen/text_size_m"/>
+
+        <TextView
+            android:id="@+id/amoutview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/text_size_m">
+        </TextView>
+    </RelativeLayout>
+
+</RelativeLayout>

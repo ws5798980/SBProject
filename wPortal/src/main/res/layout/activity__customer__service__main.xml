@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/common_bg" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/navigation_area"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="609dp"
+            android:background="@color/white"
+            android:paddingBottom="@dimen/marginx2"
+            android:paddingTop="@dimen/marginx2">
+
+            <ImageView
+                android:id="@+id/customer_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/icon_return_002" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="1dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="50dp"
+                android:background="@color/b9" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="19dp"
+                android:layout_marginStart="19dp"
+                android:layout_toEndOf="@+id/view"
+                android:layout_toRightOf="@+id/view"
+                android:gravity="center_vertical"
+                android:text="@string/sm_rs_text01"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="">
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="2dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="60dp"
+                android:background="@color/b9" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="60dp"
+                android:text="@string/sm_rs_text02"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="60dp"
+            android:gravity="center">
+            <TextView
+                android:id="@+id/custom_rs_send"
+                android:layout_width="690px"
+                android:layout_height="189px"
+                android:gravity="center"
+                android:text="@string/sm_rs_text03"
+                android:background="@drawable/rs_customer_btn"/>
+            <TextView
+                android:id="@+id/custom_rs_gift"
+                android:layout_width="690px"
+                android:layout_height="189px"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="@string/sm_rs_text04"
+                android:shadowRadius="4"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:background="@drawable/rs_customer_btn2"/>
+            <TextView
+                android:id="@+id/custom_rs_backmoney"
+                android:layout_width="690px"
+                android:layout_height="189px"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:text="@string/sm_rs_text04"
+                android:shadowRadius="4"
+                android:shadowDx="1"
+                android:shadowDy="1"
+                android:background="@drawable/rs_customer_btn3"/>
+
+         </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

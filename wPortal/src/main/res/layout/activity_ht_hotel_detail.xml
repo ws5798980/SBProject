@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/toolbar_ht_hotel_base" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/sv_hotel"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+                android:layout_marginTop="1dp"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+    	app:ptrShowIndicator="false"
+        app:ptrAnimationStyle="flip"
+        app:ptrMode="both" >
+        <RelativeLayout android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+             >
+        
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/marginx2" >
+
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/bg_ht_text_time"
+                android:paddingBottom="@dimen/marginx2"
+                android:paddingLeft="@dimen/marginx4"
+                android:paddingRight="@dimen/marginx4"
+                android:paddingTop="@dimen/marginx2"
+                android:textColor="@color/textcolor_ht_tabhost_tabspec_selected"
+                android:textSize="@dimen/text_size_m" 
+                android:text="@string/ht_text_034"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/marginx4"
+                android:layout_toLeftOf="@+id/text_time"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ht_text_check_in"
+                    android:textColor="@color/textcolor_ht_999"
+                    android:textSize="@dimen/text_size_ms" />
+
+                <TextView
+                    android:id="@+id/tv_checkin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:text="3-15"
+                    android:textColor="@color/textcolor_ht_666"
+                    android:textSize="@dimen/text_size_m" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/marginx4"
+                android:layout_toRightOf="@+id/text_time"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ht_text_check_out"
+                    android:textColor="@color/textcolor_ht_999"
+                    android:textSize="@dimen/text_size_ms" />
+
+                <TextView
+                    android:id="@+id/tv_checkout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin"
+                    android:text="3-15"
+                    android:textColor="@color/textcolor_ht_666"
+                    android:textSize="@dimen/text_size_m" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.rs.mobile.common.view.WImageView
+            android:id="@+id/img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            fresco:viewAspectRatio="2.5" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/marginx2" >
+
+            <TextView
+                android:id="@+id/text_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin"
+                 android:layout_toLeftOf="@+id/view_line"
+                android:textColor="@color/textcolor_ht_666"
+                android:textSize="@dimen/text_size_m" />
+
+            <View
+                android:id="@+id/view_line"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_alignBottom="@+id/img_map"
+                android:layout_alignTop="@+id/img_map"
+                android:layout_marginRight="@dimen/margin"
+                android:layout_toLeftOf="@+id/img_map"
+                android:background="@color/common_bg" />
+
+            <ImageView
+                android:id="@+id/img_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ht_icon_map" />
+        </RelativeLayout>
+          <View android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/common_bg"
+                
+              />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/marginx2" 
+            >
+
+            <com.astuetz.PagerSlidingTabStrip
+                android:id="@+id/tabs"
+                android:layout_width="wrap_content"
+                android:layout_height="49dip"
+                android:layout_centerInParent="true" />
+        </RelativeLayout>
+
+        <com.rs.mobile.wportal.view.CustomViewPager
+            android:id="@+id/viewpager_fragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white" />
+
+        <ListView
+            android:id="@+id/lv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:dividerHeight="5dp" 
+            >
+        </ListView>
+        </LinearLayout>
+        
+        </RelativeLayout>
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+</LinearLayout>

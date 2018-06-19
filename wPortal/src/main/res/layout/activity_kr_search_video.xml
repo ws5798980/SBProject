@@ -1,0 +1,385 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#f2f2f2">
+
+    <RelativeLayout
+        android:id="@+id/navigation_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#ffffff"
+        android:padding="@dimen/margin" >
+        
+        <!-- <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@drawable/img_logo" 
+            android:visibility="invisible"/> -->
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+            android:gravity="center_vertical|left"
+            android:background="@drawable/bg_kr_search"
+            android:padding="@dimen/marginx2">
+            
+			<ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/icon_search_001" 
+	           	android:layout_marginRight="@dimen/margin"/> 
+	           	
+			<EditText android:id="@+id/edit_text"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:gravity="left|center_vertical"
+			    android:textColor="#333333"
+			    android:textSize="@dimen/text_size_m"
+			    android:hint="@string/kr_vod_search_hint"
+			    android:background="@null"
+			    android:imeOptions="actionSearch"
+			    android:inputType="text"/>
+            
+        </LinearLayout>
+
+    </RelativeLayout>
+    
+    <LinearLayout android:id="@+id/category_area"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#ffffff"
+        android:layout_marginTop="1dip"
+        android:layout_below="@id/navigation_area">
+        
+        <HorizontalScrollView 
+            android:id="@+id/horizontal_scroll_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scrollbars="none">
+            
+            <LinearLayout android:id="@+id/horizontal_scroll_area"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"/>
+            
+        </HorizontalScrollView>
+        
+        <LinearLayout android:id="@+id/menu_btn"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:padding="@dimen/marginx3">
+            
+            <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/icon_open"/>
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+
+	<com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:layout_below="@id/category_area"
+        android:overScrollMode="never"
+    	ptr:ptrShowIndicator="false"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode="both" 
+        android:layout_marginTop="1dip"
+        android:background="#ffffff">
+        
+        <LinearLayout android:id="@+id/list_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"/>
+
+	</com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+    <LinearLayout android:id="@+id/search_pop_up"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="@color/transparent55"
+        android:layout_below="@id/navigation_area"
+        android:visibility="gone">
+        
+        <LinearLayout android:id="@+id/popup_layout"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical"
+	        android:background="#f2f2f2">
+        
+	        <RelativeLayout 
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:padding="@dimen/marginx3"
+	            android:background="#ffffff"
+	            android:layout_marginTop="1dip">
+	            
+	            <ImageView android:id="@+id/pop_up_close_btn"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:background="@drawable/icon_packup"
+		            android:layout_centerVertical="true"
+		            android:layout_alignParentRight="true"/>
+	            
+	            <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textColor="#333333"
+			        android:textSize="@dimen/text_size_m" 
+			        android:layout_centerInParent="true"
+			        android:text="@string/kr_category"/>
+	
+	        </RelativeLayout>
+	        
+	        <GridView android:id="@+id/category_pop_up_list_view"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_marginTop="1dip"
+	            android:padding="@dimen/margin"
+	            android:background="#ffffff"
+	            android:numColumns="5"
+	            android:stretchMode="columnWidth"/>
+	        
+	        <LinearLayout android:id="@+id/cetegory_pop_up"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal"
+	            android:layout_marginTop="1dip"
+	            android:paddingLeft="@dimen/marginx3"
+	            android:paddingRight="@dimen/marginx3"
+	            android:background="#ffffff">
+	            
+	            <TextView
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:textColor="#333333"
+			        android:textSize="@dimen/text_size_m" 
+			        android:layout_centerInParent="true"
+			        android:text="@string/kr_sort"
+			        android:layout_marginTop="@dimen/marginx3"
+			        android:layout_marginBottom="@dimen/marginx3"/>
+	            
+	            <LinearLayout android:id="@+id/pup_btn_001"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical"
+	                android:gravity="center"
+	                android:padding="@dimen/marginx3">
+	            
+		            <TextView android:id="@+id/pup_text_001"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textColor="#ffffff"
+				        android:textSize="@dimen/text_size_m" 
+				        android:text="@string/kr_sort_title"
+				        android:background="@drawable/bg_yellow_round"
+				        android:paddingLeft="@dimen/margin"
+				        android:paddingRight="@dimen/margin"
+				        android:paddingTop="2dip"
+				        android:paddingBottom="2dip"
+				        android:gravity="center"/>
+	            
+	            </LinearLayout>
+	            
+	            <LinearLayout android:id="@+id/pup_btn_002"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical"
+	                android:gravity="center"
+	                android:padding="@dimen/marginx3">
+	            
+		            <TextView android:id="@+id/pup_text_002"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textColor="#fca73d"
+				        android:textSize="@dimen/text_size_m" 
+				        android:text="@string/kr_sort_time"
+				        android:background="@drawable/bg_yellow_round_empty"
+				        android:paddingLeft="@dimen/margin"
+				        android:paddingRight="@dimen/margin"
+				        android:paddingTop="2dip"
+				        android:paddingBottom="2dip"
+				        android:gravity="center"/>
+	            
+	            </LinearLayout>
+	            
+	            <LinearLayout android:id="@+id/pup_btn_003"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:orientation="vertical"
+	                android:gravity="center"
+	                android:padding="@dimen/marginx3">
+	            
+		            <TextView android:id="@+id/pup_text_003"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textColor="#fca73d"
+				        android:textSize="@dimen/text_size_m" 
+				        android:text="@string/kr_sort_sweet"
+				        android:background="@drawable/bg_yellow_round_empty"
+				        android:paddingLeft="@dimen/margin"
+				        android:paddingRight="@dimen/margin"
+				        android:paddingTop="2dip"
+				        android:paddingBottom="2dip"
+				        android:gravity="center"/>
+	            
+	            </LinearLayout>
+	            
+	        </LinearLayout>
+        
+        </LinearLayout>
+        
+    </LinearLayout>
+    
+    <!-- <LinearLayout android:id="@+id/search_area"
+        android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:orientation="vertical"
+		android:background="@color/transparent55"
+		android:visibility="gone">
+        
+        <LinearLayout
+	        android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+        
+	        <RelativeLayout android:id="@+id/search_navigation_area"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:background="#ffffff"
+		        android:padding="@dimen/margin" >
+		        
+		        <ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_centerVertical="true"
+		            android:background="@drawable/img_logo" 
+		            android:visibility="invisible"/>
+		
+		        <LinearLayout
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:orientation="horizontal"
+		            android:layout_centerInParent="true"
+		            android:gravity="center_vertical|left"
+		            android:background="@drawable/bg_kr_search"
+		            android:padding="@dimen/marginx2">
+		            
+					<ImageView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:background="@drawable/icon_search_001" 
+			           	android:layout_marginRight="@dimen/margin"/> 
+			           	
+					<EditText android:id="@+id/edit_text"
+					    android:layout_width="fill_parent"
+					    android:layout_height="wrap_content"
+					    android:gravity="left|center_vertical"
+					    android:textColor="#333333"
+					    android:textSize="@dimen/text_size_m"
+					    android:hint="@string/kr_vod_search_hint"
+					    android:background="@null"
+					    android:imeOptions="actionSearch"
+					    android:inputType="text"/>
+		            
+		        </LinearLayout>
+		
+		    </RelativeLayout>
+		    
+	        <LinearLayout android:id="@+id/content_area"
+	            android:layout_width="fill_parent"
+	            android:layout_height="fill_parent"
+	            android:orientation="vertical"
+	            android:background="#f2f2f2"
+	            android:visibility="gone">
+	        
+		        <LinearLayout android:id="@+id/history_area"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:orientation="vertical">
+		        
+			        <LinearLayout 
+			            android:layout_width="fill_parent"
+			            android:layout_height="wrap_content"
+			            android:orientation="horizontal"
+			            android:gravity="center">
+			            
+			            <TextView
+			                android:layout_width="fill_parent"
+			                android:layout_height="wrap_content"
+			                android:layout_weight="1"
+			                android:textColor="#999999"
+			                android:textSize="@dimen/text_size_m"
+			                android:gravity="left|center_vertical"
+			                android:text="@string/kr_search_history"
+			                android:layout_margin="@dimen/marginx3"/>
+			            
+			            <LinearLayout 
+			                android:id="@+id/delete_history_btn"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:orientation="vertical"
+			                android:gravity="center"
+			                android:padding="@dimen/marginx3">
+			                
+			                <ImageView
+			                    android:layout_width="wrap_content"
+			                    android:layout_height="wrap_content"
+			                    android:background="@drawable/icon_trash"/>
+			                
+			            </LinearLayout>
+			            
+			        </LinearLayout>
+			        
+			        <GridView
+			            android:id="@+id/histroy_grid_view"
+			            android:layout_width="fill_parent"
+			            android:layout_height="wrap_content"
+			            android:numColumns="2"
+			            android:paddingLeft="@dimen/marginx2"
+			            android:paddingRight="@dimen/marginx2"
+			            android:stretchMode="columnWidth" />
+		        
+		        </LinearLayout>
+		        
+		        <TextView
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_margin="@dimen/marginx3"
+		            android:layout_weight="1"
+		            android:gravity="left|center_vertical"
+		            android:text="@string/kr_search_ranking"
+		            android:textColor="#999999"
+		            android:textSize="@dimen/text_size_m" />
+		        
+		        <GridView
+		            android:id="@+id/ranking_grid_view"
+		            android:layout_width="fill_parent"
+		            android:layout_height="wrap_content"
+		            android:numColumns="2"
+		            android:paddingLeft="@dimen/marginx3"
+		            android:paddingRight="@dimen/marginx3"
+		            android:stretchMode="columnWidth" />
+		        
+			</LinearLayout>
+	        
+	    </LinearLayout>
+	    
+	</LinearLayout> -->
+    
+</RelativeLayout>

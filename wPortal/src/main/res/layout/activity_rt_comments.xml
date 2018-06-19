@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#ffffff">
+    
+    <include layout="@layout/toolbar_rt_base1"/>
+    
+          
+    <include  
+        layout="@layout/base_nodata"
+        android:visibility="gone"
+        
+        />
+    
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView 
+        android:id="@+id/lv_comments"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dip"
+        android:layout_marginBottom="1dip"
+        android:overScrollMode="never"
+    	ptr:ptrShowIndicator="false"
+        android:scrollbars="none">
+        
+        
+        <LinearLayout
+            android:id="@+id/ll_seller_detail_panel"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" 
+            android:padding="@dimen/marginx3"
+            android:background="#ffffff">
+            
+	        <com.rs.mobile.wportal.view.rt.FullHeightListView
+		        android:id="@+id/lv_comment_list"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:divider="#f2f2f2"
+		        android:dividerHeight="1dp"
+		        android:footerDividersEnabled="true"
+		        android:headerDividersEnabled="true" />
+	        
+        </LinearLayout>
+        
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+</LinearLayout>

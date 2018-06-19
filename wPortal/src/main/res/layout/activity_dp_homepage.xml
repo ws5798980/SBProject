@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/toolbar_dp_search" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/sv_homepage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+    	app:ptrShowIndicator="false"
+        app:ptrAnimationStyle="flip"
+        app:ptrMode="both" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/viewpager_rela"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white" >
+
+                <com.rs.mobile.wportal.view.CustomViewPager
+                    android:id="@+id/view_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true" >
+                </com.rs.mobile.wportal.view.CustomViewPager>
+
+                <RadioGroup
+                    android:id="@+id/radio_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+                </RadioGroup>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/dp_line_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/marginx3"
+                android:paddingTop="@dimen/marginx3" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <com.rs.mobile.wportal.view.MenuButtonView
+                        android:id="@+id/dp_menu_01"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.rs.mobile.wportal.view.MenuButtonView
+                        android:id="@+id/dp_menu_02"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.rs.mobile.wportal.view.MenuButtonView
+                        android:id="@+id/dp_menu_03"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.rs.mobile.wportal.view.MenuButtonView
+                        android:id="@+id/dp_menu_04"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/marginx3"
+                    android:orientation="horizontal" >
+
+                    <com.rs.mobile.wportal.view.MenuButtonView
+                        android:id="@+id/dp_menu_05"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.rs.mobile.wportal.view.MenuButtonView
+                        android:id="@+id/dp_menu_06"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.rs.mobile.wportal.view.MenuButtonView
+                        android:id="@+id/dp_menu_07"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <com.rs.mobile.wportal.view.MenuButtonView
+                        android:id="@+id/dp_menu_08"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rela_001"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12.5dp"
+                android:background="@color/white"
+                android:padding="@dimen/marginx3" >
+
+                <TextView
+                    android:id="@+id/floor_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 F"
+                    android:textColor="@color/textcolor_dp_tabhost_tabspec_selected"
+                    android:textSize="@dimen/text_size_b" />
+
+                <TextView
+                    android:id="@+id/level_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx3"
+                    android:layout_toRightOf="@+id/floor_num"
+                    
+                    android:textColor="@color/textcolor_dp_333"
+                    android:textSize="@dimen/text_size_m" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_into" />
+            </RelativeLayout>
+
+            <com.rs.mobile.common.view.WImageView
+                android:id="@+id/banner_001"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                fresco:roundedCornerRadius="5dp"
+                fresco:viewAspectRatio="2.9" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <com.rs.mobile.common.view.WImageView
+                    android:id="@+id/banner_002"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:viewAspectRatio="1.4" />
+<View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/backgroundColor_dp_window" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <com.rs.mobile.common.view.WImageView
+                        android:id="@+id/banner_003"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        fresco:roundedCornerRadius="5dp"
+                        fresco:viewAspectRatio="2.8" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/backgroundColor_dp_window" />
+
+                    <com.rs.mobile.common.view.WImageView
+                        android:id="@+id/banner_004"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        
+                        fresco:roundedCornerRadius="5dp"
+                        fresco:viewAspectRatio="2.8" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rela_002"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:layout_marginTop="12.5dp"
+                android:padding="@dimen/marginx2" >
+
+                <TextView
+                    android:id="@+id/floor_num2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2 F"
+                    android:textColor="@color/textcolor_dp_tabhost_tabspec_selected"
+                    android:textSize="@dimen/text_size_b" />
+
+                <TextView
+                    android:id="@+id/level_name2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx3"
+                    android:layout_toRightOf="@+id/floor_num2"
+                    android:text="ddddd"
+                    android:textColor="@color/textcolor_dp_333"
+                    android:textSize="@dimen/text_size_m" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_into" />
+            </RelativeLayout>
+
+            <com.rs.mobile.common.view.WImageView
+                android:id="@+id/banner_005"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                fresco:roundedCornerRadius="5dp"
+                fresco:viewAspectRatio="2.9" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <com.rs.mobile.common.view.WImageView
+                    android:id="@+id/banner_006"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:viewAspectRatio="1" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/backgroundColor_dp_window" />
+
+                <com.rs.mobile.common.view.WImageView
+                    android:id="@+id/banner_007"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:viewAspectRatio="1" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="@color/backgroundColor_dp_window" />
+
+                <com.rs.mobile.common.view.WImageView
+                    android:id="@+id/banner_008"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:viewAspectRatio="1" />
+            </LinearLayout>
+        </LinearLayout>
+        <!--
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginx3"
+                android:orientation="horizontal" >
+              <WImageView
+                        android:id="@+id/banner_0022"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                       android:layout_weight="1"
+                        fresco:roundedCornerRadius="5dp"
+                        fresco:viewAspectRatio="1.4" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                                        android:orientation="vertical" 
+                                        android:layout_weight="1">
+
+                    <WImageView
+                        android:id="@+id/banner_0023"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                       android:layout_weight="1"
+                        fresco:roundedCornerRadius="5dp"
+                        fresco:viewAspectRatio="2.3" />
+                    <View  android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/backgroundColor_dp_window"/>
+                    <WImageView
+                        android:id="@+id/banner_0024"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        fresco:roundedCornerRadius="5dp"
+                        fresco:viewAspectRatio="2.3"
+                        android:src="@drawable/badprice" />
+                </LinearLayout>
+            </LinearLayout>  
+        -->
+
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+</LinearLayout>

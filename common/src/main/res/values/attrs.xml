@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AutoLabelUI">
+        <!-- 最大可添加label数，默认为无限 -->
+        <attr name="max_labels" format="integer" />
+        <!-- 是否显示label右方的图标，默认为true -->
+        <attr name="show_cross" format="boolean" />
+        <!-- label中右方图标的resId，默认为android.R.drawable.ic_delete -->
+        <attr name="icon_cross" format="reference" />
+        <!-- label中的textSize，可进行R.dimen.xxx设置，也可以直接设置px，默认为R.dimen.label_title_size -->
+        <attr name="text_size" format="dimension" />
+        <!-- label中的textColor，要求设置ColorStateList，即状态color集，默认为R.color.label_text_color -->
+        <attr name="text_color" format="reference" />
+        <!-- label的背景resId，默认为R.drawable.label_bg -->
+        <attr name="label_background_res" format="reference"/>
+        <!-- labels是否可供点击，默认为false -->
+        <attr name="labels_clickable" format="boolean" />
+        <!-- label内容的padding设置，可进行R.dimen.xxx设置，也可以代码直接设置px，默认为R.dimen.padding_label_view -->
+        <attr name="label_padding" format="dimension"/>
+        <attr name="label_paddingLeft" format="dimension"/>
+        <attr name="label_paddingTop" format="dimension"/>
+        <attr name="label_paddingRight" format="dimension"/>
+        <attr name="label_paddingBottom" format="dimension"/>
+        <!-- label间的margin设置，可进行R.dimen.xxx设置，也可以代码直接设置px，默认为R.dimen.margin_between_labels -->
+        <attr name="label_margin" format="dimension"/>
+        <attr name="label_marginLeft" format="dimension"/>
+        <attr name="label_marginTop" format="dimension"/>
+        <attr name="label_marginRight" format="dimension"/>
+        <attr name="label_marginBottom" format="dimension"/>
+    </declare-styleable>
+  
+    <declare-styleable name="SupportSettingPaddingLTRBLinearLayoutCompat">
+        <attr name="dividerPaddingLeft" format="dimension"/>
+        <attr name="dividerPaddingTop" format="dimension"/>
+        <attr name="dividerPaddingRight" format="dimension"/>
+        <attr name="dividerPaddingBottom" format="dimension"/>
+    </declare-styleable>
+
+    <declare-styleable name="StateButton">
+
+        <!--text color-->
+        <attr name="normalTextColor" format="color|reference"/>
+        <attr name="pressedTextColor" format="color|reference"/>
+        <attr name="unableTextColor" format="color|reference"/>
+
+        <!--stroke width and color, dash width, dash gap-->
+        <attr name="strokeDashWidth" format="dimension|reference"/>
+        <attr name="strokeDashGap" format="dimension|reference"/>
+        <attr name="normalStrokeWidth" format="dimension|reference"/>
+        <attr name="pressedStrokeWidth" format="dimension|reference"/>
+        <attr name="unableStrokeWidth" format="dimension|reference"/>
+        <attr name="normalStrokeColor" format="color|reference"/>
+        <attr name="pressedStrokeColor" format="color|reference"/>
+        <attr name="unableStrokeColor" format="color|reference"/>
+
+        <!--background color-->
+        <attr name="normalBackgroundColor" format="color|reference"/>
+        <attr name="pressedBackgroundColor" format="color|reference"/>
+        <attr name="unableBackgroundColor" format="color|reference"/>
+
+        <!--background radius-->
+        <attr name="radius" format="dimension|reference"/>
+        <attr name="round" format="boolean|reference"/>
+
+        <!--animation duration-->
+        <attr name="animationDuration" format="integer|reference"/>
+
+    </declare-styleable>
+</resources>

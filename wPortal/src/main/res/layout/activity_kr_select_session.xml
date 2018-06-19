@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    
+    
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/navigation_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:padding="@dimen/marginx2" >
+
+        <LinearLayout
+            android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin"
+            android:paddingRight="@dimen/marginx4"
+            android:paddingTop="@dimen/margin" >
+
+            <ImageView
+                android:id="@+id/branch_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_back" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/kr_concert_detial_001"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_b" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/img_logo"
+            android:visibility="invisible" />
+    </RelativeLayout>
+<LinearLayout android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    
+    android:layerType="software"
+    android:clipChildren="false" 
+    android:gravity="center_horizontal">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:clipChildren="false"
+        android:visibility="visible" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/marginx2" >
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_ms" />
+
+        <RatingBar
+            android:id="@+id/rationg_bar"
+            style="@style/movie_rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:rating="0"
+            android:stepSize="0.5" />
+
+        <TextView
+            android:id="@+id/point_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_weight="1"
+            android:textColor="#fea63e"
+            android:textSize="@dimen/text_size_m" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/text_classify"
+        android:layout_width="match_parent"
+        android:gravity="left"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/marginx2"
+        android:paddingBottom="@dimen/marginx2"
+        android:paddingRight="@dimen/marginx2"
+        android:textColor="@color/inputblack"
+        android:textSize="@dimen/text_size_s" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dip"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/margin"
+        android:paddingTop="@dimen/margin" >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_001"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textview_001"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin"
+                android:text="@string/all"
+                android:textColor="@color/red" />
+
+            <LinearLayout
+                android:id="@+id/underLine001"
+                android:layout_width="fill_parent"
+                android:layout_height="3dip"
+                android:layout_alignLeft="@id/textview_001"
+                android:layout_alignRight="@id/textview_001"
+                android:layout_below="@id/textview_001"
+                android:layout_marginTop="@dimen/marginx2"
+                android:background="@color/mainblue"
+                android:orientation="vertical" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_002"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textview_002"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin"
+                android:text="@string/no_pay" />
+
+            <LinearLayout
+                android:id="@+id/underLine002"
+                android:layout_width="fill_parent"
+                android:layout_height="3dip"
+                android:layout_alignLeft="@id/textview_002"
+                android:layout_alignRight="@id/textview_002"
+                android:layout_below="@id/textview_002"
+                android:layout_marginTop="@dimen/marginx2"
+                android:background="@color/mainblue001"
+                android:orientation="vertical" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout_003"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textview_003"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin"
+                android:text="@string/no_send" />
+
+            <LinearLayout
+                android:id="@+id/underLine003"
+                android:layout_width="fill_parent"
+                android:layout_height="3dip"
+                android:layout_alignLeft="@id/textview_003"
+                android:layout_alignRight="@id/textview_003"
+                android:layout_below="@id/textview_003"
+                android:layout_marginTop="@dimen/marginx2"
+                android:background="@color/mainblue001"
+                android:orientation="vertical" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+
+</LinearLayout>

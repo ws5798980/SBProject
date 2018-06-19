@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/dp_toolbar_rt_base" />
+
+    <com.rs.mobile.common.view.WImageView
+        android:id="@+id/banner_001"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dp_weiho"
+        fresco:roundedCornerRadius="5dp"
+        fresco:viewAspectRatio="2.9" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/marginx2"
+        android:text="@string/dp_text_003"
+        android:textColor="@color/textcolor_dp_tabhost_tabspec_selected"
+        android:textSize="@dimen/text_size_b" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingBottom="@dimen/marginx2"
+        android:text="@string/dp_text_004"
+        android:textColor="@color/textcolor_dp_333"
+        android:textSize="@dimen/text_size_b" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="@dimen/marginx2"
+        android:text="@string/dp_text_005"
+        android:textColor="@color/textcolor_dp_333"
+        android:textSize="@dimen/text_size_m" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/marginx2"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_666666_stroke_solid"
+        android:visibility="gone"
+         >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/tv_001"
+            android:padding="@dimen/margin"
+            android:text="@string/dp_text_006"
+            android:gravity="center"
+            android:textColor="@color/textcolor_dp_333"
+            android:textSize="@dimen/text_size_m" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/textcolor_dp_333" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+             android:gravity="center"
+             android:id="@+id/tv_002"
+            android:padding="@dimen/margin"
+            android:text="@string/dp_text_007"
+            android:textColor="@color/textcolor_dp_333"
+            android:textSize="@dimen/text_size_m" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/textcolor_dp_333" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="@dimen/margin"
+            android:id="@+id/tv_003"
+             android:gravity="center"
+            android:text="@string/dp_text_008"
+            android:textColor="@color/textcolor_dp_333"
+            android:textSize="@dimen/text_size_m" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/textcolor_dp_333" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+             android:gravity="center"
+             android:id="@+id/tv_004"
+            android:padding="@dimen/margin"
+            android:text="@string/dp_text_009"
+            android:textColor="@color/textcolor_dp_333"
+            android:textSize="@dimen/text_size_m" />
+    </LinearLayout>
+ <com.rs.mobile.common.view.WImageView
+        android:id="@+id/banner_002"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dp_dban"
+        fresco:roundedCornerRadius="5dp"
+        fresco:viewAspectRatio="2.9" 
+        android:visibility="gone"/>
+</LinearLayout>

@@ -1,0 +1,307 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <!-- <style name="AppBaseTheme" parent="Theme.AppCompat.Light"> -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+
+    <style name="AppIntro" parent="AppBaseTheme">
+        <item name="android:windowBackground">@drawable/loadingpage</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="windowActionBar">false</item>
+
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="RtTheme" parent="AppTheme">
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@android:color/white</item> <!-- white titlebar background -->
+        <item name="android:windowBackground">@color/backgroundColor_rt_window
+        </item> <!-- gray window background -->
+        <item name="android:textColorPrimary">@color/textColor_rt_toolbar_title
+        </item> <!-- darkgray title textcolor -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!-- <item name="colorPrimaryDark">@android:color/white</item> --><!-- white statusbar background -->
+    <style name="DpTheme" parent="AppTheme">
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@android:color/white</item> <!-- white titlebar background -->
+        <item name="android:windowBackground">@color/backgroundColor_dp_window
+        </item> <!-- gray window background -->
+        <item name="android:textColorPrimary">@color/textColor_dp_toolbar_title
+        </item> <!-- darkgray title textcolor -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="HtTheme" parent="AppTheme">
+
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@android:color/white</item> <!-- white titlebar background -->
+        <item name="android:windowBackground">@color/backgroundColor_ht_window
+        </item> <!-- gray window background -->
+        <item name="android:textColorPrimary">@color/textColor_ht_toolbar_title
+        </item> <!-- darkgray title textcolor -->
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="RtSearchViewStyle" parent="Widget.AppCompat.SearchView">
+
+        <!-- android:textAppearance -->
+        <item name="layout">@layout/abc_search_view</item>
+        <item name="queryBackground">@drawable/abc_textfield_search_material</item>
+        <item name="submitBackground">@drawable/abc_textfield_search_material</item>
+        <item name="closeIcon">@drawable/abc_ic_clear_mtrl_alpha</item>
+        <item name="searchIcon">@drawable/abc_ic_search_api_mtrl_alpha</item>
+        <item name="searchHintIcon">@drawable/abc_ic_search_api_mtrl_alpha</item>
+        <item name="goIcon">@drawable/abc_ic_go_search_api_mtrl_alpha</item>
+        <item name="voiceIcon">@drawable/abc_ic_voice_search_api_mtrl_alpha</item>
+        <item name="commitIcon">@drawable/abc_ic_commit_search_api_mtrl_alpha</item>
+        <item name="suggestionRowLayout">@layout/abc_search_dropdown_item_icons_2line</item>
+    </style>
+
+    <style name="RtRatingBarStyle" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/icon_rt_ratingbar_meterial</item>
+        <item name="android:indeterminateDrawable">@drawable/icon_rt_ratingbar_meterial</item>
+        <item name="android:minHeight">10dp</item>
+    </style>
+    <!-- <item name="android:minWidth">16.5dp</item> -->
+    <style name="RatingBar_RT_Evaluate" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_rt_evaluate</item>
+        <item name="android:minHeight">22dp</item>
+        <item name="android:maxHeight">22dp</item>
+    </style>
+
+    <style name="RatingBar_RT_Evaluate_Circle" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_rt_circle</item>
+        <item name="android:minHeight">27dp</item>
+        <item name="android:maxHeight">27dp</item>
+    </style>
+
+    <style name="MyRatingBar001" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_m</item>
+        <item name="android:minHeight">11dp</item>
+        <item name="android:maxHeight">18dp</item>
+    </style>
+
+    <style name="MyRatingBar002" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_big_x</item>
+        <item name="android:minHeight">15dp</item>
+        <item name="android:maxHeight">20dp</item>
+    </style>
+
+    <style name="MyRatingBarHt1" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_ht_1</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:maxHeight">20dp</item>
+    </style>
+
+    <style name="MyRatingBarHt2" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_ht_2</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:maxHeight">20dp</item>
+    </style>
+
+    <style name="MyRatingBarHt3" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_ht_3</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:maxHeight">20dp</item>
+    </style>
+
+    <style name="movie_rating_bar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/movie_rating_bar</item>
+        <item name="android:minHeight">9dp</item>
+        <item name="android:maxHeight">18dp</item>
+    </style>
+
+    <style name="menu_text" parent="@android:style/Widget.Holo.Light.TextView">
+        <item name="android:textSize">@dimen/text_size_m</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <!-- <item name="android:shadowColor">@android:color/darker_gray</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">2</item> -->
+    </style>
+    <!-- 工具栏上的RadioButton按钮样式 -->
+    <style name="Common_Toolbar_RadioButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:textColor">@color/inputblack</item>
+    </style>
+
+    <style name="Common_Toolbar_RadioButton1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingBottom">4dp</item>
+        <item name="android:textColor">@color/inputblack</item>
+    </style>
+
+    <style name="Common_Toolbar_RadioButton2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawablePadding">4dp</item>
+        <item name="android:textColor">@color/inputblack</item>
+    </style>
+
+    <declare-styleable name="DayPickerView">
+        <attr name="colorCurrentDay" format="color" />               <!-- 今天字体颜色 -->
+        <attr name="colorSelectedDayBackground" format="color" />    <!-- 被选中的日期背景颜色 -->
+        <attr name="colorSelectedDayText" format="color" />          <!-- 被选中的日期字体颜色 -->
+        <attr name="colorPreviousDayText" format="color" />          <!-- 已过去的日期字体颜色 -->
+        <attr name="colorNormalDayText" format="color" />           <!-- 正常日期颜色 -->
+        <attr name="colorYearMonthText" format="color" />           <!-- 头部年份月份字体颜色 -->
+        <attr name="colorWeekText" format="color" />                <!-- 头部星期几字体颜色 -->
+        <attr name="colorBusyDaysBg" format="color" />              <!-- 被占用的日期背景颜色 -->
+        <attr name="colorInValidDaysBg" format="color" />           <!-- 禁用的日期背景颜色 -->
+        <attr name="colorBusyDaysText" format="color" />            <!-- 被占用的日期字体颜色 -->
+        <attr name="colorInValidDaysText" format="color" />         <!-- 禁用的日期字体颜色 -->
+
+        <attr name="textSizeDay" format="dimension" />               <!-- 正常日期字体大小 -->
+        <attr name="textSizeTag" format="dimension" />               <!-- 标签字体大小 -->
+        <attr name="textSizeYearMonth" format="dimension" />        <!-- 头部年份月份字体大小 -->
+        <attr name="textSizeWeek" format="dimension" />             <!-- 头部星期几字体大小 -->
+        <attr name="headerMonthHeight" format="dimension" />        <!-- 头部高度 -->
+        <attr name="selectedDayRadius" format="dimension" />        <!-- 日期半径 -->
+        <attr name="calendarHeight" format="dimension" />           <!-- 行高 -->
+        <attr name="enablePreviousDay" format="boolean" />          <!-- 已过去的日期是否能被操作 -->
+        <!--<attr name="drawRoundRect" format="boolean" />-->
+        <!--<attr name="leastsSeleDaysNum" format="integer" />-->
+        <!--<attr name="mostSeleDaysNum" format="integer" />-->
+        <!--        <attr name="type" format="enum">
+                    <enum name="multiChoice" value="0" />
+                    <enum name="range" value="1" />
+                    <enum name="onlyRead" value="2" />
+                </attr>-->
+        <!--        <attr name="firstMonth" format="enum">
+                    <enum name="january" value="0" />
+                    <enum name="february" value="1" />
+                    <enum name="march" value="2" />
+                    <enum name="april" value="3" />
+                    <enum name="may" value="4" />
+                    <enum name="june" value="5" />
+                    <enum name="july" value="6" />
+                    <enum name="august" value="7" />
+                    <enum name="september" value="8" />
+                    <enum name="october" value="9" />
+                    <enum name="november" value="10" />
+                    <enum name="december" value="11" />
+                </attr>
+                <attr name="lastMonth" format="enum">
+                    <enum name="january" value="0" />
+                    <enum name="february" value="1" />
+                    <enum name="march" value="2" />
+                    <enum name="april" value="3" />
+                    <enum name="may" value="4" />
+                    <enum name="june" value="5" />
+                    <enum name="july" value="6" />
+                    <enum name="august" value="7" />
+                    <enum name="september" value="8" />
+                    <enum name="october" value="9" />
+                    <enum name="november" value="10" />
+                    <enum name="december" value="11" />
+                </attr>-->
+    </declare-styleable>
+
+    <style name="myTransparent">
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <style name="custom_progress" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/progress_horizontal</item>
+        <item name="android:indeterminateDrawable">
+            @android:drawable/progress_indeterminate_horizontal
+        </item>
+        <item name="android:minHeight">20dip</item>
+        <item name="android:maxHeight">20dip</item>
+
+    </style>
+
+    <style name="CommDialogStyle">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="ProgressBar_Mini" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:maxHeight">3dp</item>
+        <item name="android:minHeight">3dp</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">@null</item>
+        <item name="android:progressDrawable">@drawable/progressbar_mini</item>
+    </style>
+    <style name="PLListContent">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:listSelector">@android:color/transparent</item>
+        <item name="android:cacheColorHint">#00000000</item>
+        <item name="android:divider">@null</item>
+    </style>
+    <style name="dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="dialog_holo" parent="@android:style/Theme.DeviceDefault.Light.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+
+
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">23sp</item>
+    </style>
+    <style name="TabLayoutTextStyle2">
+        <item name="android:textSize">16sp</item>
+    </style>
+</resources>

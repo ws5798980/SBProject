@@ -1,0 +1,49 @@
+<!-- 通用布局  工具栏  1 -->
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/common_toolbar_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="#ffffff"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <RadioButton
+        android:id="@+id/common_toolbar_1_home"
+        style="@style/Common_Toolbar_RadioButton"
+        android:checked="true"
+        android:drawableTop="@drawable/toolbar_highlight"
+        android:paddingLeft="0dp"
+        android:text="@string/toolbar_highlights"
+        android:textColor="@color/mainblue" />
+
+    <RadioButton
+        android:id="@+id/common_toolbar_1_discovery"
+        style="@style/Common_Toolbar_RadioButton"
+        android:drawableTop="@drawable/toolbar_online"
+        android:paddingLeft="0dp"
+        android:text="@string/toolbar_onlinevedio" />
+
+    <RadioButton
+        android:id="@+id/common_toolbar_1_selfticket"
+        style="@style/Common_Toolbar_RadioButton"
+        android:drawableTop="@drawable/toolbar_selfticket"
+        android:paddingLeft="0dp"
+        android:text="@string/toolbar_selfticket" />
+
+    <RadioButton
+        android:id="@+id/common_toolbar_1_vote"
+        style="@style/Common_Toolbar_RadioButton"
+        android:drawableTop="@drawable/toolbar_vote"
+        android:paddingLeft="0dp"
+        android:text="@string/toolbar_vote" />
+
+    <RadioButton
+        android:id="@+id/common_toolbar_1_mine"
+        style="@style/Common_Toolbar_RadioButton"
+        android:drawableTop="@drawable/toolbar_mine"
+        android:paddingLeft="0dp"
+        android:text="@string/toolbar_mycrazymedia" />
+
+</RadioGroup>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+ <com.rs.mobile.wportal.view.FlowGroupView
+     android:id="@+id/fv"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     >
+     
+     
+    
+ </com.rs.mobile.wportal.view.FlowGroupView>
+<TextView android:id="@+id/click_btn"
+    android:text="@string/ht_text_063"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/marginx2"
+    android:textColor="@color/textcolor_ht_tabhost_tabspec_selected"
+    android:textSize="@dimen/text_size_m"
+    android:gravity="right"/>
+</LinearLayout>

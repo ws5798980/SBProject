@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+ <CheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/marginx2"
+        
+        android:paddingLeft="0dp"
+        android:drawableLeft="@drawable/checkbox_bg"
+        android:button="@color/white" 
+        
+        android:drawablePadding="5dp"
+        android:background="@color/common_bg1"/>   
+<ListView  android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:divider="@color/common_bg"
+        android:dividerHeight="@dimen/marginx2" ></ListView>
+<View android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@color/common_bg1"/>
+</LinearLayout>

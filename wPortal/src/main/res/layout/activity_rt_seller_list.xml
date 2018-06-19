@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/toolbar_rt_search3" />
+
+    <LinearLayout
+        android:id="@+id/ll_cbgroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dip"
+            android:background="@android:color/white"
+            android:orientation="horizontal" >
+
+            <CheckBox
+                android:id="@+id/cb_seller_sort_all"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.85"
+                android:button="@null"
+                android:checked="false"
+                android:drawableRight="@drawable/icon_rt_sellerlist_type_radio"
+                android:gravity="center"
+                android:padding="@dimen/marginx2"
+                android:text="@string/rt_text040"
+                android:textColor="@drawable/textcolor_rt_sellerlist_type_radio"
+                android:textSize="@dimen/text_size_ms" />
+
+            <CheckBox
+                android:id="@+id/cb_seller_sort_near"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.95"
+                android:button="@null"
+                android:checked="false"
+                android:drawableRight="@drawable/icon_rt_sellerlist_type_radio"
+                android:gravity="center"
+                android:padding="@dimen/marginx2"
+                android:text="@string/rt_text044"
+                android:textColor="@drawable/textcolor_rt_sellerlist_type_radio"
+                android:textSize="@dimen/text_size_ms" />
+
+            <CheckBox
+                android:id="@+id/cb_seller_sort_intelligence"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:button="@null"
+                android:checked="false"
+                android:drawableRight="@drawable/icon_rt_sellerlist_type_radio"
+                android:gravity="center"
+                android:padding="@dimen/marginx2"
+                android:text="@string/rt_text045"
+                android:textColor="@drawable/textcolor_rt_sellerlist_type_radio"
+                android:textSize="@dimen/text_size_ms" />
+
+            <CheckBox
+                android:id="@+id/cb_seller_sort_filter"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:button="@null"
+                android:checked="false"
+                android:drawableRight="@drawable/icon_rt_sellerlist_type_radio"
+                android:gravity="center"
+                android:padding="@dimen/marginx2"
+                android:text="@string/rt_text046"
+                android:textColor="@drawable/textcolor_rt_sellerlist_type_radio"
+                android:textSize="@dimen/text_size_ms" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#f2f2f2" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/marginx3"
+        android:paddingRight="@dimen/marginx3"
+        android:paddingTop="@dimen/marginx2"
+        android:paddingBottom="@dimen/marginx2"
+        >
+
+        <TextView
+             android:id="@+id/iv_refreshtext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/rt_text047"
+            android:textColor="#333333"
+            android:textSize="@dimen/text_size_m" />
+
+        <ImageView
+            android:id="@+id/iv_refreshaddr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@drawable/icon_refresh" />
+    </LinearLayout>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/lv_sellers"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:showDividers="middle"
+        android:overScrollMode="never"
+    	app:ptrShowIndicator="false"
+        app:ptrAnimationStyle="flip"
+        app:ptrMode="both" />
+
+</LinearLayout>

@@ -1,0 +1,56 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp" >
+
+        <ImageView
+            android:id="@+id/mk_main_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@drawable/icon_allreturn"
+            android:padding="15dp"
+            android:src="@drawable/icon_allreturn" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/mk_text01"
+            android:textColor="@color/inputblack"
+            android:textSize="22sp" />
+    </RelativeLayout>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#dcdcdc"
+        />
+    
+      <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@drawable/img_bg_out"
+            android:src="@drawable/img_bg_out" />
+      
+      <com.rs.mobile.common.view.AnimationButton
+          android:id="@+id/mk_main_qr"
+          android:layout_width="match_parent"
+          android:layout_height="45dp"
+          android:layout_marginLeft="30dp"
+          android:layout_marginRight="30dp"
+          android:layout_marginTop="50dp"
+          android:text="@string/mk_text02"
+          android:textColor="@color/white"
+          android:textSize="18sp"
+          android:background="@drawable/bg_mk_qr_btn"
+          />
+      
+    
+
+</LinearLayout>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/marginx2"
+    android:background="@android:color/white" >
+
+    <TextView android:id="@+id/type_text_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_b"
+        android:textColor="#ea4048"
+        android:layout_centerInParent="true"
+        android:gravity="center_vertical|left"
+        android:visibility="gone"/>
+    
+    <RelativeLayout android:id="@+id/content_area"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content">
+    
+	    <com.rs.mobile.common.view.WImageView
+	        android:id="@+id/thumbnail"
+	        android:layout_width="194dp"
+	        android:layout_height="194dp"/>
+	
+	    <RelativeLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_marginLeft="@dimen/marginx2"
+	        android:layout_toRightOf="@id/thumbnail" 
+	       	android:layout_alignTop="@id/thumbnail"
+	       	android:layout_alignBottom="@id/thumbnail">
+	
+	        <TextView
+	            android:id="@+id/name"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentTop="true"
+	            
+	            android:textColor="#294045"
+	            android:textSize="@dimen/text_size_m" />
+	        
+	        <LinearLayout 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal"
+	            android:layout_alignParentLeft="true"
+	            android:layout_alignParentBottom="true"
+	            android:gravity="bottom|left">
+	            
+	            <TextView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/rmb"
+		            android:textColor="#ea4048"
+		            android:textSize="@dimen/text_size_m" />
+	            
+	            <TextView android:id="@+id/price"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:textColor="#ea4048"
+		            android:textSize="@dimen/text_size_m" 
+		            android:layout_marginLeft="@dimen/margin"
+		            android:layout_marginRight="@dimen/margin"/>
+	            
+	            <TextView 
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="@string/servings"
+		            android:textColor="#999999"
+		            android:textSize="@dimen/text_size_m" />
+	            
+	        </LinearLayout>
+	        
+	        <LinearLayout 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal"
+	            android:layout_alignParentRight="true"
+	            android:layout_alignParentBottom="true"
+	            android:gravity="bottom|left">
+	            
+	            <LinearLayout android:id="@+id/minus_btn"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:paddingTop="@dimen/marginx2"
+	                android:paddingLeft="@dimen/margin"
+	                android:paddingRight="@dimen/marginx2">
+	                
+	                <ImageView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:background="@drawable/icon_jhh"/>
+	                
+	            </LinearLayout>
+	            
+	            <TextView android:id="@+id/count_text_view"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="@dimen/margin"
+		            android:layout_marginRight="@dimen/margin"
+		            android:text="0"
+		            android:textColor="#333333"
+		            android:textSize="@dimen/text_size_b" 
+		           	android:inputType="number"/>
+	            
+	            <LinearLayout android:id="@+id/plus_btn"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:paddingTop="@dimen/marginx2"
+	                android:paddingLeft="@dimen/marginx2"
+	                android:paddingRight="@dimen/margin">
+	                
+	                <ImageView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:background="@drawable/icon_jh"/>
+	                
+	            </LinearLayout>
+	            
+	        </LinearLayout>
+	        
+	    </RelativeLayout>
+    
+    </RelativeLayout>
+
+</RelativeLayout>

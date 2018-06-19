@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/navigation_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:padding="@dimen/marginx2" >
+
+        <LinearLayout
+            android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin"
+            android:paddingRight="@dimen/marginx4"
+            android:paddingTop="@dimen/margin" >
+
+            <ImageView
+                android:id="@+id/branch_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_back" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/sm_text_address"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_b" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/img_logo"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/address_tab_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/navigation_area"
+        android:layout_marginTop="1dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin" >
+
+        <RelativeLayout
+            android:id="@+id/address_tab_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/address_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/sm_text_address"
+                android:textColor="@color/mainblue001"
+                android:textSize="@dimen/text_size_mb" />
+
+            <LinearLayout
+                android:id="@+id/address_under_line"
+                android:layout_width="fill_parent"
+                android:layout_height="3dip"
+                android:layout_alignLeft="@id/address_text_view"
+                android:layout_alignRight="@id/address_text_view"
+                android:layout_below="@id/address_text_view"
+                android:layout_marginTop="@dimen/margin"
+                android:background="@color/mainblue001"
+                android:orientation="vertical" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/my_station_tab_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/my_station_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="@string/sm_text_my_station"
+                android:textColor="#333333"
+                android:textSize="@dimen/text_size_mb" />
+
+            <LinearLayout
+                android:id="@+id/my_station_under_line"
+                android:layout_width="fill_parent"
+                android:layout_height="3dip"
+                android:layout_alignLeft="@id/my_station_text_view"
+                android:layout_alignRight="@id/my_station_text_view"
+                android:layout_below="@id/my_station_text_view"
+                android:layout_marginTop="@dimen/margin"
+                android:background="@color/mainblue001"
+                android:orientation="vertical"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/text_add"
+        android:layout_below="@+id/address_tab_layout" 
+        android:layout_marginTop="1dip"/>
+
+    <TextView
+        android:id="@+id/text_add"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/marginx2"
+        android:layout_marginLeft="@dimen/marginx2"
+        android:layout_marginRight="@dimen/marginx2"
+        android:layout_marginTop="@dimen/marginx2"
+        android:background="@color/mainblue001"
+        android:gravity="center"
+        android:paddingBottom="@dimen/marginx2"
+        android:paddingTop="@dimen/marginx2"
+        android:text="@string/sm_text_add_address"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_mb" />
+
+</RelativeLayout>

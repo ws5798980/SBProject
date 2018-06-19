@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#f2f2f2">
+
+    <include layout="@layout/toolbar_ht_hotel_base" 
+        android:background="#ffffff"/>
+   <ScrollView android:layout_width="match_parent"
+       android:layout_height="match_parent">
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        android:layout_marginTop="1dip"
+        android:paddingLeft="@dimen/marginx2"
+        android:paddingRight="@dimen/marginx2">
+        
+        <LinearLayout 
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal"
+	        android:background="#ffffff"
+	        android:paddingTop="@dimen/marginx2"
+	        android:paddingBottom="@dimen/marginx2">
+	        
+	        <LinearLayout 
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:orientation="vertical"
+		        android:gravity="left">
+	            
+	            <TextView android:id="@+id/hotel_name_text_view"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:textSize="@dimen/text_size_b"
+	                android:textColor="#333333"/>
+	            <TextView 
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:textSize="@dimen/text_size_m"
+	                android:textColor="#666666"
+	                android:text="@string/ht_text_035"
+	                android:layout_marginTop="@dimen/marginx2"/>
+	            
+	            
+	        </LinearLayout>
+	        
+	        <View
+	            android:layout_width="1dip"
+	            android:layout_height="fill_parent"
+	            android:background="#f2f2f2"/>
+	        
+	        <LinearLayout android:id="@+id/call_btn"
+		        android:layout_width="wrap_content"
+		        android:layout_height="match_parent"
+		        android:orientation="vertical"
+		        android:layout_margin="@dimen/marginx2"
+		        android:gravity="center">
+	            
+	            <ImageView 
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:background="@drawable/ht_icon_hoteltele"/>
+	            
+	        </LinearLayout>
+	        
+	    </LinearLayout>
+	    
+        <View
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dip"
+	        android:background="#f2f2f2"
+	        android:layout_marginLeft="@dimen/marginx2"
+            android:layout_marginRight="@dimen/marginx2"
+            android:layout_marginBottom="@dimen/marginx2"/>
+        
+        <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="@dimen/text_size_b"
+	        android:textColor="#333333"
+	        android:text="@string/ht_text_036"
+	        android:layout_marginLeft="@dimen/marginx2"
+            android:layout_marginRight="@dimen/marginx2"/>
+        
+        <GridView android:id="@+id/service_grid_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marginx2"
+            android:background="#ffffff"
+            android:horizontalSpacing="@dimen/marginx2"
+            android:numColumns="4"
+                        android:stretchMode="columnWidth"
+            android:verticalSpacing="@dimen/marginx2"
+            android:scrollbars="none"/>
+       <View android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="@color/common_bg"
+           android:layout_marginTop="@dimen/marginx2"
+           android:layout_marginBottom="@dimen/marginx2"/>
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:textSize="@dimen/text_size_b"
+           android:textColor="@color/black"
+           android:text="@string/ht_text_037"
+           android:layout_marginBottom="@dimen/marginx2"/>
+       
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/text_subway"
+           android:textSize="@dimen/text_size_m"
+           android:textColor="@color/textcolor_ht_666"
+           />
+       <View android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="@color/common_bg"
+           android:layout_marginTop="@dimen/marginx2"
+           android:layout_marginBottom="@dimen/marginx2"/>
+        <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/text_railway"
+           android:textSize="@dimen/text_size_m"
+           android:textColor="@color/textcolor_ht_666"
+           />
+       <View android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="@color/common_bg"
+           android:layout_marginTop="@dimen/marginx2"
+           android:layout_marginBottom="@dimen/marginx2"/>
+        <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/text_airport"
+           android:textSize="@dimen/text_size_m"
+           android:textColor="@color/textcolor_ht_666"
+           />
+       <View android:layout_width="match_parent"
+           android:layout_height="1dp"
+           android:background="@color/common_bg"
+           android:layout_marginTop="@dimen/marginx2"
+           android:layout_marginBottom="@dimen/marginx2"/>
+        <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textStyle="bold"
+           android:textSize="@dimen/text_size_b"
+           android:textColor="@color/black"
+           android:text="@string/ht_text_038"
+           />
+       <TextView android:id="@+id/hotel_description_text_view"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:textSize="@dimen/text_size_m"
+	                android:textColor="#666666"
+	                android:layout_marginTop="@dimen/marginx2"/>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorPrimary"
+    android:minHeight="?attr/actionBarSize" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary" >
+
+        <ImageView
+            android:id="@+id/iv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:clickable="true"
+            android:src="@drawable/icon_ss" />
+
+        <!-- android:visibility="invisible" -->
+
+        <LinearLayout
+            android:id="@+id/ll_div"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:clickable="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_divname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rt_text069"
+                android:textColor="@color/textColor_rt_toolbar_title"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/icon_down" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_search"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@id/iv_right"
+            android:layout_toRightOf="@id/ll_div"
+            android:background="@drawable/bg_rt_toolbar_search"
+            android:gravity="center_vertical|left"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/marginx2" 
+            android:paddingRight="@dimen/marginx2"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_search_001" />
+
+            <TextView
+                android:id="@+id/tv_sellername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:gravity="left|center_vertical"
+                android:text="@string/rt_toolbar_sellername"
+                android:textColor="@color/textColor_rt_toolbar_title"
+                android:textSize="14sp" 
+                />
+            
+        </LinearLayout>
+
+     </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>

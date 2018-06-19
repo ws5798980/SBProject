@@ -1,0 +1,21 @@
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#f2f2f2">
+
+    <TextView
+        android:id="@+id/title_text_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:gravity="center"
+        android:textColor="#333333"
+        android:background="#e6e6e6"
+        android:textSize="@dimen/text_size_m" 
+        android:padding="@dimen/marginx2"
+        android:maxLines="1"
+	    android:ellipsize="end"/>
+
+</LinearLayout >

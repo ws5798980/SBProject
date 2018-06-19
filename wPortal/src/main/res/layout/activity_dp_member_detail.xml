@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <include layout="@layout/dp_toolbar_rt_base"/>
+    <ScrollView android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+  <TextView 
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="1dp"
+      android:layout_marginBottom="@dimen/marginx2"
+      android:paddingTop="@dimen/marginx3"
+      android:id="@+id/text_comtent"
+      android:paddingBottom="@dimen/marginx3"
+      android:paddingLeft="@dimen/marginx2"
+      android:paddingRight="@dimen/marginx2"
+      android:background="@color/white"
+      android:textColor="@color/textcolor_dp_333"
+      />
+   <LinearLayout android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@color/white"
+       android:padding="@dimen/marginx2"
+       android:orientation="horizontal">
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="@color/textcolor_dp_333"
+           android:textSize="@dimen/text_size_m"
+           android:text="@string/dp_text_010"/>
+       <EditText android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@null"
+           android:hint="@string/dp_text_011"
+           android:textSize="@dimen/text_size_m"
+           android:layout_marginLeft="@dimen/marginx4"/>
+   </LinearLayout>
+   <LinearLayout android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="1dp"
+       android:background="@color/white"
+       android:padding="@dimen/marginx2"
+       android:orientation="horizontal">
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="@color/textcolor_dp_333"
+           android:textSize="@dimen/text_size_m"
+           android:text="@string/dp_text_012"/>
+       <EditText android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@null"
+           android:hint="@string/dp_text_013"
+           android:textSize="@dimen/text_size_m"
+           android:layout_marginLeft="@dimen/marginx4"/>
+   </LinearLayout>
+   <LinearLayout android:layout_width="match_parent"
+       android:layout_marginTop="1dp"
+       android:layout_height="wrap_content"
+       android:background="@color/white"
+       android:padding="@dimen/marginx2"
+       android:orientation="horizontal">
+       <TextView android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="@color/textcolor_dp_333"
+           android:textSize="@dimen/text_size_m"
+           android:text="@string/dp_text_014"/>
+       <EditText android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@null"
+           android:hint="@string/dp_text_015"
+           android:textSize="@dimen/text_size_m"
+           android:layout_marginLeft="@dimen/marginx4"/>
+   </LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+       android:layout_marginTop="1dp"
+       android:layout_height="wrap_content"
+       android:background="@color/white"
+       android:padding="@dimen/marginx2"
+       android:orientation="horizontal">
+       
+       <EditText android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@null"
+           android:hint="@string/dp_text_016"
+           android:gravity="left"
+           android:textSize="@dimen/text_size_m"
+           android:minLines="5"
+           />
+   </LinearLayout>
+   <TextView android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/marginx2"
+      android:paddingRight="@dimen/marginx2"
+       android:text="@string/dp_text_017"
+       android:layout_marginTop="@dimen/margin"/>
+   <TextView android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/marginx2"
+      android:paddingRight="@dimen/marginx2"
+       android:text="@string/dp_text_018"
+       android:layout_marginTop="@dimen/margin"/>
+   <TextView android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/marginx2"
+      android:paddingRight="@dimen/marginx2"
+       android:text="@string/dp_text_019"
+       android:layout_marginTop="@dimen/margin"/>
+   
+   <TextView android:layout_width="match_parent"
+       android:id="@+id/tx_commit"
+       android:layout_height="wrap_content"
+       android:padding="@dimen/marginx2"
+       android:textColor="@color/white"
+       android:textSize="@dimen/text_size_b"
+       android:gravity="center"
+       android:text="@string/dp_text_020"
+       android:background="@color/textcolor_dp_tabhost_tabspec_selected"
+       android:layout_margin="@dimen/marginx2"/>
+   </LinearLayout>
+   </ScrollView>
+</LinearLayout>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2"
+    android:orientation="vertical" >
+
+    <include layout="@layout/toolbar_rt_base4" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E6E6E6" />
+
+    <LinearLayout
+        android:id="@+id/invite_btn_area"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/marginx4"
+        android:paddingLeft="@dimen/marginx2"
+        android:paddingRight="@dimen/marginx2"
+        android:paddingTop="@dimen/marginx4" >
+
+        <LinearLayout
+            android:id="@+id/invite_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#21c043"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/marginx2" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_ik" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:text="@string/rt_invite_friend"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/text_size_b" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|left"
+        android:padding="@dimen/marginx2"
+        android:text="@string/rt_participant_order_list"
+        android:textSize="@dimen/text_size_b" />
+
+    <RelativeLayout
+        android:id="@+id/footer_area"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:id="@+id/footer_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/total_amount_text_view"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:background="#424242"
+                android:gravity="center_vertical|right"
+                android:padding="@dimen/marginx3"
+                android:singleLine="true"
+                android:text="rt_text001"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/text_size_m" />
+
+            <TextView
+                android:id="@+id/calculate_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#fda128"
+                android:gravity="center"
+                android:padding="@dimen/marginx3"
+                android:singleLine="true"
+                android:text="@string/rt_do_calculate_pay"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/text_size_m" />
+
+            <TextView
+                android:id="@+id/game_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:background="#fda128"
+                android:gravity="center"
+                android:padding="@dimen/marginx3"
+                android:singleLine="true"
+                android:text="@string/rt_do_pay_game"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/text_size_m" />
+
+            <TextView
+                android:id="@+id/pay_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:background="#ea4048"
+                android:gravity="center"
+                android:padding="@dimen/marginx3"
+                android:singleLine="true"
+                android:text="@string/rt_do_pay"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/text_size_m" />
+        </LinearLayout>
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/list_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@id/footer_view"
+            android:layout_alignParentTop="true"
+            android:background="#ffffff"
+            android:divider="#f2f2f2"
+            android:dividerHeight="@dimen/marginx2"
+            android:footerDividersEnabled="true"
+            android:headerDividersEnabled="true"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:ptrAnimationStyle="flip"
+            app:ptrMode="both"
+            app:ptrShowIndicator="false" />
+
+        <LinearLayout
+            android:id="@+id/cart_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginBottom="@dimen/marginx4"
+            android:layout_marginLeft="@dimen/marginx2"
+            android:background="@drawable/icon_r_number"
+            android:gravity="top|right"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/cart_count_text_view"
+                android:layout_width="@dimen/marginx4"
+                android:layout_height="@dimen/marginx4"
+                android:background="@drawable/bg_rt_circle"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/text_size_m" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

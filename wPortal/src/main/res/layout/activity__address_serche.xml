@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0">
+    <LinearLayout
+        android:id="@+id/top_title"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="vertical"
+        android:gravity=""
+        android:background="#f0f0f0">
+
+        <RelativeLayout
+            android:id="@+id/navigation_area"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="#ffffff"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="609dp">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/icon_prev" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="160dp"
+                android:gravity="center_vertical"
+                android:text="주소검색"
+                android:textColor="#000000"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/addr_serche"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:gravity=""
+        android:background="#f0f0f0">
+        <ImageView
+            android:id="@+id/res_magnifier"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/icon_search_grey"
+            android:onClick="onClick"/>
+
+        <EditText
+            android:id="@+id/serche_text"
+            android:layout_width="310dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="left|center"
+            android:inputType="textNoSuggestions"
+            android:background ="@null"
+            android:textSize="12dp"
+            android:text="삼성동"/>
+        <ImageView
+            android:id="@+id/res_magnifier_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/btn_close_round" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/addr_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff">
+    </ListView>
+</LinearLayout>
+

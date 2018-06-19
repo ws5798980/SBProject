@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:paddingLeft="@dimen/marginx3"
+    android:paddingRight="@dimen/marginx3" >
+
+    <TextView
+        android:id="@+id/tv_001"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="@string/next"
+        android:textColor="@color/textColor_rt_toolbar_title"
+        android:textSize="@dimen/text_size_m" />
+
+</RelativeLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:orientation="vertical" >
+<include layout="@layout/toolbar_rt_base1" 
+        android:id="@+id/include"
+        /> 
+    
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:layout_marginTop="1dp"
+    android:padding="@dimen/marginx2">
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sm_text003"
+        android:textSize="@dimen/text_size_ms"
+        android:textColor="@color/black"
+        />
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*"
+        android:textSize="@dimen/text_size_ms"
+        android:textColor="@color/red"
+        />
+    <EditText android:id="@+id/text_logictisno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_ms"
+        android:background="@null"
+        android:hint="@string/sm_text004"
+        android:layout_marginLeft="@dimen/marginx2"/>
+</LinearLayout>
+<TextView android:id="@+id/text_commit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:layout_marginLeft="@dimen/marginx2"
+    android:layout_marginRight="@dimen/marginx2"
+    android:text="@string/sm_text005"
+    android:textColor="@color/white"
+    android:textSize="@dimen/text_size_ms"
+    android:padding="@dimen/marginx2"
+    android:background="@color/mainblue001"
+    android:layout_marginTop="@dimen/marginx4"/>
+</LinearLayout>

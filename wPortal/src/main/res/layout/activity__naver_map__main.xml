@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dip"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/res_addserche"
+            android:layout_width="90dip"
+            android:layout_height="20dip"
+            android:text="주소검색"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:background="#21c043"
+            android:visibility="visible"/>
+        <TextView
+            android:id="@+id/res_select"
+            android:layout_width="90dip"
+            android:layout_height="20dip"
+            android:text="현재 위치 지정"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:background="#21c043"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <com.nhn.android.maps.NMapView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:text=""
+        android:id="@+id/mapView">
+    </com.nhn.android.maps.NMapView>
+</LinearLayout>

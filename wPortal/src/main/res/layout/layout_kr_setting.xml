@@ -1,0 +1,397 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/navigation_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#ffffff"
+        android:padding="@dimen/marginx2" >
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/kr_title"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_b" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/img_logo"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/navigation_area" >
+
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+        
+        <RelativeLayout
+            android:id="@+id/content_area"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/navigation_area" >
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_personal_bg" />
+
+            <com.rs.mobile.common.view.WImageView
+                android:id="@+id/icon_image_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/marginx4"
+                android:background="@drawable/img_defaultheadphoto_002" />
+
+            <TextView
+                android:id="@+id/name_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/icon_image_view"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/marginx2"
+                android:text="@string/kr_setting_login"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/text_size_m" />
+
+            <LinearLayout
+                android:id="@+id/my_purchase_list"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name_text_view"
+                android:layout_marginLeft="@dimen/marginx2"
+                android:layout_marginRight="@dimen/marginx2"
+                android:layout_marginTop="@dimen/marginx4"
+                android:background="@drawable/img_whitebgshadow"
+                android:orientation="horizontal"
+                android:padding="@dimen/marginx4" >
+
+                <LinearLayout
+                    android:id="@+id/vod_purchar_btn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical" 
+                    android:layout_marginBottom="@dimen/marginx4">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_personalvedio" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin"
+                        android:text="@string/kr_vod_purchar"
+                        android:textColor="#cccccc"
+                        android:textSize="@dimen/text_size_m" />
+
+                    <TextView
+                        android:id="@+id/vod_purchar_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin"
+                        android:text="0"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/text_size_b" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.1dip"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="@dimen/marginx4"
+                    android:layout_marginTop="@dimen/marginx4"
+                    android:background="#cccccc" />
+
+                <LinearLayout
+                    android:id="@+id/play_purchar_btn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical" 
+                    android:layout_marginBottom="@dimen/marginx4">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_personalticket" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin"
+                        android:text="@string/kr_play_purchar"
+                        android:textColor="#cccccc"
+                        android:textSize="@dimen/text_size_m" />
+
+                    <TextView
+                        android:id="@+id/play_purchar_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin"
+                        android:text="0"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/text_size_b" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0.1dip"
+                    android:layout_height="fill_parent"
+                    android:layout_marginBottom="@dimen/marginx4"
+                    android:layout_marginTop="@dimen/marginx4"
+                    android:background="#cccccc" />
+
+                <LinearLayout
+                    android:id="@+id/vote_purchar_btn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical" 
+                    android:layout_marginBottom="@dimen/marginx4">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/icon_personalvote" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin"
+                        android:text="@string/kr_vote_purchar"
+                        android:textColor="#cccccc"
+                        android:textSize="@dimen/text_size_m" />
+
+                    <TextView
+                        android:id="@+id/vote_purchar_text_view"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin"
+                        android:text="0"
+                        android:textColor="#000000"
+                        android:textSize="@dimen/text_size_b" />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#f2f2f2"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/setting_01_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/marginx2"
+                android:paddingLeft="@dimen/marginx3"
+                android:paddingRight="@dimen/marginx3"
+                android:paddingTop="@dimen/marginx2" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_personalcollection" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:gravity="center_vertical"
+                    android:text="@string/kr_setting_btn_001"
+                    android:textColor="#cccccc"
+                    android:textSize="@dimen/text_size_m" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip" />
+
+            <LinearLayout
+                android:id="@+id/setting_02_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/marginx2"
+                android:paddingLeft="@dimen/marginx3"
+                android:paddingRight="@dimen/marginx3"
+                android:paddingTop="@dimen/marginx2" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_personalrecent" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:gravity="center_vertical"
+                    android:text="@string/kr_setting_btn_002"
+                    android:textColor="#cccccc"
+                    android:textSize="@dimen/text_size_m" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip" />
+
+            <LinearLayout
+                android:id="@+id/setting_03_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/marginx2"
+                android:paddingLeft="@dimen/marginx3"
+                android:paddingRight="@dimen/marginx3"
+                android:paddingTop="@dimen/marginx2" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_personaldownload" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:gravity="center_vertical"
+                    android:text="@string/kr_setting_btn_003"
+                    android:textColor="#cccccc"
+                    android:textSize="@dimen/text_size_m" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/marginx3" />
+
+            <LinearLayout
+                android:id="@+id/setting_04_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/marginx2"
+                android:paddingLeft="@dimen/marginx3"
+                android:paddingRight="@dimen/marginx3"
+                android:paddingTop="@dimen/marginx2" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_personalcomment" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:gravity="center_vertical"
+                    android:text="@string/kr_setting_btn_004"
+                    android:textColor="#cccccc"
+                    android:textSize="@dimen/text_size_m" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip" />
+
+            <LinearLayout
+                android:id="@+id/setting_05_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/marginx2"
+                android:paddingLeft="@dimen/marginx3"
+                android:paddingRight="@dimen/marginx3"
+                android:paddingTop="@dimen/marginx2" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_personalbill" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:gravity="center_vertical"
+                    android:text="@string/kr_setting_btn_005"
+                    android:textColor="#cccccc"
+                    android:textSize="@dimen/text_size_m" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/marginx3" />
+
+            <LinearLayout
+                android:id="@+id/setting_06_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/marginx2"
+                android:paddingLeft="@dimen/marginx3"
+                android:paddingRight="@dimen/marginx3"
+                android:paddingTop="@dimen/marginx2" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_personalsetting" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:gravity="center_vertical"
+                    android:text="@string/kr_setting_btn_006"
+                    android:textColor="#cccccc"
+                    android:textSize="@dimen/text_size_m" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip" />
+        </LinearLayout>
+        
+        </LinearLayout>
+        
+    </ScrollView>
+
+</RelativeLayout>

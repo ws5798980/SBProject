@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include layout="@layout/toolbar_rt_search2" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/sv_homepage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+    	app:ptrShowIndicator="false"
+        app:ptrAnimationStyle="flip"
+        app:ptrMode="both" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+            
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:orientation="vertical"
+                android:background="@android:color/white" >
+
+                <com.willli.gridpager.GridViewPager
+                    android:id="@+id/gvp_sellertype"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="10dp"
+                    app:gvpColumnMargin="10dp"
+                    app:gvpColumnNumber="4"
+                    app:gvpRowMargin="10dp"
+                    app:gvpRowNumber="2" />
+            </LinearLayout>
+            
+             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:orientation="vertical"
+                android:background="@android:color/white" >
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vp_sellerad"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+            </LinearLayout>
+            
+             <LinearLayout 
+                 android:id="@+id/ll_sellerlists"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:orientation="vertical"
+                 >
+                 
+             </LinearLayout>
+            
+        </LinearLayout>
+        
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+</LinearLayout>

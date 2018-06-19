@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+ <RelativeLayout
+                android:id="@+id/rela_001"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12.5dp"
+                android:background="@color/white"
+                android:gravity="center_vertical"
+                android:padding="@dimen/marginx3" >
+
+                <TextView
+                    android:id="@+id/floor_num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 F"
+                    android:textColor="@color/textcolor_dp_tabhost_tabspec_selected"
+                    android:textSize="@dimen/text_size_b" />
+
+                <TextView
+                    android:id="@+id/level_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx3"
+                    android:layout_toRightOf="@+id/floor_num"
+                    android:layout_centerVertical="true"
+                    android:textColor="@color/textcolor_dp_333"
+                    android:textSize="@dimen/text_size_m" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/icon_into" />
+            </RelativeLayout>
+
+            <com.rs.mobile.common.view.WImageView
+                android:id="@+id/banner_001"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                fresco:roundedCornerRadius="5dp"
+                fresco:viewAspectRatio="2.9" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="horizontal" >
+
+                <com.rs.mobile.common.view.WImageView
+                    android:id="@+id/banner_002"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    fresco:roundedCornerRadius="5dp"
+                    fresco:viewAspectRatio="1.4" />
+<View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="@color/backgroundColor_dp_window" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical" >
+
+                    <com.rs.mobile.common.view.WImageView
+                        android:id="@+id/banner_003"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        fresco:roundedCornerRadius="5dp"
+                        fresco:viewAspectRatio="2.8" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/backgroundColor_dp_window" />
+
+                    <com.rs.mobile.common.view.WImageView
+                        android:id="@+id/banner_004"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        
+                        fresco:roundedCornerRadius="5dp"
+                        fresco:viewAspectRatio="2.8" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>  
+
+

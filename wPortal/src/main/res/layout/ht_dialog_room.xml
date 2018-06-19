@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_ht_corner_5" >
+ <RelativeLayout android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     
+     android:background="@color/white"
+     >
+     <TextView android:id="@+id/text_room"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textColor="@color/textcolor_ht_333"
+         android:textSize="@dimen/text_size_b"
+         android:layout_margin="@dimen/marginx2"
+         android:layout_centerVertical="true"/>
+     <ImageView android:id="@+id/close_btn"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:padding="@dimen/marginx2"
+         android:src="@drawable/ht_icon_closepreview"
+         android:layout_alignParentRight="true"
+         android:layout_centerVertical="true"
+         />
+ </RelativeLayout>   
+<com.rs.mobile.wportal.view.CustomViewPager
+    android:id="@+id/vp_room"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"></com.rs.mobile.wportal.view.CustomViewPager>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/marginx2">
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_ht_999"
+                    android:text="@string/ht_text_internet"/>
+                <TextView android:id="@+id/internet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:textColor="@color/textcolor_ht_666"
+                    android:textSize="@dimen/text_size_m"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginx2"
+                android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_ht_999"
+                    android:text="@string/ht_text_window"/>
+                <TextView android:id="@+id/window"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:textColor="@color/textcolor_ht_666"
+                    android:textSize="@dimen/text_size_m"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginx2"
+                android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_ht_999"
+                    android:text="@string/ht_text_area"/>
+                <TextView android:id="@+id/area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:textColor="@color/textcolor_ht_666"
+                    android:textSize="@dimen/text_size_m"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_ht_999"
+                    android:text="@string/ht_text_floor"/>
+                <TextView android:id="@+id/floor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:textColor="@color/textcolor_ht_666"
+                    android:textSize="@dimen/text_size_m"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginx2"
+                android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_ht_999"
+                    android:text="@string/ht_text_num"/>
+                <TextView android:id="@+id/num"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:textColor="@color/textcolor_ht_666"
+                    android:textSize="@dimen/text_size_m"/>
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginx2"
+                android:orientation="horizontal">
+                <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_ht_999"
+                    android:text="@string/ht_text_bedtype"/>
+                <TextView android:id="@+id/bedtype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:textColor="@color/textcolor_ht_666"
+                    android:textSize="@dimen/text_size_m"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>  
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_bg"
+        android:layout_marginLeft="@dimen/marginx2"
+        android:layout_marginRight="@dimen/marginx2"/>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/marginx2"
+        android:orientation="vertical">
+        <LinearLayout android:id="@+id/ll1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/marginx2"
+                    android:textColor="@color/textcolor_ht_666"
+                    android:textSize="@dimen/text_size_m"
+                    android:text="@string/ht_text_Roomfacilities"/>
+            <TextView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_ht_999"
+                    android:id="@+id/Roomfacilities"/>        </LinearLayout>
+        <LinearLayout android:id="@+id/ll2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/marginx2"
+                    android:textColor="@color/textcolor_ht_666"
+                    android:textSize="@dimen/text_size_m"
+                    android:text="@string/ht_text_Shower"/>
+            <TextView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_ht_999"
+                    android:id="@+id/Shower"/>        </LinearLayout>
+        <LinearLayout android:id="@+id/ll3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/marginx2"
+                    android:textColor="@color/textcolor_ht_666"
+                    android:textSize="@dimen/text_size_m"
+                    android:text="@string/ht_text_Fooddrinks"/>
+            <TextView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_ht_999"
+                    android:id="@+id/Fooddrinks"/>        </LinearLayout>
+        <LinearLayout android:id="@+id/ll4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/marginx2"
+                    android:textColor="@color/textcolor_ht_666"
+                    android:textSize="@dimen/text_size_m"
+                    android:text="@string/ht_text_Media"/>
+            <TextView 
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/textcolor_ht_999"
+                    android:id="@+id/Media"/>        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <com.rs.mobile.common.view.WImageView
+        android:id="@+id/chclistview_item_freimg"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="@dimen/marginx3"
+        android:layout_marginLeft="@dimen/marginx3"
+        android:layout_marginRight="@dimen/marginx2"
+        android:layout_marginTop="@dimen/marginx3"
+        fresco:roundedCornerRadius="5dp"
+        fresco:viewAspectRatio="1.5" />
+    
+   	<TextView android:id="@+id/name_text_view"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:gravity="center"
+   	    android:layout_centerHorizontal="true"
+   	    android:layout_marginTop="@dimen/margin"
+   	    android:textSize="@dimen/text_size_s"
+   	    android:textColor="#000000"
+   	    android:visibility="gone"
+   	    android:layout_below="@id/chclistview_item_freimg"/>
+
+   	<TextView android:id="@+id/title_text_view"
+   	    android:layout_width="wrap_content"
+   	    android:layout_height="wrap_content"
+   	    android:gravity="center"
+   	    android:layout_centerHorizontal="true"
+   	    android:layout_marginTop="@dimen/margin"
+   	    android:textSize="@dimen/text_size_s"
+   	    android:textColor="#333333"
+   	    android:visibility="gone"
+   	    android:layout_below="@id/name_text_view"/>
+   	
+</RelativeLayout>

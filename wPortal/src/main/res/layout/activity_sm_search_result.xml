@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/line_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/marginx2" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/marginx2"
+            android:layout_weight="1"
+            android:background="@color/common_bg"
+            android:gravity="center_vertical"
+            android:padding="@dimen/marginx2" >
+
+             <ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/icon_search_001" 
+	           	android:layout_marginRight="@dimen/margin"/> 
+            <EditText android:id="@+id/edit_text"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content"
+			    android:gravity="left|center_vertical"
+			    android:textColor="#333333"
+			    android:textSize="@dimen/text_size_m"
+			    android:hint="@string/sm_text_serch"
+			    android:background="@null"
+			    android:imeOptions="actionSearch"
+			    android:inputType="text"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel"
+            android:textColor="@color/inputblack" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:layout_below="@+id/line_top"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:padding="@dimen/margin" >
+
+        <TextView
+            android:id="@+id/text_pop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/marginx2"
+            android:text="@string/sm_text_sort" />
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_bg"/>
+        <TextView
+            android:id="@+id/text_onsale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="@dimen/marginx2"
+            android:text="@string/sm_text_sale_number" />
+    </LinearLayout>
+   
+        <com.handmark.pulltorefresh.library.PullToRefreshGridView
+        android:id="@+id/grid_view"
+        android:layout_below="@+id/line_select"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dp"
+        android:background="@color/common_bg"
+        android:horizontalSpacing="2dp"
+        android:numColumns="2"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+      	ptr:ptrShowIndicator="false"
+        ptr:ptrMode="both"
+        android:verticalSpacing="2dp" >
+    </com.handmark.pulltorefresh.library.PullToRefreshGridView>
+    
+    <LinearLayout android:id="@+id/nodata"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/line_select"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:gravity="center">
+   <TextView 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:background="@color/white"
+       android:gravity="center"
+       android:drawableTop="@drawable/icon_404"
+       android:drawablePadding="@dimen/marginx2"
+       android:text="@string/sm_text_nogoods"/>
+      </LinearLayout>
+   <ListView android:id="@+id/list_select"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_marginTop="1dp"
+       android:layout_below="@+id/line_select"
+       android:background="@color/white"
+       android:visibility="gone"
+       ></ListView>    
+</RelativeLayout>

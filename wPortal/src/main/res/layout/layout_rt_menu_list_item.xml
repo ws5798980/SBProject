@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:divider="@drawable/divider_rt_common_port_line"
+    android:orientation="horizontal"
+    android:showDividers="middle" 
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/tv_itemname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="63"
+        android:gravity="center_vertical|left"
+        
+        android:textColor="@color/textColor_rt_toolbar_title"
+        android:textSize="@dimen/text_size_ms" />
+
+    <TextView
+        android:id="@+id/tv_quantity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="17"
+        android:gravity="center"
+        
+        android:textColor="@color/textColor_rt_toolbar_title"
+        android:textSize="@dimen/text_size_ms" />
+
+    <TextView
+        android:id="@+id/tv_amount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="20"
+        android:gravity="center_vertical|right"
+        
+        android:textColor="@color/textColor_rt_toolbar_title"
+        android:textSize="@dimen/text_size_ms" />
+
+</LinearLayout>

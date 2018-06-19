@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:divider="@drawable/divider_rt_common_horizontal_line"
+    android:orientation="vertical"
+    android:showDividers="beginning|middle|end"
+    tools:context="com.rs.mobile.wportal.activity.rt.RtReserveActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/marginx3"
+        android:paddingRight="@dimen/marginx3" >
+
+        <TextView
+            android:id="@+id/tv_restaurantname"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="restaurantName"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/textColor_rt_toolbar_title"
+            android:textSize="@dimen/text_size_m"
+             />
+
+        <TextView
+            android:id="@+id/tv_reservestatus"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
+            android:layout_gravity="center_vertical"
+            android:contentDescription="reserveStatus"
+            android:gravity="center"
+            android:paddingLeft="7dp"
+            android:paddingRight="7dp"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size_google_minimum"
+            tools:text="@string/rt_text057" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@drawable/divider_rt_transparent_horizontal_line_large"
+        android:orientation="vertical"
+        android:padding="@dimen/marginx3"
+        android:showDividers="middle" >
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="date"
+            android:gravity="center_vertical|left"
+            android:textColor="@color/textColor_rt_sellerdetail_comment_score"
+            android:textSize="@dimen/text_size_ms"
+            tools:text="2017-02-20   14:50" />
+
+        <LinearLayout
+            android:id="@+id/ll_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_amount_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/textColor_rt_sellerdetail_comment_score"
+                android:textSize="@dimen/text_size_ms"
+                tools:text="@string/rt_text058" />
+
+            <TextView
+                android:id="@+id/tv_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/marginx2"
+                android:contentDescription="amount"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/textColor_rt_toolbar_title"
+                android:textSize="@dimen/text_size_ms"
+                 />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_reservedate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/textColor_rt_sellerdetail_comment_score"
+                android:textSize="@dimen/text_size_ms"
+                android:text="@string/rt_text059"
+                tools:text="@string/rt_text059" />
+
+            <TextView
+                android:id="@+id/tv_reservedate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/marginx2"
+                android:contentDescription="reserveDate"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/textColor_rt_toolbar_title"
+                android:textSize="@dimen/text_size_ms"
+                tools:text="2017-02-20 18:3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_personcount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/textColor_rt_sellerdetail_comment_score"
+                android:textSize="@dimen/text_size_ms"
+                android:text="@string/rt_text060"
+                tools:text="@string/rt_text060" />
+
+            <TextView
+                android:id="@+id/tv_personcount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/marginx2"
+                android:contentDescription="personCount"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/textColor_rt_toolbar_title"
+                android:textSize="@dimen/text_size_ms"
+                 />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_ordermenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left"
+                android:textColor="@color/textColor_rt_sellerdetail_comment_score"
+                android:textSize="@dimen/text_size_ms"
+                android:text="@string/rt_text061"
+                tools:text="@string/rt_text061" />
+
+            <TextView
+                android:id="@+id/tv_ordermenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/marginx2"
+                android:contentDescription="orderMenu"
+                android:ellipsize="end"
+                android:gravity="center_vertical|left"
+                android:singleLine="true"
+                android:textColor="@color/textColor_rt_toolbar_title"
+                android:textSize="@dimen/text_size_ms"
+                 />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/marginx3"
+        android:paddingRight="@dimen/marginx3" >
+
+        <TextView
+            android:id="@+id/tv_hint"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:contentDescription="hint"
+            android:ellipsize="end"
+            android:gravity="center_vertical|left"
+            android:singleLine="true"
+            android:textColor="@color/textColor_rt_toolbar_title"
+            android:textSize="@dimen/text_size_ms" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:divider="@drawable/divider_rt_transparent_vertical_line_large"
+            android:gravity="center_vertical|right"
+            android:orientation="horizontal"
+            android:showDividers="beginning|middle" >
+
+            <TextView
+                android:id="@+id/tv_btn1"
+                android:layout_width="68dp"
+                android:layout_height="27dp"
+                android:background="@drawable/bg_rt_reserve_bottombtn_black"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="@string/rt_text049"
+                android:textColor="@color/textColor_rt_toolbar_title"
+                android:textSize="@dimen/text_size_ms" />
+
+            <TextView
+                android:id="@+id/tv_btn2"
+                android:layout_width="68dp"
+                android:layout_height="27dp"
+                android:background="@drawable/bg_rt_reserve_bottombtn_black"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="@string/rt_text050"
+                android:textColor="@color/textColor_rt_toolbar_title"
+                android:textSize="@dimen/text_size_ms" />
+
+            <TextView
+                android:id="@+id/tv_btn3"
+                android:layout_width="68dp"
+                android:layout_height="27dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:text="@string/rt_text056"
+                android:textSize="@dimen/text_size_ms" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

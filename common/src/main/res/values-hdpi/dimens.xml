@@ -1,0 +1,20 @@
+<resources>
+
+    <dimen name="text_size_google_minimum">12sp</dimen>
+    <dimen name="text_size_xs">8sp</dimen>
+    <dimen name="text_size_s">10sp</dimen>
+    <dimen name="text_size_ms">12sp</dimen>
+    <dimen name="text_size_m">13sp</dimen>
+    <dimen name="text_size_mb">14sp</dimen>
+    <dimen name="text_size_b">13sp</dimen>
+    <dimen name="text_size_tmb">25sp</dimen>
+    <dimen name="text_size_tb">30sp</dimen>
+    
+    <dimen name="marginxs">2dip</dimen>
+    <dimen name="margin">5dip</dimen>
+    <dimen name="marginx2">10dip</dimen>
+    <dimen name="marginx3">15dip</dimen>
+    <dimen name="marginx4">20dip</dimen>
+    <dimen name="marginx6">30dip</dimen>
+    
+</resources>

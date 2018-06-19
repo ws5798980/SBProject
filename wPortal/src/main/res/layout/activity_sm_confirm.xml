@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg" >
+
+    <RelativeLayout
+        android:id="@+id/navigation_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:padding="@dimen/marginx2" >
+
+        <LinearLayout
+            android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin"
+            android:paddingRight="@dimen/marginx2"
+            android:paddingTop="@dimen/margin">
+
+            <ImageView
+                android:id="@+id/branch_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_back" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/sm_text_confirm_order"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_b" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/reLa_bottom"
+        android:layout_below="@+id/navigation_area"
+        android:layout_marginTop="1dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:id="@+id/rela_receiver"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2" 
+                >
+
+                <ImageView
+                    android:id="@+id/img_001"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_positioning" />
+
+                <LinearLayout
+                    android:id="@+id/line_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx2"
+                    android:layout_marginRight="@dimen/marginx2"
+                    android:layout_toLeftOf="@+id/next_page"
+                    android:layout_toRightOf="@+id/img_001"
+                    android:orientation="vertical" 
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/rtl" >
+
+                        <TextView
+                            android:id="@+id/text_receiver"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_m" />
+
+                        <TextView
+                            android:id="@+id/text_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/text_size_m" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/text_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_m" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/next_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_forward" />
+                <TextView android:id="@+id/text_dele"
+                    android:layout_below="@+id/line_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
+                    android:text="@string/sm_text002"
+                    android:textSize="@dimen/text_size_m"
+                    android:drawableLeft="@drawable/icon_warning"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/marginx2" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/sm_text_pay_way"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_mb"
+                     />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_forward"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/korea_lg_uplus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/uplus"
+                    android:drawablePadding="@dimen/margin"
+                    android:gravity="center_vertical"
+                    android:text="@string/sm_text_lguplus"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_m" />
+
+                <ImageView
+                    android:id="@+id/selector_pay_way_lg_uplus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_selected_s" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/pay_type_yucheng"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/ico_gigapay"
+                    android:drawablePadding="@dimen/margin"
+                    android:gravity="center_vertical"
+                    android:text="GIGA PAY"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_m" />
+
+                <ImageView
+                    android:id="@+id/selector_pay_way_yucheng"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_selected_n" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/pay_type_wechat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dip"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/icon_weichatpay"
+                    android:drawablePadding="@dimen/margin"
+                    android:gravity="center_vertical"
+                    android:text="@string/sm_text_pay_way_wechat"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_m" />
+
+                <ImageView
+                    android:id="@+id/selector_pay_way_wecaht"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_selected_s" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/pay_type_alipay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dip"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/icon_alipay"
+                    android:drawablePadding="@dimen/margin"
+                    android:gravity="center_vertical"
+                    android:text="@string/sm_text_pay_way_alipay"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_m" />
+
+                <ImageView
+                    android:id="@+id/selector_pay_way_alipay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_selected_n" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/pay_type_unionpay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dip"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:drawableLeft="@drawable/icon_bank"
+                    android:drawablePadding="@dimen/margin"
+                    android:gravity="center_vertical"
+                    android:text="@string/sm_text_pay_way_unionpay"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_m" />
+
+                <ImageView
+                    android:id="@+id/selector_pay_way_unionpay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_selected_n" />
+            </RelativeLayout> 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/marginx3"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/icon_commoditylist"
+                    android:drawablePadding="@dimen/margin"
+                    android:text="@string/sm_text_good_classify"
+                    android:textColor="@color/black" 
+                    android:textSize="@dimen/text_size_mb"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_down" />
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/listView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dip"
+                android:background="@color/white" >
+            </ListView>
+
+            <RelativeLayout
+                android:id="@+id/rela_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/sm_text_good_number"
+                    android:textColor="@color/black" 
+                    android:textSize="@dimen/text_size_m"/>
+
+                <com.rs.mobile.wportal.view.AmountView
+                    android:id="@+id/amoutview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@color/white" >
+                </com.rs.mobile.wportal.view.AmountView>
+            </RelativeLayout>
+
+            <RelativeLayout
+                
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/freight1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_m" />
+
+                <TextView
+                    android:id="@+id/text_logis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/text_size_m"
+                     />
+            </RelativeLayout>
+             <RelativeLayout
+                
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2"
+                android:id="@+id/pointrela"
+                android:visibility="gone" >
+
+                <TextView
+                    android:id="@+id/point"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/text_size_m"
+                    android:textColor="@color/black" />
+
+                <CheckBox
+                    android:id="@+id/check_box"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/checkbox_bg"
+                    android:button="@null"
+                     />
+            </RelativeLayout>
+             <RelativeLayout
+                android:layout_marginTop="1dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/rela_coupon"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2"
+                android:visibility="gone" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/coupon"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_m" />
+
+                <TextView
+                    android:id="@+id/text_coupon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawablePadding="@dimen/margin"
+                    android:drawableRight="@drawable/icon_forward"
+                    android:textSize="@dimen/text_size_m"
+                     />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:padding="@dimen/marginx2"
+                android:visibility="gone" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/marginx2" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sm_text_pay_way"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_m" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/sm_text_pay_way_yucheng"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_m" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/sm_text_balance"
+                            android:textSize="@dimen/text_size_m"
+                            android:textColor="@color/black" />
+
+                        <TextView
+                            android:id="@+id/text_balance"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/margin"
+                            android:textSize="@dimen/text_size_m"
+                            android:textColor="@color/red" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/text_incharge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:text="@string/sm_text_incharge"
+                        android:textColor="@color/red" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/reLa_bottom"
+        android:background="@color/common_bg" />
+
+    <RelativeLayout
+        android:id="@+id/reLa_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/margin"
+        android:paddingLeft="@dimen/marginx2"
+        android:paddingRight="@dimen/margin"
+        android:paddingTop="@dimen/margin" >
+
+        <TextView
+            android:id="@+id/text_totoal_001"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/sm_text_totoal_money"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_mb" />
+
+        <TextView
+            android:id="@+id/text_totoal_002"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_toRightOf="@+id/text_totoal_001"
+            android:text="0"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_mb" />
+
+        <TextView
+            android:id="@+id/commit_order"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="#21c043"
+            android:paddingBottom="@dimen/marginx2"
+            android:paddingLeft="@dimen/marginx4"
+            android:paddingRight="@dimen/marginx4"
+            android:paddingTop="@dimen/marginx2"
+            android:text="@string/sm_text_commit_order"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/pay_password_view"
+        layout="@layout/pay_password_edittext_xml"
+        android:visibility="gone" />
+
+</RelativeLayout>

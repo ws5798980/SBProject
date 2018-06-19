@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#f2f2f2">
+
+    <include layout="@layout/toolbar_rt_base1" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="1dip">
+        
+        <LinearLayout android:id="@+id/bottom_area"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#424242"
+           	android:layout_alignParentBottom="true">
+            
+            <LinearLayout 
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal"
+                android:layout_weight="0.5"
+                android:gravity="center_vertical|left"/>
+            
+            <TextView android:id="@+id/pay_btn"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/marginx3"
+                android:layout_weight="1"
+                android:background="#424242"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/text_size_m"
+                android:text="@string/rt_pay"
+                android:gravity="center"/>
+            
+        </LinearLayout>
+        
+        <LinearLayout android:id="@+id/content_area"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="horizontal"
+            android:layout_above="@id/bottom_area">
+
+           	<ListView android:id="@+id/left_list"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="top"
+                android:divider="@null"
+               	android:scrollbars="none"/>    
+            
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="0.35">
+
+            	<ListView android:id="@+id/right_list"
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent"
+	                android:orientation="vertical"
+	                android:divider="#f2f2f2"
+	                android:dividerHeight="0.1dip"
+	                android:scrollbars="none"/>
+         
+            	<LinearLayout 
+            	    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:orientation="vertical">
+            	    
+					<TextView android:id="@+id/category_text_view"
+	                    android:layout_width="fill_parent"
+	                    android:layout_height="wrap_content"
+	                    android:padding="@dimen/marginx2"
+	                    android:textSize="@dimen/text_size_b"
+	                    android:textColor="#ea4048"
+	                    android:gravity="center_vertical"
+	                    android:background="#ffffff"/>      
+	                    
+					<View
+					    android:layout_width="fill_parent"
+					    android:layout_height="1dip"
+					    android:background="#f2f2f2"
+					    android:layout_marginLeft="@dimen/marginx2"
+					    android:layout_marginRight="@dimen/marginx2"/>   
+            	    
+            	</LinearLayout>
+
+            </RelativeLayout>
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="left|bottom"
+            android:layout_marginBottom="@dimen/marginx3"
+            android:layout_marginLeft="@dimen/marginx3">
+
+            <RelativeLayout android:id="@+id/cart_count_area"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin">
+                
+				<ImageView
+	                android:id="@+id/cart_icon"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:src="@drawable/icon_gwc" 
+	                android:layout_alignParentBottom="true"
+                	android:layout_alignParentLeft="true"/>
+
+				<TextView
+				    android:id="@+id/cart_count_text_view"
+				    android:layout_width="@dimen/marginx4"
+				    android:layout_height="@dimen/marginx4"
+				    android:layout_alignRight="@+id/cart_icon"
+				    android:layout_alignTop="@+id/cart_icon"
+				    android:background="@drawable/bg_rt_circle"
+				    android:gravity="center"
+				    android:text="0"
+				    android:textColor="#ffffff"
+				    android:textSize="@dimen/text_size_m"
+				    android:visibility="gone"/>
+				
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/cart_state_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rt_empty_cart"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/text_size_m" />
+            
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/cart_area"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:gravity="right|bottom"
+            android:layout_above="@id/bottom_area"
+            android:background="@color/whitebb"
+            android:visibility="gone">
+            
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/marginx3">
+                
+				<ImageView
+	                android:id="@+id/cart_icon_2"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:src="@drawable/icon_gwcs" 
+                	android:layout_alignParentLeft="true"/>
+
+				<TextView
+				    android:id="@+id/cart_count_text_view_2"
+				    android:layout_width="@dimen/marginx4"
+				    android:layout_height="@dimen/marginx4"
+				    android:layout_alignRight="@+id/cart_icon_2"
+				    android:layout_alignTop="@+id/cart_icon_2"
+				    android:background="@drawable/bg_rt_circle"
+				    android:gravity="center"
+				    android:text="0"
+				    android:textColor="#ffffff"
+				    android:textSize="@dimen/text_size_m"/>
+				
+            </RelativeLayout>
+            
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:layout_marginTop="@dimen/margin">
+            
+                <TextView android:id="@+id/delete_all_btn"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_alignParentRight="true"
+	                android:padding="@dimen/marginx2"
+	                android:text="@string/rt_delete_all"
+	                android:textColor="#999999"
+	                android:textSize="@dimen/text_size_m"
+	                android:drawableLeft="@drawable/icon_sc"
+	                android:drawablePadding="@dimen/margin"
+	                android:background="#ffffff"
+	                android:layout_marginRight="@dimen/margin"/>
+                
+            </RelativeLayout>
+            
+            <View 
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#f2f2f2"/>
+
+	        <ListView android:id="@+id/cart_list_view"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:scrollbars="none"
+	            android:divider="#f2f2f2"
+	            android:dividerHeight="0.1dip"
+	            android:background="#ffffff"/>
+        
+        </LinearLayout>
+        
+    </RelativeLayout>
+
+</LinearLayout>

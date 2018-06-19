@@ -1,0 +1,104 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f4f6"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp" >
+
+        <ImageView
+            android:id="@+id/mk_car_back"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="@drawable/icon_allreturn"
+            android:padding="15dp"
+            android:src="@drawable/icon_allreturn" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="@string/mk_text03"
+            android:textColor="@color/inputblack"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/mk_car_qrcode"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@drawable/icon_addgoods_001"
+            android:padding="12dp"
+            android:src="@drawable/icon_addgoods_001" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#dcdcdc" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/mk_car_nothing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="150dp"
+                android:contentDescription="@drawable/img_nothing"
+                android:src="@drawable/img_nothing"
+                android:visibility="gone" />
+
+            <ListView
+                android:id="@+id/listView_car"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="#00000000"
+                android:divider="#dcdcdc"
+                android:dividerHeight="1dp"
+                android:drawSelectorOnTop="true"
+                android:focusable="false"
+                android:listSelector="#00000000"
+                android:minHeight="?android:attr/listPreferredItemHeight"
+                android:overScrollMode="never"
+                android:scrollbarSize="1dp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="110dp"
+            android:layout_alignParentBottom="true" >
+
+            <TextView
+                android:id="@+id/mk_bottomtime"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/img_white"
+                android:gravity="center_horizontal|bottom"
+                android:text="05:34:27"
+                android:textColor="#333333"
+                android:textSize="34sp" />
+
+            <ImageView
+                android:id="@+id/mk_topay"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_centerHorizontal="true"
+                android:contentDescription="@drawable/btn_addgoods"
+                android:src="@drawable/btn_addgoods" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

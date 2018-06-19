@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sm_hzlistview_item"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/marginx2" >
+
+    <com.rs.mobile.common.view.WImageView
+        android:id="@+id/dp_img"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        fresco:roundedCornerRadius="5dp"
+        fresco:viewAspectRatio="1" />
+
+    <TextView
+        android:id="@+id/dp_name"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx2"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:textColor="#333333"
+        android:textSize="@dimen/text_size_m" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin" >
+
+        <TextView
+            android:id="@+id/dp_item_textview_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/red"
+            android:textSize="@dimen/text_size_m" />
+
+         <TextView
+            android:id="@+id/dp_item_textview_eluate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/textcolor_dp_333"
+            android:textSize="@dimen/text_size_ms" />    </RelativeLayout>
+
+</LinearLayout>

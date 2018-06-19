@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+ <include layout="@layout/toolbar_ht_hotel_base"/> 
+ <ScrollView android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:scrollbars="none">  
+ <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/marginx2"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:id="@+id/line_nopay"
+    android:visibility="gone">
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textcolor_ht_tabhost_tabspec_selected"
+        android:textSize="@dimen/text_size_m"
+        android:text="@string/ht_text_039"/>
+     <com.rs.mobile.wportal.view.TimerTextView
+         android:id="@+id/text_time"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textColor="@color/textcolor_ht_tabhost_tabspec_selected"
+         android:textSize="@dimen/text_size_m"
+         android:layout_marginTop="@dimen/marginx2"/>
+     <TextView android:id="@+id/text_pay"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:padding="@dimen/marginx2"
+         android:text="@string/ht_text_040"
+         android:gravity="center"
+         android:textColor="@color/white"
+         android:textSize="@dimen/text_size_m"
+         android:background="@color/ht_yellow"
+         android:layout_marginTop="@dimen/marginx2"
+         />
+</LinearLayout>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/marginx2"
+    android:orientation="vertical"
+    android:layout_marginTop="1dp"
+    android:gravity="center"
+    android:id="@+id/line_leaveHotel"
+    android:visibility="gone">
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textcolor_ht_tabhost_tabspec_selected"
+        android:textSize="@dimen/text_size_m"
+        android:text="@string/ht_text_041"/>
+     
+         
+     <TextView android:id="@+id/text_evaluate"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:paddingLeft="@dimen/marginx6"
+         android:paddingRight="@dimen/marginx6"
+         android:paddingTop="@dimen/marginx2"
+         android:paddingBottom="@dimen/marginx2"
+         android:text="@string/ht_text_042"
+         android:gravity="center"
+         android:textColor="@color/textcolor_ht_tabhost_tabspec_selected"
+         android:textSize="@dimen/text_size_m"
+         android:background="@drawable/bg_ht_text_time"
+         android:layout_marginTop="@dimen/marginx2"
+         />
+</LinearLayout>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/marginx2"
+    android:orientation="vertical"
+    android:layout_marginTop="1dp"
+    android:gravity="center"
+    android:id="@+id/line_sucessess"
+    android:visibility="gone">
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/marginx6"
+        android:layout_marginRight="@dimen/marginx6"
+        android:textColor="@color/textcolor_ht_tabhost_tabspec_selected"
+        android:textSize="@dimen/text_size_m"
+        android:gravity="center"
+        android:text="@string/ht_text_043"/>
+     
+         
+     <LinearLayout android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:padding="@dimen/marginx2">
+         <LinearLayout android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:orientation="vertical"
+             android:gravity="center_horizontal">
+             <RelativeLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                 >
+                 <ImageView
+                     android:id="@+id/r1" 
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerInParent="true"
+                     android:src="@drawable/icon_yuan_l"/>
+                 <View android:layout_toRightOf="@+id/r1"
+                      android:layout_width="match_parent"
+                      android:layout_height="1dp"
+                      android:layout_centerVertical="true"
+                      android:background="@color/textcolor_ht_tabhost_tabspec_selected"/>
+             </RelativeLayout>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ht_text_044"
+                android:textColor="@color/textcolor_ht_666"
+                android:textSize="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin"/> 
+                <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_1"
+                android:textColor="@color/textcolor_ht_666"
+                android:textSize="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin"/>   
+         </LinearLayout>
+         <LinearLayout android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:orientation="vertical"
+             android:gravity="center_horizontal">
+             <LinearLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center" >
+                  <View android:layout_width="0dp"
+                      android:layout_weight="1"
+                     android:layout_height="1dp"
+                     android:background="@color/textcolor_ht_tabhost_tabspec_selected"/>
+                 <ImageView android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:src="@drawable/icon_yuan_l"/>
+                 <View android:layout_width="0dp"
+                      android:layout_weight="1"
+                     android:layout_height="1dp"
+                     android:id="@+id/line001"
+                     android:background="@color/common_bg"/>
+             </LinearLayout>
+              <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ht_text_045"
+                android:textColor="@color/textcolor_ht_666"
+                android:textSize="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin"/> 
+                <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_2"
+                android:textColor="@color/textcolor_ht_666"
+                android:textSize="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin"/> 
+         </LinearLayout>
+         <LinearLayout android:layout_width="0dp"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+             android:orientation="vertical"
+             android:gravity="center_horizontal">
+               <RelativeLayout android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                 >
+                 <ImageView
+                     android:id="@+id/r2" 
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_centerInParent="true"
+                     android:background="@drawable/ht_icon_gray_0"/>
+                 <View android:layout_toLeftOf="@+id/r2"
+                      android:layout_width="match_parent"
+                      android:layout_height="1dp"
+                      android:layout_centerVertical="true"
+                      android:background="@color/common_bg"
+                      android:id="@+id/line002"/>
+             </RelativeLayout>
+              <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ht_text_046"
+                android:textColor="@color/textcolor_ht_666"
+                android:textSize="@dimen/text_size_m"
+                android:layout_marginTop="@dimen/margin"/> 
+                 
+         </LinearLayout>
+     </LinearLayout>
+     
+</LinearLayout>
+<TextView android:id="@+id/time_out"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/marginx3"
+    android:textColor="@color/textcolor_ht_tabhost_tabspec_selected"
+    android:textSize="@dimen/text_size_m"
+    android:gravity="center"
+    android:text="@string/ht_text_047"
+    android:background="@color/white"
+    android:visibility="gone"/>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/marginx2"
+    android:background="@color/white"
+    android:orientation="vertical"
+    >
+    <TextView android:id="@+id/text_hotelname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_mb"
+        android:layout_marginTop="@dimen/marginx2"
+        android:layout_marginLeft="@dimen/marginx2"/>
+    <TextView android:id="@+id/text_hotel_position"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textcolor_ht_666"
+        android:textSize="@dimen/text_size_m"
+        android:layout_marginTop="@dimen/marginx2"
+        android:layout_marginLeft="@dimen/marginx2"/>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/common_bg"
+        android:layout_marginTop="@dimen/marginx4"/>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/marginx2"
+        android:orientation="horizontal">
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/text_check_position"  
+                      android:gravity="center">
+        
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:text="@string/ht_text_048"
+            android:textColor="@color/textcolor_ht_tabhost_tabspec_selected"
+            android:textSize="@dimen/text_size_m"
+            android:drawableLeft="@drawable/ht_icon_mapsmall"
+            android:drawablePadding="@dimen/margin"
+            android:gravity="center"
+            />
+        </LinearLayout>
+        <View android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/common_bg"/>
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/text_check_telephone"
+            android:gravity="center">
+             <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:text="@string/ht_text_049"
+            android:textColor="@color/textcolor_ht_tabhost_tabspec_selected"
+            android:textSize="@dimen/text_size_m"
+            android:drawableLeft="@drawable/ht_icon_hoteltelesmall"
+            android:drawablePadding="5dp"
+            android:gravity="center"
+            />
+        </LinearLayout>
+       
+    </LinearLayout>
+</LinearLayout>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/marginx2"
+    android:layout_marginTop="@dimen/marginx2">
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_mb"
+        android:text="@string/ht_text_detail001"/>
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:textColor="@color/textcolor_ht_999"
+            android:textSize="@dimen/text_size_m"
+            android:text="@string/ht_text_detail002"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text1"
+            android:textColor="@color/textcolor_ht_666"
+            android:textSize="@dimen/text_size_m"
+            
+            android:layout_marginLeft="@dimen/marginx3"
+            />
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:textColor="@color/textcolor_ht_999"
+            android:textSize="@dimen/text_size_m"
+            android:text="@string/ht_text_detail003"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text2"
+            android:textColor="@color/textcolor_ht_666"
+            android:textSize="@dimen/text_size_m"
+            
+            android:layout_marginLeft="@dimen/marginx3"
+            />
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:textColor="@color/textcolor_ht_999"
+            android:textSize="@dimen/text_size_m"
+            android:text="@string/ht_text_050"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text3"
+            android:textColor="@color/textcolor_ht_666"
+            android:textSize="@dimen/text_size_m"
+            
+            android:layout_marginLeft="@dimen/marginx3"
+            />
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:textColor="@color/textcolor_ht_999"
+            android:textSize="@dimen/text_size_m"
+            android:text="@string/ht_text_051"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text4"
+            android:textColor="@color/textcolor_ht_666"
+            android:textSize="@dimen/text_size_m"
+            
+            android:layout_marginLeft="@dimen/marginx3"
+            />
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:textColor="@color/textcolor_ht_999"
+            android:textSize="@dimen/text_size_m"
+            android:text="@string/ht_text_detail006"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text5"
+            android:textColor="@color/textcolor_ht_666"
+            android:textSize="@dimen/text_size_m"
+            
+            android:layout_marginLeft="@dimen/marginx3"
+            />
+    </LinearLayout>
+</LinearLayout>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/marginx2"
+    android:layout_marginTop="@dimen/marginx2">
+    <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_size_mb"
+        android:text="@string/ht_text_detail007"/>
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:textColor="@color/textcolor_ht_999"
+            android:textSize="@dimen/text_size_m"
+            android:text="@string/ht_text_detail008"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text6"
+            android:textColor="@color/textcolor_ht_666"
+            android:textSize="@dimen/text_size_m"
+            
+            android:layout_marginLeft="@dimen/marginx3"
+            />
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:textColor="@color/textcolor_ht_999"
+            android:textSize="@dimen/text_size_m"
+            android:text="@string/ht_text_detail009"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text7"
+            android:textColor="@color/textcolor_ht_666"
+            android:textSize="@dimen/text_size_m"
+            
+            android:layout_marginLeft="@dimen/marginx3"
+            />
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:textColor="@color/textcolor_ht_999"
+            android:textSize="@dimen/text_size_m"
+            android:text="@string/ht_text_detail010"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text8"
+            android:textColor="@color/textcolor_ht_666"
+            android:textSize="@dimen/text_size_m"
+            
+            android:layout_marginLeft="@dimen/marginx3"
+            />
+    </LinearLayout>
+     <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:textColor="@color/textcolor_ht_999"
+            android:textSize="@dimen/text_size_m"
+            android:text="@string/ht_text_052"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_in"
+            android:textColor="@color/textcolor_ht_666"
+            android:textSize="@dimen/text_size_m"
+            
+            android:layout_marginLeft="@dimen/marginx3"
+            />
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:textColor="@color/textcolor_ht_999"
+            android:textSize="@dimen/text_size_m"
+            android:text="@string/ht_text_detail005"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text9"
+            android:textColor="@color/textcolor_ht_666"
+            android:textSize="@dimen/text_size_m"
+            
+            android:layout_marginLeft="@dimen/marginx3"
+            />
+    </LinearLayout>
+    <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="4"
+            android:textColor="@color/textcolor_ht_999"
+            android:textSize="@dimen/text_size_m"
+            android:text="@string/ht_text_detail011"/>
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text10"
+            android:textColor="@color/textcolor_ht_666"
+            android:textSize="@dimen/text_size_m"
+            
+            android:layout_marginLeft="@dimen/marginx3"
+            />
+    </LinearLayout>
+</LinearLayout>
+<TextView  android:id="@+id/text_action"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bg_stroke_solid_red_cor_3"
+    android:padding="@dimen/marginx2"
+    android:textColor="@color/red"
+    android:textSize="@dimen/text_size_m"
+    android:gravity="center"
+    android:layout_margin="@dimen/marginx2"
+    android:visibility="gone"/>
+<ListView android:id="@+id/lv"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    ></ListView>
+</LinearLayout>
+</ScrollView>
+</LinearLayout>

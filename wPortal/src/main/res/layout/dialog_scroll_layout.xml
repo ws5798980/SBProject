@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000" 
+    android:id="@+id/parent_view"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/marginx4">
+ 
+    <LinearLayout 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#ffffff"
+        android:layout_marginTop="@dimen/marginx4"
+        android:layout_marginBottom="@dimen/marginx4">
+
+        <LinearLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="#d31b2c"
+            android:paddingTop="@dimen/marginx2"
+		    android:paddingBottom="@dimen/marginx2"
+		    android:paddingLeft="@dimen/marginx4"
+		    android:paddingRight="@dimen/marginx4">
+
+            <ImageView android:id="@+id/icon_view"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"/>
+            
+            <TextView
+                android:id="@+id/title_text_view"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="@dimen/text_size_m"
+                android:gravity="left|center_vertical"
+                android:textColor="#ffffff"
+               	android:layout_marginLeft="@dimen/marginx2"/>
+
+            <LinearLayout android:id="@+id/close_btn"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal"
+	            android:gravity="center"
+	            android:padding="@dimen/marginx2">
+	            
+	            <ImageView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:background="@drawable/icon_close_white"/>
+            
+            </LinearLayout>
+
+        </LinearLayout>
+        
+        <ScrollView 
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            
+            <LinearLayout 
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+                
+                 <TextView
+	            	android:id="@+id/msg_text_view"
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent"
+	                android:padding="@dimen/marginx2"
+	                android:textSize="@dimen/text_size_m"
+	                android:gravity="left"
+	                android:textColor="#000000"/>
+                
+            </LinearLayout>
+            
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

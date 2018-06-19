@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:gravity="center_horizontal"
+    android:background="#f2f2f2">
+
+    <RelativeLayout
+        android:id="@+id/rl_rt_mine_title"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" 
+        android:background="@drawable/grbg">
+
+        <LinearLayout
+            android:id="@+id/ll_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical" 
+            android:padding="@dimen/marginx2">
+
+            <!-- <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_rt_message" /> -->
+        </LinearLayout>
+
+        <com.rs.mobile.common.view.WImageView
+            android:id="@+id/iv_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            fresco:roundedCornerRadius="5dp"
+            fresco:viewAspectRatio="1.3"/>
+
+    </RelativeLayout>
+    
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="0.4"
+        android:orientation="vertical">
+	    
+	    <TextView
+		    android:id="@+id/tv_username"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:gravity="center"
+		    android:background="#ffffff"
+		    android:textSize="@dimen/text_size_b"
+		    android:textColor="#333333"
+		    android:paddingBottom="@dimen/marginx2"
+		    android:paddingTop="@dimen/marginx2"
+		    android:text="" />
+		
+		<TextView
+		    android:id="@+id/tv_provideinfo"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:gravity="center"
+		    android:background="#ffffff"
+		    android:textSize="@dimen/text_size_m"
+		    android:textColor="#999999"
+		    android:paddingBottom="@dimen/marginx6"
+		    android:clickable="true"/>
+		
+		<LinearLayout 
+            android:layout_width="match_parent"
+        	android:layout_height="wrap_content"
+        	android:orientation="vertical"
+        	android:divider="@drawable/divider_rt_mine_list"
+        	android:showDividers="middle"
+        	android:layout_marginTop="@dimen/marginx2">
+		    
+		    <LinearLayout android:id="@+id/tv_rt_my_point"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"
+		        android:padding="@dimen/marginx2"
+		        android:background="#ffffff">
+		        
+		        <TextView
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:drawableLeft="@drawable/icon_r_points"
+		            android:gravity="center_vertical|left"
+		            android:drawablePadding="@dimen/margin"
+		            android:text="@string/rt_text008"
+		            android:textColor="@color/textColor_rt_toolbar_title" />
+		        
+		        <TextView
+		            android:id="@+id/tv_rt_mine_point"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:gravity="center"
+		            android:layout_marginRight="@dimen/marginx2"
+		            android:text="(0p)"
+		            android:textColor="@color/red"/>
+		        
+		        <ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:background="@drawable/icon_reture2"/>
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout android:id="@+id/tv_rt_mine_coupon"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"
+		        android:padding="@dimen/marginx2"
+		        android:background="#ffffff">
+		        
+		        <TextView
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:drawableLeft="@drawable/icon_jdush"
+		            android:gravity="center_vertical|left"
+		            android:drawablePadding="@dimen/margin"
+		            android:text="@string/rt_text009"
+		            android:textColor="@color/textColor_rt_toolbar_title" />
+		        
+		        <TextView
+		            android:id="@+id/tv_rt_mine_coupon_count"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:gravity="center"
+		            android:layout_marginRight="@dimen/marginx2"
+		            android:text="(0)"
+		            android:textColor="@color/red"/>
+		        
+		        <ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:background="@drawable/icon_reture2"/>
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout android:id="@+id/tv_rt_mine_comments"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"
+		        android:padding="@dimen/marginx2"
+		        android:background="#ffffff">
+		        
+		        <TextView
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:drawableLeft="@drawable/icon_pjtb"
+		            android:gravity="center_vertical|left"
+		            android:drawablePadding="@dimen/margin"
+		            android:text="@string/rt_text010"
+		            android:textColor="@color/textColor_rt_toolbar_title" />
+		        
+		        <TextView
+		            android:id="@+id/tv_rt_mine_comments_count"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:gravity="center"
+		            android:layout_marginRight="@dimen/marginx2"
+		            android:text="(0)"
+		            android:textColor="@color/red"/>
+		        
+		        <ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:background="@drawable/icon_reture2"/>
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout android:id="@+id/tv_rt_mine_favorates"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"
+		        android:padding="@dimen/marginx2"
+		        android:background="#ffffff">
+		        
+		        <TextView
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:drawableLeft="@drawable/icon_sctb"
+		            android:gravity="center_vertical|left"
+		            android:drawablePadding="@dimen/margin"
+		            android:text="@string/rt_text011"
+		            android:textColor="@color/textColor_rt_toolbar_title" />
+		        
+		        <TextView
+		            android:id="@+id/tv_rt_mine_favorates_count"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:gravity="center"
+		            android:layout_marginRight="@dimen/marginx2"
+		            android:text="(0)"
+		            android:textColor="@color/red"/>
+		        
+		        <ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:background="@drawable/icon_reture2"/>
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout android:id="@+id/tv_rt_mine_helpcenter"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"
+		        android:padding="@dimen/marginx2"
+		        android:background="#ffffff">
+		        
+		        <TextView
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:drawableLeft="@drawable/icon_bzzx"
+		            android:gravity="center_vertical|left"
+		            android:drawablePadding="@dimen/margin"
+		            android:text="@string/rt_text012"
+		            android:textColor="@color/textColor_rt_toolbar_title" />
+		        
+		        <TextView
+		            android:id="@+id/tv_rt_mine_helpcenter_count"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:gravity="center"
+		            android:textColor="@color/red"/>
+		        
+		        <ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:background="@drawable/icon_reture2"/>
+		        
+		    </LinearLayout>
+		    
+		    <LinearLayout android:id="@+id/tv_rt_mine_customerservice"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:orientation="horizontal"
+		        android:padding="@dimen/marginx2"
+		        android:background="#ffffff">
+		        
+		        <TextView
+		            android:layout_width="match_parent"
+		            android:layout_height="wrap_content"
+		            android:layout_weight="1"
+		            android:drawableLeft="@drawable/icon_lxkf"
+		            android:gravity="center_vertical|left"
+		            android:drawablePadding="@dimen/margin"
+		            android:text="@string/rt_text013"
+		            android:textColor="@color/textColor_rt_toolbar_title" />
+		        
+		        <TextView
+		            android:id="@+id/tv_rt_mine_customerservice_count"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:gravity="center"
+		            android:textColor="@color/red"/>
+		        
+		        <ImageView
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:background="@drawable/icon_reture2"/>
+		        
+		    </LinearLayout>
+		    
+		</LinearLayout>
+	
+    </LinearLayout>
+    
+</LinearLayout>

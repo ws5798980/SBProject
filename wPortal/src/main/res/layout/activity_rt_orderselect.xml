@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="#f2f2f2">
+
+    <include layout="@layout/toolbar_rt_base4" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_eat_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:orientation="horizontal" 
+            android:background="#ffffff"
+            android:layout_marginTop="1dip"
+            android:padding="@dimen/marginx2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/rt_text014" 
+                android:textColor="#333333"
+                android:textSize="@dimen/text_size_m" />
+
+            <TextView
+                android:id="@+id/tv_eat_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/rt_text015" 
+                android:textColor="#666666"
+                android:textSize="@dimen/text_size_m" 
+                android:gravity="center_vertical|right"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_eat_nop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:orientation="horizontal" 
+            android:background="#ffffff"
+            android:layout_marginTop="1dip"
+            android:paddingTop="@dimen/marginx2"
+            android:paddingBottom="@dimen/marginx2"
+            android:paddingLeft="@dimen/marginx2"
+           	android:paddingRight="@dimen/margin"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/rt_text016" 
+                android:textColor="#333333"
+                android:textSize="@dimen/text_size_m" />
+
+            <LinearLayout 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal"
+	            android:gravity="center">
+	            
+	            <LinearLayout android:id="@+id/minus_btn"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:paddingLeft="@dimen/margin"
+	                android:paddingRight="@dimen/marginx2">
+	                
+	                <ImageView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:background="@drawable/icon_jhh"/>
+	                
+	            </LinearLayout>
+	            
+	            <EditText android:id="@+id/tv_eat_nop"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:layout_marginLeft="@dimen/margin"
+		            android:layout_marginRight="@dimen/margin"
+		            android:text="0"
+		            android:textColor="#666666"
+		            android:textSize="@dimen/text_size_m" 
+		           	android:inputType="number"
+		           	android:nextFocusDown="@+id/tv_eat_contactname"
+                	android:imeOptions="actionNext"
+                	android:gravity="center"
+                	android:background="@null"/>
+	            
+	            <LinearLayout android:id="@+id/plus_btn"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:paddingLeft="@dimen/marginx2"
+	                android:paddingRight="@dimen/margin">
+	                
+	                <ImageView
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:background="@drawable/icon_jh"/>
+	                
+	            </LinearLayout>
+	            
+	        </LinearLayout>
+            
+<!--             <EditText
+                android:id="@+id/tv_eat_nop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="填写就餐人数" 
+                android:textColor="#666666"
+                android:textSize="@dimen/text_size_m" 
+                android:inputType="number"
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:singleLine="true"
+               	android:maxLines="20"
+                android:nextFocusDown="@+id/tv_eat_contactname"
+                android:imeOptions="actionNext"/> -->
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_eat_needbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:orientation="horizontal" 
+            android:background="#ffffff"
+            android:layout_marginTop="1dip"
+            android:padding="@dimen/marginx2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/rt_text017" 
+                android:textColor="#333333"
+                android:textSize="@dimen/text_size_m" />
+
+            <CheckBox
+                android:id="@+id/cb_eat_needbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/icon_rt_checkbox_meterial"
+                android:checked="false" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_eat_contactname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:orientation="horizontal" 
+            android:background="#ffffff"
+            android:layout_marginTop="1dip"
+            android:padding="@dimen/marginx2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/rt_text018" 
+                android:textColor="#333333"
+                android:textSize="@dimen/text_size_m" />
+
+            <EditText
+                android:id="@+id/tv_eat_contactname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/rt_text019" 
+                android:textColor="#666666"
+                android:textSize="@dimen/text_size_m" 
+                android:background="@null"
+                android:gravity="center_vertical|right"
+                android:singleLine="true"
+               	android:maxLines="20"
+                android:nextFocusDown="@+id/tv_eat_contactphone"
+                android:imeOptions="actionNext"/>
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/ll_eat_contactphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:orientation="horizontal" 
+            android:background="#ffffff"
+            android:layout_marginTop="1dip"
+            android:padding="@dimen/marginx2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/rt_text020" 
+                android:textColor="#333333"
+                android:textSize="@dimen/text_size_m" />
+
+            <EditText
+                android:id="@+id/tv_eat_contactphone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="@string/rt_text021" 
+                android:textColor="#666666"
+                android:textSize="@dimen/text_size_m"
+                android:background="@null" 
+                android:gravity="center_vertical|right"
+               	android:inputType="phone"
+               	android:singleLine="true"
+               	android:maxLines="12"
+               	android:nextFocusDown="@+id/et_eat_remark"
+                android:imeOptions="actionNext"/>
+        </LinearLayout>
+        
+        <LinearLayout 
+            android:id="@+id/ll_eat_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#ffffff"
+            android:layout_marginTop="1dip"
+            android:padding="@dimen/marginx2">
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/rt_text022"
+                android:textColor="#333333"
+                android:textSize="@dimen/text_size_m" />
+       		
+            <EditText
+                android:id="@+id/et_eat_remark"
+                android:layout_width="match_parent"
+            	android:layout_height="wrap_content"
+            	android:singleLine="false"
+                android:textColor="#666666"
+                android:textSize="@dimen/text_size_m" 
+                android:background="@null"
+                android:gravity="center_vertical|right"/>
+            
+        </LinearLayout>
+    </LinearLayout>
+	
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2" >
+
+        <RelativeLayout
+            android:id="@+id/rl_appointment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true" 
+            android:background="#ffffff"
+            android:padding="@dimen/marginx2"
+           	android:layout_marginRight="1dip">
+
+            <TextView android:id="@+id/tv_appointment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rt_text023" 
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/icon_yu"
+                android:drawablePadding="@dimen/margin"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_ordernow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true" 
+            android:background="#ffffff"
+            android:padding="@dimen/marginx2"
+            android:layout_marginLeft="1dip">
+
+            <TextView android:id="@+id/tv_ordernow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rt_text024" 
+                android:layout_centerInParent="true"
+                android:drawableLeft="@drawable/icon_dc"
+                android:drawablePadding="@dimen/margin"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

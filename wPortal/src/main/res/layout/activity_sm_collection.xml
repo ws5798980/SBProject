@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg" >
+
+    <RelativeLayout
+        android:id="@+id/navigation_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:padding="@dimen/marginx2" >
+
+        <LinearLayout
+            android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/margin"
+            android:paddingRight="@dimen/marginx4"
+            android:paddingTop="@dimen/margin" >
+
+            <ImageView
+                android:id="@+id/branch_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_back" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/sm_text_my_collection"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size_b" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/img_logo"
+            android:visibility="invisible" />
+    </RelativeLayout>
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/buttom_area"
+        android:layout_below="@+id/navigation_area"
+        android:orientation="vertical"
+        >
+        <include layout="@layout/base_nodata"
+            android:visibility="gone"/>
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/xlistView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        
+        android:divider="#f2f2f2"
+        android:dividerHeight="@dimen/marginx2" 
+        android:scrollbars="none"
+        android:overScrollMode="never"
+    	app:ptrShowIndicator="false">
+             </com.handmark.pulltorefresh.library.PullToRefreshListView>
+    </LinearLayout>
+    
+   
+
+    <RelativeLayout
+        android:id="@+id/buttom_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/margin"
+        android:paddingLeft="@dimen/marginx2"
+        android:paddingRight="@dimen/margin"
+        android:paddingTop="@dimen/margin" >
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:button="@null"
+            android:drawableLeft="@drawable/checkbox_bg"
+            android:drawablePadding="@dimen/margin"
+            android:paddingLeft="0dp"
+            android:text="@string/sm_text_to_select" 
+            android:textSize="@dimen/text_size_m"/>
+
+		<TextView
+            android:id="@+id/text_shoppingcart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:drawablePadding="@dimen/margin"
+            android:drawableTop="@drawable/icon_shoppingcart_n"
+            android:text="장바구니 담기"
+            android:textSize="@dimen/text_size_m"
+            android:layout_centerVertical="true"/>
+        
+        <TextView
+            android:id="@+id/text_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/marginx2"
+            android:layout_toLeftOf="@+id/text_shoppingcart"
+            android:drawablePadding="@dimen/margin"
+            android:drawableTop="@drawable/shanchu"
+            android:text="@string/sm_text_delete" 
+            android:textSize="@dimen/text_size_m"
+            android:layout_centerVertical="true"/>
+        
+    </RelativeLayout>
+
+</RelativeLayout>

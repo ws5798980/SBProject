@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:background="#ffffff">
+
+    <com.rs.mobile.common.view.WImageView
+        android:id="@+id/cviewpager_item_freimg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        android:visibility="visible"
+        fresco:viewAspectRatio="1.8" >
+    </com.rs.mobile.common.view.WImageView>
+
+    <com.rs.mobile.common.view.WImageView
+        android:id="@+id/cviewpager_item_freimg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        fresco:viewAspectRatio="1.8" >
+    </com.rs.mobile.common.view.WImageView>
+
+</RelativeLayout>

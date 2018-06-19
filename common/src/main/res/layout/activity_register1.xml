@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/membership_bg">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="48.0dip"
+        android:elevation="1dp">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/icon_prev"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="title"
+            android:textColor="#000000"
+            android:textSize="18.0sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#ffffff"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="45dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="휴대전화"
+                android:textSize="12sp"
+                android:textColor="#444444"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <com.rs.mobile.common.view.ClearEditText
+                    android:id="@+id/et_tel"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edit_bg"
+                    android:paddingLeft="10dp"
+                    android:textSize="12sp"
+                    android:hint="아이디(휴대폰번호)를 입력하세요"
+                    android:textColor="#999999"
+                    android:inputType="number"
+                    android:digits="1234567890"
+                    android:maxLength="11"
+                    android:singleLine="true"/>
+                <ImageView
+                    android:id="@+id/iv_tel_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_check_green"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_code"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="인증번호"
+                android:textSize="12sp"
+                android:textColor="#444444"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <com.rs.mobile.common.view.ClearEditText
+                    android:id="@+id/et_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="35dp"
+                    android:background="@drawable/edit_bg"
+                    android:paddingLeft="10dp"
+                    android:textSize="12sp"
+                    android:hint="인증번호를 입력하세요"
+                    android:textColor="#999999"
+                    android:digits="1234567890"
+                    android:maxLength="4"
+                    android:singleLine="true"/>
+                <ImageView
+                    android:id="@+id/iv_code_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/input_check_green"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:visibility="gone"/>
+                <!--<TextView-->
+                <!--android:id="@+id/timer"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerVertical="true"-->
+                <!--android:layout_alignParentEnd="true"-->
+                <!--android:layout_marginEnd="10dp"-->
+                <!--android:text="60s"-->
+                <!--android:textSize="14sp"-->
+                <!--android:textColor="#ff0000"/>-->
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <com.rs.mobile.common.view.StateButton
+            android:id="@+id/btn_get_code"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="인증번호받기"
+            android:textColor="#ffffff"
+            app:normalBackgroundColor="#1e972a"
+            app:pressedBackgroundColor="#1e972a"
+            app:unableBackgroundColor="#bbbbbb"/>
+
+        <com.rs.mobile.common.view.StateButton
+            android:id="@+id/btn_next"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:text="다음"
+            android:textColor="#ffffff"
+            app:normalBackgroundColor="#1e972a"
+            app:pressedBackgroundColor="#1e972a"
+            app:unableBackgroundColor="#bbbbbb"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/btn_reget_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="30dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="인증번호 다시받기"
+            android:textSize="12sp"
+            android:visibility="visible"/>
+    </LinearLayout>
+</LinearLayout>

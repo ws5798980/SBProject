@@ -1,0 +1,37 @@
+<!-- 通用布局  工具栏  1 -->
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/common_toolbar_radiogroup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:orientation="horizontal"
+    
+    android:gravity="center_vertical"
+    android:background="#ffffff" >
+    <RadioButton
+        android:id="@+id/common_toolbar_ht_hotel"
+        android:checked="true"
+        style="@style/Common_Toolbar_RadioButton"
+		android:drawableTop="@drawable/toolbar_ht_hotel"
+		android:text="@string/ht_text_hotel"
+		android:textColor="@color/textcolor_ht_tabhost_tabspec_selected"
+		android:paddingLeft="0dp"/>
+    
+    
+    
+    <RadioButton
+        android:id="@+id/common_toolbar_ht_order"
+        style="@style/Common_Toolbar_RadioButton"
+		android:drawableTop="@drawable/toolbar_ht_order"
+		android:textColor="@color/textcolor_ht_tabhost_tabspec_normal"
+		android:text="@string/ht_text_order"
+		android:paddingLeft="0dp"/>
+    <RadioButton
+        android:id="@+id/common_toolbar_ht_mine"
+        style="@style/Common_Toolbar_RadioButton"
+		android:drawableTop="@drawable/toolbar_ht_mine"
+		android:textColor="@color/textcolor_ht_tabhost_tabspec_normal"
+		android:text="@string/ht_text_mine"
+		android:paddingLeft="0dp"/>
+</RadioGroup>

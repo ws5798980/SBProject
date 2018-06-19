@@ -1,0 +1,356 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2" >
+
+    <RelativeLayout
+        android:id="@+id/rela_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/marginx2"
+        android:paddingTop="@dimen/marginx2" >
+
+        <!--
+        <LinearLayout android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/marginx4"
+            android:paddingTop="@dimen/margin"
+            android:paddingBottom="@dimen/margin"
+            android:orientation="horizontal"
+            android:gravity="center">
+            
+			<ImageView
+	            android:id="@+id/branch_btn"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/icon_return_001" />            
+            
+        </LinearLayout>
+        -->
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/img_logo"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/kr_movie_title"
+            android:textColor="#333333"
+            android:textSize="@dimen/text_size_b" />
+    </RelativeLayout>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rela_top"
+        android:background="#f2f2f2"
+        android:overScrollMode="never"
+        ptr:ptrAnimationStyle="flip"
+        ptr:ptrMode="both"
+        ptr:ptrShowIndicator="false" >
+
+        <!--
+             <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" 
+            android:background="#f2f2f2">
+        -->
+
+        <RelativeLayout
+            android:id="@+id/list_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#f2f2f2" >
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:background="#ffffff" />
+
+            <LinearLayout
+                android:id="@+id/category_area"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view_pager"
+                android:layout_marginTop="1dip"
+                android:background="#ffffff"
+                android:orientation="horizontal" >
+
+                <com.rs.mobile.wportal.view.kr.CatogoryButtonView
+                    android:id="@+id/live_movie_btn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+
+                <com.rs.mobile.wportal.view.kr.CatogoryButtonView
+                    android:id="@+id/expected_movie_btn"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/seperator"
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:layout_below="@id/category_area"
+                android:background="#f2f2f2" />
+
+            <LinearLayout
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/seperator"
+                android:background="#ffffff"
+                android:orientation="vertical" />
+        </RelativeLayout>
+        <!--
+	        <LinearLayout android:id="@+id/detail_layout"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent" 
+	            android:background="#f2f2f2"
+	            android:orientation="vertical"
+	            android:visibility="gone">
+	            
+	        	<RelativeLayout android:id="@+id/movie_info_layout"
+	        	    android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:padding="@dimen/marginx2"
+	                android:background="#ffffff">
+	        	    
+	        	    <WImageView
+	        	        android:id="@+id/movie_image_view"
+	        	        android:layout_width="wrap_content"
+	        	        android:layout_height="wrap_content"
+	        	        fresco:roundedCornerRadius="5dp"
+	        	        fresco:viewAspectRatio="1.3"
+	        	        android:layout_weight="1"
+	        	        android:layout_marginRight="@dimen/marginx2"/>
+	        	    
+	        	    <TextView android:id="@+id/movie_title_text_view"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textColor="#ffffff"
+				        android:textSize="@dimen/text_size_b"
+				       	android:maxLines="1"
+				       	android:ellipsize="end"
+				       	android:layout_alignTop="@id/movie_image_view"
+				       	android:layout_toRightOf="@id/movie_image_view"/>  
+				       	
+	        	    <LinearLayout
+					    android:layout_width="match_parent"
+					    android:layout_height="wrap_content"
+					    android:layout_below="@id/movie_title_text_view"
+					    android:layout_toRightOf="@id/movie_image_view"
+					    android:orientation="horizontal"
+					    android:gravity="center_vertical"
+					    android:layout_marginTop="@dimen/margin">
+			
+					    <RatingBar android:id="@+id/rationg_bar"
+					        style="@style/movie_rating_bar"
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:rating="0"
+					        android:stepSize="0.5"
+					        android:numStars="5"/>
+					    
+					    <TextView android:id="@+id/point_text_view"
+					        android:layout_width="fill_parent"
+					        android:layout_height="wrap_content"
+					        android:layout_weight="1"
+					        android:textColor="#fea63e"
+					        android:textSize="@dimen/text_size_m"
+					        android:layout_marginLeft="@dimen/margin"/>
+					    
+					</LinearLayout>
+					
+	        	    <TextView android:id="@+id/info_text_view_01"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textColor="#ffffff"
+				        android:textSize="@dimen/text_size_m"
+				       	android:maxLines="1"
+				       	android:ellipsize="end"
+				       	android:layout_alignBottom="@id/movie_image_view"
+				       	android:layout_toRightOf="@id/movie_image_view"/>  
+				       	
+	        	    <TextView android:id="@+id/info_text_view_02"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textColor="#ffffff"
+				        android:textSize="@dimen/text_size_m"
+				       	android:maxLines="1"
+				       	android:ellipsize="end"
+				       	android:layout_above="@id/info_text_view_01"
+				       	android:layout_toRightOf="@id/movie_image_view"
+				       	android:layout_marginBottom="@dimen/margin"/> 
+				       	
+	        	    <TextView android:id="@+id/info_text_view_03"
+				        android:layout_width="wrap_content"
+				        android:layout_height="wrap_content"
+				        android:textColor="#ffffff"
+				        android:textSize="@dimen/text_size_m"
+				       	android:maxLines="1"
+				       	android:ellipsize="end"
+				       	android:layout_above="@id/info_text_view_02"
+				       	android:layout_toRightOf="@id/movie_image_view"
+				       	android:layout_marginBottom="@dimen/margin"/> 
+	        	    
+	        	</RelativeLayout> 
+	        	
+	        	<LinearLayout 
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical"
+			        android:gravity="left|top"
+			        android:layout_marginTop="@dimen/marginx2"
+			        android:padding="@dimen/marginx2"
+			       	android:background="#ffffff">
+			        
+			        <LinearLayout 
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:orientation="horizontal"
+			            android:gravity="left|center_vertical">
+			            
+			            <View 
+			                android:layout_width="3dip"
+			                android:layout_height="@dimen/marginx3"
+			                android:background="#fca73d"/>
+			            
+			            <TextView
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:textColor="#333333"
+					        android:textSize="@dimen/text_size_m"
+					        android:layout_marginLeft="@dimen/margin"
+					       	android:gravity="left|center_vertical"
+					       	android:text="@string/kr_movie_intro"/>
+			            
+			        </LinearLayout>
+			        
+			        <TextView android:id="@+id/summary_text_view"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:textColor="#333333"
+				        android:textSize="@dimen/text_size_m"
+				        android:layout_marginTop="@dimen/marginx2"
+				        android:layout_marginBottom="1dip"
+				        android:lineSpacingExtra="@dimen/margin"
+				       	android:gravity="left|top"
+				       	android:singleLine="false"/>
+			        
+			        <TextView android:id="@+id/more_summary_btn"
+				        android:layout_width="fill_parent"
+				        android:layout_height="wrap_content"
+				        android:textColor="#fca73d"
+				        android:textSize="@dimen/text_size_m"
+				        android:padding="@dimen/marginx2"
+				       	android:gravity="center"
+				       	android:text="@string/more"/>
+			        
+			    </LinearLayout> 
+			    
+	        	<LinearLayout 
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical"
+			        android:gravity="left|top"
+			        android:layout_marginTop="@dimen/marginx2"
+			        android:padding="@dimen/marginx2"
+			       	android:background="#ffffff">
+			        
+			        <LinearLayout 
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:orientation="horizontal"
+			            android:gravity="left|center_vertical">
+			            
+			            <View 
+			                android:layout_width="3dip"
+			                android:layout_height="@dimen/marginx3"
+			                android:background="#fca73d"/>
+			            
+			            <TextView
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:textColor="#333333"
+					        android:textSize="@dimen/text_size_m"
+					        android:layout_marginLeft="@dimen/margin"
+					       	android:gravity="left|center_vertical"
+					       	android:text="@string/kr_movie_production_team"/>
+			            
+			        </LinearLayout>
+	
+		        	<HorizontalListView
+		                android:id="@+id/hscrollview"
+		                android:layout_width="match_parent"
+		                android:layout_height="wrap_content"
+		                android:background="#ffffff"
+		                android:layout_marginTop="@dimen/marginx2"/>
+			        
+				</LinearLayout>
+				
+	        	<LinearLayout 
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:orientation="vertical"
+			        android:gravity="left|top"
+			        android:layout_marginTop="@dimen/marginx2"
+			        android:padding="@dimen/marginx2"
+			       	android:background="#ffffff">
+			        
+			        <LinearLayout 
+			            android:layout_width="wrap_content"
+			            android:layout_height="wrap_content"
+			            android:orientation="horizontal"
+			            android:gravity="left|center_vertical">
+			            
+			            <View 
+			                android:layout_width="3dip"
+			                android:layout_height="@dimen/marginx3"
+			                android:background="#fca73d"/>
+			            
+			            <TextView
+					        android:layout_width="wrap_content"
+					        android:layout_height="wrap_content"
+					        android:textColor="#333333"
+					        android:textSize="@dimen/text_size_m"
+					        android:layout_marginLeft="@dimen/margin"
+					       	android:gravity="left|center_vertical"
+					       	android:text="@string/kr_movie_appraisal"/>
+			            
+			        </LinearLayout>
+	
+		        	<LinearLayout android:id="@+id/detail_list_view"
+		                android:layout_width="match_parent"
+		                android:layout_height="match_parent"
+		                android:background="#ffffff"
+		                android:layout_marginTop="@dimen/marginx2"
+		                android:orientation="vertical"
+		                android:gravity="top"/>
+			        
+				</LinearLayout>
+				
+	        </LinearLayout>   
+	        
+		</RelativeLayout>
+        -->
+
+    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+
+</RelativeLayout>

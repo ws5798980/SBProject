@@ -1,0 +1,171 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f2f2f2" >
+
+    <RelativeLayout
+        android:id="@+id/navigation_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="#ffffff"
+        android:padding="@dimen/marginx2" >
+
+        <LinearLayout android:id="@+id/close_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/marginx4"
+            android:paddingTop="@dimen/margin"
+            android:paddingBottom="@dimen/margin"
+            android:orientation="horizontal"
+            android:gravity="center">
+            
+			<ImageView
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/icon_back" />            
+            
+        </LinearLayout>
+        
+        <TextView android:id="@+id/title_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_b"
+            android:textColor="#000000"
+            android:layout_centerInParent="true"
+           	android:text="@string/lc_title"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/img_logo" 
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
+    
+    <LinearLayout android:id="@+id/page_02_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/navigation_area"
+        android:orientation="horizontal"
+        android:layout_marginTop="1dip"
+        android:background="#f2f2f2"
+        android:visibility="gone">
+        
+        <LinearLayout 
+            android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="1"
+	        android:orientation="vertical"
+	        android:background="#ffffff">
+            
+            <TextView android:id="@+id/current_city"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:gravity="center_vertical|left"
+		        android:padding="@dimen/marginx2"
+		        android:singleLine="true"
+		        android:ellipsize="end"
+		        android:textSize="@dimen/text_size_m"
+		        android:textColor="#000000"/>
+            
+            <ListView android:id="@+id/borough_list_view"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:divider="#ffffff"
+                android:scrollbars="none"/>
+            
+        </LinearLayout>
+        
+        <ListView android:id="@+id/affiliste_list_view"
+	        android:layout_width="fill_parent"
+	        android:layout_height="fill_parent"
+	        android:layout_weight="0.7"
+	        android:divider="#f2f2f2"
+	        android:scrollbars="none"/>
+        
+    </LinearLayout>
+    
+    <LinearLayout android:id="@+id/page_01_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/navigation_area"
+        android:orientation="vertical"
+        android:layout_marginTop="1dip"
+        android:background="#f2f2f2">
+        
+		<LinearLayout 
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:gravity="center_vertical"
+		    android:orientation="horizontal"
+		    android:background="#ffffff">
+		    
+		    <TextView android:id="@+id/current_location"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:gravity="center_vertical|left"
+		        android:padding="@dimen/marginx2"
+		        android:singleLine="true"
+		        android:ellipsize="end"
+		        android:text="@string/lc_current_location"
+		        android:textSize="@dimen/text_size_m"
+		        android:textColor="#000000"/>
+		    
+		    <TextView android:id="@+id/next_page"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:gravity="center"
+		        android:padding="@dimen/marginx3"
+		       	android:text="@string/lc_next_page"
+		        android:textSize="@dimen/text_size_m"
+		        android:textColor="#999999"/>
+		    
+		</LinearLayout>
+		
+		<TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_vertical|left"
+	        android:layout_margin="@dimen/marginx2"
+	        android:text="@string/lc_current_city"
+	        android:textSize="@dimen/text_size_m"
+	        android:textColor="#333333"/>
+		
+		<TextView android:id="@+id/current_city_text_view"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:padding="@dimen/marginx2"
+	        android:layout_marginLeft="@dimen/marginx2"
+	        android:text="@string/lc_current_city"
+	        android:textSize="@dimen/text_size_m"
+	        android:textColor="#333333"
+	        android:background="@drawable/bg_lc_white"/>
+        
+		<TextView
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_vertical|left"
+	        android:layout_margin="@dimen/marginx2"
+	        android:text="@string/lc_import_city"
+	        android:textSize="@dimen/text_size_m"
+	        android:textColor="#333333"/>
+		
+		<GridView android:id="@+id/grid_view"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:numColumns="3"
+		    android:layout_marginLeft="@dimen/marginx2"
+		    android:layout_marginRight="@dimen/marginx2"
+		    android:layout_marginBottom="@dimen/marginx2"
+		    android:horizontalSpacing="@dimen/margin"
+	        android:verticalSpacing ="@dimen/margin"/>
+		
+    </LinearLayout>
+
+</RelativeLayout>

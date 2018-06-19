@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:padding="@dimen/marginx2"
+    android:background="@color/white">
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/textcolor_ht_333"
+        android:textSize="@dimen/text_size_m"
+        android:text="ddddd"/>
+      <RatingBar
+            android:id="@+id/ratingbar"
+            style="@style/MyRatingBarHt1"
+            android:layout_toRightOf="@+id/text_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/marginx2" 
+            android:numStars="5"
+            android:isIndicator="false"/>
+      <TextView android:id="@+id/text_time"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@color/textcolor_ht_666"
+          android:textSize="@dimen/text_size_ms"
+          android:layout_alignParentRight="true"/>
+</RelativeLayout>    
+ <TextView android:id="@+id/text_content"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:textSize="@dimen/text_size_m"
+     android:textColor="@color/textcolor_ht_666"
+     android:layout_marginTop="@dimen/marginx2"
+     />
+ <GridView android:id="@+id/gv"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:numColumns="3"
+     android:verticalSpacing="5dp"
+     android:horizontalSpacing="5dp"
+     ></GridView>
+ <RelativeLayout android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="@dimen/marginx2"
+     >
+     <TextView android:id="@+id/text_type"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textColor="@color/textcolor_ht_666"
+         android:textSize="@dimen/text_size_ms"/>
+     <TextView android:id="@+id/text_reply"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_alignParentRight="true"
+         android:drawableRight="@drawable/ht_icon_viewreply_01"
+         android:drawablePadding="3dp"
+         
+         android:text="@string/ht_text_reply1"
+         android:textColor="@color/textcolor_ht_tabhost_tabspec_selected"
+         android:textSize="@dimen/text_size_m"/>
+ </RelativeLayout>
+ <TextView android:id="@+id/text_reply_content"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:textSize="@dimen/text_size_ms"
+     android:padding="@dimen/margin"
+     android:layout_marginTop="@dimen/marginx2"
+     android:textColor="@color/textcolor_ht_666"
+     android:background="@drawable/goods_format_n"/>
+</LinearLayout>

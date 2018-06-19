@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@android:color/white"
+   	android:padding="@dimen/margin">
+
+	<RelativeLayout android:id="@+id/content_area"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:layout_weight="0.8">
+
+	    <TextView android:id="@+id/title_text_view"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:textColor="@android:color/black"
+	        android:textSize="@dimen/text_size_b"
+	        android:layout_alignParentTop="true"
+	       	android:lineSpacingExtra="@dimen/margin"
+	       	android:maxLines="2"
+	       	android:ellipsize="end"/>
+	    
+	    <TextView android:id="@+id/content_text_view"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/title_text_view"
+	        android:textColor="@android:color/darker_gray"
+	        android:textSize="@dimen/text_size_ms"
+	        android:layout_marginTop="@dimen/margin"
+	        android:lineSpacingExtra="@dimen/margin"
+	        android:maxLines="1"
+	        android:ellipsize="end"/>
+	    
+	    <LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_alignParentBottom="true"
+		    android:orientation="horizontal"
+		    android:gravity="center_vertical">
+	
+		    <TextView android:id="@+id/date_text_view"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:textColor="@android:color/darker_gray"
+		        android:textSize="@dimen/text_size_m"
+		        android:text="1111.11.11"
+		        android:gravity="left"/>
+		    
+		    <ImageView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:background="@drawable/icon_comment_001"/>
+		    
+		    <TextView android:id="@+id/count_text_view"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_weight="1"
+		        android:textColor="@android:color/darker_gray"
+		        android:textSize="@dimen/text_size_m"
+		        android:text="999"
+		        android:gravity="left"
+		        android:layout_marginLeft="@dimen/margin"/>
+	
+		</LinearLayout>
+
+	</RelativeLayout>
+	
+	<com.rs.mobile.common.view.WImageView
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        fresco:roundedCornerRadius="5dp"
+        fresco:viewAspectRatio="1.5" 
+        android:layout_weight="1"
+        android:layout_margin="@dimen/margin"/>
+    
+</LinearLayout>

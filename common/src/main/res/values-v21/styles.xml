@@ -1,0 +1,23 @@
+<resources>
+
+    <!--
+        Base application theme for API 21+. This theme completely replaces
+        AppBaseTheme from BOTH res/values/styles.xml and
+        res/values-v11/styles.xml on API 21+ devices.
+    -->
+    <!-- <style name="AppBaseTheme" parent="Theme.AppCompat.Light.DarkActionBar"> -->
+    <style name="AppBaseTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- API 21 theme customizations can go here. -->
+    </style>
+
+    <style name="RtTheme" parent="AppTheme">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@android:color/white</item> <!-- white titlebar background -->
+        <item name="android:windowBackground">@color/backgroundColor_rt_window</item> <!-- gray window background -->
+        <item name="android:textColorPrimary">@color/textColor_rt_toolbar_title</item> <!-- darkgray title textcolor -->
+    </style>
+        <!-- x<item name="colorPrimaryDark">@android:color/white</item> --> <!-- white statusbar background --> 
+        <!-- 底部导航栏颜色，API21+才可以 -->
+       <!--   <item name="android:navigationBarColor">@android:color/white</item> -->
+
+</resources>

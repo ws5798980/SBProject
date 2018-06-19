@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+  <include layout="@layout/toolbar_ht_hotel_base"/>
+  <ScrollView android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:scrollbars="none">
+  <LinearLayout android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"> 
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="1dp"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="@dimen/marginx2">
+   <TextView android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textSize="@dimen/text_size_mb"
+       android:textColor="@color/black"
+       android:text="@string/ht_text_001"/>
+   <View android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:layout_marginTop="@dimen/marginx2"
+       android:background="@color/common_bg"
+       android:layout_marginBottom="@dimen/marginx2"/>
+   <LinearLayout android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center_vertical"
+       android:orientation="horizontal">
+     <TextView android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textColor="@color/textcolor_ht_666"
+         android:textSize="@dimen/text_size_m"
+         android:text="现金"
+         android:minEms="3"/>  
+      <TextView android:id="@+id/text_amout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@color/red"
+          android:textSize="@dimen/text_size_m"
+          android:layout_marginLeft="@dimen/margin"/>   
+   </LinearLayout>
+    <View android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:layout_marginTop="@dimen/marginx2"
+       android:background="@color/common_bg"
+       android:layout_marginBottom="@dimen/marginx2"/>
+     <LinearLayout android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center_vertical"
+       android:orientation="horizontal">
+     <TextView android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textColor="@color/textcolor_ht_666"
+         android:textSize="@dimen/text_size_m"
+         android:text="@string/ht_text_003"
+         android:minEms="3"/>  
+      <TextView android:id="@+id/text_money"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@color/black"
+          android:textSize="@dimen/text_size_m"
+          android:layout_marginLeft="@dimen/margin"/>   
+   </LinearLayout>
+</LinearLayout>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/marginx2"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="@dimen/marginx2">
+   <TextView android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textSize="@dimen/text_size_mb"
+       android:textColor="@color/black"
+       android:text="@string/ht_text_004"/>
+   <View android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:layout_marginTop="@dimen/marginx2"
+       android:background="@color/common_bg"
+       android:layout_marginBottom="@dimen/marginx2"/>
+   <LinearLayout android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center_vertical"
+       android:orientation="horizontal">
+     <TextView android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textColor="@color/textcolor_ht_666"
+         android:textSize="@dimen/text_size_m"
+         android:text="@string/ht_text_005"/>  
+      <TextView 
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textColor="@color/red"
+          android:textSize="@dimen/text_size_m"
+          android:layout_marginLeft="@dimen/margin"
+          android:text="@string/ht_text_006"/>   
+   </LinearLayout>
+   
+</LinearLayout>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/marginx2"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="@dimen/marginx2">
+   <TextView android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textSize="@dimen/text_size_mb"
+       android:textColor="@color/black"
+       android:text="@string/ht_text_007"/>
+   <View android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:layout_marginTop="@dimen/marginx2"
+       android:background="@color/common_bg"
+       android:layout_marginBottom="@dimen/marginx2"/>
+   <RadioGroup android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:checkedButton="@+id/checkedRb"
+       
+       android:id="@+id/rg">
+   <RadioButton android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:button="@null"
+       android:paddingLeft="0dp"
+       android:text="@string/ht_text_008"
+       android:textSize="@dimen/text_size_m"
+       android:textColor="@color/textcolor_ht_666"
+       android:drawableRight="@drawable/ht_reason_select"
+       android:id="@+id/checkedRb"
+       />
+   <View android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:layout_marginTop="@dimen/marginx2"
+       android:background="@color/common_bg"
+       android:layout_marginBottom="@dimen/marginx2"/>
+   <RadioButton 
+       
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:button="@null"
+       android:paddingLeft="0dp"
+       android:text="@string/ht_text_009"
+       
+       android:textSize="@dimen/text_size_m"
+       android:textColor="@color/textcolor_ht_666"
+       android:drawableRight="@drawable/ht_reason_select"
+       />
+   <View android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:layout_marginTop="@dimen/marginx2"
+       android:background="@color/common_bg"
+       android:layout_marginBottom="@dimen/marginx2"/>
+   <RadioButton 
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:button="@null"
+       android:paddingLeft="0dp"
+       android:text="@string/ht_text_010"
+       
+       android:textSize="@dimen/text_size_m"
+       android:textColor="@color/textcolor_ht_666"
+       android:drawableRight="@drawable/ht_reason_select"
+       />
+   <View android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:layout_marginTop="@dimen/marginx2"
+       android:background="@color/common_bg"
+       android:layout_marginBottom="@dimen/marginx2"/>
+   <RadioButton 
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:button="@null"
+       android:paddingLeft="0dp"
+       android:text="@string/ht_text_011"
+       
+       android:textSize="@dimen/text_size_m"
+       android:textColor="@color/textcolor_ht_666"
+       android:drawableRight="@drawable/ht_reason_select"
+       />
+   <View android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:layout_marginTop="@dimen/marginx2"
+       android:background="@color/common_bg"
+       android:layout_marginBottom="@dimen/marginx2"/>
+   <RadioButton 
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:button="@null"
+       android:paddingLeft="0dp"
+       android:text="@string/ht_text_012"
+       
+       android:textSize="@dimen/text_size_m"
+       android:textColor="@color/textcolor_ht_666"
+       android:drawableRight="@drawable/ht_reason_select"
+       />
+   <View android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:layout_marginTop="@dimen/marginx2"
+       android:background="@color/common_bg"
+       android:layout_marginBottom="@dimen/marginx2"/>
+   <RadioButton 
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:button="@null"
+       android:paddingLeft="0dp"
+       android:text="@string/ht_text_013"
+       android:layout_marginTop="@dimen/marginx2"
+       android:textSize="@dimen/text_size_m"
+       android:textColor="@color/textcolor_ht_666"
+       android:drawableRight="@drawable/ht_reason_select"
+       />
+   </RadioGroup>
+ </LinearLayout>
+ <LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/marginx2"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="@dimen/marginx2">
+   <TextView android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:textSize="@dimen/text_size_mb"
+       android:textColor="@color/black"
+       android:text="@string/ht_text_014"/>
+   <EditText
+                        android:id="@+id/text_send_reason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/marginx2"
+                        android:background="@drawable/bg_black_stroke_solid_white_cor_2"
+                        android:textSize="@dimen/text_size_m"
+                        android:gravity="left|top"
+                        android:minLines="5"
+                        android:padding="@dimen/marginx2" />
+   
+   
+   
+</LinearLayout>
+<TextView android:id="@+id/text_cancel"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:text="@string/ht_text_015"
+    android:textColor="@color/red"
+    android:textSize="@dimen/text_size_m"
+    android:gravity="center"
+    android:padding="@dimen/marginx2"/>
+ </LinearLayout> 
+ </ScrollView>
+</LinearLayout>

@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:focusable="true"
+    android:focusableInTouchMode="true" >
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_rt_base1" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/text_commit"
+        android:layout_below="@+id/include"
+        android:layout_marginTop="1dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2" >
+
+                <TextView
+                    android:id="@+id/textview_001"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/rt_text002"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_ms" />
+
+                <RatingBar
+                    android:id="@+id/rating_score"
+                    style="@style/RatingBar_RT_Evaluate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx3"
+                    android:layout_toRightOf="@+id/textview_001"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:stepSize="1" />
+
+                <TextView
+                    android:id="@+id/text_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_ms" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2" >
+
+                <TextView
+                    android:id="@+id/textview_002"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/rt_text003"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_ms" />
+
+                <RatingBar
+                    android:id="@+id/rating_001"
+                    style="@style/RatingBar_RT_Evaluate_Circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx3"
+                    android:layout_toRightOf="@+id/textview_002"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:stepSize="1" />
+
+                <TextView
+                    android:id="@+id/text_001"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_ms" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2" >
+
+                <TextView
+                    android:id="@+id/textview_003"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/rt_text004"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_ms" />
+
+                <RatingBar
+                    android:id="@+id/rating_002"
+                    style="@style/RatingBar_RT_Evaluate_Circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx3"
+                    android:layout_toRightOf="@+id/textview_003"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:stepSize="1" />
+
+                <TextView
+                    android:id="@+id/text_002"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_ms" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:padding="@dimen/marginx2" >
+
+                <TextView
+                    android:id="@+id/textview_004"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/rt_text005"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_ms" />
+
+                <RatingBar
+                    android:id="@+id/rating_003"
+                    style="@style/RatingBar_RT_Evaluate_Circle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/marginx3"
+                    android:layout_toRightOf="@+id/textview_004"
+                    android:numStars="5"
+                    android:rating="0"
+                    android:stepSize="1" />
+
+                <TextView
+                    android:id="@+id/text_003"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_ms" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:background="@color/white"
+                android:gravity="left"
+                android:hint="@string/rt_text006"
+                android:minLines="8"
+                android:padding="@dimen/marginx2"
+                android:textSize="@dimen/text_size_ms" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin"
+                android:background="@color/white" >
+
+                <LinearLayout
+                    android:id="@+id/linear_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left|center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/marginx2" >
+
+                    <!--
+                 <View android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+                    -->
+
+                    <ImageView
+                        android:id="@+id/imageview_add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/marginx2"
+                        android:layout_marginRight="@dimen/marginx2"
+                        android:layout_marginTop="@dimen/marginx2"
+                        android:src="@drawable/camera" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/text_commit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#21c043"
+        android:gravity="center"
+        android:padding="@dimen/marginx3"
+        android:text="@string/rt_text007"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_m" />
+
+    <RelativeLayout
+        android:id="@+id/RelativeLayout_camera_show001"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="#55000000"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:visibility="gone" >
+
+        <com.rs.mobile.common.view.BringPhotoView
+            android:id="@+id/bring_photo_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+</RelativeLayout>

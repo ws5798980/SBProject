@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout
+            android:id="@+id/navigation_area"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/white"
+            android:paddingBottom="@dimen/marginx2"
+            android:paddingTop="@dimen/marginx2" >
+
+            <LinearLayout
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin"
+                android:paddingLeft="@dimen/marginx2"
+                android:paddingRight="@dimen/marginx2"
+                android:paddingTop="@dimen/margin" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/icon_back" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/img_logo"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/return_good_money"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_b" />
+
+            <LinearLayout
+                android:id="@+id/btn_serch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/margin"
+                android:paddingLeft="@dimen/margin"
+                android:paddingRight="@dimen/marginx2"
+                android:paddingTop="@dimen/margin" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/point" />
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+             android:layout_below="@+id/navigation_area"
+            android:orientation="vertical">
+            <include layout="@layout/base_nodata"
+                android:visibility="gone"/>
+            <com.handmark.pulltorefresh.library.PullToRefreshListView
+      android:id="@+id/lv_return_goods_list"
+     
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:overScrollMode="never"
+      app:ptrShowIndicator="false"
+     />
+        </LinearLayout>
+        <LinearLayout 
+            android:id="@+id/popwindow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/rtgb001"
+            android:gravity="center"
+            android:visibility="gone"
+            android:layout_below="@+id/navigation_area"
+            android:layout_alignParentRight="true">
+        <TextView android:id="@+id/text_service"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="@dimen/marginx2"
+            android:gravity="center"
+            android:drawableLeft="@drawable/phonekf"
+            android:drawablePadding="@dimen/margin"
+            android:text="@string/call_service"/>
+        <View android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/common_bg"/>
+        <TextView android:id="@+id/text_rule"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:drawableLeft="@drawable/returnrule"
+            android:text="@string/sm_text_returnrule"
+            android:drawablePadding="@dimen/margin"/>        
+        </LinearLayout>
+</RelativeLayout>

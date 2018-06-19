@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android" >
+   
+    <!--黑白字体颜色切换 默认是黑 点击之后是白-->  
+    <item android:color="@color/black" android:state_checked="false" android:state_enabled="true"/>  
+    <item android:color="@color/mainblue001" android:state_checked="true" android:state_enabled="true"/>  
+     
+   
+
+</selector>

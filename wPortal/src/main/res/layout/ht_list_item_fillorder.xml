@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_m"
+            android:textColor="@color/textcolor_ht_666"
+            android:text="@string/ht_text_052"
+            android:id="@+id/roomNum"/>
+        <EditText
+            android:id="@+id/text_name" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_m"
+            android:textColor="@color/textcolor_ht_666"
+            android:textColorHint="@color/textcolor_ht_999" 
+            android:hint="@string/ht_text_065"
+            android:background="@null"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/marginx3"
+            android:gravity="right"/>
+    </RelativeLayout>
+    <View android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="@dimen/marginx2"
+        android:background="@color/common_bg"/>
+    <RelativeLayout android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/marginx2">
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_m"
+            android:textColor="@color/textcolor_ht_666"
+            android:text="@string/ht_text_066"
+            android:layout_centerVertical="true"/>
+        <EditText 
+            android:id="@+id/text_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_m"
+            android:textColor="@color/textcolor_ht_666"
+            android:gravity="right"
+           android:layout_toLeftOf="@+id/button_contact"
+            android:background="@null"
+            android:hint="@string/ht_text_067"
+            android:textColorHint="@color/textcolor_ht_999"
+            android:layout_centerVertical="true"/>
+        <ImageButton android:id="@+id/button_contact"
+            android:layout_width="wrap_content"
+             android:layout_alignParentRight="true"
+             android:layout_marginLeft="@dimen/marginx3"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ht_icon_contact"
+            android:padding="@dimen/marginx2"/>
+    </RelativeLayout>
+</LinearLayout>
+</LinearLayout>

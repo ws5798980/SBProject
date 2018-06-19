@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/marginx2" 
+    android:paddingBottom="@dimen/margin">
+    
+    <TextView
+        android:id="@+id/tv_labels_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_m"
+        android:textColor="@color/textColor_rt_toolbar_title"
+        android:paddingLeft="@dimen/marginx3"
+        android:paddingRight="@dimen/marginx3"
+        />
+    
+	<com.rs.mobile.wportal.view.rt.autolabel.AutoLabelUI
+        android:id="@+id/al_sellertype4_lables"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/marginx2"
+        android:layout_marginRight="@dimen/marginx2"
+        android:layout_marginTop="@dimen/margin"
+        app:labels_clickable="true"
+        app:label_margin="@dimen/marginx2"
+        app:text_size="@dimen/text_size_ms"
+        app:label_background_res="@drawable/bg_rt_sellertype4_label"
+        app:text_color="@drawable/textcolor_rt_sellertype4_label"
+        app:label_paddingLeft="@dimen/marginx4"
+        app:label_paddingRight="@dimen/marginx4"
+        app:label_paddingTop="8dp"
+        app:label_paddingBottom="8dp"
+        app:label_marginTop="4dp"
+        app:label_marginBottom="4dp"
+        />
+    
+</LinearLayout>

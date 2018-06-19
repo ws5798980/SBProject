@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:gravity="center_horizontal"
+    android:paddingLeft="@dimen/marginx2"
+    android:paddingRight="@dimen/marginx2"
+    android:paddingTop="@dimen/margin"
+    android:paddingBottom="@dimen/margin"
+    android:background="@color/white">
+    <TextView 
+        android:id="@+id/text_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/inputblack"
+        android:background="@drawable/bg_time_refund"
+        android:textSize="@dimen/text_size_m"
+        android:layout_marginBottom="@dimen/marginx2"
+        android:padding="3dp"
+        />
+   <LinearLayout 
+       android:id="@+id/line_bg"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:paddingLeft="@dimen/marginx3"
+       android:paddingRight="@dimen/marginx3"
+       android:paddingTop="@dimen/marginx2"
+       android:paddingBottom="@dimen/marginx2">
+       <TextView android:id="@+id/text_status"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/text_size_m"/>
+       <View android:layout_width="match_parent"
+           android:id="@+id/line_view"
+           android:layout_height="1dp"
+           android:layout_marginTop="@dimen/margin"
+           android:layout_marginBottom="@dimen/marginx2"/>
+       <TextView android:id="@+id/text_detail"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textSize="@dimen/text_size_m"/>
+       
+   </LinearLayout>
+</LinearLayout>

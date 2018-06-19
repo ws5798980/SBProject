@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@color/transparent55" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/ll_selltype4"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@drawable/divider_rt_common_horizontal_line"
+            android:orientation="vertical"
+            android:showDividers="middle"
+        	android:background="@android:color/white" >
+
+            <LinearLayout
+                android:id="@+id/ll_sellertype_takeout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/marginx2"
+                android:paddingLeft="@dimen/marginx3"
+                android:paddingRight="@dimen/marginx3"
+                android:paddingTop="@dimen/marginx2" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/rt_text065"
+                    android:textColor="@color/textColor_rt_toolbar_title"
+                    android:textSize="@dimen/text_size_m" />
+
+                <CheckBox
+                    android:id="@+id/cb_sellertype_takeout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/icon_rt_checkbox_meterial"
+                    android:checked="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sellertype_holyday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/marginx2"
+                android:paddingLeft="@dimen/marginx3"
+                android:paddingRight="@dimen/marginx3"
+                android:paddingTop="@dimen/marginx2" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/rt_text066"
+                    android:textColor="@color/textColor_rt_toolbar_title"
+                    android:textSize="@dimen/text_size_m" />
+
+                <CheckBox
+                    android:id="@+id/cb_sellertype_holyday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/icon_rt_checkbox_meterial"
+                    android:checked="false" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/backgroundColor_rt_window"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/marginx2"
+            android:paddingLeft="@dimen/marginx4"
+            android:paddingRight="@dimen/marginx4"
+            android:paddingTop="@dimen/marginx2" >
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/tv_sellertype_reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/shape_sellertyp4_popbtn_reset"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="@dimen/marginx4"
+                    android:paddingRight="@dimen/marginx4"
+                    android:paddingTop="8dp"
+                    android:text="@string/reset"
+                    android:textColor="@color/textColor_rt_gridseller_sellertype"
+                    android:textSize="@dimen/text_size_ms" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" >
+
+                <TextView
+                    android:id="@+id/tv_sellertype_complete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/shape_sellertyp4_popbtn_complete"
+                    android:paddingBottom="8dp"
+                    android:paddingLeft="@dimen/marginx4"
+                    android:paddingRight="@dimen/marginx4"
+                    android:paddingTop="8dp"
+                    android:text="@string/complete"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/text_size_ms" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/transparent55" />
+    </LinearLayout>
+
+</ScrollView>

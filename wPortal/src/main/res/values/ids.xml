@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="gridview" />
+    <item type="id" name="webview" />
+  <!-- activity_base.xml -->
+  <item type="id" name="base_xml_root_layout" />
+  <item type="id" name="base_xml_title_layout" />
+  <item type="id" name="base_xml_body_layout" />
+  <item type="id" name="base_xml_toolbar_layout" />
+  
+  <item type="id" name="common_title_1_left_view" />
+  <item type="id" name="common_title_1_center_view" />
+  <item type="id" name="common_title_1_right_view" />
+  
+  <!-- body_my_order.xml -->
+  <item type="id" name="my_order_xml_fragment_root" />
+  <item type="id" name="my_order_xml_payment" />
+  <item type="id" name="my_order_xml_non_payment" />
+  <item type="id" name="my_order_xml_in_service" />
+  <item type="id" name="my_order_xml_wait_for_evaluate" />
+  <item type="id" name="my_order_xml_wait_for_refund" />
+  
+  <item type="id" name="auto_focus"/>
+  <item type="id" name="decode"/>
+  <item type="id" name="decode_failed"/>
+  <item type="id" name="decode_succeeded"/>
+  <item type="id" name="encode_failed"/>
+  <item type="id" name="encode_succeeded"/>
+  <item type="id" name="launch_product_query"/>
+  <item type="id" name="quit"/>
+  <item type="id" name="restart_preview"/>
+  <item type="id" name="return_scan_result"/>
+  <item type="id" name="search_book_contents_failed"/>
+  <item type="id" name="search_book_contents_succeeded"/>
+  
+</resources>

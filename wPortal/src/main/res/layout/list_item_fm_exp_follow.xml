@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" 
+    android:background="@color/white">
+    
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:gravity="top" >
+
+        <RelativeLayout 
+    android:id="@+id/rela_left"
+    android:layout_width="@dimen/marginx3"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/marginx4"
+    android:layout_alignParentLeft="true"
+    android:layout_centerVertical="true"
+    
+    android:layout_alignParentTop="true"
+    android:layout_alignParentBottom="true"
+    >
+    <View android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/xuxian"
+        android:layout_centerInParent="true"/>
+   <ImageView 
+       android:id="@+id/img_circle"
+       android:layout_width="wrap_content"
+       android:layout_marginTop="@dimen/marginx2"
+        android:layout_height="wrap_content"
+        
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/yuan"/>
+   </RelativeLayout>   
+   </RelativeLayout>
+ <LinearLayout android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginTop="@dimen/marginx2"
+     android:layout_marginLeft="@dimen/marginx2"
+     android:orientation="vertical">
+     <TextView android:id="@+id/text_time"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="@dimen/text_size_s"
+         android:textColor="@color/mainblue001"
+         android:text="1111111111"/>
+     <TextView android:id="@+id/text_detail"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:textSize="@dimen/text_size_m"
+         android:textColor="@color/mainblue001"
+         
+         android:layout_marginTop="@dimen/marginx2"
+         android:layout_marginBottom="@dimen/marginx6"/>
+ </LinearLayout>   
+</LinearLayout>

@@ -1,0 +1,176 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true" >
+
+    <RelativeLayout
+        android:id="@+id/rl_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <!-- 底部tab -->
+
+        <LinearLayout
+            android:id="@+id/e03_bottom_tab"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:baselineAligned="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:id="@+id/e03_bottom_01"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical" >
+                
+                
+                <ImageView 
+                    android:id="@+id/e03_market_img"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                     android:layout_centerHorizontal="true"
+                    android:src="@drawable/icon_offline_shop_s"
+                    />
+
+                <TextView
+                    android:id="@+id/e03_market_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/e03_market_img"
+                    android:text="@string/mk_text07"
+                    android:textColor="#43c3ff"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/e03_bottom_02"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical" >
+                
+                
+                 
+                  <ImageView 
+                    android:id="@+id/e03_food_img"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerHorizontal="true"
+                      android:src="@drawable/icon_restaurant_s"
+                    />
+                
+
+                <TextView
+                    android:id="@+id/e03_food_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/e03_food_img"
+                    android:text="@string/mk_text08"
+                    android:textColor="#43c3ff"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/e03_bottom_03"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center_vertical" >
+                
+                
+                  <ImageView 
+                    android:id="@+id/e03_order_img"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                      android:layout_centerHorizontal="true"
+                      android:src="@drawable/icon_order_s"
+                    />
+
+                <TextView
+                    android:id="@+id/e03_order_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/e03_order_img"
+                    android:text="@string/mk_text09"
+                    android:textColor="#43c3ff"
+                    android:textSize="12sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- 内容部分， fragment切换 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/line"
+            android:orientation="vertical" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp" >
+
+                <ImageView
+                    android:id="@+id/mk_car_back"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:contentDescription="@drawable/icon_allreturn"
+                    android:padding="15dp"
+                    android:src="@drawable/icon_allreturn" />
+
+                <TextView
+                    android:id="@+id/mk_car_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/mk_text03"
+                    android:textColor="@color/inputblack"
+                    android:textSize="22sp" />
+
+             
+                <TextView 
+                     android:id="@+id/mk_car_esc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableRight="@drawable/icon_esc"
+                    android:drawablePadding="3dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:gravity="center"
+                    android:text="退出超市"
+                    android:textSize="12sp"
+                    android:textColor="@color/textcolor_dp_333"
+                    />
+                
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="#dcdcdc" />
+
+            <LinearLayout
+                android:id="@+id/content_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/e03_bottom_tab"
+            android:background="#dcdcdc" />
+    </RelativeLayout>
+
+</FrameLayout>

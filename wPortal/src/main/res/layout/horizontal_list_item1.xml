@@ -1,0 +1,27 @@
+<LinearLayout
+    android:layout_width="135dp"
+    android:layout_height="135dp"
+    android:orientation="vertical"
+    android:paddingRight="1dp"
+    android:background="#f2f4f6"
+    android:gravity="center"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/img_list_item"
+            android:layout_width="135dp"
+            android:layout_height="135dp"
+            android:src="@drawable/img_01"
+            android:scaleType="fitXY" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="3dp"
+            android:src="@drawable/icon_star"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</LinearLayout>
