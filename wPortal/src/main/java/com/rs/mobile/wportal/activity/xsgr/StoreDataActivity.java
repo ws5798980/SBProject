@@ -1,11 +1,17 @@
 package com.rs.mobile.wportal.activity.xsgr;
 
+import android.app.Dialog;
+import android.content.res.Resources;
+import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
+import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.rs.mobile.common.activity.BaseActivity;
@@ -15,8 +21,6 @@ import com.rs.mobile.wportal.fragment.xsgr.MyDateDayFragment;
 import com.rs.mobile.wportal.fragment.xsgr.MyDateFreeFragment;
 import com.rs.mobile.wportal.fragment.xsgr.MyDateMonthFragment;
 import com.rs.mobile.wportal.fragment.xsgr.MyDateWeekFragment;
-import com.rs.mobile.wportal.fragment.xsgr.MyOrderFragment;
-import com.rs.mobile.wportal.fragment.xsgr.MyOrderFragment2;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -25,6 +29,10 @@ import java.util.List;
 import static com.rs.mobile.wportal.takephoto.CommonUtil.dip2px;
 
 public class StoreDataActivity extends BaseActivity {
+
+
+    int i=0;
+
 
     private List<Fragment> list;
     ViewPagerAdapter viewPagerAdapter;
@@ -52,16 +60,71 @@ public class StoreDataActivity extends BaseActivity {
     private void setListener() {
 
 
+
+
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+
+                int position=tab.getPosition();
+                viewPager.setCurrentItem(position);
+
+
+                if (tab.getPosition() == 3) {
+
+
+                    Dialog dialog = new Dialog(StoreDataActivity.this,R.style.dialog_holo_dark);
+                    DatePicker datePicker= (DatePicker) dialog.findViewById(R.id.date1);
+
+                    dialog.setContentView(R.layout.dialog_datechoose);
+                    setDatePickerDividerAndTextColor(datePicker);
+                    dialog.show();
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.getTabAt(position).select();
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
     }
 
     private void initDate() {
-
         list = new ArrayList<>();
         myDateDayFragment = new MyDateDayFragment();
         myDateWeekFragment = new MyDateWeekFragment();
         myDateMonthFragment = new MyDateMonthFragment();
         myDateFreeFragment = new MyDateFreeFragment();
         titles = new String[]{getResources().getString(R.string.today), getResources().getString(R.string.week), getResources().getString(R.string.month), getResources().getString(R.string.free)};
+        tabLayout.addTab(tabLayout.newTab().setText(titles[0]));
+        tabLayout.addTab(tabLayout.newTab().setText(titles[1]));
+        tabLayout.addTab(tabLayout.newTab().setText(titles[2]));
+        tabLayout.addTab(tabLayout.newTab().setText(titles[3]));
+
         list.add(myDateDayFragment);
         list.add(myDateWeekFragment);
         list.add(myDateMonthFragment);
@@ -70,7 +133,7 @@ public class StoreDataActivity extends BaseActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), this, list, titles);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setCurrentItem(0);
-        tabLayout.setupWithViewPager(viewPager);
+//        tabLayout.setupWithViewPager(viewPager);
         reflex(tabLayout);
     }
 
@@ -132,5 +195,58 @@ public class StoreDataActivity extends BaseActivity {
         });
 
     }
+
+
+
+    private void setDatePickerDividerAndTextColor(DatePicker datePicker) {
+
+        LinearLayout llFirst = (LinearLayout) datePicker.getChildAt(0);
+
+        LinearLayout mSpinners = (LinearLayout) llFirst.getChildAt(0);
+        for (int i = 0; i < mSpinners.getChildCount(); i++) {
+            NumberPicker picker = (NumberPicker) mSpinners.getChildAt(i);
+
+
+            Field[] pickerFields = NumberPicker.class.getDeclaredFields();
+            for (Field pf : pickerFields) {
+                if (pf.getName().equals("mSelectorWheelPaint")) {
+                    pf.setAccessible(true);
+                    Paint paint = new Paint();
+                    paint.setTextSize(15);
+                    paint.setTextAlign(Paint.Align.CENTER);
+                    paint.setColor(getResources().getColor(R.color.theme_green));
+                    try {
+                        pf.set(picker, paint);
+                    } catch (IllegalArgumentException e) {
+                        e.printStackTrace();
+                    } catch (Resources.NotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+
+            }
+            for (Field pf : pickerFields) {
+                if (pf.getName().equals("mSelectionDivider")) {
+                    pf.setAccessible(true);
+                    try {
+                        pf.set(picker, new ColorDrawable(this.getResources().getColor(R.color.white)));
+                    } catch (IllegalArgumentException e) {
+                        e.printStackTrace();
+                    } catch (Resources.NotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IllegalAccessException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+
+            }
+        }
+
+    }
+
 
 }

@@ -522,6 +522,8 @@
     <string name="datestate">订单状态：</string>
     <string name="datedate">下单时间：</string>
 
-
+    <string name="datefree">自定查询区间</string>
+    <string name="datefrom">从</string>
+    <string name="datehere">至</string>
 
 </resources>
