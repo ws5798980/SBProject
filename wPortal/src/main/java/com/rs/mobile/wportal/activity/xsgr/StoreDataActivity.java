@@ -30,10 +30,6 @@ import static com.rs.mobile.wportal.takephoto.CommonUtil.dip2px;
 
 public class StoreDataActivity extends BaseActivity {
 
-
-    int i=0;
-
-
     private List<Fragment> list;
     ViewPagerAdapter viewPagerAdapter;
     TabLayout tabLayout;
