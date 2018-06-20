@@ -19,15 +19,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         this.context=context;
         this.list=list;
         this.titles=titles;
-
-
-
-
     }
 
     @Override
     public int getCount() {
-        return 2;
+        return list.size();
     }
 
     @Override

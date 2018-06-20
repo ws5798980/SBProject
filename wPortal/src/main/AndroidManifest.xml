@@ -838,6 +838,13 @@
         android:screenOrientation="portrait" />
 
         <activity
+            android:name=".activity.xsgr.StoreManageActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.xsgr.StoreDataActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
             android:name=".activity.ClauseActivity"
             android:screenOrientation="portrait" />
         <activity

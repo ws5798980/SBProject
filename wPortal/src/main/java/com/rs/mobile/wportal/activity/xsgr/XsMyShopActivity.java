@@ -24,7 +24,7 @@ public class XsMyShopActivity extends BaseActivity {
     TextView tv_xs_my_shopname, tv_select, tv_sale, tv_salenum;
     int select=1;
 
-    View layout_order;
+    View layout_order,layout_info,layout_date;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +58,20 @@ public class XsMyShopActivity extends BaseActivity {
             }
         });
 
+        layout_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(XsMyShopActivity.this, StoreManageActivity.class);
+                startActivity(intent);
+            }
+        });
+        layout_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(XsMyShopActivity.this, StoreDataActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void showSelectState() {
@@ -131,6 +145,8 @@ public class XsMyShopActivity extends BaseActivity {
         tv_salenum = (TextView) findViewById(R.id.tv_salenum);
 
         layout_order= findViewById(R.id.layout_order);
+        layout_info=findViewById(R.id.layout_store);
+        layout_date=findViewById(R.id.layout_data);
     }
 
 }

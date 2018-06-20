@@ -494,4 +494,34 @@
     <string name="ordergoods">订单商品</string>
     <string name="orderclose">收起</string>
     <string name="orderopen">打开</string>
+
+
+    <string name="infoicon">店铺头像</string>
+    <string name="infoname">店铺名称</string>
+    <string name="infophone">店铺电话</string>
+    <string name="infoadd">店铺地址</string>
+    <string name="shopmanage">店铺管理</string>
+    <string name="myorderdata">数据统计</string>
+
+    <string name="today">今日</string>
+    <string name="week">本周</string>
+    <string name="month">本月</string>
+    <string name="free">自定</string>
+
+    <string name="dateall">营业额(元)</string>
+    <string name="dateallnum">总订单(单)</string>
+    <string name="dateback">退款额(元)</string>
+    <string name="datebacknum">退款订单(单)</string>
+
+
+    <string name="daydate">今日数据</string>
+    <string name="dayorder">今日订单</string>
+
+    <string name="datephone">手机号码：</string>
+    <string name="dateprice">订单金额：</string>
+    <string name="datestate">订单状态：</string>
+    <string name="datedate">下单时间：</string>
+
+
+
 </resources>

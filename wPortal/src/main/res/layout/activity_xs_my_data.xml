@@ -42,7 +42,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="@string/myorder"
+                android:text="@string/myorderdata"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:textSize="18sp"/>
@@ -73,6 +73,7 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
         android:layout_height="wrap_content"/>
 
 

@@ -43,7 +43,8 @@
                 android:layout_centerInParent="true"
                 android:text="@string/myshop"
                 android:textColor="@android:color/white"
-                android:textSize="@dimen/text_size_b" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="wrap_content"
