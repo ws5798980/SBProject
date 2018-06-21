@@ -62,4 +62,5 @@ dependencies {
     // If you want to use the GPU Filters
    // implementation 'jp.co.cyberagent.android.gpuimage:gpuimage-library:1.4.1'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
+    compile 'com.weigan:loopView:0.1.2'
 }
