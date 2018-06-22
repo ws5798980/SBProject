@@ -3,10 +3,13 @@
     <dimen name="text_size_google_minimum">12sp</dimen>
     <dimen name="text_size_xs">8sp</dimen>
     <dimen name="text_size_s">10sp</dimen>
+    <dimen name="text_size_sb">12sp</dimen>
     <dimen name="text_size_ms">13sp</dimen>
     <dimen name="text_size_m">15sp</dimen>
+    <dimen name="text_size_msb">14sp</dimen>
     <dimen name="text_size_mb">17sp</dimen>
     <dimen name="text_size_b">15sp</dimen>
+    <dimen name="text_size_bb">18sp</dimen>
     <dimen name="text_size_tmb">25sp</dimen>
     <dimen name="text_size_tb">30sp</dimen>
     
@@ -28,4 +31,7 @@
     <dimen name="selected_day_radius">16dip</dimen>
     <dimen name="calendar_height">270dip</dimen>
     <dimen name="my_info_bottom_text_size">18dip</dimen>
+
+    <!-- 商品管理左滑删除宽度 -->
+    <dimen name="item_delect">75dip</dimen>
 </resources>

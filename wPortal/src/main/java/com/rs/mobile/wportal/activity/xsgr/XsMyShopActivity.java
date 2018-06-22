@@ -22,9 +22,9 @@ public class XsMyShopActivity extends BaseActivity {
     LinearLayout selectView, close_btn;
     ImageView img_myshop;
     TextView tv_xs_my_shopname, tv_select, tv_sale, tv_salenum;
-    int select=1;
+    int select = 1;
 
-    View layout_order,layout_info,layout_date;
+    View layout_order, layout_info, layout_date, layout_goods;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +53,7 @@ public class XsMyShopActivity extends BaseActivity {
         layout_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(XsMyShopActivity.this, Activity_Order.class);
+                Intent intent = new Intent(XsMyShopActivity.this, Activity_Order.class);
                 startActivity(intent);
             }
         });
@@ -61,15 +61,21 @@ public class XsMyShopActivity extends BaseActivity {
         layout_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(XsMyShopActivity.this, StoreManageActivity.class);
+                Intent intent = new Intent(XsMyShopActivity.this, StoreManageActivity.class);
                 startActivity(intent);
             }
         });
         layout_date.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(XsMyShopActivity.this, StoreDataActivity.class);
+                Intent intent = new Intent(XsMyShopActivity.this, StoreDataActivity.class);
                 startActivity(intent);
+            }
+        });
+        layout_goods.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(XsMyShopActivity.this,CommodityManagementActivity.class));
             }
         });
     }
@@ -90,16 +96,16 @@ public class XsMyShopActivity extends BaseActivity {
         // 显示PopupWindow，其中：
         // 第一个参数是PopupWindow的锚点，第二和第三个参数分别是PopupWindow相对锚点的x、y偏移
 
-        LinearLayout layout1= (LinearLayout) contentView.findViewById(R.id.layout_1);
-        LinearLayout layout2= (LinearLayout) contentView.findViewById(R.id.layout_2);
-        final ImageView img1= (ImageView) contentView.findViewById(R.id.img_1);
-        final ImageView img2= (ImageView) contentView.findViewById(R.id.img_2);
+        LinearLayout layout1 = (LinearLayout) contentView.findViewById(R.id.layout_1);
+        LinearLayout layout2 = (LinearLayout) contentView.findViewById(R.id.layout_2);
+        final ImageView img1 = (ImageView) contentView.findViewById(R.id.img_1);
+        final ImageView img2 = (ImageView) contentView.findViewById(R.id.img_2);
 
-        if (select==1){
+        if (select == 1) {
             img1.setVisibility(View.VISIBLE);
             img2.setVisibility(View.GONE);
             tv_select.setText("营业中");
-        }else {
+        } else {
             img2.setVisibility(View.VISIBLE);
             img1.setVisibility(View.GONE);
             tv_select.setText("打烊中");
@@ -113,7 +119,7 @@ public class XsMyShopActivity extends BaseActivity {
                 img2.setVisibility(View.GONE);
                 tv_select.setText("营业中");
                 window.dismiss();
-                select=1;
+                select = 1;
             }
         });
         layout2.setOnClickListener(new View.OnClickListener() {
@@ -123,11 +129,9 @@ public class XsMyShopActivity extends BaseActivity {
                 img1.setVisibility(View.GONE);
                 tv_select.setText("打烊中");
                 window.dismiss();
-                select=2;
+                select = 2;
             }
         });
-
-
 
 
         window.showAsDropDown(selectView, -40, 0);
@@ -144,9 +148,10 @@ public class XsMyShopActivity extends BaseActivity {
         tv_sale = (TextView) findViewById(R.id.tv_sale);
         tv_salenum = (TextView) findViewById(R.id.tv_salenum);
 
-        layout_order= findViewById(R.id.layout_order);
-        layout_info=findViewById(R.id.layout_store);
-        layout_date=findViewById(R.id.layout_data);
+        layout_order = findViewById(R.id.layout_order);
+        layout_info = findViewById(R.id.layout_store);
+        layout_date = findViewById(R.id.layout_data);
+        layout_goods = findViewById(R.id.layout_goods);
     }
 
 }

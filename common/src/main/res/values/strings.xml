@@ -312,6 +312,7 @@
     <string name="original_reply">原文</string>
     <string name="myshop">我的店铺</string>
     <string name="myorder">订单管理</string>
+    <string name="commodity">商品管理</string>
     <string name="todaysale">今日销售数据</string>
 
     <!-- gps -->

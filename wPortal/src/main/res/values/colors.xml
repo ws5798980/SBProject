@@ -76,11 +76,15 @@
     <color name="ht_city_bg">#edeff0</color>
     <color name="ht_yellow">#fccb0b</color>
     <color name="ht_yellow_1">#faffbd</color>
-    
+    <color name="textcolor_black">#111111</color><!-- 商品管理的item的color -->
+    <color name="textcolor_gray">#999999</color><!-- 商品管理的item的color -->
+    <color name="textcolor_red">#dd0909</color><!-- 商品管理的item的color -->
     <!--  market -->
     
       <color name="mk_text_click">#43c3ff</color>
     <color name="mk_text_no">#999999</color>
+    <color name="red_normal">#FF0000</color>
+    <color name="red_pressed">#FF6666</color>
     
   
      <!-- 日历定义的一些颜色 -->
