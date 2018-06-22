@@ -20,7 +20,7 @@ import java.util.List;
 
 import static com.rs.mobile.wportal.takephoto.CommonUtil.dip2px;
 
-public class Activity_Order extends BaseActivity {
+public class OrderActivity extends BaseActivity {
 
     private List<Fragment> list;
     ViewPagerAdapter viewPagerAdapter;

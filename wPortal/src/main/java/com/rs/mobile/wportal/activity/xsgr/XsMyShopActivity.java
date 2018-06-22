@@ -23,7 +23,7 @@ public class XsMyShopActivity extends BaseActivity {
     TextView tv_xs_my_shopname, tv_select, tv_sale, tv_salenum;
     int select = 1;
 
-    View layout_order, layout_info, layout_date, layout_goods, layout_comment;
+    View layout_order, layout_info, layout_date, layout_goods, layout_comment, layout_backorder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class XsMyShopActivity extends BaseActivity {
         layout_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(XsMyShopActivity.this, Activity_Order.class);
+                Intent intent = new Intent(XsMyShopActivity.this, OrderActivity.class);
                 startActivity(intent);
             }
         });
@@ -86,6 +86,13 @@ public class XsMyShopActivity extends BaseActivity {
             }
         });
 
+        layout_backorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(XsMyShopActivity.this, BackOrderActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void showSelectState() {
@@ -161,6 +168,7 @@ public class XsMyShopActivity extends BaseActivity {
         layout_date = findViewById(R.id.layout_data);
         layout_goods = findViewById(R.id.layout_goods);
         layout_comment = findViewById(R.id.layout_comments);
+        layout_backorder = findViewById(R.id.layout_saleback);
     }
 
 }

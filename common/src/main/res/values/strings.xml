@@ -514,6 +514,7 @@
     <string name="dateallnum">总订单(单)</string>
     <string name="dateback">退款额(元)</string>
     <string name="datebacknum">退款订单(单)</string>
+    <string name="orderback">退款订单</string>
 
 
     <string name="daydate">今日数据</string>
@@ -544,5 +545,14 @@
 
     <string name="huifu">回复</string>
     <string name="shangjiahuifu">商家回复:</string>
+
+    <string name="check">查看</string>
+
+    <string name="wait">待审核</string>
+    <string name="doneorder">已处理</string>
+
+
+
+
 
 </resources>
