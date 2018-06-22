@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import com.rs.mobile.common.activity.BaseActivity;
 import com.rs.mobile.wportal.R;
-import com.rs.mobile.wportal.activity.sm.MyOrderActivity;
 
 
 public class XsMyShopActivity extends BaseActivity {
@@ -24,7 +23,7 @@ public class XsMyShopActivity extends BaseActivity {
     TextView tv_xs_my_shopname, tv_select, tv_sale, tv_salenum;
     int select = 1;
 
-    View layout_order, layout_info, layout_date, layout_goods;
+    View layout_order, layout_info, layout_date, layout_goods, layout_comment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,9 +74,18 @@ public class XsMyShopActivity extends BaseActivity {
         layout_goods.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(XsMyShopActivity.this,CommodityManagementActivity.class));
+//                startActivity(new Intent(XsMyShopActivity.this,CommodityManagementActivity.class));
             }
         });
+
+        layout_comment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(XsMyShopActivity.this, StoreCommentActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void showSelectState() {
@@ -152,6 +160,7 @@ public class XsMyShopActivity extends BaseActivity {
         layout_info = findViewById(R.id.layout_store);
         layout_date = findViewById(R.id.layout_data);
         layout_goods = findViewById(R.id.layout_goods);
+        layout_comment = findViewById(R.id.layout_comments);
     }
 
 }

@@ -528,8 +528,21 @@
     <string name="datefrom">从</string>
     <string name="datehere">至</string>
 
-    <string name="commentall">至</string>
-    <string name="commentbad">至</string>
-    <string name="commentnosee">至</string>
+    <string name="commentall">全部</string>
+    <string name="commentbad">差评</string>
+    <string name="commentnosee">未读</string>
+
+
+    <string name="star5">5星</string>
+    <string name="star4">4星</string>
+    <string name="star3">3星</string>
+    <string name="star2">2星</string>
+    <string name="star1">1星</string>
+
+
+    <string name="change">修改</string>
+
+    <string name="huifu">回复</string>
+    <string name="shangjiahuifu">商家回复:</string>
 
 </resources>

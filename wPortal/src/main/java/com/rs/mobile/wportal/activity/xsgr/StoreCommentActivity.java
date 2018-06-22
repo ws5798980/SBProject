@@ -11,10 +11,7 @@ import android.widget.TextView;
 import com.rs.mobile.common.activity.BaseActivity;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.adapter.xsgr.ViewPagerAdapter;
-import com.rs.mobile.wportal.fragment.xsgr.MyDateDayFragment;
-import com.rs.mobile.wportal.fragment.xsgr.MyDateFreeFragment;
-import com.rs.mobile.wportal.fragment.xsgr.MyDateMonthFragment;
-import com.rs.mobile.wportal.fragment.xsgr.MyDateWeekFragment;
+import com.rs.mobile.wportal.fragment.xsgr.CommentFragment;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -36,7 +33,7 @@ public class StoreCommentActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_xs_my_data);
+        setContentView(R.layout.activity_xs_my_comment);
 
         initView();
 
@@ -67,7 +64,7 @@ public class StoreCommentActivity extends BaseActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), this, list, titles);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setCurrentItem(0);
-//        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
         reflex(tabLayout);
     }
 

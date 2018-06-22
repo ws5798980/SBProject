@@ -810,18 +810,18 @@
             android:name=".persnal.Persnal_QRCODE_POPUP"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog.NoActionBar" />
         <!--<activity-->
-            <!--android:name=".activity.SplashActivity"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:theme="@style/AppIntro">-->
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+        <!--android:name=".activity.SplashActivity"-->
+        <!--android:screenOrientation="portrait"-->
+        <!--android:theme="@style/AppIntro">-->
+        <!--<intent-filter>-->
+        <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+        <!--<category android:name="android.intent.category.LAUNCHER" />-->
+        <!--</intent-filter>-->
         <!--</activity>-->
         <!--<activity-->
-            <!--android:name=".activity.xsgr.XsMyShopActivity"-->
-            <!--android:screenOrientation="portrait" />-->
+        <!--android:name=".activity.xsgr.XsMyShopActivity"-->
+        <!--android:screenOrientation="portrait" />-->
 
         <activity
             android:name=".activity.xsgr.XsMyShopActivity"
@@ -834,9 +834,12 @@
             </intent-filter>
         </activity>
         <activity
-        android:name=".activity.xsgr.Activity_Order"
-        android:screenOrientation="portrait" />
+            android:name=".activity.xsgr.Activity_Order"
+            android:screenOrientation="portrait" />
 
+        <activity
+            android:name=".activity.xsgr.StoreCommentActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.xsgr.StoreManageActivity"
             android:screenOrientation="portrait" />
@@ -854,8 +857,8 @@
             android:name=".activity.xsgr.XsShopListActivity"
             android:screenOrientation="portrait" />
         <activity
-        android:name=".activity.xsgr.XsStoreDetailActivity"
-        android:screenOrientation="portrait" />
+            android:name=".activity.xsgr.XsStoreDetailActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.xsgr.XsStoreDetailActivity2"
             android:screenOrientation="portrait" />
@@ -919,9 +922,12 @@
         <activity
             android:name="com.rs.mobile.common.activity.kfme_post_search"
             android:screenOrientation="portrait" />
-        <activity android:name=".activity.xsgr.PaymentActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".activity.LGUPlaus_Pay" android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.xsgr.PaymentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.LGUPlaus_Pay"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
