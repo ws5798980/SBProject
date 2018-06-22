@@ -17,10 +17,13 @@ import java.util.List;
 public class DateDayAdapter extends RecyclerView.Adapter<DateDayAdapter.ViewHolder> {
 
 
+    public static final int TYPE_HEADER = 0;
+    public static final int TYPE_NORMAL = 1;
+
     Context context;
     List<Fragment> list;
+    private View mHeaderView;
 
-    private String[] titles;
 
     public DateDayAdapter(Context context) {
 
@@ -28,12 +31,35 @@ public class DateDayAdapter extends RecyclerView.Adapter<DateDayAdapter.ViewHold
 
     }
 
+    public void setHeaderView(View headerView) {
+        mHeaderView = headerView;
+        notifyItemInserted(0);
+    }
+
+    public View getHeaderView() {
+        return mHeaderView;
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        if (mHeaderView == null) return TYPE_NORMAL;
+        if (position == 0) return TYPE_HEADER;
+        return TYPE_NORMAL;
+    }
 
     @Override
     public DateDayAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_date_today, parent, false);
-        DateDayAdapter.ViewHolder viewHolder = new DateDayAdapter.ViewHolder(view);
-        return viewHolder;
+
+        if (mHeaderView != null && viewType == TYPE_HEADER) return new ViewHolder(mHeaderView);
+        View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_date_today, parent, false);
+        return new ViewHolder(layout);
+
+
+//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_date_today, parent, false);
+//        DateDayAdapter.ViewHolder viewHolder = new DateDayAdapter.ViewHolder(view);
+//        return viewHolder;
+
     }
 
     @Override
@@ -42,9 +68,10 @@ public class DateDayAdapter extends RecyclerView.Adapter<DateDayAdapter.ViewHold
 
     }
 
+
     @Override
     public int getItemCount() {
-        return 10;
+        return mHeaderView == null ? 10 : 11;
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -57,7 +84,7 @@ public class DateDayAdapter extends RecyclerView.Adapter<DateDayAdapter.ViewHold
 
         ViewHolder(View itemView) {
             super(itemView);
-
+            if (itemView == mHeaderView) return;
 
         }
     }

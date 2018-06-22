@@ -502,6 +502,7 @@
     <string name="infoadd">店铺地址</string>
     <string name="shopmanage">店铺管理</string>
     <string name="myorderdata">数据统计</string>
+    <string name="mycomment">评价管理</string>
 
     <string name="today">今日</string>
     <string name="week">本周</string>
@@ -525,5 +526,9 @@
     <string name="datefree">自定查询区间</string>
     <string name="datefrom">从</string>
     <string name="datehere">至</string>
+
+    <string name="commentall">至</string>
+    <string name="commentbad">至</string>
+    <string name="commentnosee">至</string>
 
 </resources>

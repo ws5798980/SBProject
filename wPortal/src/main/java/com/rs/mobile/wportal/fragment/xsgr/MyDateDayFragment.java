@@ -38,6 +38,9 @@ public class MyDateDayFragment extends BaseFragment {
 
         adapter = new DateDayAdapter(getContext());
         recyclerView.setAdapter(adapter);
+
+        View header = LayoutInflater.from(getContext()).inflate(R.layout.header_order_day, recyclerView, false);
+        adapter.setHeaderView(header);
     }
 
 
