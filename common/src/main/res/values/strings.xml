@@ -551,8 +551,14 @@
     <string name="wait">待审核</string>
     <string name="doneorder">已处理</string>
 
+    <string name="orderdata">退款详情</string>
+    <string name="backdata">退款信息</string>
 
-
+    <string name="datanum">订单编号:</string>
+    <string name="backdatanum">退款编号:</string>
+    <string name="backdataprice">退款金额:</string>
+    <string name="backdatastate">退款状态:</string>
+    <string name="backdatatime">申请时间:</string>
 
 
 </resources>

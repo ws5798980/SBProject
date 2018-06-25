@@ -1,16 +1,19 @@
 package com.rs.mobile.wportal.adapter.xsgr;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.activity.xsgr.XsBackOrderDetailActivity;
 
 import java.util.List;
 
@@ -39,6 +42,14 @@ public class BackOrderOneAdapter extends RecyclerView.Adapter<BackOrderOneAdapte
     @Override
     public void onBindViewHolder(final BackOrderOneAdapter.ViewHolder holder, int position) {
 
+        holder.bt_check.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, XsBackOrderDetailActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
 
     }
 
@@ -49,10 +60,11 @@ public class BackOrderOneAdapter extends RecyclerView.Adapter<BackOrderOneAdapte
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
+        Button bt_check;
 
         ViewHolder(View itemView) {
             super(itemView);
-
+            bt_check = (Button) itemView.findViewById(R.id.bt_check);
 
         }
     }
