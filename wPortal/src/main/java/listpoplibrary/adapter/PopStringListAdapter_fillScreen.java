@@ -8,9 +8,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.android.listpoplibrary.ListPopWindowManager;
+
+import com.rs.mobile.wportal.R;
 
 import java.util.List;
+
+import listpoplibrary.ListPopWindowManager;
 
 /**
  * Created by radio on 2017/10/31.
@@ -47,9 +50,9 @@ public class PopStringListAdapter_fillScreen extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         final ViewHolder viewHolder;
         if (view == null) {
-            view = LayoutInflater.from(context).inflate(com.android.listpoplibrary.R.layout.popwindow_listview_string_item_library, viewGroup, false);
+            view = LayoutInflater.from(context).inflate(R.layout.popwindow_listview_string_item_library, viewGroup, false);
             viewHolder = new ViewHolder();
-            viewHolder.tvPopwindowListview=(TextView) view.findViewById(com.android.listpoplibrary.R.id.tv_popwindow_listview);
+            viewHolder.tvPopwindowListview=(TextView) view.findViewById(R.id.tv_popwindow_listview);
             viewHolder.tvPopwindowListview.setGravity(Gravity.CENTER);
             view.setTag(viewHolder);
         } else {
