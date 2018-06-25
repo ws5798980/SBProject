@@ -809,19 +809,20 @@
         <activity
             android:name=".persnal.Persnal_QRCODE_POPUP"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog.NoActionBar" />
-        <!--<activity-->
-        <!--android:name=".activity.SplashActivity"-->
-        <!--android:screenOrientation="portrait"-->
-        <!--android:theme="@style/AppIntro">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN" />-->
+        <!-- <activity -->
+        <!-- android:name=".activity.SplashActivity" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:theme="@style/AppIntro"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
 
-        <!--<category android:name="android.intent.category.LAUNCHER" />-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <!--<activity-->
-        <!--android:name=".activity.xsgr.XsMyShopActivity"-->
-        <!--android:screenOrientation="portrait" />-->
+
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <!-- <activity -->
+        <!-- android:name=".activity.xsgr.XsMyShopActivity" -->
+        <!-- android:screenOrientation="portrait" /> -->
 
         <activity
             android:name=".activity.xsgr.XsMyShopActivity"
@@ -834,14 +835,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.xsgr.OrderActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.xsgr.BackOrderActivity"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".activity.xsgr.StoreCommentActivity"
+            android:name=".activity.xsgr.Activity_Order"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.xsgr.StoreManageActivity"
@@ -849,7 +843,6 @@
         <activity
             android:name=".activity.xsgr.StoreDataActivity"
             android:screenOrientation="portrait" />
-
         <activity
             android:name=".activity.ClauseActivity"
             android:screenOrientation="portrait" />
@@ -920,7 +913,7 @@
             android:name="com.rs.mobile.common.activity.SelectGroupActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.rs.mobile.wportal.activity.sm.SmNew_shopcatList"
+            android:name=".activity.sm.SmNew_shopcatList"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.rs.mobile.common.activity.kfme_post_search"
@@ -930,6 +923,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.LGUPlaus_Pay"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activity.xsgr.CommodityManagementActivity"
             android:screenOrientation="portrait"></activity>
     </application>
 

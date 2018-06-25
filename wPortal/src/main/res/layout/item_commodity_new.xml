@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:padding="@dimen/marginx3">
+
+    <ImageView
+        android:id="@+id/image_title"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@color/blue" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/marginx2"
+        android:weightSum="3">
+        <TextView
+            android:id="@+id/commodity_name"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="Chizza烤堡薯条餐S"
+            android:textSize="@dimen/text_size_msb"
+            android:gravity="center_vertical"
+            android:textColor="@color/textcolor_black"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/commodity_num"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="月售200"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size_sb"
+            android:textColor="@color/textcolor_gray"
+            android:layout_weight="1"/>
+        <TextView
+            android:id="@+id/commodity_price"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="¥99.8"
+            android:textSize="@dimen/text_size_bb"
+            android:gravity="center_vertical"
+            android:textColor="@color/textcolor_red"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginLeft="@dimen/marginx2"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right">
+
+            <LinearLayout
+                android:layout_width="135dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/get_shelves"
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="5dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/check_border"
+                    android:gravity="center"
+                    android:text="下架商品"
+                    android:textSize="@dimen/text_size_sb"
+                    android:textColor="@color/textcolor_gray"
+                    style="?android:attr/borderlessButtonStyle" />
+
+                <Button
+                    android:id="@+id/edit_goods"
+                    android:layout_width="60dp"
+                    android:layout_height="20dp"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginTop="5dip"
+                    android:layout_marginBottom="5dip"
+                    android:layout_weight="1"
+                    android:background="@drawable/check_border"
+                    android:gravity="center"
+                    android:text="重新编辑"
+                    android:textSize="@dimen/text_size_sb"
+                    android:textColor="@color/textcolor_gray"
+                    style="?android:attr/borderlessButtonStyle" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingLeft="@dimen/marginx3"
+    android:paddingRight="@dimen/marginx3"
+    android:paddingTop="@dimen/marginx2"
+    android:paddingBottom="@dimen/marginx2"
+    android:layout_height="40dp">
+    <EditText
+        android:id="@+id/commodity_name"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:textSize="@dimen/text_size_day"
+        android:textColor="@color/textcolor_black"
+        style="@android:style/Widget.TextView"
+        android:layout_centerVertical="true"
+        android:enabled="false"
+        android:background="@null"/>
+    <ImageView
+        android:id="@+id/commodity_img"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/icon_edit_category"/>
+    <Button
+        android:id="@+id/edit_done"
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:background="@drawable/check_border"
+        android:gravity="center"
+        android:text="确定"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        android:textSize="@dimen/text_size_sb"
+        android:textColor="@color/textcolor_gray"
+        style="?android:attr/borderlessButtonStyle" />
+
+</RelativeLayout>
