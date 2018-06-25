@@ -74,7 +74,7 @@ public class XsMyShopActivity extends BaseActivity {
         layout_goods.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                startActivity(new Intent(XsMyShopActivity.this,CommodityManagementActivity.class));
+                startActivity(new Intent(XsMyShopActivity.this,CommodityManagementActivity.class));
             }
         });
 
