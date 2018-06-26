@@ -52,6 +52,7 @@ import com.rs.mobile.common.network.OkHttpHelper;
 import com.rs.mobile.common.util.GsonUtils;
 import com.rs.mobile.common.util.PageUtil;
 import com.rs.mobile.common.util.StringUtil;
+import com.rs.mobile.common.util.Util;
 import com.rs.mobile.common.util.UtilCheckLogin;
 import com.rs.mobile.common.util.UtilClear;
 import com.rs.mobile.common.view.XListView;
@@ -71,6 +72,7 @@ import com.rs.mobile.wportal.adapter.xsgr.XsStoreDetailMenuAdapter4;
 import com.rs.mobile.wportal.adapter.xsgr.XsStoreDetailMenuAdapter5;
 import com.rs.mobile.wportal.biz.ShoppingCart;
 import com.rs.mobile.wportal.biz.ShoppingCartParent;
+import com.rs.mobile.wportal.entity.BaseEntity;
 import com.rs.mobile.wportal.entity.StoreDetailEntity;
 import com.rs.mobile.wportal.entity.StoreItemDetailEntity;
 import com.rs.mobile.wportal.entity.StoreMenuListEntity1;
@@ -183,10 +185,11 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
     private String item_code;
 
     private int pageIndex;
-
+    private boolean isfavorites = false;
     private int pageSize;
 
     private int TotalCount;
+    private ImageView iconImg;
 
     private JSONArray array;
     private List<Map<String, Object>> listdata;
@@ -203,7 +206,8 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
     private String shop_latitude, shop_longitude;
 
 
-    private String FoodSpecCode="";
+    private String FoodSpecCode = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -229,7 +233,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 
     private void initView() {
 
-
+        iconImg = (ImageView) findViewById(R.id.img_favorites);
         btnBack = (LinearLayout) findViewById(R.id.btn_back);
         // tvTitle = (TextView) findViewById(R.id.tv_title);
         btnBack.setOnClickListener(this);
@@ -322,6 +326,24 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 
             }
         });
+        iconImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UtilClear.CheckLogin(XsStoreDetailActivity2.this, new UtilCheckLogin.CheckListener() {
+                    @Override
+                    public void onDoNext() {
+                        requestStoreFavorites(S.get(XsStoreDetailActivity2.this, C.KEY_JSON_CUSTOM_CODE), mSaleCustomCode, isfavorites ? "0" : "1");
+                    }
+                }, new UtilCheckLogin.CheckError() {
+                    @Override
+                    public void onError() {
+
+                    }
+                });
+
+            }
+        });
+
 
         line_callphone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -343,7 +365,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
                 intent2.putExtra("wiche", "compass");
                 intent2.putExtra("longitude", shop_longitude);
                 intent2.putExtra("latitude", shop_latitude);
-                intent2.putExtra("shopname",shopname);
+                intent2.putExtra("shopname", shopname);
                 startActivityForResult(intent2, 1001);
             }
         });
@@ -573,7 +595,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
         tv_itemname_pop.setText(pinfo.item_name);
 
         pop_need_money_tv.setText(pinfo.item_p + "원");
-        FoodSpecCode=pinfo.item_code;
+        FoodSpecCode = pinfo.item_code;
         TextView tv_itemp_pop = (TextView) dialog.findViewById(R.id.tv_itemp_pop);
         tv_itemp_pop.setText(pinfo.item_p + "원");
 
@@ -662,7 +684,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
             }
         });
 
-        if (pinfo.isSingle.compareTo("1")!=0){
+        if (pinfo.isSingle.compareTo("1") != 0) {
             requestStoreSmallItemDetail(pinfo.GroupId, dialog);
         }
 
@@ -908,6 +930,47 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
     }
 
 
+    private void requestStoreFavorites(String customCode, String saleCustomCode, final String favorites) {
+        HashMap<String, String> params = new HashMap<>();
+        params.put("lang_type", AppConfig.LANG_TYPE);
+        params.put("custom_code", customCode);
+        params.put("sale_custom_code", saleCustomCode);
+        params.put("token", S.get(XsStoreDetailActivity2.this, C.KEY_JSON_TOKEN));
+        params.put("favorites", favorites);
+
+        OkHttpHelper okHttpHelper = new OkHttpHelper(XsStoreDetailActivity2.this);
+        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                BaseEntity entity = GsonUtils.changeGsonToBean(responseDescription, BaseEntity.class);
+                if ("1".equals(entity.status)) {
+
+
+                    if ("1".equals(favorites)) {
+                        Toast.makeText(XsStoreDetailActivity2.this, "찜하기가 완료되었습니다", Toast.LENGTH_LONG).show();
+                        isfavorites = true;
+                        iconImg.setBackgroundDrawable(getResources().getDrawable(R.drawable.icon_collected_store));
+                    } else {
+                        Toast.makeText(XsStoreDetailActivity2.this, "찜하기가 취소되었습니다", Toast.LENGTH_LONG).show();
+                        isfavorites = false;
+                        iconImg.setBackgroundDrawable(getResources().getDrawable(R.drawable.icon_uncollected_store));
+                    }
+                } else {
+                    Toast.makeText(XsStoreDetailActivity2.this, entity.msg, Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+            }
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+            }
+        }, Constant.XS_BASE_URL + "MyInfo/FavoritesSet", GsonUtils.createGsonString(params));
+    }
+
+
     private void requestStoreDetail(String customCode, String saleCustom, String latitude, String longitude) {
         HashMap<String, String> params = new HashMap<>();
         params.put("lang_type", AppConfig.LANG_TYPE);
@@ -1013,12 +1076,19 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
 
+
                 entity = GsonUtils.changeGsonToBean(responseDescription, StoreMenuListEntity1.class);
                 tv_shopmame.setText(entity.data.StoreInfo.custom_name);
                 tv_shopname.setText(entity.data.StoreInfo.custom_name);
+                if (entity.data.StoreInfo.favorites) {
+                    iconImg.setBackgroundDrawable(getResources().getDrawable(R.drawable.icon_collected_store));
+                } else {
+                    iconImg.setBackgroundDrawable(getResources().getDrawable(R.drawable.icon_uncollected_store));
+                }
+                isfavorites = entity.data.StoreInfo.favorites;
                 shopname = entity.data.StoreInfo.custom_name;
-                shop_latitude=entity.data.StoreInfo.shop_latitude;
-                shop_longitude=entity.data.StoreInfo.shop_longitude;
+                shop_latitude = entity.data.StoreInfo.shop_latitude;
+                shop_longitude = entity.data.StoreInfo.shop_longitude;
 
                 //  tv_sale_m.setText("주문수 "+entity.data.StoreInfo.sale_cnt);
                 //  mTel=entity.data.StoreInfo;
@@ -1096,8 +1166,8 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 
     private void requestStoreSmallItemDetail(String Groupid, final Dialog dialog) {
 
-        linear_itemlist1= (LinearLayout) dialog.findViewById(R.id.linear_select1);
-        linear_itemlist2= (LinearLayout) dialog.findViewById(R.id.linear_select2);
+        linear_itemlist1 = (LinearLayout) dialog.findViewById(R.id.linear_select1);
+        linear_itemlist2 = (LinearLayout) dialog.findViewById(R.id.linear_select2);
 
         HashMap<String, String> params = new HashMap<>();
         params.put("Groupid", Groupid);
@@ -1128,13 +1198,13 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
                             sp_select1.setAdapter(spadapter);
 
                             pop_need_money_tv.setText(entity2.data.FoodSpec.get(0).item_p);
-                            FoodSpecCode=entity2.data.FoodSpec.get(0).item_code;
+                            FoodSpecCode = entity2.data.FoodSpec.get(0).item_code;
 
                             sp_select1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                                     pop_need_money_tv.setText(entity2.data.FoodSpec.get(position).item_p);
-                                    FoodSpecCode=entity2.data.FoodSpec.get(position).item_code;
+                                    FoodSpecCode = entity2.data.FoodSpec.get(position).item_code;
                                 }
 
                                 @Override

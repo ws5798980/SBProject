@@ -36,6 +36,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -70,10 +71,10 @@ public class LGUPlaus_Pay extends Activity {
         intent.putExtra("GiftInfo","api새로 받을것");*/
 
         Intent intent = getIntent();
-        OrderNumber = intent.getStringExtra("OrderNumber");
-        OrderMoney = intent.getStringExtra("OrderMoney");
-        OrderUserName = intent.getStringExtra("OrderUserName");
-        GiftInfo = intent.getStringExtra("GiftInfo");
+        OrderNumber = toUtf8(intent.getStringExtra("OrderNumber"));
+        OrderMoney = toUtf8(intent.getStringExtra("OrderMoney"));
+        OrderUserName = toUtf8(intent.getStringExtra("OrderUserName"));
+        GiftInfo = toUtf8(intent.getStringExtra("GiftInfo"));
 
 
         mWeb = (WebView) findViewById(R.id.web);
@@ -489,5 +490,18 @@ public class LGUPlaus_Pay extends Activity {
             });
         }
     }
+
+    public static String toUtf8(String str) {
+        String result = null;
+        try {
+            result = new String(str.getBytes("UTF-8"), "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+
 }
 

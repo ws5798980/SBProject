@@ -36,9 +36,9 @@ public class MyBackOrderFragment2 extends BaseFragment {
         recyclerView= (RecyclerView) rootView.findViewById(R.id.listview_order_new);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-
-        adapter=new OrderOneAdapter(getContext());
-        recyclerView.setAdapter(adapter);
+//
+//        adapter=new OrderOneAdapter(getContext());
+//        recyclerView.setAdapter(adapter);
     }
 
 

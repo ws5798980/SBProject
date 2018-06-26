@@ -47,7 +47,7 @@ import java.util.Map;
 
 import okhttp3.Request;
 
-public class XsStoreListActivity extends AppCompatActivity implements TextView.OnClickListener{
+public class XsStoreListActivity extends AppCompatActivity implements TextView.OnClickListener {
     private TabLayout tabLayout1, tabLayout2;
     private TextView tvLv1More, tvLv2More;
     private TextView radio1, radio2, radio3;
@@ -73,15 +73,14 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
     private boolean mLv3FirstFlag = true;
     private String mOrderBy = "1";
     private int mNextRequestPage = 2;
-    private LinearLayout linear_showcat1=null,linear_viewcat1=null;
+    private LinearLayout linear_showcat1 = null, linear_viewcat1 = null;
     private ImageView btnScan;
 
 
-    private GridView gridview,gridview2,gridview3,gridview4;
-    private int[] icon = { R.drawable.icon_all,
+    private GridView gridview, gridview2, gridview3, gridview4;
+    private int[] icon = {R.drawable.icon_all,
             R.drawable.icon_classification_01, R.drawable.icon_classification_02, R.drawable.icon_classification_03,
             R.drawable.icon_classification_04, R.drawable.icon_classification_05};
-
 
 
     private List<ListItem> allcatlist = new ArrayList<>();
@@ -99,23 +98,20 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
         initLv3Data();
     }
 
-    private void initgridview()
-    {
+    private void initgridview() {
         gridview = (GridView) findViewById(R.id.gridview);
-        shoplistcatAd=new ShopListGridListAdapter(this,allcatlist);
+        shoplistcatAd = new ShopListGridListAdapter(this, allcatlist);
         //配置适配器
         gridview.setAdapter(shoplistcatAd);
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                            public void onItemClick(AdapterView adapterView, View view, int arg2, long arg3)
-                                            {
+                                            public void onItemClick(AdapterView adapterView, View view, int arg2, long arg3) {
 
-                                                if(!mLv3FirstFlag){
-                                                    String lv="";
-                                                    if(arg2>0)
-                                                    {
-                                                        lv=allcatlist.get(arg2).getHeadline();
+                                                if (!mLv3FirstFlag) {
+                                                    String lv = "";
+                                                    if (arg2 > 0) {
+                                                        lv = allcatlist.get(arg2).getHeadline();
                                                     }
-                                                    requestStoreCateList(mLv1Position, ""+mLv2Position, lv, mOrderBy, 1);
+                                                    requestStoreCateList(mLv1Position, "" + mLv2Position, lv, mOrderBy, 1);
                                                 }
                                                 mLv3FirstFlag = false;
                                                 linear_viewcat1.setVisibility(View.GONE);
@@ -124,7 +120,7 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
         );
     }
 
-    private void initLv3Data(){
+    private void initLv3Data() {
         mRecyclerView2 = (RecyclerView) findViewById(R.id.rv_list2);
         mRecyclerView2.setLayoutManager(new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL));
 
@@ -135,22 +131,22 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 tabLayout2.getTabAt(position).select();
-                requestStoreCateList(mLv1Position, ""+mLv2Position, ""+(position+1), mOrderBy, mNextRequestPage);
+                requestStoreCateList(mLv1Position, "" + mLv2Position, "" + (position + 1), mOrderBy, mNextRequestPage);
                 llLv3.setVisibility(View.GONE);
             }
         });
     }
 
-    private void initList(){
+    private void initList() {
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-       mAdapter = new XsStoreListAdapter(this, R.layout.list_item_xs_store_list, mStoreList);
+        mAdapter = new XsStoreListAdapter(this, R.layout.list_item_xs_store_list, mStoreList);
 
         mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                requestStoreCateList(mLv1Position, ""+mLv2Position, "1", mOrderBy, mNextRequestPage);
+                requestStoreCateList(mLv1Position, "" + mLv2Position, "1", mOrderBy, mNextRequestPage);
                 return;
 
             }
@@ -169,7 +165,7 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
         });
     }
 
-    private void initSelected(){
+    private void initSelected() {
         tvLv1More = (TextView) findViewById(R.id.tv_lv1_more);
         tvLv2More = (TextView) findViewById(R.id.tv_lv2_more);
         radio1 = (TextView) findViewById(R.id.radio1);
@@ -183,7 +179,7 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
         radio3.setOnClickListener(this);
     }
 
-    private void initView(){
+    private void initView() {
         btnBack = (LinearLayout) findViewById(R.id.btn_back);
         btnBack.setOnClickListener(this);
         llLv3 = (LinearLayout) findViewById(R.id.ll_lv3);
@@ -198,38 +194,38 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
         btnMap.setOnClickListener(this);
         btnSearch.setOnClickListener(this);
 
-        linear_showcat1=(LinearLayout) findViewById(R.id.linear_showcat1);
+        linear_showcat1 = (LinearLayout) findViewById(R.id.linear_showcat1);
         linear_showcat1.setOnClickListener(this);
 
-        linear_viewcat1=(LinearLayout) findViewById(R.id.linear_viewcat1);
+        linear_viewcat1 = (LinearLayout) findViewById(R.id.linear_viewcat1);
         linear_viewcat1.setOnClickListener(this);
 
         btnScan = (ImageView) findViewById(R.id.btnScan);
         btnScan.setOnClickListener(this);
     }
 
-    private void initData(){
+    private void initData() {
         mLv1Position = getIntent().getStringExtra("lv1");
-        if(getIntent().getStringExtra("lv2") != null){
+        if (getIntent().getStringExtra("lv2") != null) {
             mLv2Position = Integer.parseInt(getIntent().getStringExtra("lv2"));
         }
-        if(getIntent().getStringExtra("lv3") != null){
+        if (getIntent().getStringExtra("lv3") != null) {
             mLv3Position = Integer.parseInt(getIntent().getStringExtra("lv3"));
         }
-        if(mLv1Position == null || mLv1Position.isEmpty()){
+        if (mLv1Position == null || mLv1Position.isEmpty()) {
             mLv1Position = "1";
             btnBack.setVisibility(View.GONE);
-        }else{
+        } else {
             btnBack.setVisibility(View.VISIBLE);
         }
 
         tabLayout1.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if(!mLv2FirstFlag){
-                    if(mLv2Position != tab.getPosition()+1){
-                        mLv2Position = tab.getPosition()+1;
-                        requestStoreCateList(mLv1Position, ""+mLv2Position, "1", mOrderBy, 1);
+                if (!mLv2FirstFlag) {
+                    if (mLv2Position != tab.getPosition() + 1) {
+                        mLv2Position = tab.getPosition() + 1;
+                        requestStoreCateList(mLv1Position, "" + mLv2Position, "1", mOrderBy, 1);
                     }
                 }
                 mLv2FirstFlag = false;
@@ -249,10 +245,10 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
         tabLayout2.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                if(!mLv3FirstFlag){
-                    if(mLv3Position != tab.getPosition()+1){
-                        mLv3Position = tab.getPosition()+1;
-                        requestStoreCateList(mLv1Position, ""+mLv2Position, ""+mLv3Position, mOrderBy, 1);
+                if (!mLv3FirstFlag) {
+                    if (mLv3Position != tab.getPosition() + 1) {
+                        mLv3Position = tab.getPosition() + 1;
+                        requestStoreCateList(mLv1Position, "" + mLv2Position, "" + mLv3Position, mOrderBy, 1);
                     }
                 }
                 mLv3FirstFlag = false;
@@ -269,18 +265,18 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
             }
         });
 
-        requestStoreCateList(mLv1Position, ""+mLv2Position, ""+mLv3Position, "1", 1);
+        requestStoreCateList(mLv1Position, "" + mLv2Position, "" + mLv3Position, "1", 1);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 1 && resultCode == 1){
+        if (requestCode == 1 && resultCode == 1) {
             mLv1Position = data.getStringExtra("lev1");
             mLv2Position = Integer.parseInt(data.getStringExtra("lev2"));
-            requestStoreCateList(mLv1Position, ""+mLv2Position, "1", mOrderBy, 1);
-        }else if(requestCode == 1000 && resultCode == RESULT_OK){
-            if(requestCode == 1000) {
+            requestStoreCateList(mLv1Position, "" + mLv2Position, "1", mOrderBy, 1);
+        } else if (requestCode == 1000 && resultCode == RESULT_OK) {
+            if (requestCode == 1000) {
                 if (resultCode == RESULT_OK) {
                     String result = data.getStringExtra("result");
                     AppConfig.address = result;
@@ -288,8 +284,7 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
 
                 }
             }
-        }
-       else if(requestCode == 0) {
+        } else if (requestCode == 0) {
             if (resultCode == RESULT_OK && data != null) {
 //                String result = data.getStringExtra("resultSetting");
                 CaptureUtil.handleResultScaning(XsStoreListActivity.this,
@@ -301,7 +296,7 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
             else if (resultCode == RESULT_CANCELED) {
 
             }
-        }  else if(requestCode == 1001) {
+        } else if (requestCode == 1001) {
             if (resultCode == RESULT_OK) {
                 String result = data.getStringExtra("result");
                 //AddressTitle.setText(result);
@@ -311,19 +306,19 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_back:
                 finish();
                 break;
             case R.id.tv_lv1_more:
                 Intent intent = new Intent(XsStoreListActivity.this, Lv1MoreActivity.class);
 //                startActivity(intent);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent, 1);
                 break;
             case R.id.tv_lv2_more:
-                if(!llLv3.isShown()){
-                    category3List(""+mLv1Position, ""+mLv2Position);
-                }else{
+                if (!llLv3.isShown()) {
+                    category3List("" + mLv1Position, "" + mLv2Position);
+                } else {
                     llLv3.setVisibility(View.GONE);
                 }
                 break;
@@ -337,7 +332,7 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
                 radio3.setTextColor(Color.parseColor("#a0a0a0"));
 
                 mOrderBy = "1";
-                requestStoreCateList(mLv1Position, ""+mLv2Position, ""+mLv3Position, mOrderBy, 1);
+                requestStoreCateList(mLv1Position, "" + mLv2Position, "" + mLv3Position, mOrderBy, 1);
                 break;
             case R.id.radio2:
                 radio1.setBackgroundResource(R.drawable.btn_select_off);
@@ -349,7 +344,7 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
                 radio3.setTextColor(Color.parseColor("#a0a0a0"));
 
                 mOrderBy = "2";
-                requestStoreCateList(mLv1Position, ""+mLv2Position, ""+mLv3Position, mOrderBy, 1);
+                requestStoreCateList(mLv1Position, "" + mLv2Position, "" + mLv3Position, mOrderBy, 1);
                 break;
             case R.id.radio3:
                 radio1.setBackgroundResource(R.drawable.btn_select_off);
@@ -361,7 +356,7 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
                 radio3.setTextColor(Color.parseColor("#21c043"));
 
                 mOrderBy = "3";
-                requestStoreCateList(mLv1Position, ""+mLv2Position, ""+mLv3Position, mOrderBy, 1);
+                requestStoreCateList(mLv1Position, "" + mLv2Position, "" + mLv3Position, mOrderBy, 1);
                 break;
             case R.id.btn_serch:
                 Intent intentSearch = new Intent(XsStoreListActivity.this, SmSeachActivity.class);
@@ -372,11 +367,9 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
                 startActivityForResult(intentMap, 1000);
                 break;
             case R.id.linear_showcat1:
-                if(linear_viewcat1.getVisibility()==View.VISIBLE)
-                {
+                if (linear_viewcat1.getVisibility() == View.VISIBLE) {
                     linear_viewcat1.setVisibility(View.GONE);
-                }
-                else {
+                } else {
                     initgridview();
                     linear_viewcat1.setVisibility(View.VISIBLE);
                 }
@@ -397,24 +390,24 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
         params.put("div_code", S.get(XsStoreListActivity.this, C.KEY_JSON_DIV_CODE));
         params.put("custom_code", S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE));
         params.put("token", S.get(XsStoreListActivity.this, C.KEY_JSON_TOKEN));
-        params.put("pg", ""+pg);
+        params.put("pg", "" + pg);
         params.put("pagesize", "5");
         params.put("custom_lev1", customLv1);
         params.put("custom_lev2", customLv2);
         params.put("custom_lev3", customLv3);
-        params.put("latitude", ""+AppConfig.latitude);
-        params.put("longitude", ""+AppConfig.longitude);
+        params.put("latitude", "" + AppConfig.latitude);
+        params.put("longitude", "" + AppConfig.longitude);
         params.put("order_by", orderBy);
-        Log.i("123123", "pg="+pg);
+        Log.i("123123", "pg=" + pg);
         OkHttpHelper okHttpHelper = new OkHttpHelper(XsStoreListActivity.this);
         okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
                 StoreCateListEntity entity = GsonUtils.changeGsonToBean(responseDescription, StoreCateListEntity.class);
-                Log.i("123123", "responseDescription="+responseDescription);
-                if("1".equals(entity.status)){
-                    if(mTitles1.size()<=0){
-                        for(int i=0;i<entity.lev2s.size();i++){
+                Log.i("123123", "responseDescription=" + responseDescription);
+                if ("1".equals(entity.status)) {
+                    if (mTitles1.size() <= 0) {
+                        for (int i = 0; i < entity.lev2s.size(); i++) {
                             mTitles1.add(entity.lev2s.get(i).lev_name);
                             tabLayout1.addTab(tabLayout1.newTab().setText(mTitles1.get(i)));
                         }
@@ -446,28 +439,28 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
 //                        }
 //                        initgridview();
 //                    }
-                    Log.i("123123", "mLv2Position="+mLv2Position);
-                    Log.i("123123", "mLv3Position="+mLv3Position);
-                    tabLayout1.getTabAt(mLv2Position-1).select();
-                   // tabLayout2.getTabAt(mLv3Position-1).select();
-                    if(pg == 1){
+                    Log.i("123123", "mLv2Position=" + mLv2Position);
+                    Log.i("123123", "mLv3Position=" + mLv3Position);
+                    tabLayout1.getTabAt(mLv2Position - 1).select();
+                    // tabLayout2.getTabAt(mLv3Position-1).select();
+                    if (pg == 1) {
                         mStoreList = entity.storelist;
                         mNextRequestPage = 2;
                         mAdapter.setNewData(mStoreList);
-                      //  mAdapter.loadMoreEnd(true);
-                    }else{
-                        if(entity.storelist != null && entity.storelist.size() > 0){
+                        //  mAdapter.loadMoreEnd(true);
+                    } else {
+                        if (entity.storelist != null && entity.storelist.size() > 0) {
                             mNextRequestPage++;
                             mStoreList.addAll(entity.storelist);
                             mAdapter.loadMoreComplete();
                             mAdapter.addData(entity.storelist);
-                        }else{
+                        } else {
                             mAdapter.loadMoreComplete();
                             mAdapter.loadMoreEnd(true);
                         }
                     }
-                }else{
- //                   allcatlist.clear();
+                } else {
+                    //                   allcatlist.clear();
 //                    ListItem l2=new ListItem();
 //                    l2.custom_name="全部";
 //                    l2.setHeadline("");
@@ -490,10 +483,10 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
                 mAdapter.loadMoreComplete();
                 mAdapter.loadMoreEnd(true);
             }
-        }, Constant.XS_BASE_URL+"StoreCate/requestStoreCateList", GsonUtils.createGsonString(params));
+        }, Constant.XS_BASE_URL + "StoreCate/requestStoreCateList", GsonUtils.createGsonString(params));
     }
 
-    private void category3List(String customLev1, String customLev2){
+    private void category3List(String customLev1, String customLev2) {
         HashMap<String, String> params = new HashMap<>();
         params.put("lang_type", AppConfig.LANG_TYPE);
         params.put("custom_lev1", customLev1);
@@ -505,11 +498,11 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
                 Category3ListEntity entity = GsonUtils.changeGsonToBean(responseDescription, Category3ListEntity.class);
 
-                if("1".equals(entity.status)){
+                if ("1".equals(entity.status)) {
                     mLev3List = entity.lev3s;
                     mAdapter2.setNewData(mLev3List);
                     llLv3.setVisibility(View.VISIBLE);
-                }else{
+                } else {
                 }
             }
 

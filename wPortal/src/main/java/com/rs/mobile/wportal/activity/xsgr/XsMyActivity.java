@@ -29,11 +29,11 @@ import com.rs.mobile.wportal.activity.sm.SmCouponActivity;
 import com.rs.mobile.wportal.activity.sm.SmMainActivity;
 import com.rs.mobile.wportal.persnal.SettingActivity;
 
-public class XsMyActivity extends AppCompatActivity implements View.OnClickListener{
+public class XsMyActivity extends AppCompatActivity implements View.OnClickListener {
     private LinearLayout llLogined;
     private TextView tvLogin, tvNickname, tvTel;
     private TextView tvOrder;
-    private LinearLayout llAddress, llLive, llCoupon, llNotice, llSetting, llCollection, llActivity, llAnnouncement, llService,text_to_myshop;
+    private LinearLayout llAddress, llLive, llCoupon, llNotice, llSetting, llCollection, llActivity, llAnnouncement, llService, text_to_myshop;
     private WImageView ivPhoto;
     private LinearLayout llSet;
 
@@ -52,7 +52,7 @@ public class XsMyActivity extends AppCompatActivity implements View.OnClickListe
         initData();
     }
 
-    private void initView(){
+    private void initView() {
         llLogined = (LinearLayout) findViewById(R.id.ll_logined);
         tvLogin = (TextView) findViewById(R.id.tv_login);
         tvNickname = (TextView) findViewById(R.id.tv_nickname);
@@ -87,19 +87,19 @@ public class XsMyActivity extends AppCompatActivity implements View.OnClickListe
         text_to_myshop.setOnClickListener(this);
     }
 
-    private void initData(){
+    private void initData() {
 
-        if(S.get(XsMyActivity.this, C.KEY_JSON_TOKEN) != null && !S.get(XsMyActivity.this, C.KEY_JSON_TOKEN).isEmpty()){
+        if (S.get(XsMyActivity.this, C.KEY_JSON_TOKEN) != null && !S.get(XsMyActivity.this, C.KEY_JSON_TOKEN).isEmpty()) {
             tvLogin.setVisibility(View.GONE);
             llLogined.setVisibility(View.VISIBLE);
             tvNickname.setText(S.get(XsMyActivity.this, C.KEY_JSON_NICK_NAME));
             tvTel.setText(S.get(XsMyActivity.this, C.KEY_JSON_CUSTOM_ID));
             String imgUrl = S.get(XsMyActivity.this, C.KEY_JSON_PROFILE_IMG);
-            if(imgUrl != null && !imgUrl.isEmpty()){
+            if (imgUrl != null && !imgUrl.isEmpty()) {
 //            Glide.with(XsMyActivity.this).load(imgUrl).into(ivPhoto);
-                ImageUtil.drawImageFromUri(imgUrl,ivPhoto);
+                ImageUtil.drawImageFromUri(imgUrl, ivPhoto);
             }
-        }else{
+        } else {
             llLogined.setVisibility(View.GONE);
             tvLogin.setVisibility(View.VISIBLE);
             ivPhoto.setImageResource(R.drawable.img_defaultheadphoto_002);
@@ -108,7 +108,7 @@ public class XsMyActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.tv_login:
                 Intent intentLogin1 = new Intent(XsMyActivity.this, LoginActivity.class);
                 startActivity(intentLogin1);
@@ -335,10 +335,13 @@ public class XsMyActivity extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     public void onDoNext() {
-                        String realUrl="http://www.gigawon.co.kr:1314/80_StoreAdmin/storeMain.aspx?custom_code="+S.get(XsMyActivity.this, C.KEY_JSON_CUSTOM_CODE)+"&sale_custom_code=01071390009abcde&token="+S.get(XsMyActivity.this, C.KEY_JSON_TOKEN);
-                        Intent intent = new Intent(XsMyActivity.this,WebActivity.class);
-                        intent.putExtra(C.KEY_INTENT_URL,realUrl);
-                        XsMyActivity.this.startActivity(intent);
+//                        String realUrl="http://www.gigawon.co.kr:1314/80_StoreAdmin/storeMain.aspx?custom_code="+S.get(XsMyActivity.this, C.KEY_JSON_CUSTOM_CODE)+"&sale_custom_code=01071390009abcde&token="+S.get(XsMyActivity.this, C.KEY_JSON_TOKEN);
+//                        Intent intent = new Intent(XsMyActivity.this,WebActivity.class);
+//                        intent.putExtra(C.KEY_INTENT_URL,realUrl);
+//                        XsMyActivity.this.startActivity(intent);
+                        Intent intent = new Intent(XsMyActivity.this, XsMyShopActivity.class);
+                        startActivity(intent);
+
                     }
                 }, new UtilCheckLogin.CheckError() {
                     @Override
@@ -349,10 +352,10 @@ public class XsMyActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    private boolean isLogined(){
-        if(UiUtil.checkLogin(XsMyActivity.this) == true){
+    private boolean isLogined() {
+        if (UiUtil.checkLogin(XsMyActivity.this) == true) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }

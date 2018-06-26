@@ -30,7 +30,7 @@ public class StoreMenuListEntity1 implements Serializable{
         public String score;
         public String cnt;
         public String sale_custom_cnt;
-        public String favorites;
+        public boolean favorites;
         public String shop_latitude;
         public String shop_longitude;
     }

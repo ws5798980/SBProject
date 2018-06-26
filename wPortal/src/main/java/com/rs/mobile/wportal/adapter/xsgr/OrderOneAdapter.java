@@ -1,94 +1,53 @@
 package com.rs.mobile.wportal.adapter.xsgr;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.entity.BaseEntity;
 
 import java.util.List;
 
-public class OrderOneAdapter extends RecyclerView.Adapter<OrderOneAdapter.ViewHolder> {
-
+public class OrderOneAdapter extends BaseQuickAdapter<BaseEntity, BaseViewHolder> {
+    LinearLayout includelayout;
+    View openLayout;
+    TextView openTv;
+    ImageView img_order_iocn;
 
     Context context;
-    List<Fragment> list;
 
-    private String[] titles;
-
-    public OrderOneAdapter(Context context) {
-
+    public OrderOneAdapter(Context context, int layoutResId, @Nullable List<BaseEntity> data) {
+        super(layoutResId, data);
         this.context = context;
-
-    }
-
-
-    @Override
-    public OrderOneAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_order_new, parent, false);
-        OrderOneAdapter.ViewHolder viewHolder = new OrderOneAdapter.ViewHolder(view);
-        return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final OrderOneAdapter.ViewHolder holder, int position) {
+    protected void convert(BaseViewHolder helper, BaseEntity item) {
 
-        holder.includelayout.removeAllViews();
-        holder.includelayout.setVisibility(View.GONE);
-        holder.openTv.setText(context.getResources().getString(R.string.orderopen));
-        holder.img_order_iocn.setImageResource(R.drawable.icon_open_goods);
+        includelayout = helper.getView(R.id.layout_include);
+        openLayout = helper.getView(R.id.layout_open);
+        img_order_iocn = helper.getView(R.id.img_order_iocn);
+        openTv = helper.getView(R.id.tv_order_new_pull);
 
-        holder.openLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (View.VISIBLE==holder.includelayout.getVisibility()){
-                    holder.includelayout.setVisibility(View.GONE);
-                    holder.openTv.setText(context.getResources().getString(R.string.orderopen));
-                    holder.img_order_iocn.setImageResource(R.drawable.icon_open_goods);
-                }else {
-                    holder.includelayout.setVisibility(View.VISIBLE);
-                   holder.openTv.setText(context.getResources().getString(R.string.orderclose));
-                    holder.img_order_iocn.setImageResource(R.drawable.icon_close_goods);
-                }
-            }
-        });
+        includelayout.removeAllViews();
+        includelayout.setVisibility(View.GONE);
+        openTv.setText(context.getResources().getString(R.string.orderopen));
+        img_order_iocn.setImageResource(R.drawable.icon_open_goods);
 
+        helper.addOnClickListener(R.id.layout_open);
 
         for (int i = 0; i < 5; i++) {
             View childView = LayoutInflater.from(context).inflate(R.layout.item_order_open, null);
-            holder.includelayout.addView(childView);
+            includelayout.addView(childView);
         }
 
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return 10;
-    }
-
-    class ViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout includelayout;
-
-        View openLayout;
-        TextView openTv;
-        ImageView img_order_iocn;
-
-
-        ViewHolder(View itemView) {
-            super(itemView);
-
-            includelayout = (LinearLayout) itemView.findViewById(R.id.layout_include);
-            openLayout=itemView.findViewById(R.id.layout_open);
-            openTv= (TextView) itemView.findViewById(R.id.tv_order_new_pull);
-            img_order_iocn= (ImageView) itemView.findViewById(R.id.img_order_iocn);
-        }
     }
 }
