@@ -191,6 +191,7 @@
     <string name="msg_app_error">未知的错误导致app无法运行</string>
     <string name="msg_init_network_error">由于网络错误导致app无法运行</string>
 
+
     <!-- common -->
     <string name="update">更新</string>
     <string name="update_force">强制更新</string>
@@ -1121,5 +1122,7 @@
     <string name="sm_text_lguplus">LG U+</string>
     <string name="str_done">完成</string>
     <string name="common_text068">\".\"</string>
+
+    <string name="reedit">重新编辑</string>
 
 </resources>

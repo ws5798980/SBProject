@@ -1,21 +1,26 @@
 package com.rs.mobile.wportal.activity.xsgr;
 
 import android.content.Context;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+
 import com.rs.mobile.common.activity.BaseActivity;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.adapter.xsgr.ViewPagerAdapter;
@@ -45,6 +50,7 @@ public class CommodityManagementActivity extends BaseActivity {
     private String[] titles;
     private PopupWindow popupWindow;
     private List<String> mData = new ArrayList<>();
+    MyPopupWinAdapter popAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,14 +89,26 @@ public class CommodityManagementActivity extends BaseActivity {
         contentView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.commodity_type, null, false);
         recyclerView = (RecyclerView) contentView.findViewById(R.id.recycler_view);
         EditText all = (EditText) contentView.findViewById(R.id.commodity_name);
+        all.setText("全部分类");
         ImageView add = (ImageView) contentView.findViewById(R.id.commodity_img);
         add.setImageResource(R.drawable.icon_add_category);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!mData.contains("")) {
+                    popAdapter.addItem("",popAdapter.getItemCount());
+//                    recyclerView.getAdapter().notifyDataSetChanged();
+                }else {
 
+                }
+
+            }
+        });
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, R.drawable.divide_bg));
-        MyPopupWinAdapter adapter = new MyPopupWinAdapter(getApplicationContext(), mData);
-        recyclerView.setAdapter(adapter);
+        popAdapter = new MyPopupWinAdapter(getApplicationContext(), mData);
+        recyclerView.setAdapter(popAdapter);
     }
 
     private void initListener() {
@@ -103,7 +121,21 @@ public class CommodityManagementActivity extends BaseActivity {
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popupWindow = ListPopWindowManager.getInstance().showCommonPopWindow(contentView, viewLine, CommodityManagementActivity.this, false);
+                LinearLayout title = (LinearLayout) findViewById(R.id.my_title);
+//                int titleHeight = title.getHeight();
+                int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+                title.measure(h, 0);
+                //标题栏高度
+                int titleHeight = title.getMeasuredHeight();
+                //状态栏高度
+                int statusHeight = getStatusBarHeight(CommodityManagementActivity.this);
+                DisplayMetrics metrics = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(metrics);
+                //屏幕高度
+                int screenHeight = metrics.heightPixels;
+                //popupwindow高度
+                int height = screenHeight - titleHeight - statusHeight;
+                popupWindow = ListPopWindowManager.getInstance().showCommonPopWindow(contentView, viewLine, CommodityManagementActivity.this, false, height);
                 initList();
             }
         });
@@ -121,7 +153,24 @@ public class CommodityManagementActivity extends BaseActivity {
         recyclerView.getAdapter().notifyDataSetChanged();
     }
 
-    class MyPopupWinAdapter extends RecyclerView.Adapter<MyPopupWinAdapter.ListViewHolder> {
+    public static int getStatusBarHeight(Context context) {
+        Class<?> c = null;
+        Object obj = null;
+        Field field = null;
+        int x = 0, statusBarHeight = 0;
+        try {
+            c = Class.forName("com.android.internal.R$dimen");
+            obj = c.newInstance();
+            field = c.getField("status_bar_height");
+            x = Integer.parseInt(field.get(obj).toString());
+            statusBarHeight = context.getResources().getDimensionPixelSize(x);
+        } catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return statusBarHeight;
+    }
+
+    public class MyPopupWinAdapter extends RecyclerView.Adapter<MyPopupWinAdapter.ListViewHolder> {
         private Context context;
         private List<String> mdatas;
 
@@ -141,8 +190,57 @@ public class CommodityManagementActivity extends BaseActivity {
         @Override
         public void onBindViewHolder(ListViewHolder holder, int position) {
             String type = mdatas.get(position);
+            holder.img.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    holder.img.setVisibility(View.GONE);
+                    holder.done.setVisibility(View.VISIBLE);
+                    holder.name.setEnabled(true);
+
+                    holder.name.setSelectAllOnFocus(true);//设置全选
+                    new Handler().postDelayed(new Runnable() {//加上延时
+                        public void run() {
+                            holder.name.setFocusable(true);
+                            holder.name.setFocusableInTouchMode(true);
+                            holder.name.requestFocus();//请求获得焦点
+                            //调用系统输入法
+                            InputMethodManager inputManager = (InputMethodManager) holder.name.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            inputManager.showSoftInput(holder.name, 0);
+                        }
+                    }, 200);
+                }
+            });
+            holder.done.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    holder.img.setVisibility(View.VISIBLE);
+                    holder.done.setVisibility(View.GONE);
+                    holder.name.setEnabled(false);
+                    holder.name.clearFocus();
+                }
+            });
             holder.setData(type);
 
+        }
+
+        public void addItem(String text, int position) {
+            mData.add(position, text);
+            notifyItemInserted(position);
+
+            new Handler().postDelayed(new Runnable() {//加上延时
+                public void run() {
+                    ListViewHolder holder = (ListViewHolder) recyclerView.findViewHolderForAdapterPosition(position);
+                    holder.img.setVisibility(View.GONE);
+                    holder.done.setVisibility(View.VISIBLE);
+                    holder.name.setEnabled(true);
+                    holder.name.setFocusable(true);
+                    holder.name.setFocusableInTouchMode(true);
+                    holder.name.requestFocus();//请求获得焦点
+                    //调用系统输入法
+                    InputMethodManager inputManager = (InputMethodManager) holder.name.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    inputManager.showSoftInput(holder.name, 0);
+                }
+            }, 100);
         }
 
         @Override

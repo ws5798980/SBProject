@@ -9,15 +9,16 @@
     tools:context=".activity.xsgr.CommodityManagementActivity">
 
     <LinearLayout
+        android:id="@+id/my_title"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="51dp"
         android:background="@color/white"
         android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/navigation_area"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:gravity="center_vertical"
             android:layout_alignParentTop="true"
             android:padding="@dimen/marginx2">
@@ -74,16 +75,16 @@
                     android:src="@drawable/icon_state_01" />
             </LinearLayout>
         </RelativeLayout>
-
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greywhite2" />
 
     </LinearLayout>
 
 
-    <View
-        android:id="@+id/view_line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/greywhite2" />
+
 
 
     <android.support.design.widget.TabLayout

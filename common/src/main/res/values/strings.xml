@@ -313,6 +313,9 @@
     <string name="myshop">我的店铺</string>
     <string name="myorder">订单管理</string>
     <string name="commodity">商品管理</string>
+    <string name="base_info">基本信息</string>
+    <string name="other_info">附加信息</string>
+    <string name="commodity_type">商品分类:</string>
     <string name="todaysale">今日销售数据</string>
 
     <!-- gps -->

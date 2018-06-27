@@ -778,8 +778,8 @@ public class ListPopWindowManager {
             }
         }
     }
-    public PopupWindow showCommonPopWindow(View contentView, View rootView, final Activity activity, boolean hasBackground){
-        PopupWindow popView = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT,true);
+    public PopupWindow showCommonPopWindow(View contentView, View rootView, final Activity activity, boolean hasBackground,int height){
+        PopupWindow popView = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, height,true);
         popView.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         popView.setOutsideTouchable(true);
         popView.setFocusable(true);
@@ -798,6 +798,29 @@ public class ListPopWindowManager {
                 activity.getWindow().setAttributes(lp);
             }
         });
+        }
+        return popView;
+    }
+    public PopupWindow showMyPopWindow(View contentView, View rootView, final Activity activity, boolean hasBackground,int height){
+        PopupWindow popView = new PopupWindow(contentView, ViewGroup.LayoutParams.WRAP_CONTENT, height,true);
+//        popView.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popView.setOutsideTouchable(true);
+        popView.setFocusable(true);
+        popView.showAsDropDown(rootView);
+        // 设置背景颜色变暗
+        if (hasBackground){
+            WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
+            lp.alpha = 0.7f;
+            activity.getWindow().setAttributes(lp);
+            popView.setOnDismissListener(new PopupWindow.OnDismissListener() {
+
+                @Override
+                public void onDismiss() {
+                    WindowManager.LayoutParams lp = activity.getWindow().getAttributes();
+                    lp.alpha = 1f;
+                    activity.getWindow().setAttributes(lp);
+                }
+            });
         }
         return popView;
     }

@@ -1,6 +1,7 @@
 package com.rs.mobile.wportal.adapter.xsgr;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.activity.xsgr.ReeditActivity;
 
 import java.util.List;
 
@@ -40,7 +42,14 @@ public class CommodityItemAdapter extends RecyclerView.Adapter<CommodityItemAdap
     @Override
     public void onBindViewHolder(final CommodityItemAdapter.ViewHolder holder, int position) {
         holder.setData();
-
+        holder.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(context, ReeditActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -66,6 +75,7 @@ public class CommodityItemAdapter extends RecyclerView.Adapter<CommodityItemAdap
             shelves = (Button) itemView.findViewById(R.id.get_shelves);
             edit = (Button) itemView.findViewById(R.id.edit_goods);
         }
+
         public void setData() {
 
         }

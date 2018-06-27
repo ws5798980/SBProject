@@ -79,6 +79,7 @@
     <color name="textcolor_black">#111111</color><!-- 商品管理的item的color -->
     <color name="textcolor_gray">#999999</color><!-- 商品管理的item的color -->
     <color name="textcolor_red">#dd0909</color><!-- 商品管理的item的color -->
+    <color name="textcolor_black_4d">#4d000000</color>
     <!--  market -->
     
       <color name="mk_text_click">#43c3ff</color>

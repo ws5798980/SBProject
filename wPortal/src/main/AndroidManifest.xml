@@ -809,42 +809,33 @@
         <activity
             android:name=".persnal.Persnal_QRCODE_POPUP"
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog.NoActionBar" />
+        <!-- <activity -->
+        <!-- android:name=".activity.SplashActivity" -->
+        <!-- android:screenOrientation="portrait" -->
+        <!-- android:theme="@style/AppIntro"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <!-- <activity -->
+        <!-- android:name=".activity.xsgr.XsMyShopActivity" -->
+        <!-- android:screenOrientation="portrait" /> -->
+
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".activity.xsgr.XsMyShopActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppIntro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.xsgr.XsMyShopActivity"
-            android:screenOrientation="portrait" />
-
-        <!--<activity-->
-        <!--android:name=".activity.xsgr.XsMyShopActivity"-->
-        <!--android:screenOrientation="portrait"-->
-        <!--android:theme="@style/AppIntro">-->
-        <!--<intent-filter>-->
-        <!--<action android:name="android.intent.action.MAIN" />-->
-
-        <!--<category android:name="android.intent.category.LAUNCHER" />-->
-        <!--</intent-filter>-->
-        <!--</activity>-->
-        <activity
-            android:name=".activity.xsgr.XsBackOrderDetailActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.xsgr.StoreCommentActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.xsgr.BackOrderActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activity.xsgr.OrderActivity"
+            android:name=".activity.xsgr.Activity_Order"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.xsgr.StoreManageActivity"
@@ -935,7 +926,13 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.xsgr.CommodityManagementActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".activity.xsgr.ReeditActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"></activity>
     </application>
 
 </manifest>
