@@ -290,7 +290,7 @@ public class OkHttpHelper {
 			public void onFailure(Call arg0, IOException arg1) {
 				try {
 					D.hideProgressDialog();
-					callbackLogic.onBizFailure("", null, "");
+					callbackLogic.onBizFailure(arg1.toString(), null, "");
 					if (callbackLogic != null) {
 						handler.post(new Runnable() {
 
@@ -316,7 +316,7 @@ public class OkHttpHelper {
 					D.hideProgressDialog();
 
 					final String responseBody = arg1.body().string().trim();
-					L.d(responseBody);
+					L.d("789456"+responseBody);
 					final JSONObject json = new JSONObject(responseBody);
 
 					handler.post(new Runnable() {

@@ -835,7 +835,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.xsgr.Activity_Order"
+            android:name=".activity.xsgr.OrderActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.xsgr.StoreManageActivity"
