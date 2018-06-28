@@ -2,6 +2,7 @@ package com.rs.mobile.wportal.adapter.xsgr;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,72 +13,48 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.activity.xsgr.ReeditActivity;
+import com.rs.mobile.wportal.biz.xsgr.CommodityList;
+import com.rs.mobile.wportal.entity.BaseEntity;
 
 import java.util.List;
 
-public class CommodityItemAdapter extends RecyclerView.Adapter<CommodityItemAdapter.ViewHolder> {
-
-
+public class CommodityItemAdapter extends BaseQuickAdapter<CommodityList.DataBean, BaseViewHolder> {
+    private ImageView img;
+    private TextView name;
+    private TextView num;
+    private TextView price;
+    private Button shelves;
+    private Button edit;
     Context context;
 //    List<Fragment> list;
 
 //    private String[] titles;
 
-    public CommodityItemAdapter(Context context) {
-
+    public CommodityItemAdapter(Context context, int layoutResId, @Nullable List<CommodityList.DataBean> data) {
+        super(layoutResId, data);
         this.context = context;
 
     }
 
-
     @Override
-    public CommodityItemAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_commodity_new, parent, false);
-        CommodityItemAdapter.ViewHolder viewHolder = new CommodityItemAdapter.ViewHolder(view);
-        return viewHolder;
+    protected void convert(BaseViewHolder helper, CommodityList.DataBean item) {
+//        img = helper.getView(R.id.image_title);
+//        name = helper.getView(R.id.commodity_name);
+//        num = helper.getView(R.id.commodity_num);
+//        price = helper.getView(R.id.commodity_price);
+//        shelves =helper.getView(R.id.get_shelves);
+//        edit = helper.getView(R.id.edit_goods);
+        helper.addOnClickListener(R.id.get_shelves);
+        helper.addOnClickListener(R.id.edit_goods);
+        helper.setText(R.id.commodity_name,item.getItem_name());
+        helper.setText(R.id.commodity_num,item.getANum());
+        helper.setText(R.id.commodity_price,item.getItem_p());
+        Glide.with(mContext).load(item.getImage_url()).into((ImageView) helper.getView(R.id.image_title));
     }
 
-    @Override
-    public void onBindViewHolder(final CommodityItemAdapter.ViewHolder holder, int position) {
-        holder.setData();
-        holder.edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent();
-                intent.setClass(context, ReeditActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
-
-    @Override
-    public int getItemCount() {
-        return 10;
-    }
-
-    class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView img;
-        private TextView name;
-        private TextView num;
-        private TextView price;
-        private Button shelves;
-        private Button edit;
-
-
-        ViewHolder(View itemView) {
-            super(itemView);
-            img = (ImageView) itemView.findViewById(R.id.image_title);
-            name = (TextView) itemView.findViewById(R.id.commodity_name);
-            num = (TextView) itemView.findViewById(R.id.commodity_num);
-            price = (TextView) itemView.findViewById(R.id.commodity_price);
-            shelves = (Button) itemView.findViewById(R.id.get_shelves);
-            edit = (Button) itemView.findViewById(R.id.edit_goods);
-        }
-
-        public void setData() {
-
-        }
-    }
 }
