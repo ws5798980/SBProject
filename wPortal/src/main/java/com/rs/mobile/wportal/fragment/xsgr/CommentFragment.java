@@ -52,10 +52,10 @@ public class CommentFragment extends BaseFragment {
         commentAdapter.disableLoadMoreIfNotFullPage();
 
 
+
         commentAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                commentAdapter.setEnableLoadMore(false);
 
                 for (int i = 6; i < 10; i++) {
                     list.add(new BaseEntity(i + ""));
@@ -65,7 +65,6 @@ public class CommentFragment extends BaseFragment {
                     public void run() {
                         commentAdapter.setNewData(list);
                         commentAdapter.loadMoreComplete();
-                        commentAdapter.setEnableLoadMore(true);
 
                     }
                 }, 1000);
@@ -73,6 +72,7 @@ public class CommentFragment extends BaseFragment {
 
             }
         });
+
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));

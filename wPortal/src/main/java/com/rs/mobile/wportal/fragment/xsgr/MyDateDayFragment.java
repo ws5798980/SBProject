@@ -65,7 +65,7 @@ public class MyDateDayFragment extends BaseFragment {
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                adapter.setEnableLoadMore(false);
+
 
                 for (int i = 6; i < 10; i++) {
                     list.add(new BaseEntity(i + ""));
@@ -75,7 +75,7 @@ public class MyDateDayFragment extends BaseFragment {
                     public void run() {
                         adapter.setNewData(list);
                         adapter.loadMoreComplete();
-                        adapter.setEnableLoadMore(true);
+
 
                     }
                 }, 1000);

@@ -112,7 +112,6 @@ public class MyOrderFragment2 extends BaseFragment {
         adapter1.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                adapter1.setEnableLoadMore(false);
 
                 for (int i = 6; i < 10; i++) {
                     list.add(new BaseEntity(i + ""));
@@ -122,7 +121,6 @@ public class MyOrderFragment2 extends BaseFragment {
                     public void run() {
                         adapter1.setNewData(list);
                         adapter1.loadMoreComplete();
-                        adapter1.setEnableLoadMore(true);
 
                     }
                 }, 1000);
