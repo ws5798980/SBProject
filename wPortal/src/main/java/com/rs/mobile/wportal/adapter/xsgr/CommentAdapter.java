@@ -1,6 +1,7 @@
 package com.rs.mobile.wportal.adapter.xsgr;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,57 +11,28 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.entity.BaseEntity;
 
 import java.util.List;
 
-public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
+public class CommentAdapter extends BaseQuickAdapter<BaseEntity, BaseViewHolder> {
 
 
     Context context;
     List<Fragment> list;
 
 
-    public CommentAdapter(Context context) {
-
+    public CommentAdapter(Context context, int layoutResId, @Nullable List<BaseEntity> data) {
+        super(layoutResId, data);
         this.context = context;
-
     }
 
 
     @Override
-    public CommentAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    protected void convert(BaseViewHolder helper, BaseEntity item) {
 
-
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_comment, parent, false);
-        CommentAdapter.ViewHolder viewHolder = new CommentAdapter.ViewHolder(view);
-        return viewHolder;
-
-    }
-
-    @Override
-    public void onBindViewHolder(final CommentAdapter.ViewHolder holder, int position) {
-
-
-    }
-
-
-    @Override
-    public int getItemCount() {
-        return 10;
-    }
-
-    class ViewHolder extends RecyclerView.ViewHolder {
-        LinearLayout includelayout;
-
-        View openLayout;
-        TextView openTv;
-        ImageView img_order_iocn;
-
-
-        ViewHolder(View itemView) {
-            super(itemView);
-
-        }
     }
 }

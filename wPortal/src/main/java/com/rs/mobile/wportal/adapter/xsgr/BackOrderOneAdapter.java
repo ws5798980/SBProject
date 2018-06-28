@@ -2,6 +2,7 @@ package com.rs.mobile.wportal.adapter.xsgr;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,60 +13,32 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.activity.xsgr.XsBackOrderDetailActivity;
+import com.rs.mobile.wportal.entity.BaseEntity;
 
 import java.util.List;
 
-public class BackOrderOneAdapter extends RecyclerView.Adapter<BackOrderOneAdapter.ViewHolder> {
+public class BackOrderOneAdapter extends BaseQuickAdapter<BaseEntity, BaseViewHolder> {
 
 
     Context context;
     List<Fragment> list;
 
+
     private String[] titles;
 
-    public BackOrderOneAdapter(Context context) {
-
+    public BackOrderOneAdapter(Context context, int layoutResId, @Nullable List<BaseEntity> data) {
+        super(layoutResId, data);
         this.context = context;
 
     }
 
 
     @Override
-    public BackOrderOneAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_backorder_doing, parent, false);
-        BackOrderOneAdapter.ViewHolder viewHolder = new BackOrderOneAdapter.ViewHolder(view);
-        return viewHolder;
-    }
-
-    @Override
-    public void onBindViewHolder(final BackOrderOneAdapter.ViewHolder holder, int position) {
-
-        holder.bt_check.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, XsBackOrderDetailActivity.class);
-                context.startActivity(intent);
-            }
-        });
-
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return 10;
-    }
-
-    class ViewHolder extends RecyclerView.ViewHolder {
-
-        Button bt_check;
-
-        ViewHolder(View itemView) {
-            super(itemView);
-            bt_check = (Button) itemView.findViewById(R.id.bt_check);
-
-        }
+    protected void convert(BaseViewHolder helper, BaseEntity item) {
+        helper.addOnClickListener(R.id.bt_check);
     }
 }

@@ -835,13 +835,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.xsgr.Activity_Order"
+            android:name=".activity.xsgr.OrderActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.xsgr.StoreManageActivity"
+            android:name=".activity.xsgr.StoreCommentActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.xsgr.BackOrderActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.xsgr.XsBackOrderDetailActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.xsgr.StoreDataActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.xsgr.StoreManageActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.ClauseActivity"
