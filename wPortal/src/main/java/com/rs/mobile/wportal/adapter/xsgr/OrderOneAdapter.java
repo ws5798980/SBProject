@@ -13,10 +13,11 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.entity.BaseEntity;
+import com.rs.mobile.wportal.entity.OrderBean;
 
 import java.util.List;
 
-public class OrderOneAdapter extends BaseQuickAdapter<BaseEntity, BaseViewHolder> {
+public class OrderOneAdapter extends BaseQuickAdapter<OrderBean.DataBean, BaseViewHolder> {
     LinearLayout includelayout;
     View openLayout;
     TextView openTv;
@@ -24,14 +25,22 @@ public class OrderOneAdapter extends BaseQuickAdapter<BaseEntity, BaseViewHolder
 
     Context context;
 
-    public OrderOneAdapter(Context context, int layoutResId, @Nullable List<BaseEntity> data) {
+    public OrderOneAdapter(Context context, int layoutResId, @Nullable List<OrderBean.DataBean> data) {
         super(layoutResId, data);
         this.context = context;
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, BaseEntity item) {
+    protected void convert(BaseViewHolder helper, OrderBean.DataBean item) {
 
+        helper.setText(R.id.tv_order_new_name, item.getCustom_name())
+                .setText(R.id.tv_order_new_phone, item.getMobilepho())
+                .setText(R.id.tv_order_new_add, item.getTo_address())
+                .setText(R.id.tv_num, "#" + item.getOrder_seq())
+                .setText(R.id.tv_order_sendprice, "(含配送费￥" + item.getDelivery_o() + ")")
+                .setText(R.id.tv_price, item.getTot_amt())
+                .setText(R.id.tv_ordernum, "订单号: " + item.getOrder_num())
+                .setText(R.id.tv_ordertime, "下单时间: " + item.getCreate_date());
         includelayout = helper.getView(R.id.layout_include);
         openLayout = helper.getView(R.id.layout_open);
         img_order_iocn = helper.getView(R.id.img_order_iocn);
@@ -44,9 +53,16 @@ public class OrderOneAdapter extends BaseQuickAdapter<BaseEntity, BaseViewHolder
 
         helper.addOnClickListener(R.id.layout_open);
 
-        for (int i = 0; i < 5; i++) {
-            View childView = LayoutInflater.from(context).inflate(R.layout.item_order_open, null);
-            includelayout.addView(childView);
+        if (item.getDataitem() != null) {
+
+            for (int i = 0; i < item.getDataitem().size(); i++) {
+                View childView = LayoutInflater.from(context).inflate(R.layout.item_order_open, null);
+                ((TextView) childView.findViewById(R.id.tv_order_item_name)).setText(item.getDataitem().get(i).getItem_name());
+                ((TextView) childView.findViewById(R.id.tv_order_item_num)).setText("x " + item.getDataitem().get(i).getOrder_q());
+                ((TextView) childView.findViewById(R.id.tv_order_item_price)).setText("￥ " + item.getDataitem().get(i).getOrder_o());
+
+                includelayout.addView(childView);
+            }
         }
 
     }

@@ -13,28 +13,43 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.rs.mobile.common.AppConfig;
+import com.rs.mobile.common.image.ImageUtil;
+import com.rs.mobile.common.network.OkHttpHelper;
+import com.rs.mobile.common.util.GsonUtils;
+import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.activity.xsgr.XsMyShopActivity;
 import com.rs.mobile.wportal.adapter.xsgr.OrderOneAdapter;
 import com.rs.mobile.wportal.entity.BaseEntity;
+import com.rs.mobile.wportal.entity.MyShopInfoBean;
+import com.rs.mobile.wportal.entity.OrderBean;
 import com.rs.mobile.wportal.fragment.BaseFragment;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import okhttp3.Request;
 
 public class MyOrderFragment extends BaseFragment {
 
+
+    private OrderBean bean;
     private OrderOneAdapter adapter1;
     private View rootView;
     RecyclerView recyclerView;
-    private List<BaseEntity> list;
+    private List<OrderBean.DataBean> list;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private int page = 1;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_my_order_doing, container, false);
         list = new ArrayList<>();
-        list.add(new BaseEntity());
-        list.add(new BaseEntity());
         initView(rootView);
         initdata();
 
@@ -42,7 +57,7 @@ public class MyOrderFragment extends BaseFragment {
     }
 
     private void initdata() {
-
+        initShopInfoData();
     }
 
     private void initView(View rootView) {
@@ -87,17 +102,9 @@ public class MyOrderFragment extends BaseFragment {
             @Override
             public void onRefresh() {
                 list.clear();
-                list.add(new BaseEntity());
-                list.add(new BaseEntity());
+                page = 1;
 
-                recyclerView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        adapter1.setNewData(list);
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                }, 1000);
-
+                initShopInfoData();
 
             }
         });
@@ -105,21 +112,56 @@ public class MyOrderFragment extends BaseFragment {
         adapter1.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-
-
-                list.add(new BaseEntity());
-                list.add(new BaseEntity());
-                recyclerView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        adapter1.setNewData(list);
-                        adapter1.loadMoreComplete();
-                    }
-                }, 1000);
-
-
+                page = page + 1;
+                initShopInfoData();
             }
         });
+
+    }
+
+    public void initShopInfoData() {
+
+        HashMap<String, String> param = new HashMap<String, String>();
+
+        param.put("lang_type", AppConfig.LANG_TYPE);
+//        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
+//        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+        param.put("custom_code", "01071390001abcde");
+        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("pg", page + "");
+        param.put("pagesize", "5");
+        OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
+        okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+
+
+                Log.i("xyz", responseDescription);
+
+                bean = GsonUtils.changeGsonToBean(responseDescription, OrderBean.class);
+                list.addAll(bean.getData());
+                adapter1.setNewData(list);
+                if (list.size() < 5) {
+                    adapter1.loadMoreEnd();
+                }
+                if (swipeRefreshLayout.isRefreshing()) {
+                    swipeRefreshLayout.setRefreshing(false);
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                // TODO Auto-generated method stub
+
+            }
+        }, Constant.XS_BASE_URL + "AppSM/requestNewOrderList", param);
 
     }
 

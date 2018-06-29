@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,16 +13,34 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.rs.mobile.common.AppConfig;
+import com.rs.mobile.common.C;
+import com.rs.mobile.common.S;
 import com.rs.mobile.common.activity.BaseActivity;
+import com.rs.mobile.common.image.ImageUtil;
+import com.rs.mobile.common.network.OkHttpHelper;
+import com.rs.mobile.common.util.GsonUtils;
+import com.rs.mobile.common.view.WImageView;
+import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.entity.MyShopInfoBean;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+import okhttp3.Request;
 
 
 public class XsMyShopActivity extends BaseActivity {
 
     LinearLayout selectView, close_btn;
-    ImageView img_myshop;
+    WImageView img_myshop;
     TextView tv_xs_my_shopname, tv_select, tv_sale, tv_salenum;
     int select = 1;
+    MyShopInfoBean bean;
 
     View layout_order, layout_info, layout_date, layout_goods, layout_comment, layout_backorder;
 
@@ -31,7 +50,7 @@ public class XsMyShopActivity extends BaseActivity {
         setContentView(R.layout.activity_xs_my_shopinfo);
 
         initView();
-
+        initShopInfoData();
         setListener();
     }
 
@@ -74,7 +93,7 @@ public class XsMyShopActivity extends BaseActivity {
         layout_goods.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(XsMyShopActivity.this,CommodityManagementActivity.class));
+                startActivity(new Intent(XsMyShopActivity.this, CommodityManagementActivity.class));
             }
         });
 
@@ -119,7 +138,7 @@ public class XsMyShopActivity extends BaseActivity {
         if (select == 1) {
             img1.setVisibility(View.VISIBLE);
             img2.setVisibility(View.GONE);
-            tv_select.setText("营业中");
+            tv_select.setText("영업중");
         } else {
             img2.setVisibility(View.VISIBLE);
             img1.setVisibility(View.GONE);
@@ -132,7 +151,7 @@ public class XsMyShopActivity extends BaseActivity {
             public void onClick(View v) {
                 img1.setVisibility(View.VISIBLE);
                 img2.setVisibility(View.GONE);
-                tv_select.setText("营业中");
+                tv_select.setText("영업중");
                 window.dismiss();
                 select = 1;
             }
@@ -157,7 +176,8 @@ public class XsMyShopActivity extends BaseActivity {
     private void initView() {
         selectView = (LinearLayout) findViewById(R.id.layout_select);
         close_btn = (LinearLayout) findViewById(R.id.close_btn);
-        img_myshop = (ImageView) findViewById(R.id.img_myshop);
+        img_myshop = (WImageView) findViewById(R.id.img_myshop);
+        img_myshop.setCircle(true);
         tv_xs_my_shopname = (TextView) findViewById(R.id.tv_xs_my_shopname);
         tv_select = (TextView) findViewById(R.id.tv_select);
         tv_sale = (TextView) findViewById(R.id.tv_sale);
@@ -170,5 +190,50 @@ public class XsMyShopActivity extends BaseActivity {
         layout_comment = findViewById(R.id.layout_comments);
         layout_backorder = findViewById(R.id.layout_saleback);
     }
+
+
+
+    public void initShopInfoData() {
+
+        HashMap<String, String> param = new HashMap<String, String>();
+
+        param.put("lang_type", AppConfig.LANG_TYPE);
+//        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
+//        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+        param.put("custom_code", "01071390001abcde");
+        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        OkHttpHelper okHttpHelper = new OkHttpHelper(XsMyShopActivity.this);
+        okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+
+                bean = GsonUtils.changeGsonToBean(responseDescription, MyShopInfoBean.class);
+
+                tv_xs_my_shopname.setText(bean.getCustom_name() + "");
+                tv_sale.setText(bean.getSale_amount() + "");
+                tv_salenum.setText(bean.getOrder_amount() + "");
+                tv_select.setText(bean.getSales_status());
+//            Glide.with(XsMyShopActivity.this).load(bean.getShop_thumnail_image()).into(img_myshop);
+                if (bean.getShop_thumnail_image() != null && !bean.getShop_thumnail_image().isEmpty()) {
+                    ImageUtil.drawImageFromUri(bean.getShop_thumnail_image(), img_myshop);
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                // TODO Auto-generated method stub
+
+            }
+        }, Constant.XS_BASE_URL + "AppSM/requestSaleOrderAmount", param);
+
+    }
+
 
 }

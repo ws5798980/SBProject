@@ -15,6 +15,8 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.adapter.xsgr.OrderOneAdapter;
 import com.rs.mobile.wportal.entity.BaseEntity;
+import com.rs.mobile.wportal.entity.MyShopInfoBean;
+import com.rs.mobile.wportal.entity.OrderBean;
 import com.rs.mobile.wportal.fragment.BaseFragment;
 
 import java.util.ArrayList;
@@ -25,7 +27,7 @@ public class MyOrderFragment2 extends BaseFragment {
     private OrderOneAdapter adapter1;
     private View rootView;
     RecyclerView recyclerView;
-    private List<BaseEntity> list;
+    private List<OrderBean.DataBean> list;
     private SwipeRefreshLayout swipeRefreshLayout;
 
 
@@ -35,7 +37,7 @@ public class MyOrderFragment2 extends BaseFragment {
         list = new ArrayList<>();
 
         for (int i = 0; i < 5; i++) {
-            list.add(new BaseEntity(i + ""));
+            list.add(new OrderBean.DataBean());
         }
 
         initView(rootView);
@@ -93,7 +95,7 @@ public class MyOrderFragment2 extends BaseFragment {
             public void onRefresh() {
                 list.clear();
                 for (int i = 0; i < 5; i++) {
-                    list.add(new BaseEntity(i + ""));
+                    list.add(new OrderBean.DataBean());
                 }
                 adapter1.setEnableLoadMore(false);
                 recyclerView.postDelayed(new Runnable() {
@@ -114,7 +116,7 @@ public class MyOrderFragment2 extends BaseFragment {
             public void onLoadMoreRequested() {
 
                 for (int i = 6; i < 10; i++) {
-                    list.add(new BaseEntity(i + ""));
+                    list.add(new OrderBean.DataBean());
                 }
                 recyclerView.postDelayed(new Runnable() {
                     @Override

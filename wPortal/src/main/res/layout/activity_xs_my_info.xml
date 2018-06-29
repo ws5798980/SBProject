@@ -43,9 +43,9 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="@string/shopmanage"
-                android:textStyle="bold"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
-                android:textColor="@android:color/black" />
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -77,6 +77,7 @@
 
 
         <com.rs.mobile.common.view.WImageView
+            android:id="@+id/img_head"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_centerVertical="true"
@@ -120,6 +121,7 @@
 
 
         <TextView
+            android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -165,6 +167,7 @@
 
 
         <TextView
+            android:id="@+id/tv_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
@@ -210,6 +213,7 @@
 
 
         <TextView
+            android:id="@+id/tv_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
