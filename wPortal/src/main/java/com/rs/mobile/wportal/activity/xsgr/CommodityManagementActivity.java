@@ -2,6 +2,8 @@ package com.rs.mobile.wportal.activity.xsgr;
 
 import android.content.Context;
 import android.os.Handler;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -20,19 +22,33 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
+import com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout;
+import com.rs.mobile.common.D;
 import com.rs.mobile.common.activity.BaseActivity;
+import com.rs.mobile.common.network.OkHttpHelper;
+import com.rs.mobile.common.util.GsonUtils;
+import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.adapter.xsgr.ViewPagerAdapter;
+import com.rs.mobile.wportal.biz.xsgr.QueryCategoryList;
 import com.rs.mobile.wportal.fragment.xsgr.MyCommodityFragment;
 import com.rs.mobile.wportal.fragment.xsgr.MyCommodityFragment2;
 import com.rs.mobile.wportal.view.DividerItemDecoration;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import listpoplibrary.ListPopWindowManager;
+import okhttp3.Request;
 
 import static com.rs.mobile.wportal.takephoto.CommonUtil.dip2px;
 
@@ -49,8 +65,9 @@ public class CommodityManagementActivity extends BaseActivity {
     private LinearLayout select, closeBtn;
     private String[] titles;
     private PopupWindow popupWindow;
-    private List<String> mData = new ArrayList<>();
+    private List<QueryCategoryList.DataBean> mData = new ArrayList<>();
     MyPopupWinAdapter popAdapter;
+    private String catergoryId = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +82,7 @@ public class CommodityManagementActivity extends BaseActivity {
         list = new ArrayList<>();
         myCommodityFragment = new MyCommodityFragment();
         myCommodityFragment2 = new MyCommodityFragment2();
-        titles = new String[]{getResources().getString(R.string.neworder), getResources().getString(R.string.done)};
+        titles = new String[]{getResources().getString(R.string.selling), getResources().getString(R.string.selling_done)};
         list.add(myCommodityFragment);
         list.add(myCommodityFragment2);
 
@@ -95,10 +112,25 @@ public class CommodityManagementActivity extends BaseActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!mData.contains("")) {
-                    popAdapter.addItem("",popAdapter.getItemCount());
+                boolean canAdd = true;
+                for (int i = 0;i<mData.size();i++){
+                    if (mData.get(i).isAdd() == true){
+                        canAdd = false;
+                    }
+                }
+                if (canAdd) {
+                    QueryCategoryList.DataBean bean = new QueryCategoryList.DataBean();
+                    bean.setCustom_code("01071390009abcde");
+                    bean.setId("");
+                    bean.setImage_url("");
+                    bean.setLevel_name("");
+                    bean.setPid("0");
+                    bean.setRid("0");
+                    bean.setRank("0");
+                    bean.setAdd(true);
+                    popAdapter.addItem(bean, popAdapter.getItemCount());
 //                    recyclerView.getAdapter().notifyDataSetChanged();
-                }else {
+                } else {
 
                 }
 
@@ -107,7 +139,7 @@ public class CommodityManagementActivity extends BaseActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, R.drawable.divide_bg));
-        popAdapter = new MyPopupWinAdapter(getApplicationContext(), mData);
+        popAdapter = new MyPopupWinAdapter(getApplicationContext(), R.layout.commodity_type_item, mData);
         recyclerView.setAdapter(popAdapter);
     }
 
@@ -121,37 +153,77 @@ public class CommodityManagementActivity extends BaseActivity {
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LinearLayout title = (LinearLayout) findViewById(R.id.my_title);
-//                int titleHeight = title.getHeight();
-                int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
-                title.measure(h, 0);
-                //标题栏高度
-                int titleHeight = title.getMeasuredHeight();
-                //状态栏高度
-                int statusHeight = getStatusBarHeight(CommodityManagementActivity.this);
-                DisplayMetrics metrics = new DisplayMetrics();
-                getWindowManager().getDefaultDisplay().getMetrics(metrics);
-                //屏幕高度
-                int screenHeight = metrics.heightPixels;
-                //popupwindow高度
-                int height = screenHeight - titleHeight - statusHeight;
-                popupWindow = ListPopWindowManager.getInstance().showCommonPopWindow(contentView, viewLine, CommodityManagementActivity.this, false, height);
-                initList();
+                catergoryId = "-1";
+                requestCategoryList(catergoryId,false);
             }
         });
     }
 
-    private void initList() {
-        List<String> list = new ArrayList<>();
-        list.add("K记饭桶");
-        list.add("人气明星套餐");
-        list.add("鸡翅/鸡排");
-        list.add("小食/配餐");
-        list.add("饮料/果汁");
-        mData.clear();
-        mData.addAll(list);
-        recyclerView.getAdapter().notifyDataSetChanged();
+    private void requestCategoryList(String catergoryId,boolean isShow) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
+        params.put("lang_type", "kor");
+        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("CategoryId", catergoryId);
+
+        OkHttpHelper okHttpHelper = new OkHttpHelper(this);
+        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                QueryCategoryList entity = GsonUtils.changeGsonToBean(responseDescription, QueryCategoryList.class);
+                Log.i("123123", "responseDescription=" + responseDescription);
+                if ("1".equals(entity.getStatus())) {
+//                    if (list.size() <= 0) {
+//                        list = entity.getData();
+//                    }
+                    if (entity.getData() != null && entity.getData().size() > 0) {
+                        if (mData.size() > 0) {
+                            mData.clear();
+                        }
+                        if (!isShow){
+                            showCategoryPop();
+                        }
+                        mData.addAll(entity.getData());
+                        recyclerView.getAdapter().notifyDataSetChanged();
+                    } else {
+                    }
+
+                } else {
+                    Toast.makeText(CommodityManagementActivity.this, entity.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+
+            }
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+
+            }
+        }, Constant.XSGR_TEST_URL + Constant.COMMODITY_QUERYCATEGORY, GsonUtils.createGsonString(params));
     }
+
+    private void showCategoryPop() {
+        LinearLayout title = (LinearLayout) findViewById(R.id.my_title);
+//                int titleHeight = title.getHeight();
+        int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        title.measure(h, 0);
+        //标题栏高度
+        int titleHeight = title.getMeasuredHeight();
+        //状态栏高度
+        int statusHeight = getStatusBarHeight(CommodityManagementActivity.this);
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        //屏幕高度
+        int screenHeight = metrics.heightPixels;
+        //popupwindow高度
+        int height = screenHeight - titleHeight - statusHeight;
+        popupWindow = ListPopWindowManager.getInstance().showCommonPopWindow(contentView, viewLine,
+                CommodityManagementActivity.this, false, height);
+    }
+
 
     public static int getStatusBarHeight(Context context) {
         Class<?> c = null;
@@ -170,100 +242,183 @@ public class CommodityManagementActivity extends BaseActivity {
         return statusBarHeight;
     }
 
-    public class MyPopupWinAdapter extends RecyclerView.Adapter<MyPopupWinAdapter.ListViewHolder> {
+    public class MyPopupWinAdapter extends BaseQuickAdapter<QueryCategoryList.DataBean, BaseViewHolder> {
         private Context context;
-        private List<String> mdatas;
+        private List<QueryCategoryList.DataBean> mdatas;
 
-        public MyPopupWinAdapter(Context context, List<String> datas) {
+        public MyPopupWinAdapter(Context context, @LayoutRes int layoutResId, @Nullable List<QueryCategoryList.DataBean> data) {
+            super(layoutResId, data);
             this.context = context;
-            this.mdatas = datas;
         }
 
-        @Override
-        public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            LayoutInflater mInflater = LayoutInflater.from(context);
-            View view = mInflater.inflate(R.layout.commodity_type_item, parent,
-                    false);
-            return new ListViewHolder(view);
-        }
+//        @Override
+//        public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//            LayoutInflater mInflater = LayoutInflater.from(context);
+//            View view = mInflater.inflate(R.layout.commodity_type_item, parent,
+//                    false);
+//            return new ListViewHolder(view);
+//        }
 
         @Override
-        public void onBindViewHolder(ListViewHolder holder, int position) {
-            String type = mdatas.get(position);
-            holder.img.setOnClickListener(new View.OnClickListener() {
+        protected void convert(BaseViewHolder helper, QueryCategoryList.DataBean item) {
+            EditText name;
+            ImageView img;
+            Button done;
+            img = helper.getView(R.id.commodity_img);
+            name = helper.getView(R.id.commodity_name);
+            done = helper.getView(R.id.edit_done);
+            name.setText(item.getLevel_name() + "");
+            img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    holder.img.setVisibility(View.GONE);
-                    holder.done.setVisibility(View.VISIBLE);
-                    holder.name.setEnabled(true);
+                    img.setVisibility(View.GONE);
+                    done.setVisibility(View.VISIBLE);
+                    name.setEnabled(true);
 
-                    holder.name.setSelectAllOnFocus(true);//设置全选
+                    name.setSelectAllOnFocus(true);//设置全选
                     new Handler().postDelayed(new Runnable() {//加上延时
                         public void run() {
-                            holder.name.setFocusable(true);
-                            holder.name.setFocusableInTouchMode(true);
-                            holder.name.requestFocus();//请求获得焦点
+                            name.setFocusable(true);
+                            name.setFocusableInTouchMode(true);
+                            name.requestFocus();//请求获得焦点
                             //调用系统输入法
-                            InputMethodManager inputManager = (InputMethodManager) holder.name.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            inputManager.showSoftInput(holder.name, 0);
+                            InputMethodManager inputManager = (InputMethodManager) name.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                            inputManager.showSoftInput(name, 0);
                         }
                     }, 200);
                 }
             });
-            holder.done.setOnClickListener(new View.OnClickListener() {
+            done.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    holder.img.setVisibility(View.VISIBLE);
-                    holder.done.setVisibility(View.GONE);
-                    holder.name.setEnabled(false);
-                    holder.name.clearFocus();
+                    String edit = name.getText().toString().trim();
+                    final String method;
+                    HashMap<String, Object> params = new HashMap<>();
+                    if (item.isAdd()){
+                         method = Constant.COMMODITY_CATEGORYADD;
+                        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
+                        params.put("lang_type", "kor");
+                        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+                        params.put("level_name", edit);
+                        params.put("image_url", "");
+                        params.put("rank", 0);
+                        params.put("pid", 0);
+                        params.put("rid", 0);
+                    }else {
+                         method = Constant.COMMODITY_CATEGORYEDIT;
+                        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
+                        params.put("lang_type", "kor");
+                        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+                        params.put("level_name", edit);
+                        params.put("image_url", "");
+                        params.put("rank", item.getRank());
+                        params.put("id", item.getId());
+                    }
+
+                    if (edit.length()!= 0){
+
+                        OkHttpHelper okHttpHelper = new OkHttpHelper(context);
+                        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+                            @Override
+                            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                                QueryCategoryList entity = GsonUtils.changeGsonToBean(responseDescription, QueryCategoryList.class);
+                                Log.i("123123", "responseDescription=" + responseDescription);
+                                if ("1".equals(entity.getStatus())) {
+                                    done.setVisibility(View.GONE);
+                                    img.setVisibility(View.VISIBLE);
+                                    requestCategoryList(catergoryId,true);
+
+                                } else {
+                                    Toast.makeText(CommodityManagementActivity.this, entity.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                            @Override
+                            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+
+                            }
+
+                            @Override
+                            public void onNetworkError(Request request, IOException e) {
+
+                            }
+                        }, Constant.XSGR_TEST_URL + method, GsonUtils.createGsonString(params));
+                    }else {
+                        Toast.makeText(context,"请填写分类名",Toast.LENGTH_SHORT).show();
+                    }
+
+
+
                 }
             });
-            holder.setData(type);
+            helper.getView(R.id.right).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    D.showDialog(CommodityManagementActivity.this, -1, "提示", "確定刪除此商品？", "确定", new View.OnClickListener() {
 
+                        @Override
+                        public void onClick(View arg0) {
+                            D.alertDialog.dismiss();
+                            if (item.isAdd()){
+                                mData.remove(helper.getAdapterPosition());
+                                popAdapter.notifyItemRemoved(helper.getAdapterPosition());
+                            }else {
+                                delProduct(item.getId(),helper.getAdapterPosition());
+                                EasySwipeMenuLayout easySwipeMenuLayout = helper.getView(R.id.es);
+                                easySwipeMenuLayout.resetStatus();
+                            }
+
+                        }
+                    });
+
+
+                }
+            });
+            helper.getView(R.id.right_menu_2).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    D.showDialog(CommodityManagementActivity.this, -1, "提示", "確定刪除此商品？", "确定", new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View arg0) {
+                            D.alertDialog.dismiss();
+                            if (item.isAdd()){
+                                mData.remove(helper.getAdapterPosition());
+                                popAdapter.notifyItemRemoved(helper.getAdapterPosition());
+                            }else {
+                                delProduct(item.getId(),helper.getAdapterPosition());
+                                EasySwipeMenuLayout easySwipeMenuLayout = helper.getView(R.id.es);
+                                easySwipeMenuLayout.resetStatus();
+                            }
+                        }
+                    });
+
+                }
+            });
+            if (item.isAdd()) {
+                new Handler().postDelayed(new Runnable() {//加上延时
+                    public void run() {
+                        img.setVisibility(View.GONE);
+                        done.setVisibility(View.VISIBLE);
+                        name.setEnabled(true);
+                        name.setFocusable(true);
+                        name.setFocusableInTouchMode(true);
+                        name.requestFocus();//请求获得焦点
+                        //调用系统输入法
+                        InputMethodManager inputManager = (InputMethodManager) name.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        inputManager.showSoftInput(name, 0);
+                    }
+                }, 100);
+            }
         }
 
-        public void addItem(String text, int position) {
+
+        public void addItem(QueryCategoryList.DataBean text, int position) {
             mData.add(position, text);
             notifyItemInserted(position);
-
-            new Handler().postDelayed(new Runnable() {//加上延时
-                public void run() {
-                    ListViewHolder holder = (ListViewHolder) recyclerView.findViewHolderForAdapterPosition(position);
-                    holder.img.setVisibility(View.GONE);
-                    holder.done.setVisibility(View.VISIBLE);
-                    holder.name.setEnabled(true);
-                    holder.name.setFocusable(true);
-                    holder.name.setFocusableInTouchMode(true);
-                    holder.name.requestFocus();//请求获得焦点
-                    //调用系统输入法
-                    InputMethodManager inputManager = (InputMethodManager) holder.name.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    inputManager.showSoftInput(holder.name, 0);
-                }
-            }, 100);
         }
 
-        @Override
-        public int getItemCount() {
-            return mdatas != null ? mdatas.size() : 0;
-        }
 
-        public class ListViewHolder extends RecyclerView.ViewHolder {
-            private EditText name;
-            private ImageView img;
-            private Button done;
-
-            public ListViewHolder(View itemView) {
-                super(itemView);
-                name = (EditText) itemView.findViewById(R.id.commodity_name);
-                img = (ImageView) itemView.findViewById(R.id.commodity_img);
-                done = (Button) itemView.findViewById(R.id.edit_done);
-            }
-
-            public void setData(String type) {
-                name.setText(type);
-            }
-        }
     }
 
     public void reflex(final TabLayout tabLayout) {
@@ -314,5 +469,42 @@ public class CommodityManagementActivity extends BaseActivity {
             }
         });
 
+    }
+
+    private void delProduct(String id,int position) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
+        params.put("lang_type", "kor");
+        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("id", id);
+
+        OkHttpHelper okHttpHelper = new OkHttpHelper(this);
+        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                QueryCategoryList entity = GsonUtils.changeGsonToBean(responseDescription, QueryCategoryList.class);
+                Log.i("123123", "responseDescription=" + responseDescription);
+                if ("1".equals(entity.getStatus())) {
+                    Toast.makeText(CommodityManagementActivity.this, entity.getMessage(), Toast.LENGTH_SHORT).show();
+                    mData.remove(position);
+                    popAdapter.notifyItemRemoved(position);
+                } else {
+                    Toast.makeText(CommodityManagementActivity.this, entity.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                Log.e("responseDescription",responseDescription);
+//                Log.e("JSONObject",data.toString());
+                Log.e("flag145",flag);
+
+            }
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+
+            }
+        }, Constant.XSGR_TEST_URL + Constant.COMMODITY_CATEGORYDEL, GsonUtils.createGsonString(params));
     }
 }

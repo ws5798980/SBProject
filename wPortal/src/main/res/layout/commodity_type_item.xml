@@ -1,42 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:paddingLeft="@dimen/marginx3"
-    android:paddingRight="@dimen/marginx3"
-    android:paddingTop="@dimen/marginx2"
-    android:paddingBottom="@dimen/marginx2"
-    android:background="@color/white"
-    android:layout_height="40dp">
-    <EditText
-        android:id="@+id/commodity_name"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:textSize="@dimen/text_size_day"
-        android:textColor="@color/textcolor_black"
-        style="@android:style/Widget.TextView"
-        android:layout_centerVertical="true"
-        android:hint="输入分类名称"
-        android:enabled="false"
-        android:cursorVisible="true"
-        android:textCursorDrawable="@null"
-        android:background="@null"/>
-    <ImageView
-        android:id="@+id/commodity_img"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/icon_edit_category"/>
-    <Button
-        android:id="@+id/edit_done"
-        android:layout_width="40dp"
-        android:layout_height="20dp"
-        android:background="@drawable/check_border"
-        android:gravity="center"
-        android:text="确定"
-        android:layout_alignParentRight="true"
-        android:visibility="gone"
-        android:textSize="@dimen/text_size_sb"
-        android:textColor="@color/textcolor_gray"
-        style="?android:attr/borderlessButtonStyle" />
 
-</RelativeLayout>
+<com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout
+    android:id="@+id/es"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:contentView="@+id/content"
+    app:rightMenuView="@+id/right"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:paddingLeft="@dimen/marginx3"
+        android:paddingRight="@dimen/marginx3"
+        android:paddingTop="@dimen/marginx2"
+        android:paddingBottom="@dimen/marginx2"
+        android:background="@color/white"
+        android:layout_height="40dp">
+        <EditText
+            android:id="@+id/commodity_name"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:textSize="@dimen/text_size_day"
+            android:textColor="@color/textcolor_black"
+            style="@android:style/Widget.TextView"
+            android:layout_centerVertical="true"
+            android:hint="输入分类名称"
+            android:enabled="false"
+            android:cursorVisible="true"
+            android:textCursorDrawable="@null"
+            android:background="@null"/>
+        <ImageView
+            android:id="@+id/commodity_img"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/icon_edit_category"/>
+        <Button
+            android:id="@+id/edit_done"
+            android:layout_width="40dp"
+            android:layout_height="20dp"
+            android:background="@drawable/check_border"
+            android:gravity="center"
+            android:text="确定"
+            android:layout_alignParentRight="true"
+            android:visibility="gone"
+            android:textSize="@dimen/text_size_sb"
+            android:textColor="@color/textcolor_gray"
+            style="?android:attr/borderlessButtonStyle" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/right"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_red_light"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/right_menu_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:text="删除"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_mb" />
+
+    </RelativeLayout>
+</com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout>

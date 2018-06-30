@@ -779,10 +779,12 @@ public class ListPopWindowManager {
         }
     }
     public PopupWindow showCommonPopWindow(View contentView, View rootView, final Activity activity, boolean hasBackground,int height){
-        PopupWindow popView = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, height,true);
+        PopupWindow popView = new PopupWindow(contentView, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,true);
         popView.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         popView.setOutsideTouchable(true);
         popView.setFocusable(true);
+        popView.setSoftInputMode(PopupWindow.INPUT_METHOD_NEEDED);
+        popView.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         popView.showAsDropDown(rootView);
         // 设置背景颜色变暗
         if (hasBackground){

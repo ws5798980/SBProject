@@ -626,4 +626,12 @@ public class Constant {
     public static final String COMMODITY_CHANGESTATE = "product/setProductsellstate";
     // 商品管理 已下架 刪除商品
     public static final String COMMODITY_DELPRODUCT = "product/Delproduct";
+    // 商品管理 分类列表
+    public static final String COMMODITY_QUERYCATEGORY = "category/querycategory";
+    // 商品管理 分类列表
+    public static final String COMMODITY_CATEGORYADD = "category/addcategory";
+    // 商品管理 分类列表
+    public static final String COMMODITY_CATEGORYEDIT = "category/updatecategory";
+    // 商品管理 分类列表
+    public static final String COMMODITY_CATEGORYDEL = "category/delcategory";
 }
