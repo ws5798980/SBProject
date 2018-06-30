@@ -13,6 +13,7 @@ import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.adapter.xsgr.ViewPagerAdapter;
 import com.rs.mobile.wportal.fragment.xsgr.MyOrderFragment;
 import com.rs.mobile.wportal.fragment.xsgr.MyOrderFragment2;
+import com.rs.mobile.wportal.fragment.xsgr.MyOrderFragment3;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class OrderActivity extends BaseActivity {
     ViewPager viewPager;
     private MyOrderFragment orderFragment;
     private MyOrderFragment2 orderFragment2;
+    private MyOrderFragment3 orderFragment3;
     private String[] titles ;
 
     @Override
@@ -48,8 +50,10 @@ public class OrderActivity extends BaseActivity {
         list=new ArrayList<>();
         orderFragment=new MyOrderFragment();
         orderFragment2=new MyOrderFragment2();
-        titles = new String[]{getResources().getString(R.string.neworder), getResources().getString(R.string.done)};
+        orderFragment3 = new MyOrderFragment3();
+        titles = new String[]{getResources().getString(R.string.neworder), getResources().getString(R.string.order_accept),getResources().getString(R.string.done)};
         list.add(orderFragment);
+        list.add(orderFragment3);
         list.add(orderFragment2);
 
         viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager(),this,list,titles);
