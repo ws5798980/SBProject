@@ -71,6 +71,9 @@ public class MyCommodityFragment extends BaseFragment {
 //adapter.getViewByPosition(recyclerView, position, R.id.layout_include)
                 if (view.getId() == R.id.edit_goods) {
                     Intent intent = new Intent();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("groupId",list.get(position).getGroupId());
+                    intent.putExtras(bundle);
                     intent.setClass(getContext(), ReeditActivity.class);
                     startActivity(intent);
                 }else if (view.getId() == R.id.get_shelves){

@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,6 +25,7 @@ public class D {
 	public static Dialog progressdialog;
 	
 	public static EditText editText;
+
 	
 	/**
 	 * initProgressDialog
@@ -480,6 +482,57 @@ public class D {
         }
     	
     }
+
+	/**
+	 * showDialog
+	 * @param context
+	 * @param img
+	 * @param title
+	 * @param msg
+	 * @param selectText
+	 * @param selectListener
+	 * @param cancelListener
+	 */
+	public static void showMyEditTextDialog(Context context, int img, String title, String hint, String msg, String selectText, OnClickListener selectListener, String cancelText, OnClickListener cancelListener) {
+
+		try {
+
+			AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+			LayoutInflater inflator = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View v = inflator.inflate(R.layout.dialog_edit_text_new, null);
+
+			ImageView icon = (ImageView)v.findViewById(R.id.icon_view);
+			TextView titleTextView = (TextView)v.findViewById(R.id.title_text_view);
+			editText = (EditText)v.findViewById(R.id.msg_edit_text);
+			TextView selectTextView = (TextView)v.findViewById(R.id.ok_text_view);
+			TextView cancelTextView = (TextView)v.findViewById(R.id.cancel_text_view);
+
+			if (img == -1) icon.setVisibility(View.GONE);
+			else icon.setBackgroundResource(img);
+			titleTextView.setText(title);
+			editText.setHint(hint);
+			if (msg != null && !msg.equals(""))
+				editText.setText(msg);
+			selectTextView.setText(selectText);
+			cancelTextView.setText(cancelText);
+			selectTextView.setOnClickListener(selectListener);
+			cancelTextView.setOnClickListener(cancelListener);
+			builder.setView(v);
+			builder.setCancelable(true);
+
+			alertDialog = builder.create();
+			alertDialog.show();
+
+		} catch (Exception e) {
+
+			L.e(e);
+
+		}
+
+	}
+
+
 	
 	public static void showSingleChoiceDialog(Context context, int icon, int title, int msg, int posButton, int negButton, 
 			 DialogInterface.OnClickListener posListener, DialogInterface.OnClickListener negListener,

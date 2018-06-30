@@ -18,6 +18,7 @@ import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,12 +30,20 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+
+import com.rs.mobile.common.D;
+import com.rs.mobile.common.L;
 import com.rs.mobile.common.activity.BaseActivity;
+import com.rs.mobile.common.network.OkHttpHelper;
+import com.rs.mobile.common.util.GsonUtils;
+import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.adapter.xsgr.FlavorGridViewAdapter;
 import com.rs.mobile.wportal.adapter.xsgr.SpecGridViewAdapter;
+import com.rs.mobile.wportal.biz.xsgr.CommodityDetail;
 import com.rs.mobile.wportal.takephoto.cutphoto.PhotoUtils;
 import com.rs.mobile.wportal.view.DividerItemDecoration;
 
@@ -51,13 +60,15 @@ import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import listpoplibrary.ListPopWindowManager;
+import okhttp3.Request;
 
 public class ReeditActivity extends BaseActivity {
 
-    private TextView cancel;
+    private TextView cancel, save;
     private ImageView back;
     private LinearLayout changeImg;
     private RelativeLayout goodsImg;
@@ -68,8 +79,8 @@ public class ReeditActivity extends BaseActivity {
     private GridView flavor;
     private SpecGridViewAdapter specGridViewAdapter;
     private FlavorGridViewAdapter flavorGridViewAdapter;
-    private List<String> mList = new ArrayList<>();
-    private List<String> mFlavorList = new ArrayList<>();
+    private List<CommodityDetail.DataBean.SpecBean> mList = new ArrayList<>();
+    private List<CommodityDetail.DataBean.FlavorBean> mFlavorList = new ArrayList<>();
     private View contentView;
     private RecyclerView recyclerView;
     private MyPopupWinAdapter popAdapter;
@@ -78,6 +89,8 @@ public class ReeditActivity extends BaseActivity {
     private PhotoUtils photoUtils;
     public String imageBase64 = "";
     private List<String> mData = new ArrayList<>();
+    private String groupId;
+    private static AlertDialog editDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +141,9 @@ public class ReeditActivity extends BaseActivity {
     }
 
     private void initView() {
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        groupId = bundle.getString("groupId");
         cancel = (TextView) findViewById(R.id.tv_cancel);
         back = (ImageView) findViewById(R.id.branch_btn);
         changeImg = (LinearLayout) findViewById(R.id.change_img);
@@ -137,7 +153,7 @@ public class ReeditActivity extends BaseActivity {
         specification = (GridView) findViewById(R.id.specifications);
         flavor = (GridView) findViewById(R.id.flavor);
         ivPhoto = (ImageView) findViewById(R.id.iv_photo);
-
+        save = (TextView) findViewById(R.id.save_up);
     }
 
     private void initListener() {
@@ -151,6 +167,19 @@ public class ReeditActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                D.showDialog(ReeditActivity.this, -1, "提示", "저장하기？", "确定", new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View arg0) {
+                        D.alertDialog.dismiss();
+
+                    }
+                });
             }
         });
         changeImg.setOnClickListener(new View.OnClickListener() {
@@ -169,7 +198,9 @@ public class ReeditActivity extends BaseActivity {
         });
 
     }
+
     static public final int REQUEST_CODE_ASK_PERMISSIONS = 101;
+
     private void showSelectPopWin() {
         //设置contentView
         View contentView = LayoutInflater.from(ReeditActivity.this).inflate(R.layout.popup_take_photo_layout, null);
@@ -186,15 +217,15 @@ public class ReeditActivity extends BaseActivity {
                     int checkPermission = checkSelfPermission(Manifest.permission.CAMERA);
                     if (checkPermission != PackageManager.PERMISSION_GRANTED) {
                         if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
-                            requestPermissions(new String[] {Manifest.permission.CAMERA}, REQUEST_CODE_ASK_PERMISSIONS);
+                            requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_ASK_PERMISSIONS);
                         } else {
                             new AlertDialog.Builder(ReeditActivity.this)
                                     .setMessage("您需要在设置里打开相机权限。")
                                     .setPositiveButton("确认", new DialogInterface.OnClickListener() {
-//                                        @RequiresApi(api = Build.VERSION_CODES.M)
+                                        //                                        @RequiresApi(api = Build.VERSION_CODES.M)
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
-                                            requestPermissions(new String[] {Manifest.permission.CAMERA}, REQUEST_CODE_ASK_PERMISSIONS);
+                                            requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_ASK_PERMISSIONS);
                                         }
                                     })
                                     .setNegativeButton("取消", null)
@@ -239,7 +270,8 @@ public class ReeditActivity extends BaseActivity {
     }
 
     private void initData() {
-        mList.add("fff");
+        requestDetail(groupId);
+
         specGridViewAdapter = new SpecGridViewAdapter(this, mList);
         specification.setAdapter(specGridViewAdapter);
         specification.setOnItemClickListener(new SpecItemClickListener());
@@ -247,7 +279,26 @@ public class ReeditActivity extends BaseActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 if (mList.size() != position) {
+                    if ("".equals(mList.get(position).getItem_code())) {
+                        D.showDialog(ReeditActivity.this, -1, "提示", "確定删除此规格？", "确定", new View.OnClickListener() {
 
+                            @Override
+                            public void onClick(View arg0) {
+                                D.alertDialog.dismiss();
+                                mList.remove(position);
+                                specGridViewAdapter.notifyDataSetChanged();
+                            }
+                        });
+                    } else {
+                        D.showDialog(ReeditActivity.this, -1, "提示", "確定删除此规格？", "确定", new View.OnClickListener() {
+
+                            @Override
+                            public void onClick(View arg0) {
+                                D.alertDialog.dismiss();
+                                requestDelSpec(mList.get(position).getItem_code(), position);
+                            }
+                        });
+                    }
                 }
                 return false;
             }
@@ -258,7 +309,27 @@ public class ReeditActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (mFlavorList.size() == position) {
-
+                    D.showEditTextDialog(ReeditActivity.this, -1, "", "구미", "",
+                            "确定", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    String flavor = D.editText.getText().toString().trim();
+                                    if ("".equals(flavor)) {
+                                        Toast.makeText(ReeditActivity.this, "써 주세요 맛", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        CommodityDetail.DataBean.FlavorBean flavorBean = new CommodityDetail.DataBean.FlavorBean();
+                                        flavorBean.setFlavorName(flavor);
+                                        flavorBean.setAdd("add");
+                                        mFlavorList.add(flavorBean);
+                                        flavorGridViewAdapter.notifyDataSetChanged();
+                                    }
+                                }
+                            }, "取消", new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    D.alertDialog.dismiss();
+                                }
+                            });
                 }
             }
         });
@@ -266,7 +337,26 @@ public class ReeditActivity extends BaseActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 if (mFlavorList.size() != position) {
+                    if (!"".equals(mFlavorList.get(position).getAdd())) {
+                        D.showDialog(ReeditActivity.this, -1, "提示", "確定删除此口味？", "确定", new View.OnClickListener() {
 
+                            @Override
+                            public void onClick(View arg0) {
+                                D.alertDialog.dismiss();
+                                mFlavorList.remove(position);
+                                flavorGridViewAdapter.notifyDataSetChanged();
+                            }
+                        });
+                    } else {
+                        D.showDialog(ReeditActivity.this, -1, "提示", "確定删除此口味？", "确定", new View.OnClickListener() {
+
+                            @Override
+                            public void onClick(View arg0) {
+                                D.alertDialog.dismiss();
+                                requestDelFlavor(mFlavorList.get(position).getFlavorName(), position);
+                            }
+                        });
+                    }
                 }
                 return false;
             }
@@ -284,7 +374,7 @@ public class ReeditActivity extends BaseActivity {
             public void onPhotoResult(Uri uri) {
                 if (uri != null && !TextUtils.isEmpty(uri.getPath())) {
                     imageBase64 = bitmapToString(uri);
-                    Log.e("uri:",uri.getPath().toString());
+                    Log.e("uri:", uri.getPath().toString());
                     Glide.with(ReeditActivity.this).load(uri.getPath()).into(ivPhoto);
 //                    String itemId=setUserName.getText().toString();
 
@@ -366,15 +456,224 @@ public class ReeditActivity extends BaseActivity {
         });
     }
 
+    private void requestDelFlavor(String flavorName, int position) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
+        params.put("lang_type", "kor");
+        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("groupId", groupId);
+        params.put("flavorName", flavorName);
+
+        OkHttpHelper okHttpHelper = new OkHttpHelper(this);
+        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                CommodityDetail entity = GsonUtils.changeGsonToBean(responseDescription, CommodityDetail.class);
+                Log.i("123123", "responseDescription=" + responseDescription);
+                if ("1".equals(entity.getStatus())) {
+                    Toast.makeText(ReeditActivity.this, entity.getMessage(), Toast.LENGTH_SHORT).show();
+                    mFlavorList.remove(position);
+                    flavorGridViewAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(ReeditActivity.this, entity.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                Log.e("responseDescription456", responseDescription);
+//                Log.e("JSONObject",data.toString());
+                Log.e("flag145", flag);
+
+            }
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+
+            }
+        }, Constant.XSGR_TEST_URL + Constant.COMMODITY_DELFLAVOR, GsonUtils.createGsonString(params));
+    }
+
+    private void requestDelSpec(String item_code, int position) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
+        params.put("lang_type", "kor");
+        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("groupId", groupId);
+        params.put("item_code", item_code);
+
+        OkHttpHelper okHttpHelper = new OkHttpHelper(this);
+        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                CommodityDetail entity = GsonUtils.changeGsonToBean(responseDescription, CommodityDetail.class);
+                Log.i("123123", "responseDescription=" + responseDescription);
+                if ("1".equals(entity.getStatus())) {
+                    Toast.makeText(ReeditActivity.this, entity.getMessage(), Toast.LENGTH_SHORT).show();
+                    mList.remove(position);
+                    specGridViewAdapter.notifyDataSetChanged();
+                } else {
+                    Toast.makeText(ReeditActivity.this, entity.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                Log.e("responseDescription456", responseDescription);
+//                Log.e("JSONObject",data.toString());
+                Log.e("flag145", flag);
+
+            }
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+
+            }
+        }, Constant.XSGR_TEST_URL + Constant.COMMODITY_DELSPEC, GsonUtils.createGsonString(params));
+    }
+
+    private void requestDetail(String groupId) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
+        params.put("lang_type", "kor");
+        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("groupId", groupId);
+
+        OkHttpHelper okHttpHelper = new OkHttpHelper(this);
+        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                CommodityDetail entity = GsonUtils.changeGsonToBean(responseDescription, CommodityDetail.class);
+                Log.i("123123", "responseDescription=" + responseDescription);
+                if ("1".equals(entity.getStatus())) {
+                    Toast.makeText(ReeditActivity.this, entity.getMessage(), Toast.LENGTH_SHORT).show();
+                    mFlavorList = entity.getData().getFlavor();
+                    flavorGridViewAdapter.notifyDataSetChanged();
+                    mList.addAll(entity.getData().getSpec());
+                    specGridViewAdapter.notifyDataSetChanged();
+                    editName.setText(entity.getData().getItem().getITEM_NAME());
+                    Glide.with(ReeditActivity.this).load(entity.getData().getItem().getImage_url()).into(ivPhoto);
+                } else {
+                    Toast.makeText(ReeditActivity.this, entity.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                Log.e("responseDescription456", responseDescription);
+//                Log.e("JSONObject",data.toString());
+                Log.e("flag145", flag);
+
+            }
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+
+            }
+        }, Constant.XSGR_TEST_URL + Constant.COMMODITY_QUERYDETAIL, GsonUtils.createGsonString(params));
+    }
+
     class SpecItemClickListener implements AdapterView.OnItemClickListener {
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             if (mList.size() == position) {
-
+                showDoubleEditTextDialog(ReeditActivity.this, -1, "", "", "", "确定", "取消");
             }
         }
     }
+
+    /**
+     * showDialog
+     *
+     * @param context
+     * @param img
+     * @param title
+     * @param msg1
+     * @param selectText
+     */
+    public void showDoubleEditTextDialog(Context context, int img, String title, String msg1, String msg2,
+                                         String selectText, String cancelText) {
+
+        try {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            LayoutInflater inflator = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View v = inflator.inflate(R.layout.dialog_2edit_text, null);
+            ImageView icon = (ImageView) v.findViewById(R.id.icon_view);
+            TextView titleTextView = (TextView) v.findViewById(R.id.title_text_view);
+            EditText editText1 = (EditText) v.findViewById(R.id.msg_edit_text1);
+            EditText editText2 = (EditText) v.findViewById(R.id.msg_edit_text2);
+            TextView selectTextView = (TextView) v.findViewById(R.id.ok_text_view);
+            TextView cancelTextView = (TextView) v.findViewById(R.id.cancel_text_view);
+            if (img == -1) icon.setVisibility(View.GONE);
+            else icon.setBackgroundResource(img);
+            titleTextView.setText(title);
+            editText1.setOnKeyListener(new View.OnKeyListener() {
+                @Override
+                public boolean onKey(View v, int keyCode, KeyEvent event) {
+                    switch (event.getAction()) {
+                        case KeyEvent.ACTION_UP:
+                            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                                editText2.requestFocus();
+                            }
+                            break;
+                    }
+                    return false;
+                }
+            });
+            if (msg1 != null && !msg1.equals("")) {
+                editText1.setText(msg1);
+            }
+            if (msg2 != null && !msg2.equals("")) {
+                editText2.setText(msg2);
+            }
+            selectTextView.setText(selectText);
+            cancelTextView.setText(cancelText);
+            selectTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String name = editText1.getText().toString().trim();
+                    String price = editText2.getText().toString().trim();
+                    if (name.length() == 0 || price.length() == 0) {
+                        Toast.makeText(ReeditActivity.this, "명칭 과 가격 을 기입해 주십시오", Toast.LENGTH_SHORT).show();
+                    } else {
+                        if (isNumeric(price)) {
+                            CommodityDetail.DataBean.SpecBean specBean = new CommodityDetail.DataBean.SpecBean();
+                            specBean.setItem_name(name);
+                            specBean.setItem_p(price);
+                            mList.add(specBean);
+                            Log.e("mList.size()", mList.size() + "");
+                            specGridViewAdapter.notifyDataSetChanged();
+                            editDialog.dismiss();
+                        } else {
+                            Toast.makeText(ReeditActivity.this, "가격은 반드시 숫자입니다", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                }
+            });
+            cancelTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    editDialog.dismiss();
+                }
+            });
+            builder.setView(v);
+            builder.setCancelable(true);
+
+            editDialog = builder.create();
+            editDialog.show();
+
+        } catch (Exception e) {
+
+            L.e(e);
+
+        }
+
+    }
+
 
     public class MyPopupWinAdapter extends RecyclerView.Adapter<MyPopupWinAdapter.ListViewHolder> {
         private Context context;
@@ -508,6 +807,18 @@ public class ReeditActivity extends BaseActivity {
 
         }
         return result;
+    }
+
+    public static boolean isNumeric(String str) {
+        for (int i = str.length(); --i >= 0; ) {
+            int chr = str.charAt(i);
+            System.out.println(chr);
+            if (chr < 48 || chr > 57) {
+                if (chr != 46)
+                    return false;
+            }
+        }
+        return true;
     }
 
 }

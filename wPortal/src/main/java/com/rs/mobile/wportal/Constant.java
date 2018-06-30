@@ -634,4 +634,10 @@ public class Constant {
     public static final String COMMODITY_CATEGORYEDIT = "category/updatecategory";
     // 商品管理 分类列表
     public static final String COMMODITY_CATEGORYDEL = "category/delcategory";
+    // 商品管理 重新编辑 请求数据
+    public static final String COMMODITY_QUERYDETAIL = "product/queryproductbyGroudId";
+    // 商品管理 重新编辑 删除规格
+    public static final String COMMODITY_DELSPEC = "product/DelSpce";
+    // 商品管理 重新编辑 删除口味
+    public static final String COMMODITY_DELFLAVOR = "product/DelFlavor";
 }

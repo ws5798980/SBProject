@@ -564,6 +564,6 @@
     <string name="backdataprice">退款金额:</string>
     <string name="backdatastate">退款状态:</string>
     <string name="backdatatime">申请时间:</string>
-
+    <string name="save_and_up">저장하기</string>
 
 </resources>

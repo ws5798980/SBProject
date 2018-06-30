@@ -290,7 +290,7 @@ public class OkHttpHelper {
 			public void onFailure(Call arg0, IOException arg1) {
 				try {
 					D.hideProgressDialog();
-					callbackLogic.onBizFailure(arg1.toString(), null, "");
+					callbackLogic.onBizFailure("", null, "");
 					if (callbackLogic != null) {
 						handler.post(new Runnable() {
 
