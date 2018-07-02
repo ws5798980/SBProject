@@ -26,6 +26,7 @@ import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.entity.MyShopInfoBean;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -36,6 +37,12 @@ import okhttp3.Request;
 
 public class XsMyShopActivity extends BaseActivity {
 
+    LinearLayout layout1;
+    LinearLayout layout2;
+     ImageView img1;
+    ImageView img2;
+
+    PopupWindow window;
     LinearLayout selectView, close_btn;
     WImageView img_myshop;
     TextView tv_xs_my_shopname, tv_select, tv_sale, tv_salenum;
@@ -120,7 +127,7 @@ public class XsMyShopActivity extends BaseActivity {
         // 创建PopupWindow对象，其中：
         // 第一个参数是用于PopupWindow中的View，第二个参数是PopupWindow的宽度，
         // 第三个参数是PopupWindow的高度，第四个参数指定PopupWindow能否获得焦点
-        final PopupWindow window = new PopupWindow(contentView, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT, true);
+         window = new PopupWindow(contentView, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT, true);
         // 设置PopupWindow的背景
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         // 设置PopupWindow是否能响应外部点击事件
@@ -130,10 +137,10 @@ public class XsMyShopActivity extends BaseActivity {
         // 显示PopupWindow，其中：
         // 第一个参数是PopupWindow的锚点，第二和第三个参数分别是PopupWindow相对锚点的x、y偏移
 
-        LinearLayout layout1 = (LinearLayout) contentView.findViewById(R.id.layout_1);
-        LinearLayout layout2 = (LinearLayout) contentView.findViewById(R.id.layout_2);
-        final ImageView img1 = (ImageView) contentView.findViewById(R.id.img_1);
-        final ImageView img2 = (ImageView) contentView.findViewById(R.id.img_2);
+       layout1 = (LinearLayout) contentView.findViewById(R.id.layout_1);
+       layout2 = (LinearLayout) contentView.findViewById(R.id.layout_2);
+       img1 = (ImageView) contentView.findViewById(R.id.img_1);
+       img2 = (ImageView) contentView.findViewById(R.id.img_2);
 
         if (select == 1) {
             img1.setVisibility(View.VISIBLE);
@@ -142,28 +149,21 @@ public class XsMyShopActivity extends BaseActivity {
         } else {
             img2.setVisibility(View.VISIBLE);
             img1.setVisibility(View.GONE);
-            tv_select.setText("打烊中");
+            tv_select.setText("영업종료");
         }
 
 
         layout1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                img1.setVisibility(View.VISIBLE);
-                img2.setVisibility(View.GONE);
-                tv_select.setText("영업중");
-                window.dismiss();
-                select = 1;
+                initShopInfoStatus("Y");
             }
         });
         layout2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                img2.setVisibility(View.VISIBLE);
-                img1.setVisibility(View.GONE);
-                tv_select.setText("打烊中");
-                window.dismiss();
-                select = 2;
+
+                initShopInfoStatus("N");
             }
         });
 
@@ -224,6 +224,11 @@ public class XsMyShopActivity extends BaseActivity {
                 if (bean.getShop_thumnail_image() != null && !bean.getShop_thumnail_image().isEmpty()) {
                     ImageUtil.drawImageFromUri(bean.getShop_thumnail_image(), img_myshop);
                 }
+                if ("영업중".equals(bean.getSales_status())){
+                    select=1;
+                }else {
+                    select=2;
+                }
             }
 
             @Override
@@ -235,5 +240,58 @@ public class XsMyShopActivity extends BaseActivity {
 
     }
 
+    public void initShopInfoStatus(final String statu) {
 
+        HashMap<String, String> param = new HashMap<String, String>();
+
+        param.put("lang_type", AppConfig.LANG_TYPE);
+//        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
+//        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+        param.put("custom_code", "01071390001abcde");
+        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("status", statu);
+        OkHttpHelper okHttpHelper = new OkHttpHelper(XsMyShopActivity.this);
+        okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                try {
+                    JSONObject jsonObject=new JSONObject(responseDescription);
+                    String status=jsonObject.getString("status");
+                    if ("1".equals(status)){
+
+                        if (statu.equals("N")){
+                            tv_select.setText("영업종료");
+                            window.dismiss();
+                            select = 2;
+                        }else {
+                            tv_select.setText("영업중");
+                            window.dismiss();
+                            select = 1;
+                        }
+
+
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                // TODO Auto-generated method stub
+
+            }
+        }, Constant.XS_BASE_URL + "AppSM/requestUpdateSalesStatus", param);
+
+    }
 }

@@ -1,6 +1,8 @@
 package com.rs.mobile.wportal.activity.xsgr;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rs.mobile.common.AppConfig;
@@ -54,6 +56,13 @@ public class StoreManageActivity extends BaseActivity {
         tv_phone = (TextView) findViewById(R.id.tv_phone);
         tv_name = (TextView) findViewById(R.id.tv_name);
         wImageView = (WImageView) findViewById(R.id.img_head);
+        LinearLayout close_btn = (LinearLayout) findViewById(R.id.close_btn);
+        close_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 

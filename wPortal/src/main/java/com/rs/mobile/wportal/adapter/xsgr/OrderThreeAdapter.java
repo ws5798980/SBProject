@@ -2,7 +2,6 @@ package com.rs.mobile.wportal.adapter.xsgr;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,12 +11,11 @@ import android.widget.TextView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.rs.mobile.wportal.R;
-import com.rs.mobile.wportal.entity.BaseEntity;
 import com.rs.mobile.wportal.entity.OrderBean;
 
 import java.util.List;
 
-public class OrderOneAdapter extends BaseQuickAdapter<OrderBean.DataBean, BaseViewHolder> {
+public class OrderThreeAdapter extends BaseQuickAdapter<OrderBean.DataBean, BaseViewHolder> {
     LinearLayout includelayout;
     View openLayout;
     TextView openTv;
@@ -25,7 +23,7 @@ public class OrderOneAdapter extends BaseQuickAdapter<OrderBean.DataBean, BaseVi
 
     Context context;
 
-    public OrderOneAdapter(Context context, int layoutResId, @Nullable List<OrderBean.DataBean> data) {
+    public OrderThreeAdapter(Context context, int layoutResId, @Nullable List<OrderBean.DataBean> data) {
         super(layoutResId, data);
         this.context = context;
     }
@@ -40,9 +38,7 @@ public class OrderOneAdapter extends BaseQuickAdapter<OrderBean.DataBean, BaseVi
                 .setText(R.id.tv_order_sendprice, "(含配送费￥" + item.getDelivery_o() + ")")
                 .setText(R.id.tv_price, item.getTot_amt())
                 .setText(R.id.tv_ordernum, "订单号: " + item.getOrder_num())
-                .setText(R.id.tv_ordertime, "下单时间: " + item.getCreate_date())
-                .addOnClickListener(R.id.button1_cancel)
-                .addOnClickListener(R.id.button_get);
+                .setText(R.id.tv_ordertime, "下单时间: " + item.getCreate_date());
         includelayout = helper.getView(R.id.layout_include);
         openLayout = helper.getView(R.id.layout_open);
         img_order_iocn = helper.getView(R.id.img_order_iocn);

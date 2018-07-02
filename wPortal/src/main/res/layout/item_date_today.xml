@@ -44,6 +44,7 @@
 
 
             <TextView
+                android:id="@+id/textview_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -77,6 +78,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/textview_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -101,6 +103,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/textview_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -126,6 +129,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/textview_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -152,6 +156,7 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/textview_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"

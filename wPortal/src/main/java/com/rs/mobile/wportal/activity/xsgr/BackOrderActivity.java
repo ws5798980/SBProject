@@ -68,6 +68,13 @@ public class BackOrderActivity extends BaseActivity {
     private void initView() {
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
+        LinearLayout  close_btn = (LinearLayout) findViewById(R.id.close_btn);
+        close_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     public void reflex(final TabLayout tabLayout) {

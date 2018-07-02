@@ -34,6 +34,11 @@ public class StoreDataActivity extends BaseActivity {
 
     LoopView loopView1, loopView2, loopView3, loopView4, loopView5, loopView6;
 
+    List<String> mOptionsItems;
+    List<String> mOptionsItems2;
+    List<String> mOptionsItems3;
+    List<String> mOptionsItems4;
+
     private List<Fragment> list;
     ViewPagerAdapter viewPagerAdapter;
     TabLayout tabLayout;
@@ -73,6 +78,7 @@ public class StoreDataActivity extends BaseActivity {
                     Dialog dialog = new Dialog(StoreDataActivity.this, R.style.dialog_holo_dark);
                     dialog.setContentView(R.layout.dialog_datechoose);
 
+
                     loopView1 = (LoopView) dialog.findViewById(R.id.lv1);
                     loopView2 = (LoopView) dialog.findViewById(R.id.lv2);
                     loopView3 = (LoopView) dialog.findViewById(R.id.lv3);
@@ -80,17 +86,16 @@ public class StoreDataActivity extends BaseActivity {
                     loopView5 = (LoopView) dialog.findViewById(R.id.lv5);
                     loopView6 = (LoopView) dialog.findViewById(R.id.lv6);
 
-                    final List<String> mOptionsItems = new ArrayList<>();
-                    final List<String> mOptionsItems2 = new ArrayList<>();
-                    final List<String> mOptionsItems3 = new ArrayList<>();
-                    final List<String> mOptionsItems4 = new ArrayList<>();
+                    mOptionsItems = new ArrayList<>();
+                    mOptionsItems2 = new ArrayList<>();
+                    mOptionsItems3 = new ArrayList<>();
+                    mOptionsItems4 = new ArrayList<>();
                     for (int i = 2017; i < 2050; i++) {
                         mOptionsItems.add(i + "年");
                     }
                     for (int i = 1; i < 12; i++) {
                         mOptionsItems2.add(i + "月");
                     }
-
 
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
                     String nowdate = simpleDateFormat.format(new Date(System.currentTimeMillis()));
@@ -554,9 +559,11 @@ public class StoreDataActivity extends BaseActivity {
                         @Override
                         public void onClick(View v) {
 
-                            Log.i("xyz", mOptionsItems.get(loopView1.getSelectedItem()) + mOptionsItems2.get(loopView2.getSelectedItem()) + mOptionsItems3.get(loopView3.getSelectedItem()));
+                            Log.i("xyz", mOptionsItems.get(loopView1.getSelectedItem()) + (mOptionsItems2.get(loopView2.getSelectedItem()).length() == 1 ? "0" + mOptionsItems2.get(loopView2.getSelectedItem()) : mOptionsItems2.get(loopView2.getSelectedItem())) + (mOptionsItems3.get(loopView3.getSelectedItem()).length() == 1 ? "0" + mOptionsItems3.get(loopView3.getSelectedItem()) : mOptionsItems3.get(loopView3.getSelectedItem())));
 
-                            Log.i("xyz", mOptionsItems.get(loopView4.getSelectedItem()) + mOptionsItems2.get(loopView5.getSelectedItem()) + mOptionsItems4.get(loopView6.getSelectedItem()));
+                            Log.i("xyz", mOptionsItems.get(loopView4.getSelectedItem()) + (mOptionsItems2.get(loopView5.getSelectedItem()).length() == 1 ? "0" + mOptionsItems2.get(loopView5.getSelectedItem()) : mOptionsItems2.get(loopView5.getSelectedItem())) + (mOptionsItems4.get(loopView6.getSelectedItem()).length() == 1 ? "0" + mOptionsItems4.get(loopView6.getSelectedItem()) : mOptionsItems4.get(loopView6.getSelectedItem())));
+
+                            myDateFreeFragment.setdate(mOptionsItems.get(loopView1.getSelectedItem()) + (mOptionsItems2.get(loopView2.getSelectedItem()).length() == 1 ? "0" + mOptionsItems2.get(loopView2.getSelectedItem()) : mOptionsItems2.get(loopView2.getSelectedItem())) + (mOptionsItems3.get(loopView3.getSelectedItem()).length() == 1 ? "0" + mOptionsItems3.get(loopView3.getSelectedItem()) : mOptionsItems3.get(loopView3.getSelectedItem())), mOptionsItems.get(loopView4.getSelectedItem()) + (mOptionsItems2.get(loopView5.getSelectedItem()).length() == 1 ? "0" + mOptionsItems2.get(loopView5.getSelectedItem()) : mOptionsItems2.get(loopView5.getSelectedItem())) + (mOptionsItems4.get(loopView6.getSelectedItem()).length() == 1 ? "0" + mOptionsItems4.get(loopView6.getSelectedItem()) : mOptionsItems4.get(loopView6.getSelectedItem())));
 
                         }
                     });
@@ -624,7 +631,13 @@ public class StoreDataActivity extends BaseActivity {
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
 
-
+        LinearLayout close_btn = (LinearLayout) findViewById(R.id.close_btn);
+        close_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 

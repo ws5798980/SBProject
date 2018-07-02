@@ -4,19 +4,33 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.rs.mobile.common.AppConfig;
+import com.rs.mobile.common.network.OkHttpHelper;
+import com.rs.mobile.common.util.GsonUtils;
+import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.adapter.xsgr.DateDayAdapter;
 import com.rs.mobile.wportal.adapter.xsgr.OrderOneAdapter;
 import com.rs.mobile.wportal.entity.BaseEntity;
+import com.rs.mobile.wportal.entity.DateDataBean;
+import com.rs.mobile.wportal.entity.OrderBean;
 import com.rs.mobile.wportal.fragment.BaseFragment;
 
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import okhttp3.Request;
 
 public class MyDateDayFragment extends BaseFragment {
 
@@ -24,13 +38,17 @@ public class MyDateDayFragment extends BaseFragment {
     private View rootView;
     RecyclerView recyclerView;
     List list;
+    int page = 1;
+    int size = 5;
+    DateDataBean bean;
+    View header;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_data_day, container, false);
 
         initView(rootView);
-
+        initShopInfoData();
 
         return rootView;
     }
@@ -38,11 +56,8 @@ public class MyDateDayFragment extends BaseFragment {
 
     private void initView(View rootView) {
 
+        bean = new DateDataBean();
         list = new ArrayList();
-        for (int i = 0; i < 5; i++) {
-            list.add(new BaseEntity(i + ""));
-        }
-
         recyclerView = (RecyclerView) rootView.findViewById(R.id.listview_date_today);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
@@ -59,30 +74,69 @@ public class MyDateDayFragment extends BaseFragment {
 
         recyclerView.setAdapter(adapter);
 
-        View header = LayoutInflater.from(getContext()).inflate(R.layout.header_order_day, recyclerView, false);
+        header = LayoutInflater.from(getContext()).inflate(R.layout.header_order_day, recyclerView, false);
+
+
         adapter.setHeaderView(header);
 
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-
-
-                for (int i = 6; i < 10; i++) {
-                    list.add(new BaseEntity(i + ""));
-                }
-                recyclerView.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        adapter.setNewData(list);
-                        adapter.loadMoreComplete();
-
-
-                    }
-                }, 1000);
-
-
+                page += 1;
+                initShopInfoData();
             }
         });
+
+    }
+
+
+    public void initShopInfoData() {
+
+        HashMap<String, String> param = new HashMap<String, String>();
+
+        param.put("lang_type", AppConfig.LANG_TYPE);
+//        param.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
+//        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
+        param.put("custom_code", "01071390103abcde");
+        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("pg", page + "");
+        param.put("pagesize", "" + size);
+        param.put("orderclassify", "1");
+        param.put("periodclassify", "1");
+        OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
+        okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                bean = GsonUtils.changeGsonToBean(responseDescription, DateDataBean.class);
+                list.addAll(bean.getData());
+
+                ((TextView) header.findViewById(R.id.tv_price)).setText(bean.getSale_order_o());
+                ((TextView) header.findViewById(R.id.tv_num)).setText(bean.getSale_cnt());
+                ((TextView) header.findViewById(R.id.tv_priceback)).setText(bean.getReturn_order_o());
+                ((TextView) header.findViewById(R.id.tv_priceback)).setText(bean.getReturn_cnt());
+
+                adapter.setNewData(list);
+                adapter.loadMoreComplete();
+                if (bean.getData().size() < size) {
+                    adapter.loadMoreEnd();
+                }
+//                if (swipeRefreshLayout.isRefreshing()) {
+//                    swipeRefreshLayout.setRefreshing(false);
+//                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                // TODO Auto-generated method stub
+
+            }
+        }, Constant.XS_BASE_URL + "AppSM/requestOrderSalesReport", param);
 
     }
 

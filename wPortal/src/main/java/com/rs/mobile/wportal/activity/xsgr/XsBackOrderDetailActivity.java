@@ -3,6 +3,7 @@ package com.rs.mobile.wportal.activity.xsgr;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.rs.mobile.common.util.UiUtil;
@@ -28,7 +29,13 @@ public class XsBackOrderDetailActivity extends AppCompatActivity {
     }
 
     private void initView() {
-
+        LinearLayout close_btn = (LinearLayout) findViewById(R.id.close_btn);
+        close_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         layout_xiangqing = (LinearLayout) findViewById(R.id.layout_xiangqing);
     }
 
