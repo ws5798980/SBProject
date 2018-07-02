@@ -640,4 +640,6 @@ public class Constant {
     public static final String COMMODITY_DELSPEC = "product/DelSpce";
     // 商品管理 重新编辑 删除口味
     public static final String COMMODITY_DELFLAVOR = "product/DelFlavor";
+    // 商品管理 重新编辑 查询分类
+    public static final String COMMODITY_QUERYTYPEBYID = "product/queryproductbyGroudId";
 }

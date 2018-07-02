@@ -74,7 +74,7 @@ public class MyCommodityFragment2 extends BaseFragment {
 
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, final int position) {
 //adapter.getViewByPosition(recyclerView, position, R.id.layout_include)
                 if (view.getId() == R.id.get_shelves) {
                     D.showDialog(getContext(), -1, "提示", "確定上架此商品？", "确定", new View.OnClickListener() {
@@ -196,7 +196,7 @@ public class MyCommodityFragment2 extends BaseFragment {
         }
 
         @Override
-        protected void convert(final BaseViewHolder helper, CommodityList.DataBean item) {
+        protected void convert(final BaseViewHolder helper, final CommodityList.DataBean item) {
 
             helper.getView(R.id.right).setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -243,7 +243,7 @@ public class MyCommodityFragment2 extends BaseFragment {
         }
 
     }
-    private void changeProductsellstate(String groupId,int position) {
+    private void changeProductsellstate(String groupId, final int position) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
@@ -281,7 +281,7 @@ public class MyCommodityFragment2 extends BaseFragment {
         }, Constant.XSGR_TEST_URL + Constant.COMMODITY_CHANGESTATE, GsonUtils.createGsonString(params));
     }
 
-    private void delProduct(String groupId,int position) {
+    private void delProduct(String groupId, final int position) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");

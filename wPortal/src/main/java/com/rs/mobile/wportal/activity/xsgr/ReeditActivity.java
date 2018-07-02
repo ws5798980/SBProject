@@ -44,6 +44,7 @@ import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.adapter.xsgr.FlavorGridViewAdapter;
 import com.rs.mobile.wportal.adapter.xsgr.SpecGridViewAdapter;
 import com.rs.mobile.wportal.biz.xsgr.CommodityDetail;
+import com.rs.mobile.wportal.biz.xsgr.QueryCategoryList;
 import com.rs.mobile.wportal.takephoto.cutphoto.PhotoUtils;
 import com.rs.mobile.wportal.view.DividerItemDecoration;
 
@@ -88,7 +89,7 @@ public class ReeditActivity extends BaseActivity {
     private PopupWindow mPopWindow;
     private PhotoUtils photoUtils;
     public String imageBase64 = "";
-    private List<String> mData = new ArrayList<>();
+    private List<QueryCategoryList.DataBean> mData = new ArrayList<>();
     private String groupId;
     private static AlertDialog editDialog;
 
@@ -191,12 +192,52 @@ public class ReeditActivity extends BaseActivity {
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                popupWindow = ListPopWindowManager.getInstance().showMyPopWindow(contentView, select,
-                        ReeditActivity.this, false, ViewGroup.LayoutParams.WRAP_CONTENT);
-                initPopList();
+                requestProductByGid(groupId);
             }
         });
 
+    }
+
+    private void requestProductByGid(String groupId) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
+        params.put("lang_type", "kor");
+        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("CategoryId", "-1");
+
+        OkHttpHelper okHttpHelper = new OkHttpHelper(this);
+        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                QueryCategoryList entity = GsonUtils.changeGsonToBean(responseDescription, QueryCategoryList.class);
+                Log.i("123123", "responseDescription=" + responseDescription);
+                if ("1".equals(entity.getStatus())) {
+                    if (entity.getData() != null && entity.getData().size() > 0) {
+                        if (mData.size() > 0) {
+                            mData.clear();
+                        }
+                        popupWindow = ListPopWindowManager.getInstance().showMyPopWindow(contentView, select,
+                                ReeditActivity.this, false, ViewGroup.LayoutParams.WRAP_CONTENT);
+                        mData.addAll(entity.getData());
+                        recyclerView.getAdapter().notifyDataSetChanged();
+                    } else {
+                    }
+
+                } else {
+                    Toast.makeText(ReeditActivity.this, entity.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+
+            }
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+
+            }
+        }, Constant.XSGR_TEST_URL + Constant.COMMODITY_QUERYCATEGORY, GsonUtils.createGsonString(params));
     }
 
     static public final int REQUEST_CODE_ASK_PERMISSIONS = 101;
@@ -242,7 +283,7 @@ public class ReeditActivity extends BaseActivity {
         tv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                photoUtils.selectPicture(ReeditActivity.this);
             }
         });
         tv3.setOnClickListener(new View.OnClickListener() {
@@ -257,17 +298,6 @@ public class ReeditActivity extends BaseActivity {
         mPopWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
     }
 
-    private void initPopList() {
-        List<String> list = new ArrayList<>();
-        list.add("K记饭桶");
-        list.add("人气明星套餐");
-        list.add("鸡翅/鸡排");
-        list.add("小食/配餐");
-        list.add("饮料/果汁");
-        mData.clear();
-        mData.addAll(list);
-        recyclerView.getAdapter().notifyDataSetChanged();
-    }
 
     private void initData() {
         requestDetail(groupId);
@@ -277,7 +307,7 @@ public class ReeditActivity extends BaseActivity {
         specification.setOnItemClickListener(new SpecItemClickListener());
         specification.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 if (mList.size() != position) {
                     if ("".equals(mList.get(position).getItem_code())) {
                         D.showDialog(ReeditActivity.this, -1, "提示", "確定删除此规格？", "确定", new View.OnClickListener() {
@@ -335,7 +365,7 @@ public class ReeditActivity extends BaseActivity {
         });
         flavor.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 if (mFlavorList.size() != position) {
                     if (!"".equals(mFlavorList.get(position).getAdd())) {
                         D.showDialog(ReeditActivity.this, -1, "提示", "確定删除此口味？", "确定", new View.OnClickListener() {
@@ -456,7 +486,7 @@ public class ReeditActivity extends BaseActivity {
         });
     }
 
-    private void requestDelFlavor(String flavorName, int position) {
+    private void requestDelFlavor(String flavorName, final int position) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
@@ -494,7 +524,7 @@ public class ReeditActivity extends BaseActivity {
         }, Constant.XSGR_TEST_URL + Constant.COMMODITY_DELFLAVOR, GsonUtils.createGsonString(params));
     }
 
-    private void requestDelSpec(String item_code, int position) {
+    private void requestDelSpec(String item_code, final int position) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
@@ -602,8 +632,8 @@ public class ReeditActivity extends BaseActivity {
             View v = inflator.inflate(R.layout.dialog_2edit_text, null);
             ImageView icon = (ImageView) v.findViewById(R.id.icon_view);
             TextView titleTextView = (TextView) v.findViewById(R.id.title_text_view);
-            EditText editText1 = (EditText) v.findViewById(R.id.msg_edit_text1);
-            EditText editText2 = (EditText) v.findViewById(R.id.msg_edit_text2);
+            final EditText editText1 = (EditText) v.findViewById(R.id.msg_edit_text1);
+            final EditText editText2 = (EditText) v.findViewById(R.id.msg_edit_text2);
             TextView selectTextView = (TextView) v.findViewById(R.id.ok_text_view);
             TextView cancelTextView = (TextView) v.findViewById(R.id.cancel_text_view);
             if (img == -1) icon.setVisibility(View.GONE);
@@ -677,9 +707,9 @@ public class ReeditActivity extends BaseActivity {
 
     public class MyPopupWinAdapter extends RecyclerView.Adapter<MyPopupWinAdapter.ListViewHolder> {
         private Context context;
-        private List<String> mdatas;
+        private List<QueryCategoryList.DataBean> mdatas;
 
-        public MyPopupWinAdapter(Context context, List<String> datas) {
+        public MyPopupWinAdapter(Context context, List<QueryCategoryList.DataBean> datas) {
             this.context = context;
             this.mdatas = datas;
         }
@@ -694,7 +724,7 @@ public class ReeditActivity extends BaseActivity {
 
         @Override
         public void onBindViewHolder(ListViewHolder holder, int position) {
-            String type = mdatas.get(position);
+            QueryCategoryList.DataBean type = mdatas.get(position);
             holder.setData(type);
 
         }
@@ -714,8 +744,8 @@ public class ReeditActivity extends BaseActivity {
                 img = (ImageView) itemView.findViewById(R.id.img_sure);
             }
 
-            public void setData(String type) {
-                name.setText(type);
+            public void setData(QueryCategoryList.DataBean type) {
+                name.setText(type.getLevel_name());
             }
         }
     }

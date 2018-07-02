@@ -159,7 +159,7 @@ public class CommodityManagementActivity extends BaseActivity {
         });
     }
 
-    private void requestCategoryList(String catergoryId,boolean isShow) {
+    private void requestCategoryList(String catergoryId, final boolean isShow) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
@@ -260,10 +260,10 @@ public class CommodityManagementActivity extends BaseActivity {
 //        }
 
         @Override
-        protected void convert(BaseViewHolder helper, QueryCategoryList.DataBean item) {
-            EditText name;
-            ImageView img;
-            Button done;
+        protected void convert(final BaseViewHolder helper, final QueryCategoryList.DataBean item) {
+            final EditText name;
+            final ImageView img;
+            final Button done;
             img = helper.getView(R.id.commodity_img);
             name = helper.getView(R.id.commodity_name);
             done = helper.getView(R.id.edit_done);
@@ -471,7 +471,7 @@ public class CommodityManagementActivity extends BaseActivity {
 
     }
 
-    private void delProduct(String id,int position) {
+    private void delProduct(String id, final int position) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");

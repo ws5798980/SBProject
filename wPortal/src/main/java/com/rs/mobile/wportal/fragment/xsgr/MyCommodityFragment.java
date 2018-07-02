@@ -67,7 +67,7 @@ public class MyCommodityFragment extends BaseFragment {
         adapter.disableLoadMoreIfNotFullPage();
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
-            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, final int position) {
 //adapter.getViewByPosition(recyclerView, position, R.id.layout_include)
                 if (view.getId() == R.id.edit_goods) {
                     Intent intent = new Intent();
@@ -109,7 +109,7 @@ public class MyCommodityFragment extends BaseFragment {
 
     }
 
-    private void changeProductsellstate(String groupId,int position) {
+    private void changeProductsellstate(String groupId, final int position) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
