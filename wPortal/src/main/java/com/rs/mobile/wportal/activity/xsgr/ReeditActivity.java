@@ -9,7 +9,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,14 +39,18 @@ import com.bumptech.glide.Glide;
 import com.rs.mobile.common.D;
 import com.rs.mobile.common.L;
 import com.rs.mobile.common.activity.BaseActivity;
+import com.rs.mobile.common.image.ImageUtil;
 import com.rs.mobile.common.network.OkHttpHelper;
+import com.rs.mobile.common.util.FileUtil;
 import com.rs.mobile.common.util.GsonUtils;
 import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.adapter.xsgr.FlavorGridViewAdapter;
 import com.rs.mobile.wportal.adapter.xsgr.SpecGridViewAdapter;
 import com.rs.mobile.wportal.biz.xsgr.CommodityDetail;
+import com.rs.mobile.wportal.biz.xsgr.PushImg;
 import com.rs.mobile.wportal.biz.xsgr.QueryCategoryList;
+import com.rs.mobile.wportal.biz.xsgr.SaveAndGetShelves;
 import com.rs.mobile.wportal.takephoto.cutphoto.PhotoUtils;
 import com.rs.mobile.wportal.view.DividerItemDecoration;
 
@@ -52,6 +58,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -85,6 +92,7 @@ public class ReeditActivity extends BaseActivity {
     private View contentView;
     private RecyclerView recyclerView;
     private MyPopupWinAdapter popAdapter;
+    CommodityDetail commodityDetail;
     private PopupWindow popupWindow;
     private PopupWindow mPopWindow;
     private PhotoUtils photoUtils;
@@ -92,6 +100,7 @@ public class ReeditActivity extends BaseActivity {
     private List<QueryCategoryList.DataBean> mData = new ArrayList<>();
     private String groupId;
     private static AlertDialog editDialog;
+    private String imagePath;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,6 +186,7 @@ public class ReeditActivity extends BaseActivity {
 
                     @Override
                     public void onClick(View arg0) {
+                        requestUpData(commodityDetail);
                         D.alertDialog.dismiss();
 
                     }
@@ -278,12 +288,14 @@ public class ReeditActivity extends BaseActivity {
                 // Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 //  startActivityForResult(intent, 1);
                 photoUtils.takePicture(ReeditActivity.this);
+                mPopWindow.dismiss();
             }
         });
         tv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 photoUtils.selectPicture(ReeditActivity.this);
+                mPopWindow.dismiss();
             }
         });
         tv3.setOnClickListener(new View.OnClickListener() {
@@ -352,6 +364,7 @@ public class ReeditActivity extends BaseActivity {
                                         flavorBean.setAdd("add");
                                         mFlavorList.add(flavorBean);
                                         flavorGridViewAdapter.notifyDataSetChanged();
+                                        D.alertDialog.dismiss();
                                     }
                                 }
                             }, "取消", new View.OnClickListener() {
@@ -404,78 +417,13 @@ public class ReeditActivity extends BaseActivity {
             public void onPhotoResult(Uri uri) {
                 if (uri != null && !TextUtils.isEmpty(uri.getPath())) {
                     imageBase64 = bitmapToString(uri);
+                    imagePath = uri.getPath().toString();
                     Log.e("uri:", uri.getPath().toString());
-                    Glide.with(ReeditActivity.this).load(uri.getPath()).into(ivPhoto);
+                    Log.e("uri2:", imageBase64);
 //                    String itemId=setUserName.getText().toString();
-
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");// HH:mm:ss
-//获取当前时间
-                    Date date2 = new Date(System.currentTimeMillis());
-                    String date = simpleDateFormat.format(date2);
-//
-//                    String image=imageBase64;
-//                    String type="ImageTarget";
-//                    String name="ar_shop_"+itemId;
-//                    String size="10";
-//                    String meta=itemId;
-
-
-//                    String signstr="appKey"+KEY_APP_KEY+"date"+date+"image"+imageBase64+"meta"+itemId+"name"+name+"size"+size+"type"+type+KEY_SIGNATURE;
-//                    String sign=shaEncrypt(signstr);
-//
-//
-//                    AsyncHttpClient client = new AsyncHttpClient();
-//                    client.setTimeout(120000);
-//
-//                    JSONObject params = new JSONObject();
-//
-//
-//                    try {
-//                        params.put("appKey",KEY_APP_KEY);
-//                        params.put("date",date);
-//                        params.put("image",imageBase64);
-//                        params.put("meta",itemId);
-//                        params.put("name",name);
-//                        params.put("size",size);
-//                        params.put("type",type);
-//                        params.put("signature",sign);
-//                    } catch (JSONException e) {
-//
-//                    }
-
-//                    ByteArrayEntity entity = null;
-//                    try {
-//                        entity = new ByteArrayEntity(params.toString().getBytes("UTF-8"));
-//                        entity.setContentType(new BasicHeader(HTTP.CONTENT_TYPE, "application/json"));
-//                    } catch (UnsupportedEncodingException e) {
-//                        e.printStackTrace();
-//                    }
-
-//                    client.post(LoginActivity.this,"http://487ef0c87805d5e4a4b4f56a23db629d.cn1.crs.easyar.com:8888/targets/",entity,"application/json",new JsonHttpResponseHandler(){
-//                        @Override
-//                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-//                            super.onSuccess(statusCode, headers, response);
-//
-//                            AlertDialog dialog = new AlertDialog.Builder(LoginActivity.this)
-//                                    .setTitle("提示")//设置对话框的标题
-//                                    .setMessage("成功将图片上传到云端")//设置对话框的内容
-//                                    //设置对话框的按钮
-//                                    .setPositiveButton("确定", new DialogInterface.OnClickListener() {
-//                                        @Override
-//                                        public void onClick(DialogInterface dialog, int which) {
-//                                            dialog.dismiss();
-//                                        }
-//                                    }).create();
-//                            dialog.show();
-//
-//                        }
-//                        @Override
-//                        public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-//                            super.onFailure(statusCode, headers, throwable, errorResponse);
-//                        }
-//                    });
-
-
+//                    Bitmap bitmap = BitmapFactory.decodeFile(uri.getPath().toString());
+//                    ivPhoto.setImageBitmap(bitmap);
+                    new ImageUploadAsyncTask().execute();
                 }
             }
 
@@ -484,6 +432,95 @@ public class ReeditActivity extends BaseActivity {
 
             }
         });
+    }
+
+    private class ImageUploadAsyncTask extends AsyncTask<Object, Integer, String> {
+
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
+
+            showProgressBar();
+        }
+
+        @Override
+        protected String doInBackground(Object... params) {
+            // TODO Auto-generated method stub
+
+            try {
+
+                if (imagePath != null && !imagePath.equals("")) {
+
+                    // S.set(SettingActivity.this, C.KEY_SHARED_ICON_PATH, imagePath);
+
+                    ArrayList<String> filePath = new ArrayList<String>();
+
+                    filePath.add(imagePath);
+
+                    return FileUtil.upload(Constant.XSGR_TEST_URL + Constant.COMMODITY_PUSHIMG, filePath, null, "file");
+
+                } else {
+
+                    return "";
+
+                }
+
+            } catch (Exception e) {
+
+                L.e(e);
+
+                return e.getClass().getName();
+
+            }
+
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
+
+            try {
+
+                L.d(result);
+
+                // ImageUtil.drawIamge(iconImageView,Uri.parse(C.BASE_URL +
+                // C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal" +
+                // S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "")
+                // + ".jpg"));
+
+//                imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal"
+//                        + S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
+                PushImg entity = GsonUtils.changeGsonToBean(result, PushImg.class);
+                if ("1".equals(entity.getStatus())) {
+                    Toast.makeText(ReeditActivity.this, "success", Toast.LENGTH_SHORT).show();
+                    if (entity.getData().size() > 0) {
+                        String url = Constant.XSGR_TEST_URL + Constant.COMMODITY_PUSHIMG + entity.getData().get(0);
+                        Log.i("url++++", url);
+                        Glide.with(ReeditActivity.this).load(url).into(ivPhoto);
+                    } else {
+                        Toast.makeText(ReeditActivity.this, "failed", Toast.LENGTH_LONG).show();
+                    }
+
+                } else {
+                    Toast.makeText(ReeditActivity.this, "failed", Toast.LENGTH_LONG).show();
+
+                }
+
+
+                hideProgressBar();
+
+            } catch (Exception e) {
+
+                L.e(e);
+
+                finish();
+
+            }
+
+        }
+
     }
 
     private void requestDelFlavor(String flavorName, final int position) {
@@ -573,18 +610,18 @@ public class ReeditActivity extends BaseActivity {
         okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
-                CommodityDetail entity = GsonUtils.changeGsonToBean(responseDescription, CommodityDetail.class);
+                commodityDetail = GsonUtils.changeGsonToBean(responseDescription, CommodityDetail.class);
                 Log.i("123123", "responseDescription=" + responseDescription);
-                if ("1".equals(entity.getStatus())) {
-                    Toast.makeText(ReeditActivity.this, entity.getMessage(), Toast.LENGTH_SHORT).show();
-                    mFlavorList = entity.getData().getFlavor();
+                if ("1".equals(commodityDetail.getStatus())) {
+                    Toast.makeText(ReeditActivity.this, commodityDetail.getMessage(), Toast.LENGTH_SHORT).show();
+                    mFlavorList.addAll(commodityDetail.getData().getFlavor());
                     flavorGridViewAdapter.notifyDataSetChanged();
-                    mList.addAll(entity.getData().getSpec());
+                    mList.addAll(commodityDetail.getData().getSpec());
                     specGridViewAdapter.notifyDataSetChanged();
-                    editName.setText(entity.getData().getItem().getITEM_NAME());
-                    Glide.with(ReeditActivity.this).load(entity.getData().getItem().getImage_url()).into(ivPhoto);
+                    editName.setText(commodityDetail.getData().getItem().getITEM_NAME());
+                    Glide.with(ReeditActivity.this).load(commodityDetail.getData().getItem().getImage_url()).into(ivPhoto);
                 } else {
-                    Toast.makeText(ReeditActivity.this, entity.getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(ReeditActivity.this, commodityDetail.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -601,6 +638,72 @@ public class ReeditActivity extends BaseActivity {
 
             }
         }, Constant.XSGR_TEST_URL + Constant.COMMODITY_QUERYDETAIL, GsonUtils.createGsonString(params));
+    }
+
+    private void requestUpData(final CommodityDetail commodityDetail) {
+        if (commodityDetail == null) {
+            return;
+        }
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
+        params.put("lang_type", "kor");
+        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("groupId", groupId);
+        String name = editName.getText().toString().trim();
+        if (name.length() == 0) {
+            Toast.makeText(ReeditActivity.this, "请输入商品名称", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        params.put("item_name", name);
+        params.put("custom_item_code", commodityDetail.getData().getItem().getCUSTOM_ITEM_CODE());
+        params.put("custom_item_name", commodityDetail.getData().getItem().getCUSTOM_ITEM_NAME());
+        params.put("custom_item_spec", commodityDetail.getData().getItem().getCUSTOM_ITEM_SPEC());
+        params.put("dom", commodityDetail.getData().getItem().getDom_forign());
+        params.put("item_level1", "1");
+        params.put("item_level2", "2");
+        params.put("item_level3", "3");
+        params.put("price", commodityDetail.getData().getItem().getITEM_P());
+        List<SaveAndGetShelves.SpecBean> specBeans = new ArrayList<>();
+        for (int i = 0;i<mList.size();i++){
+            SaveAndGetShelves.SpecBean specBean = new SaveAndGetShelves.SpecBean();
+            specBean.setSpecName(mList.get(i).getItem_name());
+            specBean.setSpecPrice(mList.get(i).getItem_p());
+            specBeans.add(specBean);
+        }
+        params.put("spec", specBeans);
+        List<SaveAndGetShelves.FlavorBean> flavorBeans = new ArrayList<>();
+        for (int i = 0;i<mFlavorList.size();i++){
+            SaveAndGetShelves.FlavorBean flavorBean = new SaveAndGetShelves.FlavorBean();
+            flavorBean.setFlavorName(mFlavorList.get(i).getFlavorName());
+            flavorBeans.add(flavorBean);
+        }
+        params.put("Flavor",flavorBeans);
+        OkHttpHelper okHttpHelper = new OkHttpHelper(this);
+        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                CommodityDetail response = GsonUtils.changeGsonToBean(responseDescription, CommodityDetail.class);
+                Log.i("123123", "responseDescription=" + responseDescription);
+                if ("1".equals(response.getStatus())) {
+                    Toast.makeText(ReeditActivity.this, response.getMessage(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(ReeditActivity.this, response.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                Log.e("responseDescription456", responseDescription);
+//                Log.e("JSONObject",data.toString());
+                Log.e("flag145", flag);
+
+            }
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+
+            }
+        }, Constant.XSGR_TEST_URL + Constant.COMMODITY_UPDATA, GsonUtils.createGsonString(params));
     }
 
     class SpecItemClickListener implements AdapterView.OnItemClickListener {
