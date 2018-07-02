@@ -223,7 +223,7 @@ public class PhotoUtils {
         if (uri == null) {
             return false;
         }
-
+        Log.i("uri---------",uri.getPath());
         File file = new File(uri.getPath());
         if (file.exists()) {
             boolean result = file.delete();
@@ -248,6 +248,7 @@ public class PhotoUtils {
      * @date 2015-1-7
      **/
     public interface OnPhotoResultListener {
+
         void onPhotoResult(Uri uri);
 
         void onPhotoCancel();
