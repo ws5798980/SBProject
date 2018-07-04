@@ -22,6 +22,7 @@ import com.rs.mobile.common.C;
 import com.rs.mobile.common.S;
 import com.rs.mobile.common.image.ImageUtil;
 import com.rs.mobile.common.network.OkHttpHelper;
+import com.rs.mobile.common.util.EncryptUtils;
 import com.rs.mobile.common.util.GsonUtils;
 import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
@@ -52,14 +53,15 @@ public class MyOrderFragment extends BaseFragment {
     RecyclerView recyclerView;
     private List<OrderBean.DataBean> list;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private int page = 1;
+    private int page = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_my_order_doing, container, false);
         list = new ArrayList<>();
         initView(rootView);
-        initdata();
+        isPrepared = true;
+        lazyLoad();
         return rootView;
     }
 
@@ -100,7 +102,7 @@ public class MyOrderFragment extends BaseFragment {
 
                     }
                 } else if (view.getId() == R.id.button1_cancel) {
-                    changeOrderStatus(list.get(position).getOrder_num(), "4");
+                    cancelOrderStatus(list.get(position).getOrder_num(), list.get(position).getCustom_code());
                 } else if (view.getId() == R.id.button_get) {
                     changeOrderStatus(list.get(position).getOrder_num(), "3");
                 }
@@ -119,7 +121,6 @@ public class MyOrderFragment extends BaseFragment {
         adapter1.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                page = page + 1;
                 initShopInfoData();
             }
         });
@@ -135,7 +136,7 @@ public class MyOrderFragment extends BaseFragment {
 //        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
         param.put("custom_code", "01071390103abcde");
         param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
-        param.put("pg", page + "");
+        param.put("pg", (page+1) + "");
         param.put("pagesize", "" + size);
         param.put("orderclassify", "1");
         OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
@@ -151,6 +152,7 @@ public class MyOrderFragment extends BaseFragment {
 
                 bean = GsonUtils.changeGsonToBean(responseDescription, OrderBean.class);
                 list.addAll(bean.getData());
+                page = page + 1;
                 adapter1.setNewData(list);
                 adapter1.loadMoreComplete();
                 if (bean.getData().size() < size) {
@@ -170,11 +172,12 @@ public class MyOrderFragment extends BaseFragment {
 
     }
 
-    public void reinitdata(){
+    public void reinitdata() {
         list.clear();
-        page = 1;
+        page = 0;
         initShopInfoData();
     }
+
     public void changeOrderStatus(String ordernum, final String status) {
 
         HashMap<String, String> param = new HashMap<String, String>();
@@ -191,6 +194,48 @@ public class MyOrderFragment extends BaseFragment {
 
             @Override
             public void onNetworkError(Request request, IOException e) {
+
+            }
+
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                try {
+                    JSONObject jsonObject = new JSONObject(responseDescription);
+                    if ("1".equals(jsonObject.getString("status"))) {
+                        showDialog();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+
+            }
+        }, Constant.XS_BASE_URL + "AppSM/requestOrderTake", param);
+
+    }
+
+
+    public void cancelOrderStatus(String ordernum, final String customer_code) {
+
+        HashMap<String, String> param = new HashMap<String, String>();
+
+        param.put("lang_type", AppConfig.LANG_TYPE);
+//        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
+//        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+        param.put("custom_code", "01071390103abcde");
+        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("order_num", ordernum);
+        param.put("customer_code", customer_code);
+        OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
+        okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
                 // TODO Auto-generated method stub
 
             }
@@ -198,17 +243,11 @@ public class MyOrderFragment extends BaseFragment {
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
 
-                Log.i("xyz", responseDescription);
 
                 try {
                     JSONObject jsonObject = new JSONObject(responseDescription);
                     if ("1".equals(jsonObject.getString("status"))) {
-
-                        if (status.equals("3")) {
-                            showDialog();
-                        } else {
-                            reinitdata();
-                        }
+                        reinitdata();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -222,7 +261,7 @@ public class MyOrderFragment extends BaseFragment {
                 // TODO Auto-generated method stub
 
             }
-        }, Constant.XS_BASE_URL  + "AppSM/requestOrderTake", param);
+        }, Constant.XS_BASE_URL + "AppSM/requestOrderCancel", param);
 
     }
 
@@ -260,6 +299,12 @@ public class MyOrderFragment extends BaseFragment {
 
     @Override
     protected void lazyLoad() {
-
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        list.clear();
+        adapter1.setNewData(list);
+        page = 0;
+        initdata();
     }
 }

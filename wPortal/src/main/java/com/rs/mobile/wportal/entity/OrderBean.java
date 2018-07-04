@@ -63,6 +63,15 @@ public class OrderBean {
          * delivery_o : 0
          * tot_amt : 310000
          */
+        private String custom_code;
+
+        public String getCustom_code() {
+            return custom_code;
+        }
+
+        public void setCustom_code(String custom_code) {
+            this.custom_code = custom_code;
+        }
 
         private String order_num;
         private String order_seq;

@@ -41,14 +41,15 @@ public class MyOrderFragment3 extends BaseFragment {
     RecyclerView recyclerView;
     private List<OrderBean.DataBean> list;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private int page = 1;
+    private int page = 0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_my_order_doing, container, false);
         list = new ArrayList<>();
         initView(rootView);
-        initdata();
+        isPrepared = true;
+        lazyLoad();
         return rootView;
     }
 
@@ -56,9 +57,9 @@ public class MyOrderFragment3 extends BaseFragment {
         initShopInfoData();
     }
 
-    public void reinitdata(){
+    public void reinitdata() {
         list.clear();
-        page = 1;
+        page = 0;
         initShopInfoData();
     }
 
@@ -110,14 +111,14 @@ public class MyOrderFragment3 extends BaseFragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-              reinitdata();
+                reinitdata();
             }
         });
 
         adapter1.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                page = page + 1;
+
                 initShopInfoData();
             }
         });
@@ -133,7 +134,7 @@ public class MyOrderFragment3 extends BaseFragment {
 //        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
         param.put("custom_code", "01071390103abcde");
         param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
-        param.put("pg", page + "");
+        param.put("pg", (page+1) + "");
         param.put("pagesize", "" + size);
         param.put("orderclassify", "3");
         OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
@@ -150,6 +151,7 @@ public class MyOrderFragment3 extends BaseFragment {
                 bean = GsonUtils.changeGsonToBean(responseDescription, OrderBean.class);
                 list.addAll(bean.getData());
                 adapter1.setNewData(list);
+                page = page + 1;
                 adapter1.loadMoreComplete();
                 if (bean.getData().size() < size) {
                     adapter1.loadMoreEnd();
@@ -191,8 +193,8 @@ public class MyOrderFragment3 extends BaseFragment {
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
                 try {
-                    JSONObject jsonObject=new JSONObject(responseDescription);
-                    if ("1".equals(jsonObject.getString("status"))){
+                    JSONObject jsonObject = new JSONObject(responseDescription);
+                    if ("1".equals(jsonObject.getString("status"))) {
                         swipeRefreshLayout.setRefreshing(true);
                     }
                 } catch (JSONException e) {
@@ -213,6 +215,12 @@ public class MyOrderFragment3 extends BaseFragment {
 
     @Override
     protected void lazyLoad() {
-
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        list.clear();
+        adapter1.setNewData(list);
+        page = 0;
+        initdata();
     }
 }

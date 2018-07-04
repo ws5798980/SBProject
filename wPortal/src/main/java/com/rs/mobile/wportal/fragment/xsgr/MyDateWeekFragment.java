@@ -35,7 +35,7 @@ public class MyDateWeekFragment extends BaseFragment {
     private View rootView;
     RecyclerView recyclerView;
     List list;
-    int page = 1;
+    int page = 0;
     int size = 5;
     DateDataBean bean;
     View header;
@@ -45,8 +45,8 @@ public class MyDateWeekFragment extends BaseFragment {
         rootView = inflater.inflate(R.layout.fragment_data_day, container, false);
 
         initView(rootView);
-        initShopInfoData();
-
+        isPrepared = true;
+        lazyLoad();
         return rootView;
     }
 
@@ -77,7 +77,6 @@ public class MyDateWeekFragment extends BaseFragment {
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                page += 1;
                 initShopInfoData();
             }
         });
@@ -92,7 +91,7 @@ public class MyDateWeekFragment extends BaseFragment {
 //        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
         param.put("custom_code", "01071390103abcde");
         param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
-        param.put("pg", page + "");
+        param.put("pg", (page + 1) + "");
         param.put("pagesize", "" + size);
         param.put("orderclassify", "1");
         param.put("periodclassify", "2");
@@ -107,6 +106,7 @@ public class MyDateWeekFragment extends BaseFragment {
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
                 bean = GsonUtils.changeGsonToBean(responseDescription, DateDataBean.class);
+                page += 1;
                 list.addAll(bean.getData());
 
                 ((TextView) header.findViewById(R.id.tv_price)).setText(bean.getSale_order_o());
@@ -136,6 +136,12 @@ public class MyDateWeekFragment extends BaseFragment {
 
     @Override
     protected void lazyLoad() {
-
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        list.clear();
+        adapter.setNewData(list);
+        page = 0;
+        initShopInfoData();
     }
 }

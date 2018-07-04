@@ -59,6 +59,7 @@ public class OrderActivity extends BaseActivity {
         viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), this, list, titles);
         viewPager.setAdapter(viewPagerAdapter);
         viewPager.setCurrentItem(0);
+        viewPager.setOffscreenPageLimit(3);
         tabLayout.setupWithViewPager(viewPager);
         reflex(tabLayout);
     }

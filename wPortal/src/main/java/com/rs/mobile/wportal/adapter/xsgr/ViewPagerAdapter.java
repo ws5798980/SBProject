@@ -12,14 +12,20 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     Context context;
     List<Fragment> list;
 
-    private String[] titles ;
+    private String[] titles;
 
-    public ViewPagerAdapter(FragmentManager fm, Context context,List list,String[] titles) {
+    public ViewPagerAdapter(FragmentManager fm, Context context, List list, String[] titles) {
         super(fm);
-        this.context=context;
-        this.list=list;
-        this.titles=titles;
+        this.context = context;
+        this.list = list;
+        this.titles = titles;
     }
+
+    public void setTitles(String[] titles) {
+        this.titles = titles;
+        notifyDataSetChanged();
+    }
+
 
     @Override
     public int getCount() {

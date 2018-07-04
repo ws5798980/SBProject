@@ -227,12 +227,12 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/textview_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:text="已发货"
                 android:textSize="15sp" />
 
 

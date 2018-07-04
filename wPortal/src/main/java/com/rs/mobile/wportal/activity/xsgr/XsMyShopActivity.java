@@ -39,7 +39,7 @@ public class XsMyShopActivity extends BaseActivity {
 
     LinearLayout layout1;
     LinearLayout layout2;
-     ImageView img1;
+    ImageView img1;
     ImageView img2;
 
     PopupWindow window;
@@ -127,7 +127,7 @@ public class XsMyShopActivity extends BaseActivity {
         // 创建PopupWindow对象，其中：
         // 第一个参数是用于PopupWindow中的View，第二个参数是PopupWindow的宽度，
         // 第三个参数是PopupWindow的高度，第四个参数指定PopupWindow能否获得焦点
-         window = new PopupWindow(contentView, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT, true);
+        window = new PopupWindow(contentView, WindowManager.LayoutParams.WRAP_CONTENT, WindowManager.LayoutParams.WRAP_CONTENT, true);
         // 设置PopupWindow的背景
         window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         // 设置PopupWindow是否能响应外部点击事件
@@ -137,10 +137,10 @@ public class XsMyShopActivity extends BaseActivity {
         // 显示PopupWindow，其中：
         // 第一个参数是PopupWindow的锚点，第二和第三个参数分别是PopupWindow相对锚点的x、y偏移
 
-       layout1 = (LinearLayout) contentView.findViewById(R.id.layout_1);
-       layout2 = (LinearLayout) contentView.findViewById(R.id.layout_2);
-       img1 = (ImageView) contentView.findViewById(R.id.img_1);
-       img2 = (ImageView) contentView.findViewById(R.id.img_2);
+        layout1 = (LinearLayout) contentView.findViewById(R.id.layout_1);
+        layout2 = (LinearLayout) contentView.findViewById(R.id.layout_2);
+        img1 = (ImageView) contentView.findViewById(R.id.img_1);
+        img2 = (ImageView) contentView.findViewById(R.id.img_2);
 
         if (select == 1) {
             img1.setVisibility(View.VISIBLE);
@@ -192,7 +192,6 @@ public class XsMyShopActivity extends BaseActivity {
     }
 
 
-
     public void initShopInfoData() {
 
         HashMap<String, String> param = new HashMap<String, String>();
@@ -207,7 +206,6 @@ public class XsMyShopActivity extends BaseActivity {
 
             @Override
             public void onNetworkError(Request request, IOException e) {
-                // TODO Auto-generated method stub
 
             }
 
@@ -224,16 +222,15 @@ public class XsMyShopActivity extends BaseActivity {
                 if (bean.getShop_thumnail_image() != null && !bean.getShop_thumnail_image().isEmpty()) {
                     ImageUtil.drawImageFromUri(bean.getShop_thumnail_image(), img_myshop);
                 }
-                if ("영업중".equals(bean.getSales_status())){
-                    select=1;
-                }else {
-                    select=2;
+                if ("영업중".equals(bean.getSales_status())) {
+                    select = 1;
+                } else {
+                    select = 2;
                 }
             }
 
             @Override
             public void onBizFailure(String responseDescription, JSONObject data, String flag) {
-                // TODO Auto-generated method stub
 
             }
         }, Constant.XS_BASE_URL + "AppSM/requestSaleOrderAmount", param);
@@ -255,27 +252,25 @@ public class XsMyShopActivity extends BaseActivity {
 
             @Override
             public void onNetworkError(Request request, IOException e) {
-                // TODO Auto-generated method stub
 
             }
 
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
                 try {
-                    JSONObject jsonObject=new JSONObject(responseDescription);
-                    String status=jsonObject.getString("status");
-                    if ("1".equals(status)){
+                    JSONObject jsonObject = new JSONObject(responseDescription);
+                    String status = jsonObject.getString("status");
+                    if ("1".equals(status)) {
 
-                        if (statu.equals("N")){
+                        if (statu.equals("N")) {
                             tv_select.setText("영업종료");
                             window.dismiss();
                             select = 2;
-                        }else {
+                        } else {
                             tv_select.setText("영업중");
                             window.dismiss();
                             select = 1;
                         }
-
 
 
                     }
@@ -288,7 +283,6 @@ public class XsMyShopActivity extends BaseActivity {
 
             @Override
             public void onBizFailure(String responseDescription, JSONObject data, String flag) {
-                // TODO Auto-generated method stub
 
             }
         }, Constant.XS_BASE_URL + "AppSM/requestUpdateSalesStatus", param);

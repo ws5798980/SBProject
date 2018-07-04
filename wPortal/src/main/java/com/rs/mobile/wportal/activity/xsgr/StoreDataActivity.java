@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -75,10 +76,16 @@ public class StoreDataActivity extends BaseActivity {
                 if (tab.getPosition() == 3) {
 
 
-                    Dialog dialog = new Dialog(StoreDataActivity.this, R.style.dialog_holo_dark);
+                    final Dialog dialog = new Dialog(StoreDataActivity.this, R.style.dialog_holo_dark);
                     dialog.setContentView(R.layout.dialog_datechoose);
 
-
+                    ImageView imageView = (ImageView) dialog.findViewById(R.id.img_close);
+                    imageView.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialog.dismiss();
+                        }
+                    });
                     loopView1 = (LoopView) dialog.findViewById(R.id.lv1);
                     loopView2 = (LoopView) dialog.findViewById(R.id.lv2);
                     loopView3 = (LoopView) dialog.findViewById(R.id.lv3);
@@ -100,7 +107,7 @@ public class StoreDataActivity extends BaseActivity {
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
                     String nowdate = simpleDateFormat.format(new Date(System.currentTimeMillis()));
 
-                    String year = nowdate.substring(0, 4);
+                    final String year = nowdate.substring(0, 4);
                     String month = nowdate.substring(4, 6);
                     String day = nowdate.substring(6, 8);
 
@@ -559,11 +566,21 @@ public class StoreDataActivity extends BaseActivity {
                         @Override
                         public void onClick(View v) {
 
-                            Log.i("xyz", mOptionsItems.get(loopView1.getSelectedItem()) + (mOptionsItems2.get(loopView2.getSelectedItem()).length() == 1 ? "0" + mOptionsItems2.get(loopView2.getSelectedItem()) : mOptionsItems2.get(loopView2.getSelectedItem())) + (mOptionsItems3.get(loopView3.getSelectedItem()).length() == 1 ? "0" + mOptionsItems3.get(loopView3.getSelectedItem()) : mOptionsItems3.get(loopView3.getSelectedItem())));
 
-                            Log.i("xyz", mOptionsItems.get(loopView4.getSelectedItem()) + (mOptionsItems2.get(loopView5.getSelectedItem()).length() == 1 ? "0" + mOptionsItems2.get(loopView5.getSelectedItem()) : mOptionsItems2.get(loopView5.getSelectedItem())) + (mOptionsItems4.get(loopView6.getSelectedItem()).length() == 1 ? "0" + mOptionsItems4.get(loopView6.getSelectedItem()) : mOptionsItems4.get(loopView6.getSelectedItem())));
+                            String year1 = mOptionsItems.get(loopView1.getSelectedItem()).substring(0, 4);
+                            String year2 = mOptionsItems.get(loopView4.getSelectedItem()).substring(0, 4);
 
-                            myDateFreeFragment.setdate(mOptionsItems.get(loopView1.getSelectedItem()) + (mOptionsItems2.get(loopView2.getSelectedItem()).length() == 1 ? "0" + mOptionsItems2.get(loopView2.getSelectedItem()) : mOptionsItems2.get(loopView2.getSelectedItem())) + (mOptionsItems3.get(loopView3.getSelectedItem()).length() == 1 ? "0" + mOptionsItems3.get(loopView3.getSelectedItem()) : mOptionsItems3.get(loopView3.getSelectedItem())), mOptionsItems.get(loopView4.getSelectedItem()) + (mOptionsItems2.get(loopView5.getSelectedItem()).length() == 1 ? "0" + mOptionsItems2.get(loopView5.getSelectedItem()) : mOptionsItems2.get(loopView5.getSelectedItem())) + (mOptionsItems4.get(loopView6.getSelectedItem()).length() == 1 ? "0" + mOptionsItems4.get(loopView6.getSelectedItem()) : mOptionsItems4.get(loopView6.getSelectedItem())));
+                            String month1 = mOptionsItems2.get(loopView2.getSelectedItem()).length() == 3 ? mOptionsItems2.get(loopView2.getSelectedItem()).substring(0, 2) : "0" + mOptionsItems2.get(loopView2.getSelectedItem()).substring(0, 1);
+                            String month2 = mOptionsItems2.get(loopView5.getSelectedItem()).length() == 3 ? mOptionsItems2.get(loopView5.getSelectedItem()).substring(0, 2) : "0" + mOptionsItems2.get(loopView5.getSelectedItem()).substring(0, 1);
+
+                            String day1 = mOptionsItems3.get(loopView3.getSelectedItem()).length() == 3 ? mOptionsItems3.get(loopView3.getSelectedItem()).substring(0, 2) : "0" + mOptionsItems3.get(loopView3.getSelectedItem()).substring(0, 1);
+                            String day2 = mOptionsItems4.get(loopView6.getSelectedItem()).length() == 3 ? mOptionsItems4.get(loopView6.getSelectedItem()).substring(0, 2) : "0" + mOptionsItems4.get(loopView6.getSelectedItem()).substring(0, 1);
+
+                            Log.i("xyz", year1 + month1 + day1);
+                            Log.i("xyz", year2 + month2 + day2);
+                            myDateFreeFragment.setdate(year1 + month1 + day1, year2 + month2 + day2);
+
+                            dialog.dismiss();
 
                         }
                     });
@@ -630,7 +647,7 @@ public class StoreDataActivity extends BaseActivity {
     private void initView() {
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
-
+        viewPager.setOffscreenPageLimit(4);
         LinearLayout close_btn = (LinearLayout) findViewById(R.id.close_btn);
         close_btn.setOnClickListener(new View.OnClickListener() {
             @Override

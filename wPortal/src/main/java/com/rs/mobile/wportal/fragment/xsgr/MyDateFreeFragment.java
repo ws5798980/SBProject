@@ -36,7 +36,7 @@ public class MyDateFreeFragment extends BaseFragment {
     private View rootView;
     RecyclerView recyclerView;
     List list;
-    int page = 1;
+    int page = 0;
     int size = 5;
     DateDataBean bean;
     View header;
@@ -45,6 +45,9 @@ public class MyDateFreeFragment extends BaseFragment {
     public void setdate(String fromday, String today) {
         this.fromday = fromday;
         this.today = today;
+        list.clear();
+        page = 0;
+        size = 5;
         initShopInfoData();
     }
 
@@ -85,7 +88,6 @@ public class MyDateFreeFragment extends BaseFragment {
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                page += 1;
                 initShopInfoData();
             }
         });
@@ -100,7 +102,7 @@ public class MyDateFreeFragment extends BaseFragment {
 //        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
         param.put("custom_code", "01071390103abcde");
         param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
-        param.put("pg", page + "");
+        param.put("pg", (page+1) + "");
         param.put("pagesize", "" + size);
         param.put("orderclassify", "1");
         param.put("periodclassify", "4");
@@ -117,17 +119,15 @@ public class MyDateFreeFragment extends BaseFragment {
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
 
-                Log.i("xyz", responseDescription);
-
                 bean = GsonUtils.changeGsonToBean(responseDescription, DateDataBean.class);
                 list.addAll(bean.getData());
-
+                page += 1;
                 ((TextView) header.findViewById(R.id.tv_price)).setText(bean.getSale_order_o());
                 ((TextView) header.findViewById(R.id.tv_num)).setText(bean.getSale_cnt());
                 ((TextView) header.findViewById(R.id.tv_priceback)).setText(bean.getReturn_order_o());
                 ((TextView) header.findViewById(R.id.tv_priceback)).setText(bean.getReturn_cnt());
                 ((TextView) header.findViewById(R.id.textview_data)).setText("自定数据");
-                ((TextView) header.findViewById(R.id.tv_priceback)).setText("自定订单");
+                ((TextView) header.findViewById(R.id.textview_order)).setText("自定订单");
                 adapter.setNewData(list);
                 adapter.loadMoreComplete();
                 if (bean.getData().size() < size) {

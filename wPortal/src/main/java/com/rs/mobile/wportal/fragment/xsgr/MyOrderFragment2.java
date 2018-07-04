@@ -47,7 +47,7 @@ public class MyOrderFragment2 extends BaseFragment {
     RecyclerView recyclerView;
     private List<OrderBean.DataBean> list;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private int page = 1;
+    private int page = 0;
     Dialog mDialog;
 
     @Override
@@ -55,7 +55,8 @@ public class MyOrderFragment2 extends BaseFragment {
         rootView = inflater.inflate(R.layout.fragment_my_order_done, container, false);
         list = new ArrayList<>();
         initView(rootView);
-        initdata();
+        isPrepared = true;
+        lazyLoad();
 
         return rootView;
     }
@@ -118,7 +119,7 @@ public class MyOrderFragment2 extends BaseFragment {
         adapter1.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                page = page + 1;
+
                 initShopInfoData();
             }
         });
@@ -134,7 +135,7 @@ public class MyOrderFragment2 extends BaseFragment {
         param.put("lang_type", AppConfig.LANG_TYPE);
         param.put("custom_code", "01071390103abcde");
         param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
-        param.put("pg", page + "");
+        param.put("pg", (page+1) + "");
         param.put("pagesize", "" + size);
         param.put("orderclassify", "2");
         OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
@@ -151,6 +152,7 @@ public class MyOrderFragment2 extends BaseFragment {
 
                 bean = GsonUtils.changeGsonToBean(responseDescription, OrderBean.class);
                 list.addAll(bean.getData());
+                page = page + 1;
                 adapter1.setNewData(list);
                 adapter1.loadMoreComplete();
                 if (bean.getData().size() < size) {
@@ -170,11 +172,12 @@ public class MyOrderFragment2 extends BaseFragment {
 
     }
 
-    public void reinitdata(){
+    public void reinitdata() {
         list.clear();
-        page = 1;
+        page = 0;
         initShopInfoData();
     }
+
     public void changeOrderStatus(String ordernum, String status) {
 
         HashMap<String, String> param = new HashMap<String, String>();
@@ -241,6 +244,12 @@ public class MyOrderFragment2 extends BaseFragment {
 
     @Override
     protected void lazyLoad() {
-
+        if (!isPrepared || !isVisible) {
+            return;
+        }
+        list.clear();
+        adapter1.setNewData(list);
+        page = 0;
+        initdata();
     }
 }
