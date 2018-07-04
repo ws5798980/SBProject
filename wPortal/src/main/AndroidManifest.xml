@@ -936,6 +936,12 @@
         <activity
             android:name=".activity.xsgr.CommodityManagementActivity"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.xsgr.ReeditActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
     </application>
 
 </manifest>
