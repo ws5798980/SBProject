@@ -21,6 +21,7 @@ import com.rs.mobile.common.network.OkHttpHelper;
 import com.rs.mobile.common.util.GsonUtils;
 import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.activity.xsgr.CommodityManagementActivity;
 import com.rs.mobile.wportal.activity.xsgr.ReeditActivity;
 import com.rs.mobile.wportal.adapter.xsgr.CommodityItemAdapter;
 import com.rs.mobile.wportal.biz.xsgr.CommodityList;
@@ -42,6 +43,7 @@ public class MyCommodityFragment extends BaseFragment {
     private List<CommodityList.DataBean> list;
     private SwipeRefreshLayout swipeRefreshLayout;
     private int mNextRequestPage = 2;
+    protected boolean isCreate = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,6 +52,12 @@ public class MyCommodityFragment extends BaseFragment {
 
         initView(rootView);
         return rootView;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        isCreate = true;
     }
 
     private void initView(View rootView) {
@@ -77,13 +85,19 @@ public class MyCommodityFragment extends BaseFragment {
                     intent.setClass(getContext(), ReeditActivity.class);
                     startActivity(intent);
                 }else if (view.getId() == R.id.get_shelves){
-                    D.showDialog(getContext(), -1, "提示", "確定下架此商品？", "确定", new View.OnClickListener() {
+                    D.showDialog(getContext(), -1, "제시", "선택한 제품을 판매종료 하시겠습니까?", "확인", new View.OnClickListener() {
 
                         @Override
                         public void onClick(View arg0) {
                             D.alertDialog.dismiss();
-                            changeProductsellstate(list.get(position).getGroupId(),position);
+                            changeProductsellstate(list.get(position).getGroupId(), position);
 
+                        }
+                    }, "취소", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (D.alertDialog!=null)
+                            D.alertDialog.dismiss();
                         }
                     });
                 }
@@ -96,13 +110,13 @@ public class MyCommodityFragment extends BaseFragment {
             public void onRefresh() {
                 list.clear();
                 mNextRequestPage = 2;
-                requestStoreCateList(1,"0");
+                requestStoreCateList(1, CommodityManagementActivity.catergoryId);
             }
         });
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                requestStoreCateList(mNextRequestPage,"0");
+                requestStoreCateList(mNextRequestPage,CommodityManagementActivity.catergoryId);
 
             }
         });
@@ -150,7 +164,18 @@ public class MyCommodityFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         // recyclerView = (SwipeMenuRecyclerView) view.findViewById(R.id.swrecycler_view);
-        requestStoreCateList(1,"0");
+
+    }
+
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser && isCreate) {
+            //相当于Fragment的onResume
+            requestStoreCateList(1,CommodityManagementActivity.catergoryId);
+        } else {
+            //相当于Fragment的onPause
+        }
     }
 
     @Override
@@ -164,7 +189,7 @@ public class MyCommodityFragment extends BaseFragment {
 
     }
 
-    private void requestStoreCateList(final int pg, String categoryId) {
+    public void requestStoreCateList(final int pg, String categoryId) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");

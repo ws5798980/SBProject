@@ -85,6 +85,7 @@ public class CommodityDetail implements Serializable{
 
             private String ITEM_CODE;
             private String ITEM_NAME;
+            private String ITEM_LEVEL1;
             private String dom_forign;
             private String basis_p;
             private String CUSTOM_ITEM_CODE;
@@ -92,6 +93,14 @@ public class CommodityDetail implements Serializable{
             private String CUSTOM_ITEM_SPEC;
             private String ITEM_P;
             private String Image_url;
+
+            public String getITEM_LEVEL1() {
+                return ITEM_LEVEL1;
+            }
+
+            public void setITEM_LEVEL1(String ITEM_LEVEL1) {
+                this.ITEM_LEVEL1 = ITEM_LEVEL1;
+            }
 
             public String getITEM_CODE() {
                 return ITEM_CODE;
@@ -172,7 +181,25 @@ public class CommodityDetail implements Serializable{
             private String item_code;
             private String item_name;
             private String item_p;
+            private String specName;
+            private String specPrice;
             private String defaultShow;
+
+            public String getSpecName() {
+                return specName;
+            }
+
+            public void setSpecName(String specName) {
+                this.specName = specName;
+            }
+
+            public String getSpecPrice() {
+                return specPrice;
+            }
+
+            public void setSpecPrice(String specPrice) {
+                this.specPrice = specPrice;
+            }
 
             public String getGroupid() {
                 return groupid;

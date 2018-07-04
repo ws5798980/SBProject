@@ -65,8 +65,8 @@ public class SpecGridViewAdapter extends BaseAdapter {
             holder.mSpecPrice=(TextView) convertView.findViewById(R.id.spec_price);
             holder.mSpecLayout = (LinearLayout) convertView.findViewById(R.id.spec_layout);
             if (position!=mItemText.size()){
-                holder.mSpecName.setText(mItemText.get(position).getItem_name());
-                holder.mSpecPrice.setText(mItemText.get(position).getItem_p());
+                holder.mSpecName.setText(mItemText.get(position).getSpecName());
+                holder.mSpecPrice.setText(mItemText.get(position).getSpecPrice());
             }
             convertView.setTag(holder);
 //        }
