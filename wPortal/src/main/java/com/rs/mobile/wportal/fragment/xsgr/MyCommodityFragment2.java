@@ -23,6 +23,7 @@ import com.rs.mobile.common.network.OkHttpHelper;
 import com.rs.mobile.common.util.GsonUtils;
 import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.activity.xsgr.CommodityManagementActivity;
 import com.rs.mobile.wportal.adapter.xsgr.OrderOneAdapter;
 import com.rs.mobile.wportal.biz.xsgr.CommodityList;
 import com.rs.mobile.wportal.fragment.BaseFragment;
@@ -96,19 +97,19 @@ public class MyCommodityFragment2 extends BaseFragment {
             public void onRefresh() {
                 list.clear();
                 mNextRequestPage = 2;
-                requestStoreCateList(1,"0");
+                requestStoreCateList(1, CommodityManagementActivity.catergoryId);
             }
         });
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                requestStoreCateList(mNextRequestPage,"0");
+                requestStoreCateList(mNextRequestPage,CommodityManagementActivity.catergoryId);
 
             }
         });
     }
 
-    private void requestStoreCateList(final int pg, String categoryId) {
+    public void requestStoreCateList(final int pg, String categoryId) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
@@ -174,7 +175,7 @@ public class MyCommodityFragment2 extends BaseFragment {
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        requestStoreCateList(1,"0");
+        requestStoreCateList(1,CommodityManagementActivity.catergoryId);
     }
 
     @Override
@@ -201,7 +202,7 @@ public class MyCommodityFragment2 extends BaseFragment {
             helper.getView(R.id.right).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    D.showDialog(getContext(), -1, "提示", "確定刪除此商品？", "确定", new View.OnClickListener() {
+                    D.showDialog(getContext(), -1, "제시", "確定刪除此商品？", "确定", new View.OnClickListener() {
 
                         @Override
                         public void onClick(View arg0) {
@@ -218,7 +219,7 @@ public class MyCommodityFragment2 extends BaseFragment {
             helper.getView(R.id.right_menu_2).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    D.showDialog(getContext(), -1, "提示", "確定刪除此商品？", "确定", new View.OnClickListener() {
+                    D.showDialog(getContext(), -1, "제시", "確定刪除此商品？", "确定", new View.OnClickListener() {
 
                         @Override
                         public void onClick(View arg0) {

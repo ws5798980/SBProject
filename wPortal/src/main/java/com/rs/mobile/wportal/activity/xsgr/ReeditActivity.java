@@ -45,6 +45,7 @@ import com.rs.mobile.common.util.FileUtil;
 import com.rs.mobile.common.util.GsonUtils;
 import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.adapter.OnItemClickLitener;
 import com.rs.mobile.wportal.adapter.xsgr.FlavorGridViewAdapter;
 import com.rs.mobile.wportal.adapter.xsgr.SpecGridViewAdapter;
 import com.rs.mobile.wportal.biz.xsgr.CommodityDetail;
@@ -76,7 +77,7 @@ import okhttp3.Request;
 
 public class ReeditActivity extends BaseActivity {
 
-    private TextView cancel, save;
+    private TextView cancel, save, textSpec;
     private ImageView back;
     private LinearLayout changeImg;
     private RelativeLayout goodsImg;
@@ -101,6 +102,7 @@ public class ReeditActivity extends BaseActivity {
     private String groupId;
     private static AlertDialog editDialog;
     private String imagePath;
+    private String item_level1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,19 +166,43 @@ public class ReeditActivity extends BaseActivity {
         flavor = (GridView) findViewById(R.id.flavor);
         ivPhoto = (ImageView) findViewById(R.id.iv_photo);
         save = (TextView) findViewById(R.id.save_up);
+        textSpec = (TextView) findViewById(R.id.tv_select);
     }
 
     private void initListener() {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                D.showDialog(ReeditActivity.this, -1, "提示", "편집을 취소하시겠습니까?", "확인", new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View arg0) {
+
+                        D.alertDialog.dismiss();
+                        finish();
+
+                    }
+                }, "취소", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
             }
         });
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                D.showDialog(ReeditActivity.this, -1, "提示", "确定取消编辑吗？", "确定", new View.OnClickListener() {
 
+                    @Override
+                    public void onClick(View arg0) {
+
+                        D.alertDialog.dismiss();
+                        finish();
+
+                    }
+                });
             }
         });
         save.setOnClickListener(new View.OnClickListener() {
@@ -410,6 +436,14 @@ public class ReeditActivity extends BaseActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, R.drawable.divide_bg));
         popAdapter = new MyPopupWinAdapter(getApplicationContext(), mData);
+        popAdapter.setOnItemClickLitener(new OnItemClickLitener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                textSpec.setText(mData.get(position).getLevel_name());
+                item_level1 = mData.get(position).getId();
+                popupWindow.dismiss();
+            }
+        });
         recyclerView.setAdapter(popAdapter);
 
         photoUtils = new PhotoUtils(new PhotoUtils.OnPhotoResultListener() {
@@ -438,7 +472,6 @@ public class ReeditActivity extends BaseActivity {
 
         @Override
         protected void onPreExecute() {
-            // TODO Auto-generated method stub
             super.onPreExecute();
 
             showProgressBar();
@@ -446,7 +479,6 @@ public class ReeditActivity extends BaseActivity {
 
         @Override
         protected String doInBackground(Object... params) {
-            // TODO Auto-generated method stub
 
             try {
 
@@ -478,7 +510,6 @@ public class ReeditActivity extends BaseActivity {
 
         @Override
         protected void onPostExecute(String result) {
-            // TODO Auto-generated method stub
             super.onPostExecute(result);
 
             try {
@@ -614,6 +645,7 @@ public class ReeditActivity extends BaseActivity {
                 Log.i("123123", "responseDescription=" + responseDescription);
                 if ("1".equals(commodityDetail.getStatus())) {
                     Toast.makeText(ReeditActivity.this, commodityDetail.getMessage(), Toast.LENGTH_SHORT).show();
+                    item_level1 = commodityDetail.getData().getItem().getITEM_LEVEL1();
                     mFlavorList.addAll(commodityDetail.getData().getFlavor());
                     flavorGridViewAdapter.notifyDataSetChanged();
                     mList.addAll(commodityDetail.getData().getSpec());
@@ -659,25 +691,25 @@ public class ReeditActivity extends BaseActivity {
         params.put("custom_item_name", commodityDetail.getData().getItem().getCUSTOM_ITEM_NAME());
         params.put("custom_item_spec", commodityDetail.getData().getItem().getCUSTOM_ITEM_SPEC());
         params.put("dom", commodityDetail.getData().getItem().getDom_forign());
-        params.put("item_level1", "1");
-        params.put("item_level2", "2");
-        params.put("item_level3", "3");
+        params.put("item_level1", item_level1);
+//        params.put("item_level2", "2");
+//        params.put("item_level3", "3");
         params.put("price", commodityDetail.getData().getItem().getITEM_P());
         List<SaveAndGetShelves.SpecBean> specBeans = new ArrayList<>();
-        for (int i = 0;i<mList.size();i++){
+        for (int i = 0; i < mList.size(); i++) {
             SaveAndGetShelves.SpecBean specBean = new SaveAndGetShelves.SpecBean();
-            specBean.setSpecName(mList.get(i).getItem_name());
-            specBean.setSpecPrice(mList.get(i).getItem_p());
+            specBean.setSpecName(mList.get(i).getSpecName());
+            specBean.setSpecPrice(mList.get(i).getSpecPrice());
             specBeans.add(specBean);
         }
         params.put("spec", specBeans);
         List<SaveAndGetShelves.FlavorBean> flavorBeans = new ArrayList<>();
-        for (int i = 0;i<mFlavorList.size();i++){
+        for (int i = 0; i < mFlavorList.size(); i++) {
             SaveAndGetShelves.FlavorBean flavorBean = new SaveAndGetShelves.FlavorBean();
             flavorBean.setFlavorName(mFlavorList.get(i).getFlavorName());
             flavorBeans.add(flavorBean);
         }
-        params.put("Flavor",flavorBeans);
+        params.put("Flavor", flavorBeans);
         OkHttpHelper okHttpHelper = new OkHttpHelper(this);
         okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
             @Override
@@ -686,6 +718,7 @@ public class ReeditActivity extends BaseActivity {
                 Log.i("123123", "responseDescription=" + responseDescription);
                 if ("1".equals(response.getStatus())) {
                     Toast.makeText(ReeditActivity.this, response.getMessage(), Toast.LENGTH_SHORT).show();
+                    finish();
                 } else {
                     Toast.makeText(ReeditActivity.this, response.getMessage(), Toast.LENGTH_LONG).show();
                 }
@@ -775,6 +808,8 @@ public class ReeditActivity extends BaseActivity {
                             CommodityDetail.DataBean.SpecBean specBean = new CommodityDetail.DataBean.SpecBean();
                             specBean.setItem_name(name);
                             specBean.setItem_p(price);
+                            specBean.setSpecName(name);
+                            specBean.setSpecPrice(price);
                             mList.add(specBean);
                             Log.e("mList.size()", mList.size() + "");
                             specGridViewAdapter.notifyDataSetChanged();
@@ -810,11 +845,16 @@ public class ReeditActivity extends BaseActivity {
 
     public class MyPopupWinAdapter extends RecyclerView.Adapter<MyPopupWinAdapter.ListViewHolder> {
         private Context context;
+        private OnItemClickLitener mOnItemClickLitener;
         private List<QueryCategoryList.DataBean> mdatas;
 
         public MyPopupWinAdapter(Context context, List<QueryCategoryList.DataBean> datas) {
             this.context = context;
             this.mdatas = datas;
+        }
+
+        public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener) {
+            this.mOnItemClickLitener = mOnItemClickLitener;
         }
 
         @Override
@@ -826,10 +866,18 @@ public class ReeditActivity extends BaseActivity {
         }
 
         @Override
-        public void onBindViewHolder(ListViewHolder holder, int position) {
+        public void onBindViewHolder(final ListViewHolder holder, int position) {
             QueryCategoryList.DataBean type = mdatas.get(position);
             holder.setData(type);
-
+            if (mOnItemClickLitener != null) {
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int pos = holder.getLayoutPosition();
+                        mOnItemClickLitener.onItemClick(holder.itemView, pos);
+                    }
+                });
+            }
         }
 
         @Override
@@ -954,4 +1002,20 @@ public class ReeditActivity extends BaseActivity {
         return true;
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK){
+            D.showDialog(ReeditActivity.this, -1, "提示", "确定取消编辑吗？", "确定", new View.OnClickListener() {
+
+                @Override
+                public void onClick(View arg0) {
+
+                    D.alertDialog.dismiss();
+                    finish();
+
+                }
+            });
+        }
+        return true;
+    }
 }

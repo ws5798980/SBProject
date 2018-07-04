@@ -60,7 +60,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/check_border"
                     android:gravity="center"
-                    android:text="下架商品"
+                    android:text="판매종료"
                     android:textSize="@dimen/text_size_sb"
                     android:textColor="@color/textcolor_gray"
                     style="?android:attr/borderlessButtonStyle" />
@@ -75,7 +75,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/check_border"
                     android:gravity="center"
-                    android:text="重新编辑"
+                    android:text="편집하기"
                     android:textSize="@dimen/text_size_sb"
                     android:textColor="@color/textcolor_gray"
                     style="?android:attr/borderlessButtonStyle" />

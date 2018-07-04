@@ -1,11 +1,13 @@
 package com.rs.mobile.wportal.activity.xsgr;
 
+
 import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,6 +35,7 @@ import com.rs.mobile.common.network.OkHttpHelper;
 import com.rs.mobile.common.util.GsonUtils;
 import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.adapter.OnItemClickLitener;
 import com.rs.mobile.wportal.adapter.xsgr.ViewPagerAdapter;
 import com.rs.mobile.wportal.biz.xsgr.QueryCategoryList;
 import com.rs.mobile.wportal.fragment.xsgr.MyCommodityFragment;
@@ -61,13 +64,15 @@ public class CommodityManagementActivity extends BaseActivity {
     ViewPager viewPager;
     View viewLine;
     View contentView;
+    private TextView tvSelect;
+
     RecyclerView recyclerView;
     private LinearLayout select, closeBtn;
     private String[] titles;
     private PopupWindow popupWindow;
     private List<QueryCategoryList.DataBean> mData = new ArrayList<>();
     MyPopupWinAdapter popAdapter;
-    private String catergoryId = "";
+    public static String catergoryId = "0";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +104,7 @@ public class CommodityManagementActivity extends BaseActivity {
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         viewLine = findViewById(R.id.view_line);
         select = (LinearLayout) findViewById(R.id.layout_select);
+        tvSelect = (TextView) findViewById(R.id.tv_select);
         initType();
     }
 
@@ -106,15 +112,30 @@ public class CommodityManagementActivity extends BaseActivity {
         contentView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.commodity_type, null, false);
         recyclerView = (RecyclerView) contentView.findViewById(R.id.recycler_view);
         EditText all = (EditText) contentView.findViewById(R.id.commodity_name);
-        all.setText("全部分类");
+        all.setText("전체분류");
         ImageView add = (ImageView) contentView.findViewById(R.id.commodity_img);
+        LinearLayout linearLayout = (LinearLayout) contentView.findViewById(R.id.title);
         add.setImageResource(R.drawable.icon_add_category);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tvSelect.setText("전체분류");
+                popupWindow.dismiss();
+                if (viewPager.getCurrentItem() == 0){
+                    catergoryId = "0";
+                    myCommodityFragment.requestStoreCateList(1,catergoryId);
+                }else if (viewPager.getCurrentItem() == 1){
+                    catergoryId = "0";
+                    myCommodityFragment2.requestStoreCateList(1,catergoryId);
+                }
+            }
+        });
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 boolean canAdd = true;
-                for (int i = 0;i<mData.size();i++){
-                    if (mData.get(i).isAdd() == true){
+                for (int i = 0; i < mData.size(); i++) {
+                    if (mData.get(i).isAdd() == true) {
                         canAdd = false;
                     }
                 }
@@ -140,6 +161,13 @@ public class CommodityManagementActivity extends BaseActivity {
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(),
                 LinearLayoutManager.HORIZONTAL, R.drawable.divide_bg));
         popAdapter = new MyPopupWinAdapter(getApplicationContext(), R.layout.commodity_type_item, mData);
+//        popAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+//
+//
+//            }
+//        });
         recyclerView.setAdapter(popAdapter);
     }
 
@@ -153,8 +181,8 @@ public class CommodityManagementActivity extends BaseActivity {
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                catergoryId = "-1";
-                requestCategoryList(catergoryId,false);
+                catergoryId = "0";
+                requestCategoryList(catergoryId, false);
             }
         });
     }
@@ -164,7 +192,7 @@ public class CommodityManagementActivity extends BaseActivity {
         params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
         params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
-        params.put("CategoryId", catergoryId);
+        params.put("CategoryId", "-1");
 
         OkHttpHelper okHttpHelper = new OkHttpHelper(this);
         okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
@@ -180,7 +208,7 @@ public class CommodityManagementActivity extends BaseActivity {
                         if (mData.size() > 0) {
                             mData.clear();
                         }
-                        if (!isShow){
+                        if (!isShow) {
                             showCategoryPop();
                         }
                         mData.addAll(entity.getData());
@@ -251,14 +279,6 @@ public class CommodityManagementActivity extends BaseActivity {
             this.context = context;
         }
 
-//        @Override
-//        public ListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//            LayoutInflater mInflater = LayoutInflater.from(context);
-//            View view = mInflater.inflate(R.layout.commodity_type_item, parent,
-//                    false);
-//            return new ListViewHolder(view);
-//        }
-
         @Override
         protected void convert(final BaseViewHolder helper, final QueryCategoryList.DataBean item) {
             final EditText name;
@@ -268,6 +288,20 @@ public class CommodityManagementActivity extends BaseActivity {
             name = helper.getView(R.id.commodity_name);
             done = helper.getView(R.id.edit_done);
             name.setText(item.getLevel_name() + "");
+            helper.getView(R.id.content).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    tvSelect.setText(mData.get(helper.getAdapterPosition()).getLevel_name());
+                    popupWindow.dismiss();
+                    if (viewPager.getCurrentItem() == 0){
+                        catergoryId = mData.get(helper.getAdapterPosition()).getId();
+                        myCommodityFragment.requestStoreCateList(1,catergoryId);
+                    }else if (viewPager.getCurrentItem() == 1){
+                        catergoryId = mData.get(helper.getAdapterPosition()).getId();
+                        myCommodityFragment2.requestStoreCateList(1,catergoryId);
+                    }
+                }
+            });
             img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -294,8 +328,8 @@ public class CommodityManagementActivity extends BaseActivity {
                     String edit = name.getText().toString().trim();
                     final String method;
                     HashMap<String, Object> params = new HashMap<>();
-                    if (item.isAdd()){
-                         method = Constant.COMMODITY_CATEGORYADD;
+                    if (item.isAdd()) {
+                        method = Constant.COMMODITY_CATEGORYADD;
                         params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
                         params.put("lang_type", "kor");
                         params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
@@ -304,8 +338,8 @@ public class CommodityManagementActivity extends BaseActivity {
                         params.put("rank", 0);
                         params.put("pid", 0);
                         params.put("rid", 0);
-                    }else {
-                         method = Constant.COMMODITY_CATEGORYEDIT;
+                    } else {
+                        method = Constant.COMMODITY_CATEGORYEDIT;
                         params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
                         params.put("lang_type", "kor");
                         params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
@@ -315,7 +349,7 @@ public class CommodityManagementActivity extends BaseActivity {
                         params.put("id", item.getId());
                     }
 
-                    if (edit.length()!= 0){
+                    if (edit.length() != 0) {
 
                         OkHttpHelper okHttpHelper = new OkHttpHelper(context);
                         okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
@@ -326,7 +360,8 @@ public class CommodityManagementActivity extends BaseActivity {
                                 if ("1".equals(entity.getStatus())) {
                                     done.setVisibility(View.GONE);
                                     img.setVisibility(View.VISIBLE);
-                                    requestCategoryList(catergoryId,true);
+                                    catergoryId = "0";
+                                    requestCategoryList(catergoryId, true);
 
                                 } else {
                                     Toast.makeText(CommodityManagementActivity.this, entity.getMessage(), Toast.LENGTH_LONG).show();
@@ -343,10 +378,9 @@ public class CommodityManagementActivity extends BaseActivity {
 
                             }
                         }, Constant.XSGR_TEST_URL + method, GsonUtils.createGsonString(params));
-                    }else {
-                        Toast.makeText(context,"请填写分类名",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, "请填写分类名", Toast.LENGTH_SHORT).show();
                     }
-
 
 
                 }
@@ -359,11 +393,11 @@ public class CommodityManagementActivity extends BaseActivity {
                         @Override
                         public void onClick(View arg0) {
                             D.alertDialog.dismiss();
-                            if (item.isAdd()){
+                            if (item.isAdd()) {
                                 mData.remove(helper.getAdapterPosition());
                                 popAdapter.notifyItemRemoved(helper.getAdapterPosition());
-                            }else {
-                                delProduct(item.getId(),helper.getAdapterPosition());
+                            } else {
+                                delProduct(item.getId(), helper.getAdapterPosition());
                                 EasySwipeMenuLayout easySwipeMenuLayout = helper.getView(R.id.es);
                                 easySwipeMenuLayout.resetStatus();
                             }
@@ -382,11 +416,11 @@ public class CommodityManagementActivity extends BaseActivity {
                         @Override
                         public void onClick(View arg0) {
                             D.alertDialog.dismiss();
-                            if (item.isAdd()){
+                            if (item.isAdd()) {
                                 mData.remove(helper.getAdapterPosition());
                                 popAdapter.notifyItemRemoved(helper.getAdapterPosition());
-                            }else {
-                                delProduct(item.getId(),helper.getAdapterPosition());
+                            } else {
+                                delProduct(item.getId(), helper.getAdapterPosition());
                                 EasySwipeMenuLayout easySwipeMenuLayout = helper.getView(R.id.es);
                                 easySwipeMenuLayout.resetStatus();
                             }
@@ -495,9 +529,9 @@ public class CommodityManagementActivity extends BaseActivity {
 
             @Override
             public void onBizFailure(String responseDescription, JSONObject data, String flag) {
-                Log.e("responseDescription",responseDescription);
+                Log.e("responseDescription", responseDescription);
 //                Log.e("JSONObject",data.toString());
-                Log.e("flag145",flag);
+                Log.e("flag145", flag);
 
             }
 
@@ -506,5 +540,15 @@ public class CommodityManagementActivity extends BaseActivity {
 
             }
         }, Constant.XSGR_TEST_URL + Constant.COMMODITY_CATEGORYDEL, GsonUtils.createGsonString(params));
+    }
+
+    public Fragment getVisibleFragment(){
+        FragmentManager fragmentManager = CommodityManagementActivity.this.getSupportFragmentManager();
+        List<Fragment> fragments = fragmentManager.getFragments();
+        for(Fragment fragment : fragments){
+            if(fragment != null && fragment.isVisible())
+                return fragment;
+        }
+        return null;
     }
 }

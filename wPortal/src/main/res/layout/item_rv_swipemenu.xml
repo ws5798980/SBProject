@@ -95,7 +95,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/check_border"
                             android:gravity="center"
-                            android:text="上架商品"
+                            android:text="판매하기"
                             android:textSize="@dimen/text_size_sb"
                             android:textColor="@color/textcolor_gray"
                             style="?android:attr/borderlessButtonStyle" />
@@ -123,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:clickable="true"
-                android:text="删除"
+                android:text="삭제하기"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_size_mb" />
 
