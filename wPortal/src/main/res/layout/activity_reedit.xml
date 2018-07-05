@@ -64,7 +64,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="취소"
+                    android:text="@string/button_cancel"
                     android:textColor="@color/found_text_color"
                     android:textSize="@dimen/text_size_b" />
 
@@ -136,7 +136,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:gravity="center"
-                                android:text="이미지 변경"
+                                android:text="@string/change_img"
                                 android:textColor="@color/white" />
                         </LinearLayout>
 
@@ -185,7 +185,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="전체분류"
+                                    android:text="@string/type_all"
                                     android:textColor="@color/textcolor_dp_999"
                                     android:textSize="@dimen/text_size_b" />
 
@@ -237,7 +237,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/margin"
                             android:layout_marginTop="@dimen/margin"
-                            android:text="규격:"
+                            android:text="@string/spec_text"
                             android:textSize="@dimen/text_size_tag" />
 
                         <com.rs.mobile.wportal.view.rt.ReEditGridView
@@ -261,7 +261,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/margin"
                             android:layout_marginTop="@dimen/margin"
-                            android:text="입맛:"
+                            android:text="@string/flavor_text"
                             android:textSize="@dimen/text_size_tag" />
 
                         <com.rs.mobile.wportal.view.rt.ReEditGridView
