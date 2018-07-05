@@ -112,14 +112,14 @@ public class CommodityManagementActivity extends BaseActivity {
         contentView = LayoutInflater.from(getApplicationContext()).inflate(R.layout.commodity_type, null, false);
         recyclerView = (RecyclerView) contentView.findViewById(R.id.recycler_view);
         EditText all = (EditText) contentView.findViewById(R.id.commodity_name);
-        all.setText("전체분류");
+        all.setText(getResources().getString(R.string.type_all));
         ImageView add = (ImageView) contentView.findViewById(R.id.commodity_img);
         LinearLayout linearLayout = (LinearLayout) contentView.findViewById(R.id.title);
         add.setImageResource(R.drawable.icon_add_category);
         linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tvSelect.setText("전체분류");
+                tvSelect.setText(getResources().getString(R.string.type_all));
                 popupWindow.dismiss();
                 if (viewPager.getCurrentItem() == 0){
                     catergoryId = "0";
@@ -379,7 +379,7 @@ public class CommodityManagementActivity extends BaseActivity {
                             }
                         }, Constant.XSGR_TEST_URL + method, GsonUtils.createGsonString(params));
                     } else {
-                        Toast.makeText(context, "请填写分类名", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, getResources().getString(R.string.please_white), Toast.LENGTH_SHORT).show();
                     }
 
 

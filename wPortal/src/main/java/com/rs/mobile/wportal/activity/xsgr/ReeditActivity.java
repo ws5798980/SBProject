@@ -173,7 +173,7 @@ public class ReeditActivity extends BaseActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                D.showDialog(ReeditActivity.this, -1, "提示", "편집을 취소하시겠습니까?", "확인", new View.OnClickListener() {
+                D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), "편집을 취소하시겠습니까?", "확인", new View.OnClickListener() {
 
                     @Override
                     public void onClick(View arg0) {
@@ -193,7 +193,7 @@ public class ReeditActivity extends BaseActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                D.showDialog(ReeditActivity.this, -1, "提示", "确定取消编辑吗？", "确定", new View.OnClickListener() {
+                D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), "确定取消编辑吗？", "确定", new View.OnClickListener() {
 
                     @Override
                     public void onClick(View arg0) {

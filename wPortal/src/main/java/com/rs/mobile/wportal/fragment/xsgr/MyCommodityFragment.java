@@ -85,7 +85,8 @@ public class MyCommodityFragment extends BaseFragment {
                     intent.setClass(getContext(), ReeditActivity.class);
                     startActivity(intent);
                 }else if (view.getId() == R.id.get_shelves){
-                    D.showDialog(getContext(), -1, "제시", "선택한 제품을 판매종료 하시겠습니까?", "확인", new View.OnClickListener() {
+                    D.showDialog(getContext(), -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.content_promote),
+                            getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                         @Override
                         public void onClick(View arg0) {
@@ -93,7 +94,7 @@ public class MyCommodityFragment extends BaseFragment {
                             changeProductsellstate(list.get(position).getGroupId(), position);
 
                         }
-                    }, "취소", new View.OnClickListener() {
+                    }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             if (D.alertDialog!=null)
