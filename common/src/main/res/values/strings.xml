@@ -567,4 +567,13 @@
     <string name="backdatatime">申请时间:</string>
     <string name="save_and_up">저장하기</string>
 
+    <string name="jujue">拒单</string>
+    <string name="fahuo">发货</string>
+    <string name="querenfahuo">确认发货</string>
+    <string name="quxiaojiedan">取消接单</string>
+    <string name="jiedan">接单</string>
+    <string name="quxiaofahuo">取消发货</string>
+
+    <string name="quxiaoqueren">确定取消此订单发货？</string>
+    <string name="quxiaoquerenneirong">取消订单发货后订单作为退款订单处理</string>
 </resources>

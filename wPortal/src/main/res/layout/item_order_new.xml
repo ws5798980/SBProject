@@ -233,7 +233,7 @@
                 android:layout_marginTop="@dimen/dp_10"
                 android:layout_weight="1"
                 android:background="@drawable/shape_corner_grey_3dp_noline"
-                android:text="取消接单"
+                android:text="@string/quxiaojiedan"
                 android:textColor="@color/textcolor_dp_999"
                 android:textSize="15sp" />
 
@@ -247,7 +247,7 @@
                 android:layout_marginTop="@dimen/dp_10"
                 android:layout_weight="1"
                 android:background="@drawable/shape_corner_green2_3dp"
-                android:text="接单"
+                android:text="@string/jiedan"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 

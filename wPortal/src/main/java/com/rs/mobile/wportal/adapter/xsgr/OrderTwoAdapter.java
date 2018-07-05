@@ -39,7 +39,8 @@ public class OrderTwoAdapter extends BaseQuickAdapter<OrderBean.DataBean, BaseVi
                 .setText(R.id.tv_price, item.getTot_amt())
                 .setText(R.id.tv_ordernum, "订单号: " + item.getOrder_num())
                 .setText(R.id.tv_ordertime, "下单时间: " + item.getCreate_date())
-                .addOnClickListener(R.id.button_sure);
+                .addOnClickListener(R.id.button_sure)
+                .addOnClickListener(R.id.button_cancel);
         includelayout = helper.getView(R.id.layout_include);
         openLayout = helper.getView(R.id.layout_open);
         img_order_iocn = helper.getView(R.id.img_order_iocn);

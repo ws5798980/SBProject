@@ -24,7 +24,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginTop="15dp"
-                android:text="陈先生"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -49,7 +48,6 @@
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginTop="15dp"
                 android:layout_toRightOf="@+id/tv_order_new_name"
-                android:text="17766666666"
                 android:textColor="@color/theme_green"
                 android:textSize="15sp" />
 
@@ -63,7 +61,6 @@
                 android:layout_marginTop="15dp"
                 android:maxLength="12"
                 android:maxLines="1"
-                android:text="#88"
                 android:textColor="@color/theme_green"
                 android:textSize="20sp" />
 
@@ -130,6 +127,7 @@
             android:id="@+id/layout_include"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
             android:orientation="vertical"
             android:visibility="gone">
 
@@ -223,6 +221,20 @@
             android:weightSum="2">
 
             <Button
+                android:id="@+id/button_cancel"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="15dp"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_weight="1"
+                android:background="@drawable/shape_corner_grey_3dp_noline"
+                android:text="@string/quxiaofahuo"
+                android:textColor="@color/textcolor_dp_999"
+                android:textSize="15sp" />
+
+            <Button
                 android:id="@+id/button_sure"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
@@ -230,9 +242,9 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="@dimen/dp_10"
                 android:layout_marginTop="@dimen/dp_10"
-                android:layout_weight="2"
+                android:layout_weight="1"
                 android:background="@drawable/shape_corner_green2_3dp"
-                android:text="确认发货"
+                android:text="@string/querenfahuo"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
 

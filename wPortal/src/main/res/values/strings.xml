@@ -1124,5 +1124,25 @@
     <string name="common_text068">\".\"</string>
 
     <string name="reedit">重新编辑</string>
+    <string name="commodity">商品管理</string>
+    <string name="selling">在售中</string>
+    <string name="selling_done">已下架</string>
+    <string name="type_all">全部分类</string>
+    <string name="sell_month">月售</string>
+    <string name="selling_upload">下架商品</string>
+    <string name="title_promote">提示</string>
+    <string name="content_promote">确定下架此商品？</string>
+    <string name="button_sure">确定</string>
+    <string name="button_cancel">取消</string>
+    <string name="button_del">删除</string>
+    <string name="get_shelves">上架商品</string>
+    <string name="please_white">请填写分类名称</string>
+    <string name="base_info">基本信息</string>
+    <string name="other_info">附加信息</string>
+    <string name="commodity_type">商品分类:</string>
+    <string name="change_img">更换图片</string>
+    <string name="spec_text">规格:</string>
+    <string name="flavor_text">口味:</string>
+    <string name="save_and_up">保存并上架</string>
 
 </resources>

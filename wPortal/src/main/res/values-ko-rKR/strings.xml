@@ -1096,4 +1096,26 @@
     <string name="find_more">더보기</string>
     <string name="sm_text_lguplus">LG U+</string>
     <string name="common_text068">\".\"</string>
+
+    <string name="selling">판매중</string>
+    <string name="selling_done">판매종료</string>
+    <string name="commodity">상품관리</string>
+    <string name="type_all">전체분류</string>
+    <string name="sell_month">주문수</string>
+    <string name="selling_upload">판매종료</string>
+    <string name="title_promote">제시</string>
+    <string name="content_promote">선택한 제품을 판매종료 하시겠습니까?</string>
+    <string name="button_sure">확인</string>
+    <string name="button_cancel">취소</string>
+    <string name="reedit">편집하기</string>
+    <string name="button_del">삭제하기</string>
+    <string name="get_shelves">판매하기</string>
+    <string name="please_white">분류명칭을 입력해 주십시오</string>
+    <string name="base_info">기본정보</string>
+    <string name="other_info">기타정보</string>
+    <string name="commodity_type">상품분류:</string>
+    <string name="change_img">이미지 변경</string>
+    <string name="spec_text">규격:</string>
+    <string name="flavor_text">입맛:</string>
+    <string name="save_and_up">저장하기</string>
 </resources>

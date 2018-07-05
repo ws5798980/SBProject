@@ -21,31 +21,31 @@
 
 
         <TextView
+            android:id="@+id/textview_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_toRightOf="@+id/img_backorder"
-            android:text="香辣鸡翅"
             android:textColor="@color/textblack"
             android:textSize="14sp" />
 
         <TextView
+            android:id="@+id/textview_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/img_backorder"
             android:layout_toRightOf="@+id/img_backorder"
-            android:text="x 1"
             android:textColor="@color/textcolor_dp_999"
             android:textSize="15sp" />
 
 
         <TextView
+            android:id="@+id/textview_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/img_backorder"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:text="￥95"
             android:textColor="@color/textblack" />
 
 

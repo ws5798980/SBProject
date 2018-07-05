@@ -76,10 +76,10 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="1771771771"
                 android:textColor="@color/textcolor_dp_999"
                 android:textSize="12sp" />
 
@@ -100,10 +100,10 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="￥ 107.5"
                 android:textColor="@color/red"
                 android:textSize="12sp" />
 
@@ -125,10 +125,10 @@
                 android:textSize="12sp" />
 
             <TextView
+                android:id="@+id/tv_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="待审核"
                 android:textColor="@color/textcolor_dp_999"
                 android:textSize="12sp" />
 
@@ -157,10 +157,10 @@
                     android:textSize="12sp" />
 
                 <TextView
+                    android:id="@+id/tv_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:text="2018-06-12 18:25:46"
                     android:textColor="@color/textcolor_dp_999"
                     android:textSize="12sp" />
 

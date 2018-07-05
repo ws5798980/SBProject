@@ -17,11 +17,12 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.activity.xsgr.XsBackOrderDetailActivity;
+import com.rs.mobile.wportal.biz.xsgr.BackOrderBean;
 import com.rs.mobile.wportal.entity.BaseEntity;
 
 import java.util.List;
 
-public class BackOrderOneAdapter extends BaseQuickAdapter<BaseEntity, BaseViewHolder> {
+public class BackOrderOneAdapter extends BaseQuickAdapter<BackOrderBean.DataBean, BaseViewHolder> {
 
 
     Context context;
@@ -30,7 +31,7 @@ public class BackOrderOneAdapter extends BaseQuickAdapter<BaseEntity, BaseViewHo
 
     private String[] titles;
 
-    public BackOrderOneAdapter(Context context, int layoutResId, @Nullable List<BaseEntity> data) {
+    public BackOrderOneAdapter(Context context, int layoutResId, @Nullable List<BackOrderBean.DataBean> data) {
         super(layoutResId, data);
         this.context = context;
 
@@ -38,7 +39,14 @@ public class BackOrderOneAdapter extends BaseQuickAdapter<BaseEntity, BaseViewHo
 
 
     @Override
-    protected void convert(BaseViewHolder helper, BaseEntity item) {
-        helper.addOnClickListener(R.id.bt_check);
+    protected void convert(BaseViewHolder helper, BackOrderBean.DataBean item) {
+        helper.addOnClickListener(R.id.bt_check)
+                .setText(R.id.tv_order_new_name, item.getOrder_num())
+                .setText(R.id.tv_phone, item.getMobilepho())
+                .setText(R.id.tv_price, item.getTot_amt())
+                .setText(R.id.tv_status, item.getStatus_classify())
+                .setText(R.id.tv_time, item.getCancel_date());
+
+
     }
 }

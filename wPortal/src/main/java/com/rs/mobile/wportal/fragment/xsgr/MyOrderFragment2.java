@@ -1,9 +1,11 @@
 package com.rs.mobile.wportal.fragment.xsgr;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -102,7 +104,8 @@ public class MyOrderFragment2 extends BaseFragment {
 
                 } else if (view.getId() == R.id.button_sure) {
                     showDialog(list.get(position).getOrder_num(), "31");
-
+                } else if (view.getId() == R.id.button_cancel) {
+                    showSelectDialog(list.get(position).getOrder_num(), list.get(position).getCustom_code());
                 }
             }
         });
@@ -126,6 +129,7 @@ public class MyOrderFragment2 extends BaseFragment {
 
     }
 
+
     public void initShopInfoData() {
 
         HashMap<String, String> param = new HashMap<String, String>();
@@ -135,7 +139,7 @@ public class MyOrderFragment2 extends BaseFragment {
         param.put("lang_type", AppConfig.LANG_TYPE);
         param.put("custom_code", "01071390103abcde");
         param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
-        param.put("pg", (page+1) + "");
+        param.put("pg", (page + 1) + "");
         param.put("pagesize", "" + size);
         param.put("orderclassify", "2");
         OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
@@ -220,6 +224,27 @@ public class MyOrderFragment2 extends BaseFragment {
 
     }
 
+    private void showSelectDialog(final String ordernum, final String customcode) {
+        new AlertDialog.Builder(getContext())
+                .setTitle(getResources().getString(R.string.quxiaoqueren))
+                .setMessage(getResources().getString(R.string.quxiaoquerenneirong))
+                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setPositiveButton(getResources().getString(R.string.sure), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        cancelOrderStatus(ordernum, customcode);
+                    }
+                })
+                .create().show();
+
+
+    }
+
     protected void showDialog(final String ordernum, final String status) {
         mDialog = new Dialog(getContext());
 
@@ -241,6 +266,52 @@ public class MyOrderFragment2 extends BaseFragment {
         mDialog.show();
 
     }
+
+    public void cancelOrderStatus(String ordernum, final String customer_code) {
+
+        HashMap<String, String> param = new HashMap<String, String>();
+
+        param.put("lang_type", AppConfig.LANG_TYPE);
+//        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
+//        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+        param.put("custom_code", "01071390103abcde");
+        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("order_num", ordernum);
+        param.put("customer_code", customer_code);
+        OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
+        okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+
+
+                try {
+                    JSONObject jsonObject = new JSONObject(responseDescription);
+                    if ("1".equals(jsonObject.getString("status"))) {
+                        reinitdata();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                // TODO Auto-generated method stub
+
+            }
+        }, Constant.XS_BASE_URL + "AppSM/requestOrderCancel", param);
+
+    }
+
 
     @Override
     protected void lazyLoad() {
