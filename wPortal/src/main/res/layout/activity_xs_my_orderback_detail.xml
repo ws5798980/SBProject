@@ -267,6 +267,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:gravity="center_vertical"
+                    android:layout_marginBottom="20dp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -288,18 +289,6 @@
                 </LinearLayout>
 
             </LinearLayout>
-
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="15dp"
-                android:background="@drawable/shape_corner_grey_3dp_2"
-                android:text="已同意退款"
-                android:textColor="@color/textcolor_dp_999"
-                android:textSize="15sp"
-                android:visibility="gone" />
-
 
         </LinearLayout>
     </ScrollView>

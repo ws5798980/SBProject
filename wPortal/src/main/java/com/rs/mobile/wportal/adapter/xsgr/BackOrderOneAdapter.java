@@ -41,7 +41,7 @@ public class BackOrderOneAdapter extends BaseQuickAdapter<BackOrderBean.DataBean
     @Override
     protected void convert(BaseViewHolder helper, BackOrderBean.DataBean item) {
         helper.addOnClickListener(R.id.bt_check)
-                .setText(R.id.tv_order_new_name, item.getOrder_num())
+                .setText(R.id.tv_order_new_phone, item.getOrder_num())
                 .setText(R.id.tv_phone, item.getMobilepho())
                 .setText(R.id.tv_price, item.getTot_amt())
                 .setText(R.id.tv_status, item.getStatus_classify())

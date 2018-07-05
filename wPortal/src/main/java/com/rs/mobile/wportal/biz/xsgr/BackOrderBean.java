@@ -226,7 +226,7 @@ public class BackOrderBean {
             this.dataitem = dataitem;
         }
 
-        public static class DataitemBean {
+        public static class DataitemBean implements Parcelable {
             /**
              * item_name : 잠발라야 숯불 볶음밥
              * order_q : 1
@@ -270,6 +270,41 @@ public class BackOrderBean {
             public void setItem_image_url(String item_image_url) {
                 this.item_image_url = item_image_url;
             }
+
+            @Override
+            public int describeContents() {
+                return 0;
+            }
+
+            @Override
+            public void writeToParcel(Parcel dest, int flags) {
+                dest.writeString(this.item_name);
+                dest.writeString(this.order_q);
+                dest.writeString(this.order_o);
+                dest.writeString(this.item_image_url);
+            }
+
+            public DataitemBean() {
+            }
+
+            protected DataitemBean(Parcel in) {
+                this.item_name = in.readString();
+                this.order_q = in.readString();
+                this.order_o = in.readString();
+                this.item_image_url = in.readString();
+            }
+
+            public static final Creator<DataitemBean> CREATOR = new Creator<DataitemBean>() {
+                @Override
+                public DataitemBean createFromParcel(Parcel source) {
+                    return new DataitemBean(source);
+                }
+
+                @Override
+                public DataitemBean[] newArray(int size) {
+                    return new DataitemBean[size];
+                }
+            };
         }
 
         @Override

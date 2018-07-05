@@ -38,7 +38,6 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_toRightOf="@+id/tv_order_new_name"
-                android:text="17766666666"
                 android:textColor="@color/textblack"
                 android:textSize="12sp" />
 

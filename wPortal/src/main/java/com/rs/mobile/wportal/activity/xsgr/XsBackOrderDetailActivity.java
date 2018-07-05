@@ -2,6 +2,7 @@ package com.rs.mobile.wportal.activity.xsgr;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -59,10 +60,11 @@ public class XsBackOrderDetailActivity extends AppCompatActivity {
 
         for (int i=0;i<item.getDataitem().size();i++){
             View view=LayoutInflater.from(this).inflate(R.layout.item_backorder_detail, null);
-            Glide.with(this).load(item.getDataitem().get(0).getItem_image_url()).into((ImageView) view.findViewById(R.id.img_backorder));
+            Glide.with(this).load(item.getDataitem().get(i).getItem_image_url()).into((ImageView) view.findViewById(R.id.img_backorder));
             ((TextView)(view.findViewById(R.id.textview_name))).setText(item.getDataitem().get(i).getItem_name());
             ((TextView)(view.findViewById(R.id.textview_num))).setText(item.getDataitem().get(i).getOrder_q());
             ((TextView)(view.findViewById(R.id.textview_price))).setText(item.getDataitem().get(i).getOrder_o());
+
             layout_xiangqing.addView(view);
         }
 
