@@ -49,6 +49,7 @@ public class StoreDataActivity extends BaseActivity {
     private MyDateMonthFragment myDateMonthFragment;
     private MyDateFreeFragment myDateFreeFragment;
     private String[] titles;
+    private String nian, yue, ri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,10 +99,10 @@ public class StoreDataActivity extends BaseActivity {
                     mOptionsItems3 = new ArrayList<>();
                     mOptionsItems4 = new ArrayList<>();
                     for (int i = 2017; i < 2050; i++) {
-                        mOptionsItems.add(i + "年");
+                        mOptionsItems.add(i + nian);
                     }
                     for (int i = 1; i < 12; i++) {
-                        mOptionsItems2.add(i + "月");
+                        mOptionsItems2.add(i + yue);
                     }
 
                     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMdd");
@@ -134,8 +135,8 @@ public class StoreDataActivity extends BaseActivity {
                             case 12:
                                 for (int i = 1; i <= 31; i++) {
 
-                                    mOptionsItems3.add(i + "日");
-                                    mOptionsItems4.add(i + "日");
+                                    mOptionsItems3.add(i + nian);
+                                    mOptionsItems4.add(i + nian);
                                 }
                                 break;
 
@@ -144,14 +145,14 @@ public class StoreDataActivity extends BaseActivity {
                             case 9:
                             case 11:
                                 for (int i = 1; i <= 30; i++) {
-                                    mOptionsItems3.add(i + "日");
-                                    mOptionsItems4.add(i + "日");
+                                    mOptionsItems3.add(i + ri);
+                                    mOptionsItems4.add(i + ri);
                                 }
                                 break;
                             case 2:
                                 for (int i = 1; i <= 29; i++) {
-                                    mOptionsItems3.add(i + "日");
-                                    mOptionsItems4.add(i + "日");
+                                    mOptionsItems3.add(i + ri);
+                                    mOptionsItems4.add(i + ri);
                                 }
                                 break;
                         }
@@ -166,8 +167,8 @@ public class StoreDataActivity extends BaseActivity {
                             case 10:
                             case 12:
                                 for (int i = 1; i <= 31; i++) {
-                                    mOptionsItems3.add(i + "日");
-                                    mOptionsItems4.add(i + "日");
+                                    mOptionsItems3.add(i + ri);
+                                    mOptionsItems4.add(i + ri);
                                 }
                                 break;
 
@@ -176,14 +177,14 @@ public class StoreDataActivity extends BaseActivity {
                             case 9:
                             case 11:
                                 for (int i = 1; i <= 30; i++) {
-                                    mOptionsItems3.add(i + "日");
-                                    mOptionsItems4.add(i + "日");
+                                    mOptionsItems3.add(i + ri);
+                                    mOptionsItems4.add(i + ri);
                                 }
                                 break;
                             case 2:
                                 for (int i = 1; i <= 28; i++) {
-                                    mOptionsItems3.add(i + "日");
-                                    mOptionsItems4.add(i + "日");
+                                    mOptionsItems3.add(i + ri);
+                                    mOptionsItems4.add(i + ri);
                                 }
                                 break;
                         }
@@ -216,7 +217,7 @@ public class StoreDataActivity extends BaseActivity {
                                     case 10:
                                     case 12:
                                         for (int i = 1; i <= 31; i++) {
-                                            mOptionsItems3.add(i + "日");
+                                            mOptionsItems3.add(i + ri);
                                         }
                                         break;
 
@@ -225,12 +226,12 @@ public class StoreDataActivity extends BaseActivity {
                                     case 9:
                                     case 11:
                                         for (int i = 1; i <= 30; i++) {
-                                            mOptionsItems3.add(i + "日");
+                                            mOptionsItems3.add(i + ri);
                                         }
                                         break;
                                     case 2:
                                         for (int i = 1; i <= 29; i++) {
-                                            mOptionsItems3.add(i + "日");
+                                            mOptionsItems3.add(i + ri);
                                         }
                                         break;
                                 }
@@ -245,7 +246,7 @@ public class StoreDataActivity extends BaseActivity {
                                     case 10:
                                     case 12:
                                         for (int i = 1; i <= 31; i++) {
-                                            mOptionsItems3.add(i + "日");
+                                            mOptionsItems3.add(i + ri);
                                         }
                                         break;
 
@@ -254,12 +255,12 @@ public class StoreDataActivity extends BaseActivity {
                                     case 9:
                                     case 11:
                                         for (int i = 1; i <= 30; i++) {
-                                            mOptionsItems3.add(i + "日");
+                                            mOptionsItems3.add(i + ri);
                                         }
                                         break;
                                     case 2:
                                         for (int i = 1; i <= 28; i++) {
-                                            mOptionsItems3.add(i + "日");
+                                            mOptionsItems3.add(i + ri);
                                         }
                                         break;
                                 }
@@ -295,7 +296,7 @@ public class StoreDataActivity extends BaseActivity {
                                     case 10:
                                     case 12:
                                         for (int i = 1; i <= 31; i++) {
-                                            mOptionsItems3.add(i + "日");
+                                            mOptionsItems3.add(i + ri);
                                         }
                                         break;
 
@@ -304,12 +305,12 @@ public class StoreDataActivity extends BaseActivity {
                                     case 9:
                                     case 11:
                                         for (int i = 1; i <= 30; i++) {
-                                            mOptionsItems3.add(i + "日");
+                                            mOptionsItems3.add(i + ri);
                                         }
                                         break;
                                     case 2:
                                         for (int i = 1; i <= 29; i++) {
-                                            mOptionsItems3.add(i + "日");
+                                            mOptionsItems3.add(i + ri);
                                         }
                                         break;
                                 }
@@ -324,7 +325,7 @@ public class StoreDataActivity extends BaseActivity {
                                     case 10:
                                     case 12:
                                         for (int i = 1; i <= 31; i++) {
-                                            mOptionsItems3.add(i + "日");
+                                            mOptionsItems3.add(i + ri);
                                         }
                                         break;
 
@@ -333,12 +334,12 @@ public class StoreDataActivity extends BaseActivity {
                                     case 9:
                                     case 11:
                                         for (int i = 1; i <= 30; i++) {
-                                            mOptionsItems3.add(i + "日");
+                                            mOptionsItems3.add(i + ri);
                                         }
                                         break;
                                     case 2:
                                         for (int i = 1; i <= 28; i++) {
-                                            mOptionsItems3.add(i + "日");
+                                            mOptionsItems3.add(i + ri);
                                         }
                                         break;
                                 }
@@ -374,7 +375,7 @@ public class StoreDataActivity extends BaseActivity {
                                     case 10:
                                     case 12:
                                         for (int i = 1; i <= 31; i++) {
-                                            mOptionsItems4.add(i + "日");
+                                            mOptionsItems4.add(i + ri);
                                         }
                                         break;
 
@@ -383,12 +384,12 @@ public class StoreDataActivity extends BaseActivity {
                                     case 9:
                                     case 11:
                                         for (int i = 1; i <= 30; i++) {
-                                            mOptionsItems4.add(i + "日");
+                                            mOptionsItems4.add(i + ri);
                                         }
                                         break;
                                     case 2:
                                         for (int i = 1; i <= 29; i++) {
-                                            mOptionsItems4.add(i + "日");
+                                            mOptionsItems4.add(i + ri);
                                         }
                                         break;
                                 }
@@ -403,7 +404,7 @@ public class StoreDataActivity extends BaseActivity {
                                     case 10:
                                     case 12:
                                         for (int i = 1; i <= 31; i++) {
-                                            mOptionsItems4.add(i + "日");
+                                            mOptionsItems4.add(i + ri);
                                         }
                                         break;
 
@@ -412,12 +413,12 @@ public class StoreDataActivity extends BaseActivity {
                                     case 9:
                                     case 11:
                                         for (int i = 1; i <= 30; i++) {
-                                            mOptionsItems4.add(i + "日");
+                                            mOptionsItems4.add(i + ri);
                                         }
                                         break;
                                     case 2:
                                         for (int i = 1; i <= 28; i++) {
-                                            mOptionsItems4.add(i + "日");
+                                            mOptionsItems4.add(i + ri);
                                         }
                                         break;
                                 }
@@ -453,7 +454,7 @@ public class StoreDataActivity extends BaseActivity {
                                     case 10:
                                     case 12:
                                         for (int i = 1; i <= 31; i++) {
-                                            mOptionsItems4.add(i + "日");
+                                            mOptionsItems4.add(i + ri);
                                         }
                                         break;
 
@@ -462,12 +463,12 @@ public class StoreDataActivity extends BaseActivity {
                                     case 9:
                                     case 11:
                                         for (int i = 1; i <= 30; i++) {
-                                            mOptionsItems4.add(i + "日");
+                                            mOptionsItems4.add(i + ri);
                                         }
                                         break;
                                     case 2:
                                         for (int i = 1; i <= 29; i++) {
-                                            mOptionsItems4.add(i + "日");
+                                            mOptionsItems4.add(i + ri);
                                         }
                                         break;
                                 }
@@ -482,7 +483,7 @@ public class StoreDataActivity extends BaseActivity {
                                     case 10:
                                     case 12:
                                         for (int i = 1; i <= 31; i++) {
-                                            mOptionsItems4.add(i + "日");
+                                            mOptionsItems4.add(i + ri);
                                         }
                                         break;
 
@@ -491,12 +492,12 @@ public class StoreDataActivity extends BaseActivity {
                                     case 9:
                                     case 11:
                                         for (int i = 1; i <= 30; i++) {
-                                            mOptionsItems4.add(i + "日");
+                                            mOptionsItems4.add(i + ri);
                                         }
                                         break;
                                     case 2:
                                         for (int i = 1; i <= 28; i++) {
-                                            mOptionsItems4.add(i + "日");
+                                            mOptionsItems4.add(i + ri);
                                         }
                                         break;
                                 }
@@ -551,14 +552,14 @@ public class StoreDataActivity extends BaseActivity {
                     loopView6.setItems(mOptionsItems4);
 
 
-                    loopView1.setInitPosition(mOptionsItems.indexOf(year + "年"));
-                    loopView4.setInitPosition(mOptionsItems.indexOf(year + "年"));
+                    loopView1.setInitPosition(mOptionsItems.indexOf(year + nian));
+                    loopView4.setInitPosition(mOptionsItems.indexOf(year + nian));
 
-                    loopView2.setInitPosition(mOptionsItems2.indexOf(month + "月"));
-                    loopView5.setInitPosition(mOptionsItems2.indexOf(month + "月"));
+                    loopView2.setInitPosition(mOptionsItems2.indexOf(month + yue));
+                    loopView5.setInitPosition(mOptionsItems2.indexOf(month + yue));
 
-                    loopView3.setInitPosition(mOptionsItems3.indexOf(day + "日"));
-                    loopView6.setInitPosition(mOptionsItems4.indexOf(day + "日"));
+                    loopView3.setInitPosition(mOptionsItems3.indexOf(day + ri));
+                    loopView6.setInitPosition(mOptionsItems4.indexOf(day + ri));
 
                     Button okButton = (Button) dialog.findViewById(R.id.bt_ok);
 
@@ -576,8 +577,6 @@ public class StoreDataActivity extends BaseActivity {
                             String day1 = mOptionsItems3.get(loopView3.getSelectedItem()).length() == 3 ? mOptionsItems3.get(loopView3.getSelectedItem()).substring(0, 2) : "0" + mOptionsItems3.get(loopView3.getSelectedItem()).substring(0, 1);
                             String day2 = mOptionsItems4.get(loopView6.getSelectedItem()).length() == 3 ? mOptionsItems4.get(loopView6.getSelectedItem()).substring(0, 2) : "0" + mOptionsItems4.get(loopView6.getSelectedItem()).substring(0, 1);
 
-                            Log.i("xyz", year1 + month1 + day1);
-                            Log.i("xyz", year2 + month2 + day2);
                             myDateFreeFragment.setdate(year1 + month1 + day1, year2 + month2 + day2);
 
                             dialog.dismiss();
@@ -645,6 +644,9 @@ public class StoreDataActivity extends BaseActivity {
 
 
     private void initView() {
+        ri = getResources().getString(R.string.nian);
+        yue = getResources().getString(R.string.yue);
+        nian = getResources().getString(R.string.nian);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         viewPager.setOffscreenPageLimit(4);

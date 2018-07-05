@@ -185,7 +185,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
-                    android:text="今日营业额（元）"
+                    android:text="@string/todaysaleprice"
                     android:textColor="@color/textColor_rt_lightest"
                     android:textSize="12sp" />
 
@@ -219,7 +219,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="8dp"
-                    android:text="今日订单数(单)"
+                    android:text="@string/todaysaleprice"
                     android:textColor="@color/textColor_rt_lightest"
                     android:textSize="12sp" />
 
@@ -267,7 +267,7 @@
                     android:layout_below="@+id/tv_1"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="订单管理"
+                    android:text="@string/dingdanguanli"
                     android:textColor="@color/textblack"
                     android:textSize="12sp" />
 
@@ -305,7 +305,7 @@
                     android:layout_below="@+id/tv_2"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="商品管理"
+                    android:text="@string/shangpinguanli"
                     android:textColor="@color/textblack"
                     android:textSize="12sp" />
 
@@ -347,7 +347,7 @@
                     android:layout_below="@+id/tv_3"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="评价管理"
+                    android:text="@string/pingjiaguanli"
                     android:textColor="@color/textblack"
                     android:textSize="12sp" />
 
@@ -385,7 +385,7 @@
                     android:layout_below="@+id/tv_4"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="退款订单"
+                    android:text="@string/tuikuandingdan"
                     android:textColor="@color/textblack"
                     android:textSize="12sp" />
 
@@ -412,7 +412,7 @@
                     android:layout_below="@+id/tv_5"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="数据统计"
+                    android:text="@string/shujutongji"
                     android:textColor="@color/textblack"
                     android:textSize="12sp" />
 
@@ -448,7 +448,7 @@
                     android:layout_below="@+id/tv_6"
                     android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/dp_10"
-                    android:text="店铺信息"
+                    android:text="@string/dianpuxinxi"
                     android:textColor="@color/textblack"
                     android:textSize="12sp" />
 

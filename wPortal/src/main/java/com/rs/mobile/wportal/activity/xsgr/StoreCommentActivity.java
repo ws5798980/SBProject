@@ -202,7 +202,7 @@ public class StoreCommentActivity extends BaseActivity {
                 bean = GsonUtils.changeGsonToBean(responseDescription, CommentBean.class);
 
                 tv_fen.setText(bean.getAssess_avg());
-                tv_num.setText("共" + bean.getAssess_cnt() + "条");
+                tv_num.setText(getResources().getString(R.string.gong) + bean.getAssess_cnt() + getResources().getString(R.string.tiao));
                 ratingBar.setRating(Float.parseFloat(bean.getAssess_avg()));
                 progressBar1.setProgress(Integer.parseInt(bean.getRating5()) * 100 / Integer.parseInt(bean.getAssess_cnt()));
                 progressBar2.setProgress(Integer.parseInt(bean.getRating4()) * 100 / Integer.parseInt(bean.getAssess_cnt()));

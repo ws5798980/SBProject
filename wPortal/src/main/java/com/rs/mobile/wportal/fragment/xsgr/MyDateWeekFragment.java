@@ -113,8 +113,8 @@ public class MyDateWeekFragment extends BaseFragment {
                 ((TextView) header.findViewById(R.id.tv_num)).setText(bean.getSale_cnt());
                 ((TextView) header.findViewById(R.id.tv_priceback)).setText(bean.getReturn_order_o());
                 ((TextView) header.findViewById(R.id.tv_priceback)).setText(bean.getReturn_cnt());
-                ((TextView) header.findViewById(R.id.textview_data)).setText("本周数据");
-                ((TextView) header.findViewById(R.id.textview_order)).setText("本周订单");
+                ((TextView) header.findViewById(R.id.textview_data)).setText(getResources().getString(R.string.weekdate));
+                ((TextView) header.findViewById(R.id.textview_order)).setText(getResources().getString(R.string.weekorder));
                 adapter.setNewData(list);
                 adapter.loadMoreComplete();
                 if (bean.getData().size() < size) {

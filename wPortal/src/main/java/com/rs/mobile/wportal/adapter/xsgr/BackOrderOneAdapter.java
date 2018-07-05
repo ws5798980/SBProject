@@ -44,9 +44,8 @@ public class BackOrderOneAdapter extends BaseQuickAdapter<BackOrderBean.DataBean
                 .setText(R.id.tv_order_new_phone, item.getOrder_num())
                 .setText(R.id.tv_phone, item.getMobilepho())
                 .setText(R.id.tv_price, item.getTot_amt())
-                .setText(R.id.tv_status, item.getStatus_classify())
-                .setText(R.id.tv_time, item.getCancel_date());
-
-
+                .setText(R.id.textview_status, item.getStatus_classify())
+                .setText(R.id.tv_time, item.getCancel_date())
+                .setText(R.id.tv_status,item.getOnline_order_status());
     }
 }

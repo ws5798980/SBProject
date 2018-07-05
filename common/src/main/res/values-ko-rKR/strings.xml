@@ -483,4 +483,125 @@
     <string name="no_collection">찜한 내용이 없습니다.</string>
     <string name="refresh">다시고침</string>
     <string name="payment_password">비밀번호를 입력해주세요</string>
+
+    <string name="myshop">나의 상가</string>
+    <string name="todaysale">당일 매출통계</string>
+    <string name="todaysaleprice">당일 매출액(원) </string>
+    <string name="todaysalenum">당일 주문수(건)</string>
+
+    <string name="dingdanguanli">주문관리</string>
+    <string name="shangpinguanli">상품관리</string>
+    <string name="pingjiaguanli">평가관리</string>
+    <string name="tuikuandingdan">환불주문</string>
+    <string name="shujutongji">데이터통계</string>
+    <string name="dianpuxinxi">상가정보</string>
+
+
+    <string name="neworder">신규주문</string>
+    <string name="ordergoods">주문상품</string>
+    <string name="orderclose">접기</string>
+    <string name="orderopen">열기</string>
+
+
+    <string name="infoicon">상가이미지</string>
+    <string name="infoname">상가명칭</string>
+    <string name="infophone">연락처</string>
+    <string name="infoadd">주소</string>
+    <string name="shopmanage">상가정보</string>
+    <string name="myorderdata">데이터통계</string>
+    <string name="mycomment">평가관리</string>
+
+    <string name="nian">년</string>
+    <string name="yue">월</string>
+    <string name="ri">일</string>
+
+    <string name="today">금일</string>
+    <string name="week">이번주</string>
+    <string name="month">이번달</string>
+    <string name="free">날짜지정</string>
+
+    <string name="dateall">매출액(원)</string>
+    <string name="dateallnum">주문수(건)</string>
+    <string name="dateback">환불액(원)</string>
+    <string name="datebacknum">환불수(건)</string>
+    <string name="orderback">退款订单</string>
+
+
+    <string name="daydate">금일데이터</string>
+    <string name="dayorder">금일주문</string>
+    <string name="weekdate">이번주 데이터</string>
+    <string name="weekorder">이번주 주문</string>
+    <string name="monthdate">이번달 데이터</string>
+    <string name="monthorder">이번달 주문</string>
+    <string name="freedate">지정 데이터</string>
+    <string name="freeorder">지정 주문</string>
+
+
+    <string name="datephone">휴대폰번호：</string>
+    <string name="dateprice">주문금액：</string>
+    <string name="datestate">주문상태：</string>
+    <string name="datedate">주문시간：</string>
+
+    <string name="datefree">날짜지정</string>
+    <string name="datefrom">시작</string>
+    <string name="datehere">종료</string>
+
+    <string name="commentall">전체</string>
+    <string name="commentbad">비추천</string>
+    <string name="commentnosee">미확인</string>
+
+
+    <string name="star5">5성</string>
+    <string name="star4">4성</string>
+    <string name="star3">3성</string>
+    <string name="star2">2성</string>
+    <string name="star1">1성</string>
+
+    <string name="gong">총</string>
+    <string name="tiao">개</string>
+
+    <string name="change">수정</string>
+
+    <string name="huifu">답변</string>
+    <string name="shangjiahuifu">사장님댓글:</string>
+
+
+    <string name="orderdata">환불정보</string>
+    <string name="backdata">환불정보</string>
+
+    <string name="datanum">주문번호:</string>
+    <string name="backdatanum">환불번호:</string>
+    <string name="backdataprice">환불금액:</string>
+    <string name="backdatastate">환불상태:</string>
+    <string name="backdatatime">신청시간:</string>
+    <string name="save_and_up">저장하기</string>
+
+
+    <string name="quxiaojiedan">주문취소</string>
+    <string name="jiedan">주문접수</string>
+    <string name="jiedanchenggong">주문을 접수하였습니다</string>
+
+    <string name="zongji">합계</string>
+    <string name="peisongfei">(배송비 포함</string>
+
+
+    <string name="done">접수완료</string>
+    <string name="order_accept">주문접수</string>
+    <string name="check">조회</string>
+    <string name="doneorder">접수완료</string>
+    <string name="jujue">주문취소</string>
+    <string name="fahuo">발송완료</string>
+    <string name="querenfahuo">발송확인</string>
+    <string name="quxiaofahuo">발송취소</string>
+    <string name="quxiaoqueren">주문을 취소하시겠습니까?</string>
+    <string name="quxiaoquerenneirong">취소한 주문에 대해서는 환불처리 됩니다.</string>
+    <string name="kaishipeisong">상품을 발송하시겠습니까?</string>
+
+
+
+
+
+
+
+
 </resources>

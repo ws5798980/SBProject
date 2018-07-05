@@ -102,7 +102,7 @@ public class MyDateFreeFragment extends BaseFragment {
 //        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
         param.put("custom_code", "01071390103abcde");
         param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
-        param.put("pg", (page+1) + "");
+        param.put("pg", (page + 1) + "");
         param.put("pagesize", "" + size);
         param.put("orderclassify", "1");
         param.put("periodclassify", "4");
@@ -126,8 +126,8 @@ public class MyDateFreeFragment extends BaseFragment {
                 ((TextView) header.findViewById(R.id.tv_num)).setText(bean.getSale_cnt());
                 ((TextView) header.findViewById(R.id.tv_priceback)).setText(bean.getReturn_order_o());
                 ((TextView) header.findViewById(R.id.tv_priceback)).setText(bean.getReturn_cnt());
-                ((TextView) header.findViewById(R.id.textview_data)).setText("自定数据");
-                ((TextView) header.findViewById(R.id.textview_order)).setText("自定订单");
+                ((TextView) header.findViewById(R.id.textview_data)).setText(getResources().getString(R.string.freedate));
+                ((TextView) header.findViewById(R.id.textview_order)).setText(getResources().getString(R.string.freeorder));
                 adapter.setNewData(list);
                 adapter.loadMoreComplete();
                 if (bean.getData().size() < size) {

@@ -516,6 +516,10 @@
     <string name="month">本月</string>
     <string name="free">自定</string>
 
+    <string name="nian">年</string>
+    <string name="yue">月</string>
+    <string name="ri">日</string>
+
     <string name="dateall">营业额(元)</string>
     <string name="dateallnum">总订单(单)</string>
     <string name="dateback">退款额(元)</string>
@@ -525,6 +529,13 @@
 
     <string name="daydate">今日数据</string>
     <string name="dayorder">今日订单</string>
+    <string name="weekdate">本周数据</string>
+    <string name="weekorder">本周订单</string>
+    <string name="monthdate">本月数据</string>
+    <string name="monthorder">本月订单</string>
+    <string name="freedate">自定数据</string>
+    <string name="freeorder">自定订单</string>
+
 
     <string name="datephone">手机号码：</string>
     <string name="dateprice">订单金额：</string>
@@ -546,7 +557,8 @@
     <string name="star2">2星</string>
     <string name="star1">1星</string>
 
-
+    <string name="gong">共</string>
+    <string name="tiao">条</string>
     <string name="change">修改</string>
 
     <string name="huifu">回复</string>
@@ -576,4 +588,21 @@
 
     <string name="quxiaoqueren">确定取消此订单发货？</string>
     <string name="quxiaoquerenneirong">取消订单发货后订单作为退款订单处理</string>
+    <string name="kaishipeisong">商品已全部打包开始配送？</string>
+
+    <string name="todaysaleprice">今日营业额（元） </string>
+    <string name="todaysalenum">今日订单数（单）</string>
+
+    <string name="dingdanguanli">订单管理</string>
+    <string name="shangpinguanli">商品管理</string>
+    <string name="pingjiaguanli">评价管理</string>
+    <string name="tuikuandingdan">退款订单</string>
+    <string name="shujutongji">数据统计</string>
+    <string name="dianpuxinxi">店铺信息</string>
+    <string name="jiedanchenggong">接单成功！</string>
+
+    <string name="zongji">总计</string>
+    <string name="peisongfei">（含配送费 ￥</string>
+
+
 </resources>

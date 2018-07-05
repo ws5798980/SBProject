@@ -158,7 +158,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:drawablePadding="5dp"
-                android:text="总计"
+                android:text="@string/zongji"
                 android:textColor="@color/textblack"
                 android:textSize="@dimen/sp_12" />
 
@@ -169,7 +169,6 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
                 android:layout_toRightOf="@+id/tv_order_zongji"
-                android:text="(含配送费￥ 2.00)"
                 android:textColor="@color/textcolor_dp_999"
                 android:textSize="@dimen/sp_12" />
 

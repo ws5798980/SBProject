@@ -112,8 +112,8 @@ public class MyDateMonthFragment extends BaseFragment {
                 ((TextView) header.findViewById(R.id.tv_num)).setText(bean.getSale_cnt());
                 ((TextView) header.findViewById(R.id.tv_priceback)).setText(bean.getReturn_order_o());
                 ((TextView) header.findViewById(R.id.tv_priceback)).setText(bean.getReturn_cnt());
-                ((TextView) header.findViewById(R.id.textview_data)).setText("本月数据");
-                ((TextView) header.findViewById(R.id.textview_order)).setText("本月订单");
+                ((TextView) header.findViewById(R.id.textview_data)).setText(getResources().getString(R.string.monthdate));
+                ((TextView) header.findViewById(R.id.textview_order)).setText(getResources().getString(R.string.monthorder));
                 adapter.setNewData(list);
                 adapter.loadMoreComplete();
                 if (bean.getData().size() < size) {
