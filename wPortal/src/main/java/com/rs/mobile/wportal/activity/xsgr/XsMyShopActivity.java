@@ -197,10 +197,10 @@ public class XsMyShopActivity extends BaseActivity {
         HashMap<String, String> param = new HashMap<String, String>();
 
         param.put("lang_type", AppConfig.LANG_TYPE);
-//        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
-//        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
-        param.put("custom_code", "01071390001abcde");
-        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
+        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+//        param.put("custom_code", "01071390001abcde");
+//        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
         OkHttpHelper okHttpHelper = new OkHttpHelper(XsMyShopActivity.this);
         okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {
 
@@ -242,10 +242,10 @@ public class XsMyShopActivity extends BaseActivity {
         HashMap<String, String> param = new HashMap<String, String>();
 
         param.put("lang_type", AppConfig.LANG_TYPE);
-//        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
-//        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
-        param.put("custom_code", "01071390001abcde");
-        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
+        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+//        param.put("custom_code", "01071390001abcde");
+//        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
         param.put("status", statu);
         OkHttpHelper okHttpHelper = new OkHttpHelper(XsMyShopActivity.this);
         okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {

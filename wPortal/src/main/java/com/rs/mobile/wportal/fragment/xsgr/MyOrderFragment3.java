@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.rs.mobile.common.AppConfig;
+import com.rs.mobile.common.C;
+import com.rs.mobile.common.S;
 import com.rs.mobile.common.network.OkHttpHelper;
 import com.rs.mobile.common.util.GsonUtils;
 import com.rs.mobile.wportal.Constant;
@@ -130,11 +132,11 @@ public class MyOrderFragment3 extends BaseFragment {
         HashMap<String, String> param = new HashMap<String, String>();
 
         param.put("lang_type", AppConfig.LANG_TYPE);
-//        param.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
-//        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
-        param.put("custom_code", "01071390103abcde");
-        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
-        param.put("pg", (page+1) + "");
+        param.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
+        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
+//        param.put("custom_code", "01071390103abcde");
+//        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("pg", (page + 1) + "");
         param.put("pagesize", "" + size);
         param.put("orderclassify", "3");
         OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
@@ -163,7 +165,6 @@ public class MyOrderFragment3 extends BaseFragment {
 
             @Override
             public void onBizFailure(String responseDescription, JSONObject data, String flag) {
-                // TODO Auto-generated method stub
 
             }
         }, Constant.XS_BASE_URL + "AppSM/requestNewOrderList", param);
@@ -175,10 +176,10 @@ public class MyOrderFragment3 extends BaseFragment {
         HashMap<String, String> param = new HashMap<String, String>();
 
         param.put("lang_type", AppConfig.LANG_TYPE);
-//        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
-//        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
-        param.put("custom_code", "01071390103abcde");
-        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
+        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
+//        param.put("custom_code", "01071390103abcde");
+//        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
         param.put("order_num", ordernum);
         param.put("status", status);
         OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
@@ -186,7 +187,6 @@ public class MyOrderFragment3 extends BaseFragment {
 
             @Override
             public void onNetworkError(Request request, IOException e) {
-                // TODO Auto-generated method stub
 
             }
 
@@ -206,7 +206,6 @@ public class MyOrderFragment3 extends BaseFragment {
 
             @Override
             public void onBizFailure(String responseDescription, JSONObject data, String flag) {
-                // TODO Auto-generated method stub
 
             }
         }, Constant.XS_BASE_URL + "AppSM/requestOrderTake", param);

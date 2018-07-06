@@ -6,6 +6,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rs.mobile.common.AppConfig;
+import com.rs.mobile.common.C;
+import com.rs.mobile.common.S;
 import com.rs.mobile.common.activity.BaseActivity;
 import com.rs.mobile.common.image.ImageUtil;
 import com.rs.mobile.common.network.OkHttpHelper;
@@ -68,20 +70,18 @@ public class StoreManageActivity extends BaseActivity {
 
     //评论列表
     public void initShopInfoData() {
-
         HashMap<String, String> param = new HashMap<String, String>();
 
         param.put("lang_type", AppConfig.LANG_TYPE);
-//        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
-//        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
-        param.put("custom_code", "01071390001abcde");
-        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("token", S.getShare(StoreManageActivity.this, C.KEY_JSON_TOKEN, ""));
+        param.put("custom_code", S.getShare(StoreManageActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+//        param.put("custom_code", "01071390001abcde");
+//        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
         OkHttpHelper okHttpHelper = new OkHttpHelper(StoreManageActivity.this);
         okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {
 
             @Override
             public void onNetworkError(Request request, IOException e) {
-                // TODO Auto-generated method stub
 
             }
 
@@ -102,7 +102,6 @@ public class StoreManageActivity extends BaseActivity {
 
             @Override
             public void onBizFailure(String responseDescription, JSONObject data, String flag) {
-                // TODO Auto-generated method stub
 
             }
         }, Constant.XS_BASE_URL + "AppSM/requestSaleOrderAmount", param);

@@ -132,10 +132,10 @@ public class MyOrderFragment extends BaseFragment {
         HashMap<String, String> param = new HashMap<String, String>();
 
         param.put("lang_type", AppConfig.LANG_TYPE);
-//        param.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
-//        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
-        param.put("custom_code", "01071390103abcde");
-        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
+        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
+//        param.put("custom_code", "01071390103abcde");
+//        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
         param.put("pg", (page+1) + "");
         param.put("pagesize", "" + size);
         param.put("orderclassify", "1");
@@ -183,10 +183,10 @@ public class MyOrderFragment extends BaseFragment {
         HashMap<String, String> param = new HashMap<String, String>();
 
         param.put("lang_type", AppConfig.LANG_TYPE);
-//        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
-//        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
-        param.put("custom_code", "01071390103abcde");
-        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
+        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
+//        param.put("custom_code", "01071390103abcde");
+//        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
         param.put("order_num", ordernum);
         param.put("status", status);
         OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
@@ -225,10 +225,10 @@ public class MyOrderFragment extends BaseFragment {
         HashMap<String, String> param = new HashMap<String, String>();
 
         param.put("lang_type", AppConfig.LANG_TYPE);
-//        param.put("token", S.getShare(XsMyShopActivity.this, C.KEY_JSON_TOKEN, ""));
-//        param.put("custom_code", S.getShare(XsMyShopActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
-        param.put("custom_code", "01071390103abcde");
-        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
+        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
+//        param.put("custom_code", "01071390103abcde");
+//        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
         param.put("order_num", ordernum);
         param.put("customer_code", customer_code);
         OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
