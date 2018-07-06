@@ -1144,5 +1144,15 @@
     <string name="spec_text">规格:</string>
     <string name="flavor_text">口味:</string>
     <string name="save_and_up">保存并上架</string>
-
+    <string name="flavor_text2">口味</string>
+    <string name="cancel_edit">您确定要取消编辑吗?</string>
+    <string name="save_edit">您确定要保存吗?</string>
+    <string name="del_spec">您确定删除此规格？</string>
+    <string name="add_flavor">请填写口味</string>
+    <string name="del_flavor">您确定删除此口味？</string>
+    <string name="add_goods_name">请输入商品名称</string>
+    <string name="add_nameandprice">请输入名称和价格</string>
+    <string name="price_isnum">价格必须是数字</string>
+    <string name="sure_getshelves">确定上架此商品？</string>
+    <string name="sure_delgoods">确定删除此商品？</string>
 </resources>

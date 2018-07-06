@@ -1118,4 +1118,16 @@
     <string name="spec_text">규격:</string>
     <string name="flavor_text">입맛:</string>
     <string name="save_and_up">저장하기</string>
+
+    <string name="flavor_text2">입맛</string>
+    <string name="cancel_edit">편집을 취소하시겠습니까?</string>
+    <string name="save_edit">저장하시겠습니까?</string>
+    <string name="del_spec">규격을 삭제하시겠습니까?</string>
+    <string name="add_flavor">입맛을 입력해 주십시오</string>
+    <string name="del_flavor">입맛을 삭제하시겠습니까?</string>
+    <string name="add_goods_name">상품명칭을 입력해 주십시오</string>
+    <string name="add_nameandprice">명칭과 가격을 입력해 주십시오</string>
+    <string name="price_isnum">가격은 숫자여야 합니다</string>
+    <string name="sure_getshelves">상품을 등록하시겠습니까?</string>
+    <string name="sure_delgoods">선택한 상품을 삭제하시겠습니까?</string>
 </resources>
