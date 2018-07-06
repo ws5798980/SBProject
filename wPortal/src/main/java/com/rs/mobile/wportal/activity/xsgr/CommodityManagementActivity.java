@@ -29,7 +29,9 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout;
+import com.rs.mobile.common.C;
 import com.rs.mobile.common.D;
+import com.rs.mobile.common.S;
 import com.rs.mobile.common.activity.BaseActivity;
 import com.rs.mobile.common.network.OkHttpHelper;
 import com.rs.mobile.common.util.GsonUtils;
@@ -189,9 +191,9 @@ public class CommodityManagementActivity extends BaseActivity {
 
     private void requestCategoryList(String catergoryId, final boolean isShow) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
-        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("token", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("CategoryId", "-1");
 
         OkHttpHelper okHttpHelper = new OkHttpHelper(this);
@@ -330,9 +332,9 @@ public class CommodityManagementActivity extends BaseActivity {
                     HashMap<String, Object> params = new HashMap<>();
                     if (item.isAdd()) {
                         method = Constant.COMMODITY_CATEGORYADD;
-                        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
                         params.put("lang_type", "kor");
-                        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+                        params.put("token", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_TOKEN, ""));
+                        params.put("custom_code", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
                         params.put("level_name", edit);
                         params.put("image_url", "");
                         params.put("rank", 0);
@@ -340,9 +342,9 @@ public class CommodityManagementActivity extends BaseActivity {
                         params.put("rid", 0);
                     } else {
                         method = Constant.COMMODITY_CATEGORYEDIT;
-                        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
                         params.put("lang_type", "kor");
-                        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+                        params.put("token", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_TOKEN, ""));
+                        params.put("custom_code", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
                         params.put("level_name", edit);
                         params.put("image_url", "");
                         params.put("rank", item.getRank());
@@ -388,7 +390,7 @@ public class CommodityManagementActivity extends BaseActivity {
             helper.getView(R.id.right).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    D.showDialog(CommodityManagementActivity.this, -1, "提示", "確定刪除此商品？", "确定", new View.OnClickListener() {
+                    D.showDialog(CommodityManagementActivity.this, -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.sure_delgoods), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                         @Override
                         public void onClick(View arg0) {
@@ -403,6 +405,11 @@ public class CommodityManagementActivity extends BaseActivity {
                             }
 
                         }
+                    }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            D.alertDialog.dismiss();
+                        }
                     });
 
 
@@ -411,7 +418,7 @@ public class CommodityManagementActivity extends BaseActivity {
             helper.getView(R.id.right_menu_2).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    D.showDialog(CommodityManagementActivity.this, -1, "提示", "確定刪除此商品？", "确定", new View.OnClickListener() {
+                    D.showDialog(CommodityManagementActivity.this, -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.sure_delgoods), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                         @Override
                         public void onClick(View arg0) {
@@ -424,6 +431,11 @@ public class CommodityManagementActivity extends BaseActivity {
                                 EasySwipeMenuLayout easySwipeMenuLayout = helper.getView(R.id.es);
                                 easySwipeMenuLayout.resetStatus();
                             }
+                        }
+                    }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            D.alertDialog.dismiss();
                         }
                     });
 
@@ -507,9 +519,9 @@ public class CommodityManagementActivity extends BaseActivity {
 
     private void delProduct(String id, final int position) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
-        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("token", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("id", id);
 
         OkHttpHelper okHttpHelper = new OkHttpHelper(this);

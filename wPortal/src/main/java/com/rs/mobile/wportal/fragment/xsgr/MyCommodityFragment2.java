@@ -18,7 +18,9 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout;
+import com.rs.mobile.common.C;
 import com.rs.mobile.common.D;
+import com.rs.mobile.common.S;
 import com.rs.mobile.common.network.OkHttpHelper;
 import com.rs.mobile.common.util.GsonUtils;
 import com.rs.mobile.wportal.Constant;
@@ -78,13 +80,18 @@ public class MyCommodityFragment2 extends BaseFragment {
             public void onItemChildClick(BaseQuickAdapter adapter, View view, final int position) {
 //adapter.getViewByPosition(recyclerView, position, R.id.layout_include)
                 if (view.getId() == R.id.get_shelves) {
-                    D.showDialog(getContext(), -1, "提示", "確定上架此商品？", "确定", new View.OnClickListener() {
+                    D.showDialog(getContext(), -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.sure_getshelves), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                         @Override
                         public void onClick(View arg0) {
                             D.alertDialog.dismiss();
-                            changeProductsellstate(list.get(position).getGroupId(),position);
+                            changeProductsellstate(list.get(position).getGroupId(), position);
 
+                        }
+                    }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            D.alertDialog.dismiss();
                         }
                     });
                 }
@@ -111,9 +118,9 @@ public class MyCommodityFragment2 extends BaseFragment {
 
     public void requestStoreCateList(final int pg, String categoryId) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
-        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("selling", "0");
         params.put("CategoryId", categoryId);
         params.put("page", pg);
@@ -139,7 +146,6 @@ public class MyCommodityFragment2 extends BaseFragment {
                     } else {
                         if (entity.getData() != null && entity.getData().size() > 0) {
                             mNextRequestPage++;
-                            Log.e("mNextRequestPage","------"+mNextRequestPage);
                             list.addAll(entity.getData());
                             adapter.loadMoreComplete();
                             adapter.addData(entity.getData());
@@ -158,9 +164,7 @@ public class MyCommodityFragment2 extends BaseFragment {
 
             @Override
             public void onBizFailure(String responseDescription, JSONObject data, String flag) {
-                Log.e("responseDescription456",responseDescription);
 //                Log.e("JSONObject",data.toString());
-                Log.e("flag145",flag);
                 adapter.loadMoreComplete();
                 adapter.loadMoreEnd(true);
             }
@@ -202,14 +206,19 @@ public class MyCommodityFragment2 extends BaseFragment {
             helper.getView(R.id.right).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    D.showDialog(getContext(), -1, "제시", "確定刪除此商品？", "确定", new View.OnClickListener() {
+                    D.showDialog(getContext(), -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.sure_delgoods), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                         @Override
                         public void onClick(View arg0) {
                             D.alertDialog.dismiss();
-                            delProduct(item.getGroupId(),helper.getAdapterPosition());
+                            delProduct(item.getGroupId(), helper.getAdapterPosition());
                             EasySwipeMenuLayout easySwipeMenuLayout = helper.getView(R.id.es);
                             easySwipeMenuLayout.resetStatus();
+                        }
+                    }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            D.alertDialog.dismiss();
                         }
                     });
 
@@ -219,14 +228,19 @@ public class MyCommodityFragment2 extends BaseFragment {
             helper.getView(R.id.right_menu_2).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    D.showDialog(getContext(), -1, "제시", "確定刪除此商品？", "确定", new View.OnClickListener() {
+                    D.showDialog(getContext(), -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.sure_delgoods), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                         @Override
                         public void onClick(View arg0) {
                             D.alertDialog.dismiss();
-                            delProduct(item.getGroupId(),helper.getAdapterPosition());
+                            delProduct(item.getGroupId(), helper.getAdapterPosition());
                             EasySwipeMenuLayout easySwipeMenuLayout = helper.getView(R.id.es);
                             easySwipeMenuLayout.resetStatus();
+                        }
+                    }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            D.alertDialog.dismiss();
                         }
                     });
 
@@ -246,9 +260,9 @@ public class MyCommodityFragment2 extends BaseFragment {
     }
     private void changeProductsellstate(String groupId, final int position) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
+        params.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("lang_type", "kor");
-        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
         params.put("selling", "1");
         params.put("groupId", groupId);
 
@@ -284,9 +298,9 @@ public class MyCommodityFragment2 extends BaseFragment {
 
     private void delProduct(String groupId, final int position) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
-        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("groupId", groupId);
 
         OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());

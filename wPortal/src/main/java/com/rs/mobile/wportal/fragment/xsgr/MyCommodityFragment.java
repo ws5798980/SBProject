@@ -15,8 +15,10 @@ import android.widget.Toast;
 import okhttp3.Request;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.rs.mobile.common.C;
 import com.rs.mobile.common.D;
 import com.rs.mobile.common.L;
+import com.rs.mobile.common.S;
 import com.rs.mobile.common.network.OkHttpHelper;
 import com.rs.mobile.common.util.GsonUtils;
 import com.rs.mobile.wportal.Constant;
@@ -126,9 +128,9 @@ public class MyCommodityFragment extends BaseFragment {
 
     private void changeProductsellstate(String groupId, final int position) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
-        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("selling", "0");
         params.put("groupId", groupId);
 
@@ -192,9 +194,9 @@ public class MyCommodityFragment extends BaseFragment {
 
     public void requestStoreCateList(final int pg, String categoryId) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
-        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("selling", 1);
         params.put("CategoryId", categoryId);
         params.put("page", pg);

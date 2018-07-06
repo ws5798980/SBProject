@@ -36,8 +36,10 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import com.rs.mobile.common.C;
 import com.rs.mobile.common.D;
 import com.rs.mobile.common.L;
+import com.rs.mobile.common.S;
 import com.rs.mobile.common.activity.BaseActivity;
 import com.rs.mobile.common.image.ImageUtil;
 import com.rs.mobile.common.network.OkHttpHelper;
@@ -173,7 +175,7 @@ public class ReeditActivity extends BaseActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), "편집을 취소하시겠습니까?", "확인", new View.OnClickListener() {
+                D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.cancel_edit), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                     @Override
                     public void onClick(View arg0) {
@@ -182,10 +184,10 @@ public class ReeditActivity extends BaseActivity {
                         finish();
 
                     }
-                }, "취소", new View.OnClickListener() {
+                }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        D.alertDialog.dismiss();
                     }
                 });
             }
@@ -193,7 +195,7 @@ public class ReeditActivity extends BaseActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), "确定取消编辑吗？", "确定", new View.OnClickListener() {
+                D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.cancel_edit), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                     @Override
                     public void onClick(View arg0) {
@@ -208,13 +210,18 @@ public class ReeditActivity extends BaseActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                D.showDialog(ReeditActivity.this, -1, "提示", "저장하기？", "确定", new View.OnClickListener() {
+                D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.save_edit), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                     @Override
                     public void onClick(View arg0) {
                         requestUpData(commodityDetail);
                         D.alertDialog.dismiss();
 
+                    }
+                }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        D.alertDialog.dismiss();
                     }
                 });
             }
@@ -236,9 +243,9 @@ public class ReeditActivity extends BaseActivity {
 
     private void requestProductByGid(String groupId) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
-        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("token", S.getShare(ReeditActivity.this, C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(ReeditActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("CategoryId", "-1");
 
         OkHttpHelper okHttpHelper = new OkHttpHelper(this);
@@ -348,7 +355,7 @@ public class ReeditActivity extends BaseActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 if (mList.size() != position) {
                     if ("".equals(mList.get(position).getItem_code())) {
-                        D.showDialog(ReeditActivity.this, -1, "提示", "確定删除此规格？", "确定", new View.OnClickListener() {
+                        D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.del_spec), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                             @Override
                             public void onClick(View arg0) {
@@ -356,14 +363,24 @@ public class ReeditActivity extends BaseActivity {
                                 mList.remove(position);
                                 specGridViewAdapter.notifyDataSetChanged();
                             }
+                        }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                D.alertDialog.dismiss();
+                            }
                         });
                     } else {
-                        D.showDialog(ReeditActivity.this, -1, "提示", "確定删除此规格？", "确定", new View.OnClickListener() {
+                        D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.del_spec), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                             @Override
                             public void onClick(View arg0) {
                                 D.alertDialog.dismiss();
                                 requestDelSpec(mList.get(position).getItem_code(), position);
+                            }
+                        }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                D.alertDialog.dismiss();
                             }
                         });
                     }
@@ -377,13 +394,13 @@ public class ReeditActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if (mFlavorList.size() == position) {
-                    D.showEditTextDialog(ReeditActivity.this, -1, "", "구미", "",
-                            "确定", new View.OnClickListener() {
+                    D.showEditTextDialog(ReeditActivity.this, -1, "", getResources().getString(R.string.flavor_text2), "",
+                            getResources().getString(R.string.button_sure), new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     String flavor = D.editText.getText().toString().trim();
                                     if ("".equals(flavor)) {
-                                        Toast.makeText(ReeditActivity.this, "써 주세요 맛", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(ReeditActivity.this, getResources().getString(R.string.add_flavor), Toast.LENGTH_SHORT).show();
                                     } else {
                                         CommodityDetail.DataBean.FlavorBean flavorBean = new CommodityDetail.DataBean.FlavorBean();
                                         flavorBean.setFlavorName(flavor);
@@ -393,7 +410,7 @@ public class ReeditActivity extends BaseActivity {
                                         D.alertDialog.dismiss();
                                     }
                                 }
-                            }, "取消", new View.OnClickListener() {
+                            }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
                                     D.alertDialog.dismiss();
@@ -407,7 +424,7 @@ public class ReeditActivity extends BaseActivity {
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 if (mFlavorList.size() != position) {
                     if (!"".equals(mFlavorList.get(position).getAdd())) {
-                        D.showDialog(ReeditActivity.this, -1, "提示", "確定删除此口味？", "确定", new View.OnClickListener() {
+                        D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), "", getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                             @Override
                             public void onClick(View arg0) {
@@ -415,14 +432,24 @@ public class ReeditActivity extends BaseActivity {
                                 mFlavorList.remove(position);
                                 flavorGridViewAdapter.notifyDataSetChanged();
                             }
+                        }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                D.alertDialog.dismiss();
+                            }
                         });
                     } else {
-                        D.showDialog(ReeditActivity.this, -1, "提示", "確定删除此口味？", "确定", new View.OnClickListener() {
+                        D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.del_flavor), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                             @Override
                             public void onClick(View arg0) {
                                 D.alertDialog.dismiss();
                                 requestDelFlavor(mFlavorList.get(position).getFlavorName(), position);
+                            }
+                        }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                D.alertDialog.dismiss();
                             }
                         });
                     }
@@ -556,9 +583,9 @@ public class ReeditActivity extends BaseActivity {
 
     private void requestDelFlavor(String flavorName, final int position) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
-        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("token", S.getShare(ReeditActivity.this, C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(ReeditActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("groupId", groupId);
         params.put("flavorName", flavorName);
 
@@ -594,9 +621,9 @@ public class ReeditActivity extends BaseActivity {
 
     private void requestDelSpec(String item_code, final int position) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
-        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("token", S.getShare(ReeditActivity.this, C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(ReeditActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("groupId", groupId);
         params.put("item_code", item_code);
 
@@ -632,9 +659,9 @@ public class ReeditActivity extends BaseActivity {
 
     private void requestDetail(String groupId) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
-        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("token", S.getShare(ReeditActivity.this, C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(ReeditActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("groupId", groupId);
 
         OkHttpHelper okHttpHelper = new OkHttpHelper(this);
@@ -677,13 +704,13 @@ public class ReeditActivity extends BaseActivity {
             return;
         }
         HashMap<String, Object> params = new HashMap<>();
-        params.put("custom_code", "01071390009abcde");//S.get(XsStoreListActivity.this, C.KEY_JSON_CUSTOM_CODE)
         params.put("lang_type", "kor");
-        params.put("token", "01071390009abcde64715017-0c81-4ef9-8b21-5e48c64cb455");//S.get(getActivity(), C.KEY_JSON_TOKEN)
+        params.put("token", S.getShare(ReeditActivity.this, C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(ReeditActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("groupId", groupId);
         String name = editName.getText().toString().trim();
         if (name.length() == 0) {
-            Toast.makeText(ReeditActivity.this, "请输入商品名称", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ReeditActivity.this, getResources().getString(R.string.add_goods_name), Toast.LENGTH_SHORT).show();
             return;
         }
         params.put("item_name", name);
@@ -744,7 +771,7 @@ public class ReeditActivity extends BaseActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             if (mList.size() == position) {
-                showDoubleEditTextDialog(ReeditActivity.this, -1, "", "", "", "确定", "取消");
+                showDoubleEditTextDialog(ReeditActivity.this, -1, "", "", "", getResources().getString(R.string.button_sure), getResources().getString(R.string.button_cancel));
             }
         }
     }
@@ -802,7 +829,7 @@ public class ReeditActivity extends BaseActivity {
                     String name = editText1.getText().toString().trim();
                     String price = editText2.getText().toString().trim();
                     if (name.length() == 0 || price.length() == 0) {
-                        Toast.makeText(ReeditActivity.this, "명칭 과 가격 을 기입해 주십시오", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ReeditActivity.this, getResources().getString(R.string.add_nameandprice), Toast.LENGTH_SHORT).show();
                     } else {
                         if (isNumeric(price)) {
                             CommodityDetail.DataBean.SpecBean specBean = new CommodityDetail.DataBean.SpecBean();
@@ -811,11 +838,10 @@ public class ReeditActivity extends BaseActivity {
                             specBean.setSpecName(name);
                             specBean.setSpecPrice(price);
                             mList.add(specBean);
-                            Log.e("mList.size()", mList.size() + "");
                             specGridViewAdapter.notifyDataSetChanged();
                             editDialog.dismiss();
                         } else {
-                            Toast.makeText(ReeditActivity.this, "가격은 반드시 숫자입니다", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ReeditActivity.this, getResources().getString(R.string.price_isnum), Toast.LENGTH_SHORT).show();
                         }
 
                     }
@@ -1005,7 +1031,7 @@ public class ReeditActivity extends BaseActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK){
-            D.showDialog(ReeditActivity.this, -1, "提示", "确定取消编辑吗？", "确定", new View.OnClickListener() {
+            D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.cancel_edit), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                 @Override
                 public void onClick(View arg0) {
@@ -1013,6 +1039,11 @@ public class ReeditActivity extends BaseActivity {
                     D.alertDialog.dismiss();
                     finish();
 
+                }
+            }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    D.alertDialog.dismiss();
                 }
             });
         }

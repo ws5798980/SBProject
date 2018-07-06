@@ -224,7 +224,7 @@ public static void uploadrt(String url, List<String> filePath,Map<String, String
 			OkHttpClient client = new OkHttpClient();
 	
 //			MultipartBuilder builder=new MultipartBuilder().type(MultipartBuilder.FORM);
-			MultipartBody.Builder builder = new MultipartBody.Builder(); new MultipartBody.Builder();
+			MultipartBody.Builder builder = new MultipartBody.Builder();
 			builder.setType(MultipartBody.FORM);
 			for (int i = 0; i < filePath.size(); i++) {
 				File file=new File(filePath.get(i));
@@ -244,7 +244,6 @@ public static void uploadrt(String url, List<String> filePath,Map<String, String
 	        RequestBody requestBody=builder.build();
 	        
 	        Request request = new Request.Builder().url(url).post(requestBody).build();
-	       
 			String string = null;
 			Response response;
 			
@@ -254,6 +253,7 @@ public static void uploadrt(String url, List<String> filePath,Map<String, String
 					string = "";
 				} else {
 					string = response.body().string();
+					Log.e("responseTAG",string);
 				}
 	         
 			} catch (Exception e) {
