@@ -12,6 +12,8 @@ import android.widget.LinearLayout;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.rs.mobile.common.AppConfig;
+import com.rs.mobile.common.C;
+import com.rs.mobile.common.S;
 import com.rs.mobile.common.activity.BaseActivity;
 import com.rs.mobile.common.network.OkHttpHelper;
 import com.rs.mobile.common.util.GsonUtils;
@@ -122,10 +124,10 @@ public class BackOrderActivity extends BaseActivity {
         HashMap<String, String> param = new HashMap<String, String>();
 
         param.put("lang_type", AppConfig.LANG_TYPE);
-//        param.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
-//        param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
-        param.put("custom_code", "01071390103abcde");
-        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
+        param.put("token", S.getShare(BackOrderActivity.this, C.KEY_JSON_TOKEN, ""));
+        param.put("custom_code", S.getShare(BackOrderActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+//        param.put("custom_code", "01071390103abcde");
+//        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
         param.put("pg", (page + 1) + "");
         param.put("pagesize", "" + size);
         OkHttpHelper okHttpHelper = new OkHttpHelper(this);

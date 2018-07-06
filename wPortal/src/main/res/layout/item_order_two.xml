@@ -13,7 +13,6 @@
         android:background="@drawable/shap_yinying"
         android:orientation="vertical">
 
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -26,6 +25,8 @@
                 android:layout_marginTop="15dp"
                 android:textColor="@color/black"
                 android:textSize="15sp"
+                android:maxLines="1"
+                android:maxLength="10"
                 android:textStyle="bold" />
 
             <TextView
@@ -36,6 +37,7 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginTop="5dp"
+                android:maxLines="3"
                 android:textColor="@color/textblack"
                 android:textSize="15sp" />
 
@@ -46,6 +48,8 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginTop="15dp"
+                android:maxLines="1"
+                android:maxLength="10"
                 android:layout_toRightOf="@+id/tv_order_new_name"
                 android:textColor="@color/theme_green"
                 android:textSize="15sp" />

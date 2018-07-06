@@ -335,6 +335,7 @@
         android:layout_alignParentBottom="true"
         android:background="#55000000"
         android:clickable="true"
+        android:visibility="gone"
         android:orientation="vertical" >
 
         <com.rs.mobile.common.view.BringPhotoView

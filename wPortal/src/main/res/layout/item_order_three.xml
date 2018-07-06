@@ -24,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginTop="15dp"
-                android:text="陈先生"
+                android:maxLength="10"
+                android:maxLines="1"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -37,7 +38,7 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginTop="5dp"
-                android:text="龙跃国际2栋1905"
+                android:maxLines="3"
                 android:textColor="@color/textblack"
                 android:textSize="15sp" />
 
@@ -49,7 +50,8 @@
                 android:layout_marginLeft="@dimen/dp_10"
                 android:layout_marginTop="15dp"
                 android:layout_toRightOf="@+id/tv_order_new_name"
-                android:text="17766666666"
+                android:maxLength="10"
+                android:maxLines="1"
                 android:textColor="@color/theme_green"
                 android:textSize="15sp" />
 
@@ -63,7 +65,6 @@
                 android:layout_marginTop="15dp"
                 android:maxLength="12"
                 android:maxLines="1"
-                android:text="#88"
                 android:textColor="@color/theme_green"
                 android:textSize="20sp" />
 
@@ -128,9 +129,9 @@
 
         <LinearLayout
             android:id="@+id/layout_include"
-            android:animateLayoutChanges="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
             android:orientation="vertical"
             android:visibility="gone">
 
@@ -179,7 +180,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
-                android:text="￥ 107"
                 android:textColor="@color/theme_green"
                 android:textSize="@dimen/sp_12" />
 
@@ -210,7 +210,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
-                    android:text="订单号: 0218060600540001"
                     android:textColor="@color/textcolor_dp_999"
                     android:textSize="9sp" />
 
@@ -221,7 +220,6 @@
                     android:layout_marginBottom="15dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
-                    android:text="下单时间: 06-06 10:35:14"
                     android:textColor="@color/textcolor_dp_999"
                     android:textSize="9sp" />
             </LinearLayout>
