@@ -52,8 +52,8 @@ public class CommodityItemAdapter extends BaseQuickAdapter<CommodityList.DataBea
         helper.addOnClickListener(R.id.get_shelves);
         helper.addOnClickListener(R.id.edit_goods);
         helper.setText(R.id.commodity_name,item.getItem_name());
-        helper.setText(R.id.commodity_num,item.getANum());
-        helper.setText(R.id.commodity_price,context.getResources().getString(R.string.selling)+item.getItem_p());
+        helper.setText(R.id.commodity_num,context.getResources().getString(R.string.sell_month)+item.getANum());
+        helper.setText(R.id.commodity_price,item.getItem_p());
         Glide.with(mContext).load(item.getImage_url()).into((ImageView) helper.getView(R.id.image_title));
     }
 

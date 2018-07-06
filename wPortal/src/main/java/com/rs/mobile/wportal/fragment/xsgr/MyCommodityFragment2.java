@@ -237,7 +237,7 @@ public class MyCommodityFragment2 extends BaseFragment {
 //            helper.addOnClickListener(R.id.right_menu_2);
 //            helper.addOnClickListener(R.id.right);
             helper.setText(R.id.commodity_name,item.getItem_name());
-            helper.setText(R.id.commodity_num,item.getANum());
+            helper.setText(R.id.commodity_num,context.getResources().getString(R.string.sell_month)+item.getANum());
             helper.setText(R.id.commodity_price,item.getItem_p());
             Glide.with(context).load(item.getImage_url()).into((ImageView) helper.getView(R.id.image_title));
 

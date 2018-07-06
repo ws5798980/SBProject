@@ -53,64 +53,65 @@ import okhttp3.Request;
 
 public class SettingActivity extends BaseActivity {
 
-	private LinearLayout closeBtn;
+    private LinearLayout closeBtn;
 
-	private TextView titleTextView;
+    private TextView titleTextView;
 
-	private WImageView iconImageView;
+    private WImageView iconImageView;
 
-	private TextView nameTextView , load_size;
+    private TextView nameTextView, load_size;
 
-	private LinearLayout photoEditBtn;
+    private LinearLayout photoEditBtn;
 
-	private LinearLayout sexEditBtn;
+    private LinearLayout sexEditBtn;
 
-	private TextView sexTextView;
+    private TextView sexTextView;
 
-	private LinearLayout nameEditBtn;/*line_language*/;
+    private LinearLayout nameEditBtn;/*line_language*/
+    ;
 
-	private LinearLayout logoutBtn;
+    private LinearLayout logoutBtn;
 
-	private RelativeLayout bringPhothLayout;
+    private RelativeLayout bringPhothLayout;
 
-	private BringPhotoView bringPhotoView;
+    private BringPhotoView bringPhotoView;
 
-	private String imagePath = "";
+    private String imagePath = "";
 
-	private Uri imageUri;
+    private Uri imageUri;
 
-	private String uploadTime;
+    private String uploadTime;
 
-	private String imageDownloadUrl = "";
-	
+    private String imageDownloadUrl = "";
+
 //	private RadioGroup rg_lang;
-	
+
 //	private RadioButton set_default ,set_china,set_ko;
-	
 
-	private LinearLayout change_pw_btn;
-	private static String path = Environment.getExternalStorageDirectory().getPath() + "/YUchengguoji" ;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
 
-		try {
+    private LinearLayout change_pw_btn;
+    private static String path = Environment.getExternalStorageDirectory().getPath() + "/YUchengguoji";
 
-			setContentView(com.rs.mobile.wportal.R.layout.activity_setting);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-			titleTextView = (TextView) findViewById(com.rs.mobile.wportal.R.id.title_text_view);
-			load_size = (TextView) findViewById(com.rs.mobile.wportal.R.id.load_size);
-			titleTextView.setText(com.rs.mobile.wportal.R.string.setting);
+        try {
+
+            setContentView(com.rs.mobile.wportal.R.layout.activity_setting);
+
+            titleTextView = (TextView) findViewById(com.rs.mobile.wportal.R.id.title_text_view);
+            load_size = (TextView) findViewById(com.rs.mobile.wportal.R.id.load_size);
+            titleTextView.setText(com.rs.mobile.wportal.R.string.setting);
 //			rg_lang = (RadioGroup) findViewById(com.rs.mobile.wportal.R.id.rg_lang);
 //			set_default =(RadioButton) findViewById(com.rs.mobile.wportal.R.id.set_default);
 //			set_china =(RadioButton) findViewById(com.rs.mobile.wportal.R.id.set_china);
 //			set_ko =(RadioButton) findViewById(com.rs.mobile.wportal.R.id.set_ko);
-			iconImageView = (WImageView) findViewById(com.rs.mobile.wportal.R.id.icon_image_view);
+            iconImageView = (WImageView) findViewById(com.rs.mobile.wportal.R.id.icon_image_view);
 //			line_language =  (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.line_language);
-			change_pw_btn = (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.change_pw_btn);
-			
-			//设置默认语言
+            change_pw_btn = (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.change_pw_btn);
+
+            //设置默认语言
 //			if(S.get(SettingActivity.this, "SET_LANGUAGE", "0").equals("0")){
 //				set_default.setChecked(true);
 //			}else if(S.get(SettingActivity.this, "SET_LANGUAGE", "0").equals("2")){
@@ -146,30 +147,30 @@ public class SettingActivity extends BaseActivity {
 //					});
 //				}
 //			});
-			
-			change_pw_btn.setOnClickListener(new OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					PageUtil.jumpTo(SettingActivity.this, ChangPwActivity.class);
-				}
-			});
+            change_pw_btn.setOnClickListener(new OnClickListener() {
 
-			iconImageView.setCircle(true);
-			
-			
-			//清除缓存
-			findViewById(com.rs.mobile.wportal.R.id.clear_load).setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View arg0) {
-					UtilClear.deleteFolderFile(path, false);
-					load_size.setText("0MB");
-				}
-			});
-			
-			//设置语言
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
+                    PageUtil.jumpTo(SettingActivity.this, ChangPwActivity.class);
+                }
+            });
+
+            iconImageView.setCircle(true);
+
+
+            //清除缓存
+            findViewById(com.rs.mobile.wportal.R.id.clear_load).setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View arg0) {
+                    UtilClear.deleteFolderFile(path, false);
+                    load_size.setText("0MB");
+                }
+            });
+
+            //设置语言
 //			findViewById(com.rs.mobile.wportal.R.id.set_language).setOnClickListener(new OnClickListener() {
 //
 //				@Override
@@ -180,142 +181,141 @@ public class SettingActivity extends BaseActivity {
 //						line_language.setVisibility(View.VISIBLE);
 //				}
 //			});
-			
-			
 
-			closeBtn = (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.close_btn);
-			closeBtn.setOnClickListener(new OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
+            closeBtn = (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.close_btn);
+            closeBtn.setOnClickListener(new OnClickListener() {
 
-					setPersnalInfo();
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
 
-				}
-			});
+                    setPersnalInfo();
 
-			photoEditBtn = (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.edit_photo_btn);
-			photoEditBtn.setOnClickListener(new OnClickListener() {
+                }
+            });
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
+            photoEditBtn = (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.edit_photo_btn);
+            photoEditBtn.setOnClickListener(new OnClickListener() {
 
-					showBringPhotoView();
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
 
-				}
-			});
+                    showBringPhotoView();
 
-			bringPhothLayout = (RelativeLayout) findViewById(com.rs.mobile.wportal.R.id.bring_photo_layout);
-			bringPhothLayout.setOnClickListener(new OnClickListener() {
+                }
+            });
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
+            bringPhothLayout = (RelativeLayout) findViewById(com.rs.mobile.wportal.R.id.bring_photo_layout);
+            bringPhothLayout.setOnClickListener(new OnClickListener() {
 
-					hideBringPhotoView();
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
 
-				}
-			});
+                    hideBringPhotoView();
 
-			bringPhotoView = (BringPhotoView) findViewById(com.rs.mobile.wportal.R.id.bring_photo_view);
-			bringPhotoView.setOnItemSeletedListener(new BringPhotoView.OnItemSeletedListener() {
+                }
+            });
 
-				@Override
-				public void onItemClick(int position) {
-					// TODO Auto-generated method stub
+            bringPhotoView = (BringPhotoView) findViewById(com.rs.mobile.wportal.R.id.bring_photo_view);
+            bringPhotoView.setOnItemSeletedListener(new BringPhotoView.OnItemSeletedListener() {
 
-					hideBringPhotoView();
+                @Override
+                public void onItemClick(int position) {
+                    // TODO Auto-generated method stub
 
-				}
-			});
+                    hideBringPhotoView();
 
-			sexEditBtn = (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.edit_sex_btn);
-			sexEditBtn.setOnClickListener(new OnClickListener() {
+                }
+            });
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
+            sexEditBtn = (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.edit_sex_btn);
+            sexEditBtn.setOnClickListener(new OnClickListener() {
 
-					showSexDialog();
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
 
-				}
-			});
+                    showSexDialog();
 
-			sexTextView = (TextView) findViewById(com.rs.mobile.wportal.R.id.sex_text_view);
+                }
+            });
 
-			nameEditBtn = (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.edit_name_btn);
-			nameEditBtn.setOnClickListener(new OnClickListener() {
+            sexTextView = (TextView) findViewById(com.rs.mobile.wportal.R.id.sex_text_view);
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
+            nameEditBtn = (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.edit_name_btn);
+            nameEditBtn.setOnClickListener(new OnClickListener() {
 
-					showEditTextDialog(getString(com.rs.mobile.wportal.R.string.name_area), getString(com.rs.mobile.wportal.R.string.name_area), null,
-							getString(com.rs.mobile.wportal.R.string.ok), new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
 
-								@Override
-								public void onClick(View v) {
-									// TODO Auto-generated method stub
+                    showEditTextDialog(getString(com.rs.mobile.wportal.R.string.name_area), getString(com.rs.mobile.wportal.R.string.name_area), null,
+                            getString(com.rs.mobile.wportal.R.string.ok), new OnClickListener() {
 
-									nameTextView.setText(D.editText.getText().toString());
+                                @Override
+                                public void onClick(View v) {
+                                    // TODO Auto-generated method stub
 
-									D.alertDialog.dismiss();
-								}
-							}, getString(com.rs.mobile.wportal.R.string.cancel), new OnClickListener() {
+                                    nameTextView.setText(D.editText.getText().toString());
 
-								@Override
-								public void onClick(View v) {
-									// TODO Auto-generated method stub
-									D.alertDialog.dismiss();
-								}
-							});
+                                    D.alertDialog.dismiss();
+                                }
+                            }, getString(com.rs.mobile.wportal.R.string.cancel), new OnClickListener() {
 
-					D.editText.setText(nameTextView.getText().toString());
+                                @Override
+                                public void onClick(View v) {
+                                    // TODO Auto-generated method stub
+                                    D.alertDialog.dismiss();
+                                }
+                            });
 
-				}
-			});
+                    D.editText.setText(nameTextView.getText().toString());
 
-			nameTextView = (TextView) findViewById(com.rs.mobile.wportal.R.id.name_text_view);
+                }
+            });
 
-			logoutBtn = (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.logout_btn);
-			logoutBtn.setOnClickListener(new OnClickListener() {
+            nameTextView = (TextView) findViewById(com.rs.mobile.wportal.R.id.name_text_view);
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
+            logoutBtn = (LinearLayout) findViewById(com.rs.mobile.wportal.R.id.logout_btn);
+            logoutBtn.setOnClickListener(new OnClickListener() {
 
-					showDialog(getString(com.rs.mobile.wportal.R.string.logout), getString(com.rs.mobile.wportal.R.string.logout_msg), getString(com.rs.mobile.wportal.R.string.logout),
-							new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
 
-								@Override
-								public void onClick(View v) {
-									D.alertDialog.dismiss();
-									
-									JSONObject obj = new JSONObject();
-									try{
-										HashMap<String, String> headers = new HashMap<>();
-										headers.put("Content-Type", "application/json;Charset=UTF-8");
+                    showDialog(getString(com.rs.mobile.wportal.R.string.logout), getString(com.rs.mobile.wportal.R.string.logout_msg), getString(com.rs.mobile.wportal.R.string.logout),
+                            new OnClickListener() {
 
-	//									HashMap<String, String> params = new HashMap<String, String>();
-										obj.put("lang_type", AppConfig.LANG_TYPE);
-										obj.put("id", S.get(SettingActivity.this, C.KEY_JSON_CUSTOM_CODE));
-										obj.put("siteCode","yc");
-										obj.put("deviceNo", Util.getDeviceId(SettingActivity.this));
-										OkHttpHelper helper = new OkHttpHelper(SettingActivity.this);
+                                @Override
+                                public void onClick(View v) {
+                                    D.alertDialog.dismiss();
 
-										helper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+                                    JSONObject obj = new JSONObject();
+                                    try {
+                                        HashMap<String, String> headers = new HashMap<>();
+                                        headers.put("Content-Type", "application/json;Charset=UTF-8");
 
-											@Override
-											public void onNetworkError(Request request, IOException e) {
+                                        //									HashMap<String, String> params = new HashMap<String, String>();
+                                        obj.put("lang_type", AppConfig.LANG_TYPE);
+                                        obj.put("id", S.get(SettingActivity.this, C.KEY_JSON_CUSTOM_CODE));
+                                        obj.put("siteCode", "yc");
+                                        obj.put("deviceNo", Util.getDeviceId(SettingActivity.this));
+                                        OkHttpHelper helper = new OkHttpHelper(SettingActivity.this);
 
-											}
+                                        helper.addPostRequest(new OkHttpHelper.CallbackLogic() {
 
-											@Override
-											public void onBizSuccess(String responseDescription, final JSONObject data,
-													final String flag) {
-												try {
+                                            @Override
+                                            public void onNetworkError(Request request, IOException e) {
+
+                                            }
+
+                                            @Override
+                                            public void onBizSuccess(String responseDescription, final JSONObject data,
+                                                                     final String flag) {
+                                                try {
 
 //													C.INTERFACE_PARAMS.clear();
 //
@@ -329,257 +329,257 @@ public class SettingActivity extends BaseActivity {
 //
 //													T.showToast(SettingActivity.this, data.getString("msg"));
 
-													S.set(SettingActivity.this, C.KEY_JSON_CUSTOM_CODE, "");
-													S.set(SettingActivity.this, C.KEY_JSON_CUSTOM_ID, "");
-													S.set(SettingActivity.this, C.KEY_JSON_CUSTOM_NAME, "");
-													S.set(SettingActivity.this, C.KEY_JSON_NICK_NAME, "");
-													S.set(SettingActivity.this, C.KEY_JSON_TOKEN, "");
-													S.set(SettingActivity.this, C.KEY_JSON_PROFILE_IMG, "");
-													S.set(SettingActivity.this, C.KEY_JSON_DIV_CODE, "");
-													S.set(SettingActivity.this, C.KEY_JSON_SSOID, "");
-													S.set(SettingActivity.this, C.KEY_JSON_SSO_REGIKEY, "");
-													S.set(SettingActivity.this, C.KEY_JSON_MALL_HOME_ID, "");
-													S.set(SettingActivity.this, C.KEY_JSON_POINT_CARD_NO, "");
-													S.set(SettingActivity.this, C.KEY_JSON_PARENT_ID, "");
+                                                    S.set(SettingActivity.this, C.KEY_JSON_CUSTOM_CODE, "");
+                                                    S.set(SettingActivity.this, C.KEY_JSON_CUSTOM_ID, "");
+                                                    S.set(SettingActivity.this, C.KEY_JSON_CUSTOM_NAME, "");
+                                                    S.set(SettingActivity.this, C.KEY_JSON_NICK_NAME, "");
+                                                    S.set(SettingActivity.this, C.KEY_JSON_TOKEN, "");
+                                                    S.set(SettingActivity.this, C.KEY_JSON_PROFILE_IMG, "");
+                                                    S.set(SettingActivity.this, C.KEY_JSON_DIV_CODE, "");
+                                                    S.set(SettingActivity.this, C.KEY_JSON_SSOID, "");
+                                                    S.set(SettingActivity.this, C.KEY_JSON_SSO_REGIKEY, "");
+                                                    S.set(SettingActivity.this, C.KEY_JSON_MALL_HOME_ID, "");
+                                                    S.set(SettingActivity.this, C.KEY_JSON_POINT_CARD_NO, "");
+                                                    S.set(SettingActivity.this, C.KEY_JSON_PARENT_ID, "");
 
-													finish();
+                                                    finish();
 
-												} catch (Exception e) {
+                                                } catch (Exception e) {
 
-													L.e(e);
+                                                    L.e(e);
 
-												}
+                                                }
 
-											}
+                                            }
 
-											@Override
-											public void onBizFailure(String responseDescription, JSONObject data,
-													String responseCode) {
+                                            @Override
+                                            public void onBizFailure(String responseDescription, JSONObject data,
+                                                                     String responseCode) {
 
-											}
-										}, "http://api1.gigawon.co.kr:8088" + Constant.SSO_LOGOUT,headers,obj.toString());
+                                            }
+                                        }, "http://api1.gigawon.co.kr:8088" + Constant.SSO_LOGOUT, headers, obj.toString());
 //										}, Constant.BASE_URL_SSO + Constant.SSO_LOGOUT,headers,obj.toString());
 
-										}catch(Exception e){
-											e.getMessage();
+                                    } catch (Exception e) {
+                                        e.getMessage();
 
-										}
+                                    }
 
-								}
-							}, getString(com.rs.mobile.wportal.R.string.cancel), new OnClickListener() {
+                                }
+                            }, getString(com.rs.mobile.wportal.R.string.cancel), new OnClickListener() {
 
-								@Override
-								public void onClick(View v) {
-									// TODO Auto-generated method stub
-									D.alertDialog.dismiss();
-								}
-							}, true);
+                                @Override
+                                public void onClick(View v) {
+                                    // TODO Auto-generated method stub
+                                    D.alertDialog.dismiss();
+                                }
+                            }, true);
 
-				}
-			});
+                }
+            });
 
-			getPersnalInfo();
-			
-			
-			//初始化缓存数据获取大小
-			new Handler().postDelayed(new Runnable() {
-				
-				@Override
-				public void run() {
-					File file = new File(path);
-					load_size.setText(UtilClear.getFormatSize(UtilClear.getFolderSize(file)));
-				}
-			}, 500);
-			
+            getPersnalInfo();
 
-		} catch (Exception e) {
 
-			e(e);
+            //初始化缓存数据获取大小
+            new Handler().postDelayed(new Runnable() {
 
-		}
+                @Override
+                public void run() {
+                    File file = new File(path);
+                    load_size.setText(UtilClear.getFormatSize(UtilClear.getFolderSize(file)));
+                }
+            }, 500);
 
-	}
 
+        } catch (Exception e) {
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-	}
+            e(e);
 
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
+        }
 
-		if (resultCode == RESULT_OK) {
+    }
 
-			switch (requestCode) {
-			case BringPhotoView.PHOTO_REQUEST_TAKEPHOTO:
 
-				try {
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
-					new TakePhotoAsyncTask().execute();
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // TODO Auto-generated method stub
 
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					L.e(e);
-				}
+        if (resultCode == RESULT_OK) {
 
-				break;
+            switch (requestCode) {
+                case BringPhotoView.PHOTO_REQUEST_TAKEPHOTO:
 
-			case BringPhotoView.PHOTO_REQUEST_GALLERY:
+                    try {
 
-				if (data != null) {
+                        new TakePhotoAsyncTask().execute();
 
-					try {
+                    } catch (Exception e) {
+                        // TODO Auto-generated catch block
+                        L.e(e);
+                    }
 
-						new GetPhotoFromGallaryAsyncTask().execute(data.getData());
+                    break;
 
-					} catch (Exception e) {
-						L.e(e);
-					}
-				}
-				break;
+                case BringPhotoView.PHOTO_REQUEST_GALLERY:
 
-			}
+                    if (data != null) {
 
-		}
+                        try {
 
-		super.onActivityResult(requestCode, resultCode, data);
+                            new GetPhotoFromGallaryAsyncTask().execute(data.getData());
 
-	}
+                        } catch (Exception e) {
+                            L.e(e);
+                        }
+                    }
+                    break;
 
-	public void showBringPhotoView() {
+            }
 
-		try {
+        }
 
-			uploadTime = "" + System.currentTimeMillis();
+        super.onActivityResult(requestCode, resultCode, data);
 
-			// Animation fadeAnimation =
-			// AnimationUtils.loadAnimation(PersnalCenterActivity.this,
-			// R.anim.fade_in);
-			// Animation scaleAnimation =
-			// AnimationUtils.loadAnimation(PersnalCenterActivity.this,
-			// R.anim.scale_top_in);
+    }
 
-			bringPhothLayout.setVisibility(View.VISIBLE);
-			bringPhotoView.setVisibility(View.VISIBLE);
+    public void showBringPhotoView() {
 
-			// bringPhothLayout.startAnimation(fadeAnimation);
-			// bringPhotoView.startAnimation(scaleAnimation);
+        try {
 
-		} catch (Exception e) {
+            uploadTime = "" + System.currentTimeMillis();
 
-			L.e(e);
+            // Animation fadeAnimation =
+            // AnimationUtils.loadAnimation(PersnalCenterActivity.this,
+            // R.anim.fade_in);
+            // Animation scaleAnimation =
+            // AnimationUtils.loadAnimation(PersnalCenterActivity.this,
+            // R.anim.scale_top_in);
 
-		}
+            bringPhothLayout.setVisibility(View.VISIBLE);
+            bringPhotoView.setVisibility(View.VISIBLE);
 
-	}
+            // bringPhothLayout.startAnimation(fadeAnimation);
+            // bringPhotoView.startAnimation(scaleAnimation);
 
-	public void hideBringPhotoView() {
+        } catch (Exception e) {
 
-		try {
+            L.e(e);
 
-			// Animation fadeAnimation =
-			// AnimationUtils.loadAnimation(PersnalCenterActivity.this,
-			// R.anim.fade_out);
-			// Animation scaleAnimation =
-			// AnimationUtils.loadAnimation(PersnalCenterActivity.this,
-			// R.anim.scale_bottom_out);
+        }
 
-			bringPhothLayout.setVisibility(View.GONE);
-			bringPhotoView.setVisibility(View.GONE);
+    }
 
-			// bringPhothLayout.startAnimation(fadeAnimation);
-			// bringPhotoView.startAnimation(scaleAnimation);
+    public void hideBringPhotoView() {
 
-		} catch (Exception e) {
+        try {
 
-			L.e(e);
+            // Animation fadeAnimation =
+            // AnimationUtils.loadAnimation(PersnalCenterActivity.this,
+            // R.anim.fade_out);
+            // Animation scaleAnimation =
+            // AnimationUtils.loadAnimation(PersnalCenterActivity.this,
+            // R.anim.scale_bottom_out);
 
-		}
+            bringPhothLayout.setVisibility(View.GONE);
+            bringPhotoView.setVisibility(View.GONE);
 
-	}
+            // bringPhothLayout.startAnimation(fadeAnimation);
+            // bringPhotoView.startAnimation(scaleAnimation);
 
-	private int selectedSexIndex = 0;
+        } catch (Exception e) {
 
-	public void showSexDialog() {
+            L.e(e);
 
-		try {
+        }
 
-			String[] items = new String[2];
+    }
 
-			items[0] = getString(com.rs.mobile.wportal.R.string.man);
+    private int selectedSexIndex = 0;
 
-			items[1] = getString(com.rs.mobile.wportal.R.string.woman);
+    public void showSexDialog() {
 
-			showSingleChoiceDialog(-1, -1, -1, com.rs.mobile.wportal.R.string.ok, com.rs.mobile.wportal.R.string.cancel, new DialogInterface.OnClickListener() {
+        try {
 
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
+            String[] items = new String[2];
 
-					sexTextView.setText(getString(selectedSexIndex == 0 ? com.rs.mobile.wportal.R.string.man : com.rs.mobile.wportal.R.string.woman));
+            items[0] = getString(com.rs.mobile.wportal.R.string.man);
 
-				}
-			}, new DialogInterface.OnClickListener() {
+            items[1] = getString(com.rs.mobile.wportal.R.string.woman);
 
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					// TODO Auto-generated method stub
+            showSingleChoiceDialog(-1, -1, -1, com.rs.mobile.wportal.R.string.ok, com.rs.mobile.wportal.R.string.cancel, new DialogInterface.OnClickListener() {
 
-				}
-			}, items, sexTextView.getText().toString().equals(getString(com.rs.mobile.wportal.R.string.man)) ? 0 : 1,
-					new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
 
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							// TODO Auto-generated method stub
+                            sexTextView.setText(getString(selectedSexIndex == 0 ? com.rs.mobile.wportal.R.string.man : com.rs.mobile.wportal.R.string.woman));
 
-							selectedSexIndex = which;
+                        }
+                    }, new DialogInterface.OnClickListener() {
 
-						}
-					}, true);
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
 
-		} catch (Exception e) {
+                        }
+                    }, items, sexTextView.getText().toString().equals(getString(com.rs.mobile.wportal.R.string.man)) ? 0 : 1,
+                    new DialogInterface.OnClickListener() {
 
-			e(e);
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // TODO Auto-generated method stub
 
-		}
-	}
+                            selectedSexIndex = which;
 
-	public void getPersnalInfo() {
+                        }
+                    }, true);
 
-		try {
+        } catch (Exception e) {
 
-			OkHttpHelper helper = new OkHttpHelper(SettingActivity.this);
+            e(e);
 
-			HashMap<String, String> params = new HashMap<String, String>();
+        }
+    }
 
-			params.put("lang_type", AppConfig.LANG_TYPE);
+    public void getPersnalInfo() {
 
-			params.put("MemberID", S.get(SettingActivity.this, C.KEY_JSON_CUSTOM_CODE));
+        try {
 
-			params.put(C.KEY_JSON_TOKEN, S.get(SettingActivity.this, C.KEY_JSON_TOKEN));
-			helper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            OkHttpHelper helper = new OkHttpHelper(SettingActivity.this);
 
-				@Override
-				public void onNetworkError(Request request, IOException e) {
+            HashMap<String, String> params = new HashMap<String, String>();
 
-				}
+            params.put("lang_type", AppConfig.LANG_TYPE);
 
-				@Override
-				public void onBizSuccess(String responseDescription, final JSONObject data, final String all_data) {
-					try {
-						JSONObject jsonData = data.getJSONObject("data");
-						nameTextView.setText(jsonData.getString(C.KEY_JSON_NICK_NAME));
+            params.put("MemberID", S.get(SettingActivity.this, C.KEY_JSON_CUSTOM_CODE));
 
-						String sex = jsonData.getString("gender").trim();
+            params.put(C.KEY_JSON_TOKEN, S.get(SettingActivity.this, C.KEY_JSON_TOKEN));
+            helper.addPostRequest(new OkHttpHelper.CallbackLogic() {
 
-						selectedSexIndex = sex.equals("m") ? 0 : 1;
+                @Override
+                public void onNetworkError(Request request, IOException e) {
 
-						sexTextView.setText(getString(sex.equals("m") ? com.rs.mobile.wportal.R.string.man : com.rs.mobile.wportal.R.string.woman));
+                }
 
-						imageDownloadUrl = jsonData.getString("imagePath");
+                @Override
+                public void onBizSuccess(String responseDescription, final JSONObject data, final String all_data) {
+                    try {
+                        JSONObject jsonData = data.getJSONObject("data");
+                        nameTextView.setText(jsonData.getString(C.KEY_JSON_NICK_NAME));
+
+                        String sex = jsonData.getString("gender").trim();
+
+                        selectedSexIndex = sex.equals("m") ? 0 : 1;
+
+                        sexTextView.setText(getString(sex.equals("m") ? com.rs.mobile.wportal.R.string.man : com.rs.mobile.wportal.R.string.woman));
+
+                        imageDownloadUrl = jsonData.getString("imagePath");
 
 //						String[] p = imageDownloadUrl.split("/");
 //
@@ -589,50 +589,51 @@ public class SettingActivity extends BaseActivity {
 //
 //						Uri uri = Uri.parse(imageDownloadUrl);
 
-						ImageUtil.drawImageFromUri(imageDownloadUrl,iconImageView);
-						S.set(SettingActivity.this, C.KEY_JSON_PROFILE_IMG, imageDownloadUrl);
-						S.set(SettingActivity.this, C.KEY_JSON_NICK_NAME, nameTextView.getText().toString());
-					} catch (Exception e) {
+                        ImageUtil.drawImageFromUri(imageDownloadUrl, iconImageView);
+                        S.set(SettingActivity.this, C.KEY_JSON_PROFILE_IMG, imageDownloadUrl);
+                        S.set(SettingActivity.this, C.KEY_JSON_NICK_NAME, nameTextView.getText().toString());
+                    } catch (Exception e) {
 
-						L.e(e);
+                        L.e(e);
 
-					}
+                    }
 
-					hideProgressBar();
+                    hideProgressBar();
 
-				}
+                }
 
-				@Override
-				public void onBizFailure(String responseDescription, JSONObject data, String responseCode) {
+                @Override
+                public void onBizFailure(String responseDescription, JSONObject data, String responseCode) {
 
-				}
-			}, "http://member.gigawon.co.kr:8808/api/member/requestProfileInfo", params);
+                }
+            }, "http://member.gigawon.co.kr:8808/api/member/requestProfileInfo", params);
 //			}, C.BASE_URL + Constant.PERSNAL_GET_INFO, params);
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			L.e(e);
+            L.e(e);
 
-		}
+        }
 
-	}
+    }
 
-	public void setPersnalInfo() {
+    public void setPersnalInfo() {
 
-		try {
+        try {
 
 //			HashMap<String, String> headers = new HashMap<>();
 //			headers.put("Content-Type", "application/json;Charset=UTF-8");
 
-			JSONObject j1=new JSONObject();
-			HashMap<String, String> params = new HashMap<>();
-			try {
+            JSONObject j1 = new JSONObject();
+            HashMap<String, String> params = new HashMap<>();
+            try {
 
-				j1.put(C.KEY_REQUEST_MEMBER_ID_TOW, S.get(SettingActivity.this, C.KEY_JSON_CUSTOM_CODE));
-				j1.put(C.KEY_JSON_NICK_NAME, nameTextView.getText().toString());
-				j1.put("imageUrl",imageDownloadUrl);
-				j1.put("gender", selectedSexIndex == 0 ? "m" : "f");
-				j1.put("token", S.get(SettingActivity.this, C.KEY_JSON_TOKEN));
+                j1.put(C.KEY_REQUEST_MEMBER_ID_TOW, S.get(SettingActivity.this, C.KEY_JSON_CUSTOM_CODE));
+                j1.put(C.KEY_JSON_NICK_NAME, nameTextView.getText().toString());
+                j1.put("imageUrl", imageDownloadUrl);
+                j1.put("gender", selectedSexIndex == 0 ? "m" : "f");
+                j1.put("token", S.get(SettingActivity.this, C.KEY_JSON_TOKEN));
+                Log.e("j1--", j1.toString());
 				/*j1.put(C.KEY_REQUEST_MEMBER_ID_TOW, "1862756329077a18"); //memberID
 				j1.put(C.KEY_JSON_NICK_NAME, "kimdsttthhjh");  //deviceNo
 				j1.put("imagePath","http:\\/\\/imfiles.dxbhtm.com:8640\\/upload\\/image\\/2018121\\/201812110163976300x250.jpg"); //s_id
@@ -641,151 +642,152 @@ public class SettingActivity extends BaseActivity {
 				*/
 
 
-				//Jason Type : memid,mempwd,deviceNo, s_id, ver, lang_type
+                //Jason Type : memid,mempwd,deviceNo, s_id, ver, lang_type
 
-			} catch (JSONException e1) {
-				e1.printStackTrace();
-			}
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+            }
 
-			OkHttpHelper helper = new OkHttpHelper(SettingActivity.this);
-			helper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            OkHttpHelper helper = new OkHttpHelper(SettingActivity.this);
+            helper.addPostRequest(new OkHttpHelper.CallbackLogic() {
 
-				@Override
-				public void onNetworkError(Request request, IOException e) {
-					finish();
-				}
+                @Override
+                public void onNetworkError(Request request, IOException e) {
+                    finish();
+                }
 
-				@Override
-				public void onBizSuccess(String responseDescription, final JSONObject data, final String all_data) {
+                @Override
+                public void onBizSuccess(String responseDescription, final JSONObject data, final String all_data) {
 
-					try {
-						S.set(SettingActivity.this, C.KEY_SHARED_KNICK_NAME, nameTextView.getText().toString());
+                    try {
+                        S.set(SettingActivity.this, C.KEY_SHARED_KNICK_NAME, nameTextView.getText().toString());
 
-						L.d(data.toString());
+                        L.d(data.toString());
 
-						// t(getString(R.string.complete));
+                        // t(getString(R.string.complete));
 
-					} catch (Exception e) {
+                    } catch (Exception e) {
 
-						L.e(e);
+                        L.e(e);
 
-					}
+                    }
 
-					setResult(RESULT_OK);
+                    setResult(RESULT_OK);
 
-					finish();
+                    finish();
 
-				}
+                }
 
-				@Override
-				public void onBizFailure(String responseDescription, JSONObject data, String responseCode) {
-					String aaa = responseCode.toString();
-					finish();
+                @Override
+                public void onBizFailure(String responseDescription, JSONObject data, String responseCode) {
+                    String aaa = responseCode.toString();
+                    finish();
 
-				}
-			}, "http://member.gigawon.co.kr:8808/api/member/editProfile", j1.toString());
+                }
+            }, "http://member.gigawon.co.kr:8808/api/member/editProfile", j1.toString());
 //			}, C.BASE_RS_MEMBER_URL + C.REQUEST_NICK_NAME_CHANGE, j1.toString());
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			L.e(e);
+            L.e(e);
 
-			finish();
+            finish();
 
-		}
+        }
 
-	}
+    }
 
-	@Override
-	public void onBackPressed() {
-		// TODO Auto-generated method stub
+    @Override
+    public void onBackPressed() {
+        // TODO Auto-generated method stub
 
-		setPersnalInfo();
+        setPersnalInfo();
 
-	}
+    }
 
-	private class ImageUploadAsyncTask extends AsyncTask<Object, Integer, String> {
+    private class ImageUploadAsyncTask extends AsyncTask<Object, Integer, String> {
 
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
 
-			showProgressBar();
-		}
+            showProgressBar();
+        }
 
-		@Override
-		protected String doInBackground(Object... params) {
-			// TODO Auto-generated method stub
+        @Override
+        protected String doInBackground(Object... params) {
+            // TODO Auto-generated method stub
 
-			try {
+            try {
 
-				/*
-				 * if (status == "-60001") alert("컨텐츠 타입 에러"); else if (status
-				 * == "-60002") alert("확장자 타입 에러"); else if (status == "-60003")
-				 * alert("스트림 read  에러"); else if (status == "-60004") alert(
-				 * "이미지 용량 최저용량 미만"); else if (status == "-60005") alert(
-				 * "이미지 용량 최대용량 이상"); else if (status == "-60006") alert(
-				 * "파일 내 이상 코드 발견");
-				 */
+                /*
+                 * if (status == "-60001") alert("컨텐츠 타입 에러"); else if (status
+                 * == "-60002") alert("확장자 타입 에러"); else if (status == "-60003")
+                 * alert("스트림 read  에러"); else if (status == "-60004") alert(
+                 * "이미지 용량 최저용량 미만"); else if (status == "-60005") alert(
+                 * "이미지 용량 최대용량 이상"); else if (status == "-60006") alert(
+                 * "파일 내 이상 코드 발견");
+                 */
 
-				if (imagePath != null && !imagePath.equals("")) {
+                if (imagePath != null && !imagePath.equals("")) {
 
-					S.set(SettingActivity.this, C.KEY_SHARED_ICON_PATH, imagePath);
+                    S.set(SettingActivity.this, C.KEY_SHARED_ICON_PATH, imagePath);
 
-					ArrayList<String> filePath = new ArrayList<String>();
+                    ArrayList<String> filePath = new ArrayList<String>();
 
-					filePath.add(imagePath);
+                    filePath.add(imagePath);
+                    Log.e("imagePath==", imagePath);
+                    return FileUtil.upload(C.BASE_URL + C.PERSNAL_IMAGE_UPLOAD_PATH, filePath, null, "file");
 
-					return FileUtil.upload(C.BASE_URL + C.PERSNAL_IMAGE_UPLOAD_PATH, filePath, null, "file");
+                } else {
 
-				} else {
+                    return "";
 
-					return "";
+                }
 
-				}
+            } catch (Exception e) {
 
-			} catch (Exception e) {
+                L.e(e);
 
-				L.e(e);
+                return e.getClass().getName();
 
-				return e.getClass().getName();
+            }
 
-			}
+        }
 
-		}
+        @Override
+        protected void onPostExecute(String result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
 
-		@Override
-		protected void onPostExecute(String result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
+            try {
 
-			try {
+                L.d(result);
 
-				L.d(result);
+                // ImageUtil.drawIamge(iconImageView,Uri.parse(C.BASE_URL +
+                // C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal" +
+                // S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "")
+                // + ".jpg"));
 
-				// ImageUtil.drawIamge(iconImageView,Uri.parse(C.BASE_URL +
-				// C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal" +
-				// S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "")
-				// + ".jpg"));
+                imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal"
+                        + S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
+                Log.e("imageDownloadUrl",imageDownloadUrl);
+                ImageUtil.drawImageFromUri(imageDownloadUrl, iconImageView);
 
-				imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal"
-						+ S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
-				ImageUtil.drawImageFromUri(imageDownloadUrl,iconImageView);
+                hideProgressBar();
 
-				hideProgressBar();
+            } catch (Exception e) {
 
-			} catch (Exception e) {
+                L.e(e);
 
-				L.e(e);
+                finish();
 
-				finish();
+            }
 
-			}
+        }
 
-		}
-
-	}
+    }
 
 //	private void setImage(Uri mImageCaptureUri) {
 //
@@ -822,196 +824,196 @@ public class SettingActivity extends BaseActivity {
 //	}
 
 
-	// private class GetBitmapAsyncTask extends AsyncTask<Object, Integer,
-	// Drawable> {
-	//
-	// @Override
-	// protected void onPreExecute() {
-	// // TODO Auto-generated method stub
-	// super.onPreExecute();
-	//
-	// showProgressBar();
-	// }
-	//
-	// @Override
-	// protected Drawable doInBackground(Object... params) {
-	// // TODO Auto-generated method stub
-	//
-	// try {
-	//
-	// File f = new File(S.get(SettingActivity.this, C.KEY_SHARED_ICON_PATH));
-	//
-	// Uri uri =
-	// Uri.parse(android.provider.MediaStore.Images.Media.insertImage(getContentResolver(),
-	// f.getAbsolutePath(), null, null));
-	//
-	// Bitmap bm = ImageUtil.getBitmapFromUri(SettingActivity.this, uri);
-	//
-	// return new BitmapDrawable(bm);
-	//
-	// } catch (Exception e) {
-	//
-	// L.e(e);
-	//
-	// }
-	//
-	// return null;
-	//
-	// }
-	//
-	// @Override
-	// protected void onPostExecute(Drawable result) {
-	// // TODO Auto-generated method stub
-	// super.onPostExecute(result);
-	//
-	// try {
-	//
-	// hideProgressBar();
-	//
-	// ImageUtil.drawIamge(iconImageView, result);
-	//
-	// } catch (Exception e) {
-	//
-	// L.e(e);
-	//
-	// finish();
-	//
-	// }
-	//
-	// }
-	//
-	// }
+    // private class GetBitmapAsyncTask extends AsyncTask<Object, Integer,
+    // Drawable> {
+    //
+    // @Override
+    // protected void onPreExecute() {
+    // // TODO Auto-generated method stub
+    // super.onPreExecute();
+    //
+    // showProgressBar();
+    // }
+    //
+    // @Override
+    // protected Drawable doInBackground(Object... params) {
+    // // TODO Auto-generated method stub
+    //
+    // try {
+    //
+    // File f = new File(S.get(SettingActivity.this, C.KEY_SHARED_ICON_PATH));
+    //
+    // Uri uri =
+    // Uri.parse(android.provider.MediaStore.Images.Media.insertImage(getContentResolver(),
+    // f.getAbsolutePath(), null, null));
+    //
+    // Bitmap bm = ImageUtil.getBitmapFromUri(SettingActivity.this, uri);
+    //
+    // return new BitmapDrawable(bm);
+    //
+    // } catch (Exception e) {
+    //
+    // L.e(e);
+    //
+    // }
+    //
+    // return null;
+    //
+    // }
+    //
+    // @Override
+    // protected void onPostExecute(Drawable result) {
+    // // TODO Auto-generated method stub
+    // super.onPostExecute(result);
+    //
+    // try {
+    //
+    // hideProgressBar();
+    //
+    // ImageUtil.drawIamge(iconImageView, result);
+    //
+    // } catch (Exception e) {
+    //
+    // L.e(e);
+    //
+    // finish();
+    //
+    // }
+    //
+    // }
+    //
+    // }
 
-	private class TakePhotoAsyncTask extends AsyncTask<Object, Integer, Drawable> {
+    private class TakePhotoAsyncTask extends AsyncTask<Object, Integer, Drawable> {
 
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
 
-			showProgressBar();
-		}
+            showProgressBar();
+        }
 
-		@Override
-		protected Drawable doInBackground(Object... params) {
-			// TODO Auto-generated method stub
+        @Override
+        protected Drawable doInBackground(Object... params) {
+            // TODO Auto-generated method stub
 
-			try {
+            try {
 
-				// uploadTime = "" + System.currentTimeMillis();
+                // uploadTime = "" + System.currentTimeMillis();
 
-				File dir = new File(Environment.getExternalStorageDirectory() + "/wportal");
+                File dir = new File(Environment.getExternalStorageDirectory() + "/wportal");
 
-				if (!dir.exists())
-					dir.mkdirs();
+                if (!dir.exists())
+                    dir.mkdirs();
 
-				File f = new File(dir, bringPhotoView.getFileName() + ".jpg");// localTempImgDir和localTempImageFileName是自己定义的名字
+                File f = new File(dir, bringPhotoView.getFileName() + ".jpg");// localTempImgDir和localTempImageFileName是自己定义的名字
 
-				// File f = new File(Environment.getExternalStorageDirectory() +
-				// "/wportal/"
-				// + S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID,
-				// "") + uploadTime + ".jpg");
+                // File f = new File(Environment.getExternalStorageDirectory() +
+                // "/wportal/"
+                // + S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID,
+                // "") + uploadTime + ".jpg");
 
-				imageUri = Uri.parse(android.provider.MediaStore.Images.Media.insertImage(getContentResolver(),
-						f.getAbsolutePath(), null, null));
+                imageUri = Uri.parse(android.provider.MediaStore.Images.Media.insertImage(getContentResolver(),
+                        f.getAbsolutePath(), null, null));
 
-				Bitmap bm = ImageUtil.getBitmapFromUri(SettingActivity.this, imageUri);
-				L.d(bm.getByteCount() + "frist");
+                Bitmap bm = ImageUtil.getBitmapFromUri(SettingActivity.this, imageUri);
+                L.d(bm.getByteCount() + "frist");
 
-				imagePath = ImageUtil.savePublishPicture(ImageUtil.comp(bm),
-						S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime);
+                imagePath = ImageUtil.savePublishPicture(ImageUtil.comp(bm),
+                        S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime);
 
-				return new BitmapDrawable(bm);
+                return new BitmapDrawable(bm);
 
-			} catch (Exception e) {
+            } catch (Exception e) {
 
-				L.e(e);
+                L.e(e);
 
-			}
+            }
 
-			return null;
+            return null;
 
-		}
+        }
 
-		@Override
-		protected void onPostExecute(Drawable result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
+        @Override
+        protected void onPostExecute(Drawable result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
 
-			try {
+            try {
 
-				hideProgressBar();
+                hideProgressBar();
 
-				new ImageUploadAsyncTask().execute();
+                new ImageUploadAsyncTask().execute();
 
-				// ImageUtil.drawIamge(iconImageView, result);
+                // ImageUtil.drawIamge(iconImageView, result);
 
-			} catch (Exception e) {
+            } catch (Exception e) {
 
-				L.e(e);
+                L.e(e);
 
-			}
+            }
 
-		}
+        }
 
-	}
+    }
 
-	private class GetPhotoFromGallaryAsyncTask extends AsyncTask<Object, Integer, Drawable> {
+    private class GetPhotoFromGallaryAsyncTask extends AsyncTask<Object, Integer, Drawable> {
 
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
+        @Override
+        protected void onPreExecute() {
+            // TODO Auto-generated method stub
+            super.onPreExecute();
 
-			showProgressBar();
-		}
+            showProgressBar();
+        }
 
-		@Override
-		protected Drawable doInBackground(Object... params) {
-			// TODO Auto-generated method stub
+        @Override
+        protected Drawable doInBackground(Object... params) {
+            // TODO Auto-generated method stub
 
-			try {
+            try {
 
-				// uploadTime = "" + System.currentTimeMillis();
+                // uploadTime = "" + System.currentTimeMillis();
 
-				imageUri = (Uri) params[0]; // 获得图片的uri
+                imageUri = (Uri) params[0]; // 获得图片的uri
 
-				Bitmap bm = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
+                Bitmap bm = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
 
-				imagePath = ImageUtil.savePublishPicture(ImageUtil.comp(bm),
-						S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime);
-				return new BitmapDrawable(bm);
+                imagePath = ImageUtil.savePublishPicture(ImageUtil.comp(bm),
+                        S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime);
+                return new BitmapDrawable(bm);
 
-			} catch (Exception e) {
+            } catch (Exception e) {
 
-				L.e(e);
+                L.e(e);
 
-			}
+            }
 
-			return null;
+            return null;
 
-		}
+        }
 
-		@Override
-		protected void onPostExecute(Drawable result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
+        @Override
+        protected void onPostExecute(Drawable result) {
+            // TODO Auto-generated method stub
+            super.onPostExecute(result);
 
-			try {
+            try {
 
-				hideProgressBar();
+                hideProgressBar();
 
-				new ImageUploadAsyncTask().execute();
+                new ImageUploadAsyncTask().execute();
 
-				// ImageUtil.drawIamge(iconImageView, result);
+                // ImageUtil.drawIamge(iconImageView, result);
 
-			} catch (Exception e) {
+            } catch (Exception e) {
 
-				L.e(e);
+                L.e(e);
 
-			}
+            }
 
-		}
+        }
 
-	}
+    }
 }
