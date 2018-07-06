@@ -1,241 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/gray"
-    android:orientation="vertical">
-
-
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/white"
+        android:layout_height="match_parent"
+        android:background="@color/gray"
         android:orientation="vertical">
 
-        <RelativeLayout
-            android:id="@+id/navigation_area"
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:padding="@dimen/marginx2">
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/close_btn"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:id="@+id/navigation_area"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingBottom="@dimen/margin"
-                android:paddingRight="@dimen/marginx4"
-                android:paddingTop="@dimen/margin">
+                android:layout_alignParentTop="true"
+                android:padding="@dimen/marginx2">
 
-                <ImageView
-                    android:id="@+id/branch_btn"
+                <LinearLayout
+                    android:id="@+id/close_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/icon_back" />
-            </LinearLayout>
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingBottom="@dimen/margin"
+                    android:paddingRight="@dimen/marginx4"
+                    android:paddingTop="@dimen/margin">
+
+                    <ImageView
+                        android:id="@+id/branch_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/icon_back" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/title_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/shopmanage"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greywhite2" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/white">
+
 
             <TextView
-                android:id="@+id/title_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="@string/shopmanage"
-                android:textColor="@android:color/black"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="@string/infoicon"
+                android:textColor="@color/textblack"
+                android:textSize="15sp" />
+
+
+            <com.rs.mobile.common.view.WImageView
+                android:id="@+id/img_head"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/img_more"
+                android:background="@drawable/img_headphoto" />
+
+
+            <ImageView
+                android:id="@+id/img_more"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/icon_list_arrow" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greywhite2" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/white">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="@string/infoname"
+                android:textColor="@color/textblack"
+                android:textSize="15sp" />
+
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/img_more2"
+                android:src="@drawable/img_headphoto"
+                android:text="KFC(九龙城店)"
+                android:textColor="@color/textblack"
+                android:textSize="15sp" />
+
+
+            <ImageView
+                android:id="@+id/img_more2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/icon_list_arrow" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greywhite2" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/white">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="@string/infophone"
+                android:textColor="@color/textblack"
+                android:textSize="15sp" />
+
+
+            <TextView
+                android:id="@+id/tv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/img_more3"
+                android:src="@drawable/img_headphoto"
+                android:text="6666-66666"
+                android:textColor="@color/textblack"
+                android:textSize="15sp" />
+
+
+            <ImageView
+                android:id="@+id/img_more3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/icon_list_arrow" />
+
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/greywhite2" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@color/white">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:text="@string/infoadd"
+                android:textColor="@color/textblack"
+                android:textSize="15sp" />
+
+
+            <TextView
+                android:id="@+id/tv_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@+id/img_more4"
+                android:src="@drawable/img_headphoto"
+                android:text="威海经济开发区大庆路"
+                android:textColor="@color/textblack"
+                android:textSize="15sp" />
+
+
+            <ImageView
+                android:id="@+id/img_more4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/icon_list_arrow" />
+
 
         </RelativeLayout>
 
 
     </LinearLayout>
 
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/greywhite2" />
-
-
     <RelativeLayout
+        android:id="@+id/bring_photo_layout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/white">
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="#55000000"
+        android:clickable="true"
+        android:orientation="vertical"
+        android:visibility="gone" >
 
-
-        <TextView
-            android:layout_width="wrap_content"
+        <com.rs.mobile.common.view.BringPhotoView
+            android:id="@+id/bring_photo_view"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:text="@string/infoicon"
-            android:textColor="@color/textblack"
-            android:textSize="15sp" />
-
-
-        <com.rs.mobile.common.view.WImageView
-            android:id="@+id/img_head"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/img_more"
-            android:background="@drawable/img_headphoto" />
-
-
-        <ImageView
-            android:id="@+id/img_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/icon_list_arrow" />
-
-
+            android:layout_alignParentBottom="true" />
     </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/greywhite2" />
-
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:background="@color/white">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:text="@string/infoname"
-            android:textColor="@color/textblack"
-            android:textSize="15sp" />
-
-
-        <TextView
-            android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/img_more2"
-            android:src="@drawable/img_headphoto"
-            android:text="KFC(九龙城店)"
-            android:textColor="@color/textblack"
-            android:textSize="15sp" />
-
-
-        <ImageView
-            android:id="@+id/img_more2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/icon_list_arrow" />
-
-
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/greywhite2" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:background="@color/white">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:text="@string/infophone"
-            android:textColor="@color/textblack"
-            android:textSize="15sp" />
-
-
-        <TextView
-            android:id="@+id/tv_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/img_more3"
-            android:src="@drawable/img_headphoto"
-            android:text="6666-66666"
-            android:textColor="@color/textblack"
-            android:textSize="15sp" />
-
-
-        <ImageView
-            android:id="@+id/img_more3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/icon_list_arrow" />
-
-
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/greywhite2" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:background="@color/white">
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="15dp"
-            android:text="@string/infoadd"
-            android:textColor="@color/textblack"
-            android:textSize="15sp" />
-
-
-        <TextView
-            android:id="@+id/tv_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/img_more4"
-            android:src="@drawable/img_headphoto"
-            android:text="威海经济开发区大庆路"
-            android:textColor="@color/textblack"
-            android:textSize="15sp" />
-
-
-        <ImageView
-            android:id="@+id/img_more4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"
-            android:src="@drawable/icon_list_arrow" />
-
-
-    </RelativeLayout>
-
-
-</LinearLayout>
+</RelativeLayout>

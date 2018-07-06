@@ -74,6 +74,7 @@ public class C {
 	public static final String CHANGE_PW="http://api1.gigawon.co.kr:82/api/MemberInfo/changePassword";
 	public static final String WPAYMENT_OFFLINE_POS="http://api1.gigawon.co.kr:8074/ws2016/wsRecharge/40_Barcode/getBarcodeAuthority.aspx";
 	public static final String CHECK_LOGIN = "http://member.gigawon.co.kr:89/ws2016/srvJoinModule/10_Login/checkLogin_0911";
+	public static final String BASE_UPLOAD_IMG_URL = "http://mall.gigawon.co.kr:8800";
 //
 
 	//주소로 위도 경도 가져오기
@@ -81,6 +82,8 @@ public class C {
 
 	//이미지 업로드
 	public static final String PERSNAL_IMAGE_UPLOAD_PATH = "/Common/FileUploader.ashx";
+	//
+	public static final String STORE_IMAGE_UPLOAD_PATH = "/Common/StoreFileUploader.ashx";
 	 
 	//이미자 다운로드
 	public static final String PERSNAL_IMAGE_DOWNLOAD_PATH = "/MediaUploader/wsProfile/";
