@@ -293,19 +293,19 @@ public class SmMainActivity extends TabActivity {
                     try {
                         if (data.getString("status").equals("1")
                                 && data.getString("flag").equals("1501")) {
-//                            S.setShare(context, C.KEY_JSON_TOKEN,
-//                                    // data.getString(C.KEY_JSON_TOKEN));
-//                                    data.getString(C.KEY_JSON_TOKEN) + "|"
-//                                            + data.getString("ssoId") + "|"
-//                                            + data.getString("custom_code")
-//                                            + "|" + Util.getDeviceId(context));
-//
-//                            S.set(context, C.KEY_JSON_TOKEN,
-//                                    // data.getString(C.KEY_JSON_TOKEN));
-//                                    data.getString(C.KEY_JSON_TOKEN) + "|"
-//                                            + data.getString("ssoId") + "|"
-//                                            + data.getString("custom_code")
-//                                            + "|" + Util.getDeviceId(context));
+                            S.setShare(context, C.KEY_JSON_TOKEN,
+                                    // data.getString(C.KEY_JSON_TOKEN));
+                                    data.getString(C.KEY_JSON_TOKEN) + "|"
+                                            + data.getString("ssoId") + "|"
+                                            + data.getString("custom_code")
+                                            + "|" + Util.getDeviceId(context));
+
+                            S.set(context, C.KEY_JSON_TOKEN,
+                                    // data.getString(C.KEY_JSON_TOKEN));
+                                    data.getString(C.KEY_JSON_TOKEN) + "|"
+                                            + data.getString("ssoId") + "|"
+                                            + data.getString("custom_code")
+                                            + "|" + Util.getDeviceId(context));
                             mTabHost.setCurrentTabByTag(Tab);
                             changeTextColor(checkid);
 
