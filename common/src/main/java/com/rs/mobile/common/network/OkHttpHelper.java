@@ -33,416 +33,415 @@ import okhttp3.Response;
 
 public class OkHttpHelper {
 
-	private  Context context;
+    private Context context;
 
-	private Handler handler;
+    private Handler handler;
 
-	private OkHttpClient httpClient;
+    private OkHttpClient httpClient;
 
-	private static final String GET = "GET";
+    private static final String GET = "GET";
 
-	private static final String POST = "POST";
+    private static final String POST = "POST";
 
-	private boolean isShowProgress = true;
-	
-	/**
-	 * contructor
-	 * 
-	 * @param context
-	 */
-	public OkHttpHelper(Context context) {
+    private boolean isShowProgress = true;
 
-		if (Util.checkNetwork(context) == false)
-			return;
+    /**
+     * contructor
+     *
+     * @param context
+     */
+    public OkHttpHelper(Context context) {
 
-		this.context = context;
+        if (Util.checkNetwork(context) == false)
+            return;
 
-		this.handler = new Handler(context.getMainLooper());
+        this.context = context;
 
-		this.httpClient =  new OkHttpClient();
+        this.handler = new Handler(context.getMainLooper());
+
+        this.httpClient = new OkHttpClient();
 //		this.httpClient = new OkHttpClient.Builder().connectTimeout(30000, TimeUnit.SECONDS).build();
-		
-		this.isShowProgress = true;
 
-	}
-	
-	/**
-	 * contructor
-	 * 
-	 * @param context
-	 */
-	public OkHttpHelper(Context context, boolean isShowProgress) {
+        this.isShowProgress = true;
 
-		if (Util.checkNetwork(context) == false)
-			return;
+    }
 
-		this.context = context;
+    /**
+     * contructor
+     *
+     * @param context
+     */
+    public OkHttpHelper(Context context, boolean isShowProgress) {
 
-		this.handler = new Handler(context.getMainLooper());
+        if (Util.checkNetwork(context) == false)
+            return;
 
-		this.httpClient = new OkHttpClient();
-		
-		this.isShowProgress = isShowProgress;
+        this.context = context;
 
-	}
+        this.handler = new Handler(context.getMainLooper());
 
-	/**
-	 * addGetRequest
-	 * 
-	 * @param callbackLogic
-	 * @param baseUrl
-	 */
-	public void addGetRequest(CallbackLogic callbackLogic, String baseUrl) {
+        this.httpClient = new OkHttpClient();
 
-		addRequest(callbackLogic, baseUrl);
-
-	}
+        this.isShowProgress = isShowProgress;
 
-	/**
-	 * addPostRequest
-	 * 
-	 * @param callbackLogic
-	 * @param baseUrl
-	 */
-	public void addPostRequest(CallbackLogic callbackLogic, String baseUrl) {
+    }
 
-		addRequest(callbackLogic, baseUrl);
+    /**
+     * addGetRequest
+     *
+     * @param callbackLogic
+     * @param baseUrl
+     */
+    public void addGetRequest(CallbackLogic callbackLogic, String baseUrl) {
 
-	}
+        addRequest(callbackLogic, baseUrl);
 
-	public void addSMPostRequest(CallbackLogic callbackLogic, String baseUrl) {
+    }
 
-		Map<String, String> paramsKeyValue = new HashMap<String, String>();
+    /**
+     * addPostRequest
+     *
+     * @param callbackLogic
+     * @param baseUrl
+     */
+    public void addPostRequest(CallbackLogic callbackLogic, String baseUrl) {
 
-		paramsKeyValue.put(C.KEY_JSON_TOKEN,
-				S.getShare(context, C.KEY_JSON_TOKEN, ""));
+        addRequest(callbackLogic, baseUrl);
 
-		addRequest(POST, callbackLogic, baseUrl, paramsKeyValue);
+    }
 
-	}
+    public void addSMPostRequest(CallbackLogic callbackLogic, String baseUrl) {
 
-	/**
-	 * addGetRequest
-	 * 
-	 * @param callbackLogic
-	 * @param baseUrl
-	 * @param paramsKeyValue
-	 */
-	public void addGetRequest(CallbackLogic callbackLogic, String baseUrl,
-			Map<String, String> paramsKeyValue) {
+        Map<String, String> paramsKeyValue = new HashMap<String, String>();
 
-		addRequest(GET, callbackLogic, baseUrl, paramsKeyValue);
+        paramsKeyValue.put(C.KEY_JSON_TOKEN,
+                S.getShare(context, C.KEY_JSON_TOKEN, ""));
 
-	}
+        addRequest(POST, callbackLogic, baseUrl, paramsKeyValue);
 
-	/**
-	 * addPostRequest
-	 * 
-	 * @param callbackLogic
-	 * @param baseUrl
-	 * @param paramsKeyValue
-	 */
-	public void addPostRequest(CallbackLogic callbackLogic, String baseUrl,
-			Map<String, String> paramsKeyValue) {
+    }
 
-		addRequest(POST, callbackLogic, baseUrl, paramsKeyValue);
+    /**
+     * addGetRequest
+     *
+     * @param callbackLogic
+     * @param baseUrl
+     * @param paramsKeyValue
+     */
+    public void addGetRequest(CallbackLogic callbackLogic, String baseUrl,
+                              Map<String, String> paramsKeyValue) {
 
-	}
-	
-	/**
-	 * addPostRequest
-	 * 
-	 * @param callbackLogic
-	 * @param baseUrl
-	 */
-	public void addPostRequest(CallbackLogic callbackLogic, String baseUrl, Map<String, String> headers, String body) {
+        addRequest(GET, callbackLogic, baseUrl, paramsKeyValue);
 
-		addRequest(POST, callbackLogic, baseUrl, headers, body);
+    }
 
-	}
+    /**
+     * addPostRequest
+     *
+     * @param callbackLogic
+     * @param baseUrl
+     * @param paramsKeyValue
+     */
+    public void addPostRequest(CallbackLogic callbackLogic, String baseUrl,
+                               Map<String, String> paramsKeyValue) {
 
-	public void addPostRequest(CallbackLogic callbackLogic, String baseUrl, String body){
-		HashMap<String, String> headers = new HashMap<>();
-		headers.put("Content-Type", "application/json;Charset=UTF-8");
-		addRequest(POST, callbackLogic, baseUrl, headers, body);
-	}
+        addRequest(POST, callbackLogic, baseUrl, paramsKeyValue);
 
-	public void addSMPostRequest(CallbackLogic callbackLogic, String baseUrl,
-			Map<String, String> paramsKeyValue) {
+    }
 
-		paramsKeyValue.put(C.KEY_JSON_TOKEN,
-				S.getShare(context, C.KEY_JSON_TOKEN, ""));
+    /**
+     * addPostRequest
+     *
+     * @param callbackLogic
+     * @param baseUrl
+     */
+    public void addPostRequest(CallbackLogic callbackLogic, String baseUrl, Map<String, String> headers, String body) {
 
-		addRequest(POST, callbackLogic, baseUrl, paramsKeyValue);
+        addRequest(POST, callbackLogic, baseUrl, headers, body);
 
-	}
+    }
 
-	/**
-	 * addRequest
-	 * 
-	 * @param method
-	 *            get/post
-	 * @param callbackLogic
-	 * @param baseUrl
-	 * @param paramsKeyValue
-	 */
-	private void addRequest(String method, final CallbackLogic callbackLogic,
-			String baseUrl, Map<String, String> paramsKeyValue) {
+    public void addPostRequest(CallbackLogic callbackLogic, String baseUrl, String body) {
+        HashMap<String, String> headers = new HashMap<>();
+        headers.put("Content-Type", "application/json;Charset=UTF-8");
+        addRequest(POST, callbackLogic, baseUrl, headers, body);
+    }
 
-		try {
+    public void addSMPostRequest(CallbackLogic callbackLogic, String baseUrl,
+                                 Map<String, String> paramsKeyValue) {
 
-			if (isShowProgress == true) {  
-			
-				D.showProgressDialog(context, "", true);
-			
-			}
+        paramsKeyValue.put(C.KEY_JSON_TOKEN,
+                S.getShare(context, C.KEY_JSON_TOKEN, ""));
 
-			Request request = createRequest(baseUrl, method, paramsKeyValue);
-			
-			enqueue(request, callbackLogic);
+        addRequest(POST, callbackLogic, baseUrl, paramsKeyValue);
 
-		} catch (Exception e) {
+    }
 
-			L.e(e);
+    /**
+     * addRequest
+     *
+     * @param method         get/post
+     * @param callbackLogic
+     * @param baseUrl
+     * @param paramsKeyValue
+     */
+    private void addRequest(String method, final CallbackLogic callbackLogic,
+                            String baseUrl, Map<String, String> paramsKeyValue) {
 
-		}
+        try {
 
-	}
-	
-	private void addRequest(String method, final CallbackLogic callbackLogic,
-			String baseUrl, Map<String, String> headers, String body) {
+            if (isShowProgress == true) {
 
-		try {
+                D.showProgressDialog(context, "", true);
 
-			if (isShowProgress == true) {  
-				
-				D.showProgressDialog(context, "", true);
-			
-			}
+            }
 
-			Request request = createRequest(baseUrl, method, headers, body);
+            Request request = createRequest(baseUrl, method, paramsKeyValue);
 
-			enqueue(request, callbackLogic);
+            enqueue(request, callbackLogic);
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			L.e(e);
+            L.e(e);
 
-		}
+        }
 
-	}
+    }
 
-	/**
-	 * addRequest
-	 * 
-	 * @param callbackLogic
-	 * @param baseUrl
-	 */
-	private void addRequest(final CallbackLogic callbackLogic, String baseUrl) {
+    private void addRequest(String method, final CallbackLogic callbackLogic,
+                            String baseUrl, Map<String, String> headers, String body) {
 
-		try {
+        try {
 
-			if (isShowProgress == true) {  
-				
-				D.showProgressDialog(context, "", true);
-			
-			}
+            if (isShowProgress == true) {
 
-			Request request = createRequest(baseUrl);
+                D.showProgressDialog(context, "", true);
 
-			enqueue(request, callbackLogic);
+            }
 
-		} catch (Exception e) {
+            Request request = createRequest(baseUrl, method, headers, body);
 
-			L.e(e);
+            enqueue(request, callbackLogic);
 
-		}
+        } catch (Exception e) {
 
-	}
+            L.e(e);
 
-	private void enqueue(Request request, CallbackLogic callbackLogic) {
+        }
 
-		try {
-			// httpClient.setCookieHandler(new CookieManager(new
-			// PersistentCookieStore(context),CookiePolicy.ACCEPT_ALL));
+    }
 
-			httpClient.newCall(request).enqueue(getCallBack(callbackLogic));
+    /**
+     * addRequest
+     *
+     * @param callbackLogic
+     * @param baseUrl
+     */
+    private void addRequest(final CallbackLogic callbackLogic, String baseUrl) {
 
-		} catch (Exception e) {
+        try {
 
-			L.e(e);
+            if (isShowProgress == true) {
 
-		}
+                D.showProgressDialog(context, "", true);
 
-	}
+            }
 
-	/**
-	 * getCallBack
-	 * 
-	 * @param callbackLogic
-	 * @return Callback
-	 */
-	public Callback getCallBack(final CallbackLogic callbackLogic) {
+            Request request = createRequest(baseUrl);
 
-		return new Callback() {
+            enqueue(request, callbackLogic);
 
-			@Override
-			public void onFailure(Call arg0, IOException arg1) {
-				try {
-					D.hideProgressDialog();
-					callbackLogic.onBizFailure("", null, "");
-					if (callbackLogic != null) {
-						handler.post(new Runnable() {
+        } catch (Exception e) {
 
-							@Override
-							public void run() {
-								// T.showToast(context, request.toString());
-								// Toast.makeText(context, A.getToken(),
-								// Toast.LENGTH_SHORT).show();
-								//T.showToast(context, context.getString(com.rs.mobile.common.R.string.common1_text015));
-							}
+            L.e(e);
 
-						});
-					}
-				} catch (Exception ex) {
-					L.e(ex);
-				}
-			}
+        }
 
-			@Override
-			public void onResponse(Call arg0, Response arg1) throws IOException {
-				try {
+    }
 
-					D.hideProgressDialog();
+    private void enqueue(Request request, CallbackLogic callbackLogic) {
 
-					final String responseBody = arg1.body().string().trim();
-					L.d("789456"+responseBody);
-					final JSONObject json = new JSONObject(responseBody);
+        try {
+            // httpClient.setCookieHandler(new CookieManager(new
+            // PersistentCookieStore(context),CookiePolicy.ACCEPT_ALL));
 
-					handler.post(new Runnable() {
+            httpClient.newCall(request).enqueue(getCallBack(callbackLogic));
 
-						@Override
-						public void run() {
-							try {
-								// 토큰 갱신
-								if (json.has(C.KEY_JSON_FM_STATUS)) {
-									
-									String status = json.get(C.KEY_JSON_FM_STATUS).toString();
+        } catch (Exception e) {
 
-									//TODO 登录失败
-									if (status.equals("-9001")||status.equals("1603")||status.equals("-1")) {
-									    if (json.has("message")) {
-									    	T.showToast(context, json.getString("message"));
-										} else if(json.has("msg")){
-											T.showToast(context, json.getString("msg"));
-										}
+            L.e(e);
 
-									    C.INTERFACE_PARAMS.clear();
+        }
 
-										S.set(context, C.KEY_SHARED_KNICK_NAME, "");
+    }
 
-										S.setShare(context, C.KEY_JSON_TOKEN, "");
+    /**
+     * getCallBack
+     *
+     * @param callbackLogic
+     * @return Callback
+     */
+    public Callback getCallBack(final CallbackLogic callbackLogic) {
 
-										S.setShare(context, C.KEY_REQUEST_MEMBER_ID, "");
+        return new Callback() {
 
-										BaseActivity activity = (BaseActivity) context;
-										Intent i = new Intent(context, LoginActivity.class);
-										activity.startActivity(i);
-										activity.finish();
+            @Override
+            public void onFailure(Call arg0, IOException arg1) {
+                try {
+                    D.hideProgressDialog();
+                    callbackLogic.onBizFailure("", null, "");
+                    if (callbackLogic != null) {
+                        handler.post(new Runnable() {
 
-										return;
-									}
-								}
-								String flag = C.VALUE_RESPONSE_SUCCESS;
-								if (json != null
-										&& json.has(C.KEY_RESPONSE_FLAG)) {
-									flag = json.getString(C.KEY_RESPONSE_FLAG);
-								}
-								callbackLogic.onBizSuccess(responseBody, json,
-										flag);
-							} catch (Exception e) {
-								L.e(e);
-							}
-						}
-					});
-					L.d(responseBody);
-				} catch (Exception e) {
-					L.e(e);
-					callbackLogic.onBizFailure("", null, "");
-				}
-			}
+                            @Override
+                            public void run() {
+                                // T.showToast(context, request.toString());
+                                // Toast.makeText(context, A.getToken(),
+                                // Toast.LENGTH_SHORT).show();
+                                //T.showToast(context, context.getString(com.rs.mobile.common.R.string.common1_text015));
+                            }
 
-		};
+                        });
+                    }
+                } catch (Exception ex) {
+                    L.e(ex);
+                }
+            }
 
-	}
+            @Override
+            public void onResponse(Call arg0, Response arg1) throws IOException {
+                try {
 
-	private Request createRequest(String baseUrl) {
-		return new Request.Builder().url(baseUrl).get().build();
-	}
+                    D.hideProgressDialog();
 
-	private Request createRequest(String baseUrl, String method,
-			Map<String, String> paramsKeyValue) {
-		String fullUrl = null;
+                    final String responseBody = arg1.body().string().trim();
+                    L.d("789456" + responseBody);
+                    final JSONObject json = new JSONObject(responseBody);
+                    handler.post(new Runnable() {
 
-		if (method.equalsIgnoreCase(GET)) {
-			fullUrl = UrlUtil.concatUrlAndParams(baseUrl,
-					UrlUtil.convertMapToHttpParams(paramsKeyValue));
+                        @Override
+                        public void run() {
+                            try {
+                                // 토큰 갱신
+                                if (json.has(C.KEY_JSON_FM_STATUS)) {
 
-			StringUtil.map_key_value(paramsKeyValue, baseUrl);
-			return new Request.Builder().url(fullUrl).get().build();
+                                    String status = json.get(C.KEY_JSON_FM_STATUS).toString();
 
-		} else if (method.equalsIgnoreCase(POST)) {
-			FormBody.Builder postFormBuilder = new FormBody.Builder();
+                                    //TODO 登录失败
+                                    if (status.equals("-9001") || status.equals("1603") || status.equals("-1")) {
+                                        if (json.has("message")) {
+                                            T.showToast(context, json.getString("message"));
+                                        } else if (json.has("msg")) {
+                                            T.showToast(context, json.getString("msg"));
+                                        }
+
+                                        C.INTERFACE_PARAMS.clear();
+
+                                        S.set(context, C.KEY_SHARED_KNICK_NAME, "");
+                                        S.set(context, C.KEY_JSON_TOKEN, "");
+
+                                        S.set(context, C.KEY_REQUEST_MEMBER_ID, "");
+
+                                        S.setShare(context, C.KEY_JSON_TOKEN, "");
+
+                                        S.setShare(context, C.KEY_REQUEST_MEMBER_ID, "");
+
+                                        BaseActivity activity = (BaseActivity) context;
+                                        Intent i = new Intent(context, LoginActivity.class);
+                                        activity.startActivity(i);
+                                        activity.finish();
+
+                                        return;
+                                    }
+                                }
+                                String flag = C.VALUE_RESPONSE_SUCCESS;
+                                if (json != null
+                                        && json.has(C.KEY_RESPONSE_FLAG)) {
+                                    flag = json.getString(C.KEY_RESPONSE_FLAG);
+                                }
+                                callbackLogic.onBizSuccess(responseBody, json,
+                                        flag);
+                            } catch (Exception e) {
+                                L.e(e);
+                            }
+                        }
+                    });
+                    L.d(responseBody);
+                } catch (Exception e) {
+                    L.e(e);
+                    callbackLogic.onBizFailure("", null, "");
+                }
+            }
+
+        };
+
+    }
+
+    private Request createRequest(String baseUrl) {
+        return new Request.Builder().url(baseUrl).get().build();
+    }
+
+    private Request createRequest(String baseUrl, String method,
+                                  Map<String, String> paramsKeyValue) {
+        String fullUrl = null;
+
+        if (method.equalsIgnoreCase(GET)) {
+            fullUrl = UrlUtil.concatUrlAndParams(baseUrl,
+                    UrlUtil.convertMapToHttpParams(paramsKeyValue));
+
+            StringUtil.map_key_value(paramsKeyValue, baseUrl);
+            return new Request.Builder().url(fullUrl).get().build();
+
+        } else if (method.equalsIgnoreCase(POST)) {
+            FormBody.Builder postFormBuilder = new FormBody.Builder();
 //			FormEncodingBuilder postFormBuilder = new FormEncodingBuilder();
-			for (Map.Entry<String, String> entry : paramsKeyValue.entrySet()) {
-				postFormBuilder.add(entry.getKey(), entry.getValue());
-			}
-			StringUtil.map_key_value(paramsKeyValue, baseUrl);
+            for (Map.Entry<String, String> entry : paramsKeyValue.entrySet()) {
+                postFormBuilder.add(entry.getKey(), entry.getValue());
+            }
+            StringUtil.map_key_value(paramsKeyValue, baseUrl);
 
-			return new Request.Builder().url(baseUrl)
-					.post(postFormBuilder.build()).build();
+            return new Request.Builder().url(baseUrl)
+                    .post(postFormBuilder.build()).build();
 
-		}
+        }
 
-		return new Request.Builder().url(baseUrl).get().build();
+        return new Request.Builder().url(baseUrl).get().build();
 
-	}
-	
-	private Request createRequest(String baseUrl, String method, Map<String, String> headers, String body) {
-	
-		Builder builder = new Request.Builder();
-		
-		for (Map.Entry<String, String> entry : headers.entrySet()) {
-			
-			builder.addHeader(entry.getKey(), entry.getValue());
+    }
 
-		}
+    private Request createRequest(String baseUrl, String method, Map<String, String> headers, String body) {
+
+        Builder builder = new Request.Builder();
+
+        for (Map.Entry<String, String> entry : headers.entrySet()) {
+
+            builder.addHeader(entry.getKey(), entry.getValue());
+
+        }
         L.d(baseUrl);
         L.d(body);
-		final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-		
-		RequestBody requestBody = RequestBody.create(JSON, body);
+        final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
-		return builder.url(baseUrl).post(requestBody).build();
+        RequestBody requestBody = RequestBody.create(JSON, body);
+
+        return builder.url(baseUrl).post(requestBody).build();
 
 
-	}
+    }
 
-	/**
-	 * 
-	 * @author ZZooN
-	 * 
-	 */
-	public interface CallbackLogic {
+    /**
+     * @author ZZooN
+     */
+    public interface CallbackLogic {
 
-		void onBizSuccess(String responseDescription, JSONObject data,
-				String flag);
+        void onBizSuccess(String responseDescription, JSONObject data,
+                          String flag);
 
-		void onBizFailure(String responseDescription, JSONObject data,
-				String flag);
+        void onBizFailure(String responseDescription, JSONObject data,
+                          String flag);
 
-		void onNetworkError(Request request, IOException e);
+        void onNetworkError(Request request, IOException e);
 
-	}
+    }
 
 }

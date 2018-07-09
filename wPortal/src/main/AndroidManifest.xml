@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rs.mobile.wportal"
     android:largeHeap="true"
-    android:versionCode="1807052120"
+    android:versionCode="1807061039"
     android:versionName="1.2.2">
 
     <uses-sdk

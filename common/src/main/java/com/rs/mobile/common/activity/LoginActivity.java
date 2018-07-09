@@ -51,112 +51,112 @@ import java.util.HashMap;
 import okhttp3.Request;
 
 @SuppressLint("NewApi")
-public class LoginActivity extends BaseActivity{
+public class LoginActivity extends BaseActivity {
 
-	// sms intent filter
-	public static final String ACTION_RECEIVE_SMS = "android.provider.Telephony.SMS_RECEIVED";
+    // sms intent filter
+    public static final String ACTION_RECEIVE_SMS = "android.provider.Telephony.SMS_RECEIVED";
 
-	private ImageView closeBtn;
+    private ImageView closeBtn;
 
-	private ImageView login_tryangle, membership_tryangle;
+    private ImageView login_tryangle, membership_tryangle;
 
-	private RelativeLayout loginTabBtn, membershipTabBtn;
+    private RelativeLayout loginTabBtn, membershipTabBtn;
 
-	private LinearLayout loginLayout, membershipLayout;
+    private LinearLayout loginLayout, membershipLayout;
 
-	private EditText idEditText, pwEditText;
+    private EditText idEditText, pwEditText;
 
-	private TextView loginBtn;
+    private TextView loginBtn;
 
-	private EditText idEditTextM, pwEditTextM, pwEditTextMCheck, smsEditText, et_parent_id;
+    private EditText idEditTextM, pwEditTextM, pwEditTextMCheck, smsEditText, et_parent_id;
 
-	private TextView smsBtn, membershipBtn;
-	
-	private TextView app_ver_login, app_ver_memvership;
+    private TextView smsBtn, membershipBtn;
 
-	private TextView forget_password;
-	
-	private Message m = null;
+    private TextView app_ver_login, app_ver_memvership;
 
-	private CardView btnMember1, btnMember2, btnMember3, btnMember4, btnMember5, btnMember6;
+    private TextView forget_password;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+    private Message m = null;
 
-		try {
+    private CardView btnMember1, btnMember2, btnMember3, btnMember4, btnMember5, btnMember6;
 
-			setContentView(R.layout.activity_login_rs);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-			initView();
+        try {
 
-			closeBtn = (ImageView) findViewById(R.id.close_btn);
-			closeBtn.setOnClickListener(new OnClickListener() {
+            setContentView(R.layout.activity_login_rs);
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
+            initView();
 
-					finish();
+            closeBtn = (ImageView) findViewById(R.id.close_btn);
+            closeBtn.setOnClickListener(new OnClickListener() {
 
-				}
-			});
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
 
-			loginTabBtn = (RelativeLayout) findViewById(R.id.login_tab_btn);
-			loginTabBtn.setOnClickListener(new OnClickListener() {
+                    finish();
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
+                }
+            });
 
-					try {
-						if(!loginLayout.isShown()){
-							Animation inUnderAnimation = AnimationUtils
-									.loadAnimation(LoginActivity.this,
-											R.anim.scale_left_in);
-							Animation outUnderAnimation = AnimationUtils
-									.loadAnimation(LoginActivity.this,
-											R.anim.scale_left_out);
-							Animation inLayoutAnimation = AnimationUtils
-									.loadAnimation(LoginActivity.this,
-											R.anim.slide_left_in);
-							Animation outLayoutAnimation = AnimationUtils
-									.loadAnimation(LoginActivity.this,
-											R.anim.slide_left_out);
+            loginTabBtn = (RelativeLayout) findViewById(R.id.login_tab_btn);
+            loginTabBtn.setOnClickListener(new OnClickListener() {
 
-							//loginUnderLine.startAnimation(inUnderAnimation);
-							//membershipUnderLine.startAnimation(outUnderAnimation);
-							loginLayout.startAnimation(inLayoutAnimation);
-							membershipLayout.startAnimation(outLayoutAnimation);
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
 
-							//loginUnderLine.setVisibility(View.VISIBLE);
-							//membershipUnderLine.setVisibility(View.GONE);
-							login_tryangle.setVisibility(View.VISIBLE);
-							loginLayout.setVisibility(View.VISIBLE);
-							membership_tryangle.setVisibility(View.INVISIBLE);
-							membershipLayout.setVisibility(View.GONE);
-						}
-					} catch (Exception e) {
+                    try {
+                        if (!loginLayout.isShown()) {
+                            Animation inUnderAnimation = AnimationUtils
+                                    .loadAnimation(LoginActivity.this,
+                                            R.anim.scale_left_in);
+                            Animation outUnderAnimation = AnimationUtils
+                                    .loadAnimation(LoginActivity.this,
+                                            R.anim.scale_left_out);
+                            Animation inLayoutAnimation = AnimationUtils
+                                    .loadAnimation(LoginActivity.this,
+                                            R.anim.slide_left_in);
+                            Animation outLayoutAnimation = AnimationUtils
+                                    .loadAnimation(LoginActivity.this,
+                                            R.anim.slide_left_out);
 
-						L.e(e);
+                            //loginUnderLine.startAnimation(inUnderAnimation);
+                            //membershipUnderLine.startAnimation(outUnderAnimation);
+                            loginLayout.startAnimation(inLayoutAnimation);
+                            membershipLayout.startAnimation(outLayoutAnimation);
 
-					}
+                            //loginUnderLine.setVisibility(View.VISIBLE);
+                            //membershipUnderLine.setVisibility(View.GONE);
+                            login_tryangle.setVisibility(View.VISIBLE);
+                            loginLayout.setVisibility(View.VISIBLE);
+                            membership_tryangle.setVisibility(View.INVISIBLE);
+                            membershipLayout.setVisibility(View.GONE);
+                        }
+                    } catch (Exception e) {
 
-				}
-			});
+                        L.e(e);
 
-			membershipTabBtn = (RelativeLayout) findViewById(R.id.membership_tab_btn);
-			membershipTabBtn.setOnClickListener(new OnClickListener() {
+                    }
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
+                }
+            });
+
+            membershipTabBtn = (RelativeLayout) findViewById(R.id.membership_tab_btn);
+            membershipTabBtn.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
 
 
-					Intent intent = new Intent(LoginActivity.this, WebActivity.class);
-					intent.putExtra("title", "등록");
-					intent.putExtra("url", "http://join.gigaroom.com/10_Member/join_main");
-					startActivity(intent);
+                    Intent intent = new Intent(LoginActivity.this, WebActivity.class);
+                    intent.putExtra("title", "등록");
+                    intent.putExtra("url", "http://join.gigaroom.com/10_Member/join_main");
+                    startActivity(intent);
 
 //
 //
@@ -195,93 +195,93 @@ public class LoginActivity extends BaseActivity{
 //
 //					}
 
-				}
-			});
+                }
+            });
 
-			//loginUnderLine = (LinearLayout) findViewById(R.id.login_under_line);
+            //loginUnderLine = (LinearLayout) findViewById(R.id.login_under_line);
 
-			//membershipUnderLine = (LinearLayout) findViewById(R.id.membership_under_line);
+            //membershipUnderLine = (LinearLayout) findViewById(R.id.membership_under_line);
 
-			loginLayout = (LinearLayout) findViewById(R.id.login_layout);
+            loginLayout = (LinearLayout) findViewById(R.id.login_layout);
 
-			membershipLayout = (LinearLayout) findViewById(R.id.membership_layout);
-			login_tryangle = (ImageView) findViewById(R.id.Login_Tryangle);
-			membership_tryangle = (ImageView) findViewById(R.id.Member_Tryangle);
+            membershipLayout = (LinearLayout) findViewById(R.id.membership_layout);
+            login_tryangle = (ImageView) findViewById(R.id.Login_Tryangle);
+            membership_tryangle = (ImageView) findViewById(R.id.Member_Tryangle);
 
-			idEditText = (EditText) findViewById(R.id.id_edt_text);
-			idEditText.addTextChangedListener(new TextWatcher() {
+            idEditText = (EditText) findViewById(R.id.id_edt_text);
+            idEditText.addTextChangedListener(new TextWatcher() {
 
-				@Override
-				public void onTextChanged(CharSequence s, int start,
-						int before, int count) {
-				}
+                @Override
+                public void onTextChanged(CharSequence s, int start,
+                                          int before, int count) {
+                }
 
-				@Override
-				public void beforeTextChanged(CharSequence s, int start,
-						int count, int after) {
-				}
+                @Override
+                public void beforeTextChanged(CharSequence s, int start,
+                                              int count, int after) {
+                }
 
-				@Override
-				public void afterTextChanged(Editable s) {
-					// TODO Auto-generated method stub
+                @Override
+                public void afterTextChanged(Editable s) {
+                    // TODO Auto-generated method stub
 
-					//checkLoginInput();
+                    //checkLoginInput();
 
-				}
-			});
+                }
+            });
 
-			pwEditText = (EditText) findViewById(R.id.pw_edt_text);
-			pwEditText.addTextChangedListener(new TextWatcher() {
+            pwEditText = (EditText) findViewById(R.id.pw_edt_text);
+            pwEditText.addTextChangedListener(new TextWatcher() {
 
-				@Override
-				public void onTextChanged(CharSequence s, int start,
-						int before, int count) {
-				}
+                @Override
+                public void onTextChanged(CharSequence s, int start,
+                                          int before, int count) {
+                }
 
-				@Override
-				public void beforeTextChanged(CharSequence s, int start,
-						int count, int after) {
-				}
+                @Override
+                public void beforeTextChanged(CharSequence s, int start,
+                                              int count, int after) {
+                }
 
-				@Override
-				public void afterTextChanged(Editable s) {
-					// TODO Auto-generated method stub
+                @Override
+                public void afterTextChanged(Editable s) {
+                    // TODO Auto-generated method stub
 
-					//checkLoginInput();
+                    //checkLoginInput();
 
-				}
-			});
+                }
+            });
 
-			loginBtn = (TextView) findViewById(R.id.login_btn);
-			loginBtn.setOnClickListener(new OnClickListener() {
+            loginBtn = (TextView) findViewById(R.id.login_btn);
+            loginBtn.setOnClickListener(new OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
+                @Override
+                public void onClick(View v) {
+                    // TODO Auto-generated method stub
 
-					try {
+                    try {
 
-						final String id = idEditText.getText().toString();
+                        final String id = idEditText.getText().toString();
 
-						String pw = pwEditText.getText().toString();
+                        String pw = pwEditText.getText().toString();
 
-						if (id == null || id.equals("")) {
+                        if (id == null || id.equals("")) {
 
-							t(getString(R.string.msg_empty_id));
+                            t(getString(R.string.msg_empty_id));
 
-							return;
+                            return;
 
-						}
+                        }
 
-						if (pw == null || pw.equals("")) {
+                        if (pw == null || pw.equals("")) {
 
-							t(getString(R.string.msg_empty_pw));
+                            t(getString(R.string.msg_empty_pw));
 
-							return;
+                            return;
 
-						}
+                        }
 
-						login(id, pw);
+                        login(id, pw);
 //						HashMap<String, String> headers = new HashMap<>();
 //						headers.put("Content-Type", "application/json;Charset=UTF-8");
 //						HashMap<String, String> params = new HashMap<String, String>();
@@ -391,249 +391,250 @@ public class LoginActivity extends BaseActivity{
 //
 //							}
 //						}, C.BASE_MEMBER_RS_URL + C.LOGIN_ENC_RS_URL, headers, j1.toString());
-					} catch (Exception e) {
-						L.e(e);
-					}
-				}
-			});
+                    } catch (Exception e) {
+                        L.e(e);
+                    }
+                }
+            });
 
-			app_ver_login = (TextView)findViewById(R.id.app_ver_login);
-			
-			forget_password = (TextView)findViewById(R.id.forget_password);
-			forget_password.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
-			forget_password.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					startActivity(new Intent(LoginActivity.this,ForgetPassWordActivity.class));
-				}
-			});
-			app_ver_memvership = (TextView)findViewById(R.id.app_ver_memvership);
+            app_ver_login = (TextView) findViewById(R.id.app_ver_login);
 
-			try {
+            forget_password = (TextView) findViewById(R.id.forget_password);
+            forget_password.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG);
+            forget_password.setOnClickListener(new OnClickListener() {
 
-				// 자기 전화번호 가져오기
-				TelephonyManager telephone = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
-				String phoneNumber = telephone.getLine1Number();
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(LoginActivity.this, ForgetPassWordActivity.class));
+                }
+            });
+            app_ver_memvership = (TextView) findViewById(R.id.app_ver_memvership);
 
-				L.d("number : " + telephone.getSimSerialNumber());
-				L.d("number : " + telephone.getLine1Number());
+            try {
 
-				if (phoneNumber != null) {
+                // 자기 전화번호 가져오기
+                TelephonyManager telephone = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+                String phoneNumber = telephone.getLine1Number();
 
-					// 중국
-					if (phoneNumber.contains("+86"))
-						phoneNumber = phoneNumber.replace("+86", "");
+                L.d("number : " + telephone.getSimSerialNumber());
+                L.d("number : " + telephone.getLine1Number());
 
-					// 한국
-					if (phoneNumber.contains("+82")) {
+                if (phoneNumber != null) {
 
-						phoneNumber = phoneNumber.replace("+82", "");
-						phoneNumber = "0" + phoneNumber;
-					}
+                    // 중국
+                    if (phoneNumber.contains("+86"))
+                        phoneNumber = phoneNumber.replace("+86", "");
 
-				} else {
-					phoneNumber = "";
-				}
+                    // 한국
+                    if (phoneNumber.contains("+82")) {
 
-				idEditText.setText(phoneNumber);
-				if(idEditTextM != null){
-					idEditTextM.setText(phoneNumber);
-				}
+                        phoneNumber = phoneNumber.replace("+82", "");
+                        phoneNumber = "0" + phoneNumber;
+                    }
 
-			} catch (Exception e) {
+                } else {
+                    phoneNumber = "";
+                }
 
-				L.e(e);
+                idEditText.setText(phoneNumber);
+                if (idEditTextM != null) {
+                    idEditTextM.setText(phoneNumber);
+                }
 
-			}
-			
-			//버전 가져오기
-			try {
-				
-				PackageManager pm = getPackageManager();
-				
-				PackageInfo info = null;
-			
-				info = pm.getPackageInfo(getApplicationContext().getPackageName(), 0);
-				
-				if (info != null) {
-					
-					app_ver_login.setText(getResources().getString(R.string.app_name) +
-							"Version : v" + info.versionName + "(" + (C.BASE_URL.contains("portal.dxbhtm.com")? "P":"D") + ")");
-					if(app_ver_memvership != null){
-						app_ver_memvership.setText(getResources().getString(R.string.app_name) +
-								"Version : v" + info.versionName + "(" + (C.BASE_URL.contains("portal.dxbhtm.com")? "P":"D") + ")");
-					}
+            } catch (Exception e) {
 
-				}
-				
-			} catch (Exception e) {
-				
-				L.e(e);
-				
-			}
+                L.e(e);
 
-		} catch (Exception e) {
+            }
 
-			e(e);
+            //버전 가져오기
+            try {
 
-		}
+                PackageManager pm = getPackageManager();
 
-	}
+                PackageInfo info = null;
 
-	private void initView(){
-		btnMember1 = (CardView) findViewById(R.id.btn_member1);
-		btnMember2 = (CardView) findViewById(R.id.btn_member2);
-		btnMember3 = (CardView) findViewById(R.id.btn_member3);
-		btnMember4 = (CardView) findViewById(R.id.btn_member4);
-		btnMember5 = (CardView) findViewById(R.id.btn_member5);
-		btnMember6 = (CardView) findViewById(R.id.btn_member6);
+                info = pm.getPackageInfo(getApplicationContext().getPackageName(), 0);
+
+                if (info != null) {
+
+                    app_ver_login.setText(getResources().getString(R.string.app_name) +
+                            "Version : v" + info.versionName + "(" + (C.BASE_URL.contains("portal.dxbhtm.com") ? "P" : "D") + ")");
+                    if (app_ver_memvership != null) {
+                        app_ver_memvership.setText(getResources().getString(R.string.app_name) +
+                                "Version : v" + info.versionName + "(" + (C.BASE_URL.contains("portal.dxbhtm.com") ? "P" : "D") + ")");
+                    }
+
+                }
+
+            } catch (Exception e) {
+
+                L.e(e);
+
+            }
+
+        } catch (Exception e) {
+
+            e(e);
+
+        }
+
+    }
+
+    private void initView() {
+        btnMember1 = (CardView) findViewById(R.id.btn_member1);
+        btnMember2 = (CardView) findViewById(R.id.btn_member2);
+        btnMember3 = (CardView) findViewById(R.id.btn_member3);
+        btnMember4 = (CardView) findViewById(R.id.btn_member4);
+        btnMember5 = (CardView) findViewById(R.id.btn_member5);
+        btnMember6 = (CardView) findViewById(R.id.btn_member6);
 
 
-		btnMember1.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
-				intent.putExtra("RegFlag", 1);
-				startActivity(intent);
+        btnMember1.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
+                intent.putExtra("RegFlag", 1);
+                startActivity(intent);
 //				finish();
-			}
-		});
-		btnMember2.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
-				intent.putExtra("RegFlag", 2);
-				startActivity(intent);
+            }
+        });
+        btnMember2.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
+                intent.putExtra("RegFlag", 2);
+                startActivity(intent);
 //				finish();
-			}
-		});
-		btnMember3.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
-				intent.putExtra("RegFlag", 3);
-				startActivity(intent);
+            }
+        });
+        btnMember3.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
+                intent.putExtra("RegFlag", 3);
+                startActivity(intent);
 //				finish();
-			}
-		});
-		btnMember4.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
-				intent.putExtra("RegFlag", 4);
-				startActivity(intent);
+            }
+        });
+        btnMember4.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
+                intent.putExtra("RegFlag", 4);
+                startActivity(intent);
 //				finish();
-			}
-		});
-		btnMember5.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
+            }
+        });
+        btnMember5.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
 //				Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
 //				intent.putExtra("RegFlag", 5);
 //				startActivity(intent);
 //				finish();
-				dialog1();
-			}
-		});
-		btnMember6.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
-				intent.putExtra("RegFlag", 6);
-				startActivity(intent);
+                dialog1();
+            }
+        });
+        btnMember6.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
+                intent.putExtra("RegFlag", 6);
+                startActivity(intent);
 //				finish();
-			}
-		});
-	}
+            }
+        });
+    }
 
-	private void dialog1(){
-		final Dialog dialog = new Dialog(this, R.style.LodingDialog);
-		dialog.setContentView(R.layout.dialog_item_bg);
-		((TextView)dialog.findViewById(R.id.tv_title)).setText("단체가입");
-		((TextView)dialog.findViewById(R.id.tv_group1)).setText("단체신청");
-		((TextView)dialog.findViewById(R.id.tv_group1)).setText("단체찾기");
-		dialog.findViewById(R.id.iv_close).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				dialog.dismiss();
-			}
-		});
-		dialog.findViewById(R.id.rl_group1).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				dialog2();
-				dialog.dismiss();
-			}
-		});
-		dialog.findViewById(R.id.rl_group2).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
-				intent.putExtra("RegFlag", 53);
-				startActivity(intent);
-				dialog.dismiss();
+    private void dialog1() {
+        final Dialog dialog = new Dialog(this, R.style.LodingDialog);
+        dialog.setContentView(R.layout.dialog_item_bg);
+        ((TextView) dialog.findViewById(R.id.tv_title)).setText("단체가입");
+        ((TextView) dialog.findViewById(R.id.tv_group1)).setText("단체신청");
+        ((TextView) dialog.findViewById(R.id.tv_group1)).setText("단체찾기");
+        dialog.findViewById(R.id.iv_close).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.findViewById(R.id.rl_group1).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog2();
+                dialog.dismiss();
+            }
+        });
+        dialog.findViewById(R.id.rl_group2).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
+                intent.putExtra("RegFlag", 53);
+                startActivity(intent);
+                dialog.dismiss();
 //				finish();
-			}
-		});
-		dialog.show();
-	}
+            }
+        });
+        dialog.show();
+    }
 
-	private void dialog2(){
-		final Dialog dialog = new Dialog(this, R.style.LodingDialog);
-		dialog.setContentView(R.layout.dialog_item_bg);
-		dialog.setContentView(R.layout.dialog_item_bg);
-		((TextView)dialog.findViewById(R.id.tv_title)).setText("사업자유형선택");
-		((TextView)dialog.findViewById(R.id.tv_group1)).setText("개인");
-		((TextView)dialog.findViewById(R.id.tv_group1)).setText("사업자");
-		dialog.findViewById(R.id.iv_close).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				dialog.dismiss();
-			}
-		});
-		dialog.findViewById(R.id.rl_group1).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
-				intent.putExtra("RegFlag", 51);
-				startActivity(intent);
-				dialog.dismiss();
+    private void dialog2() {
+        final Dialog dialog = new Dialog(this, R.style.LodingDialog);
+        dialog.setContentView(R.layout.dialog_item_bg);
+        dialog.setContentView(R.layout.dialog_item_bg);
+        ((TextView) dialog.findViewById(R.id.tv_title)).setText("사업자유형선택");
+        ((TextView) dialog.findViewById(R.id.tv_group1)).setText("개인");
+        ((TextView) dialog.findViewById(R.id.tv_group1)).setText("사업자");
+        dialog.findViewById(R.id.iv_close).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        dialog.findViewById(R.id.rl_group1).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
+                intent.putExtra("RegFlag", 51);
+                startActivity(intent);
+                dialog.dismiss();
 //				finish();
-			}
-		});
-		dialog.findViewById(R.id.rl_group2).setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View view) {
-				Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
-				intent.putExtra("RegFlag", 52);
-				startActivity(intent);
-				dialog.dismiss();
+            }
+        });
+        dialog.findViewById(R.id.rl_group2).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, Clause1Activity.class);
+                intent.putExtra("RegFlag", 52);
+                startActivity(intent);
+                dialog.dismiss();
 //				finish();
-			}
-		});
-		dialog.show();
-	}
+            }
+        });
+        dialog.show();
+    }
 
-	private void login(String tel, String pwd){
-		HashMap<String, String> params = new HashMap<>();
-		params.put("lang_type", AppConfig.LANG_TYPE);
-		params.put("memid", tel);
-		params.put("mempwd", EncryptUtils.SHA512(pwd));
-		params.put("deviceNo", Util.getDeviceId(LoginActivity.this));
+    private void login(String tel, String pwd) {
+        HashMap<String, String> params = new HashMap<>();
+        params.put("lang_type", AppConfig.LANG_TYPE);
+        params.put("memid", tel);
+        params.put("mempwd", EncryptUtils.SHA512(pwd));
+        params.put("deviceNo", Util.getDeviceId(LoginActivity.this));
 
-		OkHttpHelper okHttpHelper = new OkHttpHelper(LoginActivity.this);
-		okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
-			@Override
-			public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
-				LoginEntity entity = GsonUtils.changeGsonToBean(responseDescription, LoginEntity.class);
-				if("1".equals(entity.status)){
-					S.set(LoginActivity.this, C.KEY_JSON_CUSTOM_CODE, entity.custom_code);
-					S.setShare(LoginActivity.this, C.KEY_JSON_CUSTOM_CODE, entity.custom_code);
-					S.set(LoginActivity.this, C.KEY_REQUEST_MEMBER_ID, entity.custom_code);
-					S.set(LoginActivity.this, C.KEY_JSON_CUSTOM_ID, entity.custom_id);
-					S.set(LoginActivity.this, C.KEY_JSON_CUSTOM_NAME, entity.custom_name);
-					S.set(LoginActivity.this, C.KEY_JSON_NICK_NAME, entity.nick_name);
+        OkHttpHelper okHttpHelper = new OkHttpHelper(LoginActivity.this);
+        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+
+                LoginEntity entity = GsonUtils.changeGsonToBean(responseDescription, LoginEntity.class);
+                if ("1".equals(entity.status)) {
+                    S.set(LoginActivity.this, C.KEY_JSON_CUSTOM_CODE, entity.custom_code);
+                    S.setShare(LoginActivity.this, C.KEY_JSON_CUSTOM_CODE, entity.custom_code);
+                    S.set(LoginActivity.this, C.KEY_REQUEST_MEMBER_ID, entity.custom_code);
+                    S.set(LoginActivity.this, C.KEY_JSON_CUSTOM_ID, entity.custom_id);
+                    S.set(LoginActivity.this, C.KEY_JSON_CUSTOM_NAME, entity.custom_name);
+                    S.set(LoginActivity.this, C.KEY_JSON_NICK_NAME, entity.nick_name);
 //					C.KEY_JSON_TOKEN,
 //							// data.getString(C.KEY_JSON_TOKEN));
 //							data.getString(C.KEY_JSON_TOKEN) + "|"
@@ -641,15 +642,16 @@ public class LoginActivity extends BaseActivity{
 //									+ data.getString("custom_code")
 //									+ "|" + Util.getDeviceId(context)
 //					S.set(LoginActivity.this, C.KEY_JSON_TOKEN, entity.token + "|aaaaaa|" + entity.custom_code);
-					S.set(LoginActivity.this, C.KEY_JSON_TOKEN, entity.token+"|"+entity.ssoId+"|"+entity.custom_code+"|"+Util.getDeviceId(LoginActivity.this));
-					S.setShare(LoginActivity.this, C.KEY_JSON_TOKEN, entity.token+"|"+entity.ssoId+"|"+entity.custom_code+"|"+Util.getDeviceId(LoginActivity.this));
-					S.set(LoginActivity.this, C.KEY_JSON_PROFILE_IMG, entity.profile_img);
-					S.set(LoginActivity.this, C.KEY_JSON_DIV_CODE, entity.div_code);
-					S.set(LoginActivity.this, C.KEY_JSON_SSOID, entity.ssoId);
-					S.set(LoginActivity.this, C.KEY_JSON_SSO_REGIKEY, entity.sso_regiKey);
-					S.set(LoginActivity.this, C.KEY_JSON_MALL_HOME_ID, entity.mall_home_id);
-					S.set(LoginActivity.this, C.KEY_JSON_POINT_CARD_NO, entity.point_card_no);
-					S.set(LoginActivity.this, C.KEY_JSON_PARENT_ID, entity.parent_id);
+                    S.set(LoginActivity.this, C.KEY_JSON_TOKEN, entity.token + "|" + entity.ssoId + "|" + entity.custom_code + "|" + Util.getDeviceId(LoginActivity.this));
+                    S.setShare(LoginActivity.this, C.KEY_JSON_TOKEN, entity.token + "|" + entity.ssoId + "|" + entity.custom_code + "|" + Util.getDeviceId(LoginActivity.this));
+                    S.set(LoginActivity.this, C.KEY_JSON_PROFILE_IMG, entity.profile_img);
+                    S.set(LoginActivity.this, C.KEY_JSON_DIV_CODE, entity.div_code);
+                    S.set(LoginActivity.this, C.KEY_JSON_SSOID, entity.ssoId);
+
+                    S.set(LoginActivity.this, C.KEY_JSON_SSO_REGIKEY, entity.sso_regiKey);
+                    S.set(LoginActivity.this, C.KEY_JSON_MALL_HOME_ID, entity.mall_home_id);
+                    S.set(LoginActivity.this, C.KEY_JSON_POINT_CARD_NO, entity.point_card_no);
+                    S.set(LoginActivity.this, C.KEY_JSON_PARENT_ID, entity.parent_id);
 
 //					AppConfig.custom_code = entity.custom_code;
 //					AppConfig.custom_id = entity.custom_id;
@@ -666,218 +668,219 @@ public class LoginActivity extends BaseActivity{
 //
 //					S.setShare(LoginActivity.this, C.KEY_JSON_TOKEN, entity.token);
 
-					Toast.makeText(LoginActivity.this, entity.msg, Toast.LENGTH_LONG).show();
-					finish();
-				}else{
-					Toast.makeText(LoginActivity.this, entity.msg, Toast.LENGTH_LONG).show();
-				}
-			}
+                    Toast.makeText(LoginActivity.this, entity.msg, Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    Toast.makeText(LoginActivity.this, entity.msg, Toast.LENGTH_LONG).show();
+                }
+            }
 
-			@Override
-			public void onBizFailure(String responseDescription, JSONObject data, String flag) {
-			}
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+            }
 
-			@Override
-			public void onNetworkError(Request request, IOException e) {
-			}
-		}, "http://member.gigawon.co.kr:8808/api/Login/requestLoginCheck", GsonUtils.createGsonString(params));
-	}
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+            }
+        }, "http://member.gigawon.co.kr:8808/api/Login/requestLoginCheck", GsonUtils.createGsonString(params));
+    }
 
-	/**
-	 * 2017.12.22 Jack Kim
-	 * checkLoginInput
-	 * 암호입력 EditText를 클릭하면 실행되는 함수
-	 * Background가 변경된다
-	 */
-	public void checkLoginInput() {
+    /**
+     * 2017.12.22 Jack Kim
+     * checkLoginInput
+     * 암호입력 EditText를 클릭하면 실행되는 함수
+     * Background가 변경된다
+     */
+    public void checkLoginInput() {
 
-		try {
+        try {
 
-			String id = idEditText.getText().toString();
+            String id = idEditText.getText().toString();
 
-			String pw = pwEditText.getText().toString();
+            String pw = pwEditText.getText().toString();
 
-			if (id != null && id.length() > 0 && pw != null && pw.length() > 0) {
+            if (id != null && id.length() > 0 && pw != null && pw.length() > 0) {
 
-				loginBtn.setBackgroundDrawable(getResources().getDrawable(
-						R.drawable.bg_login_n_btn));
+                loginBtn.setBackgroundDrawable(getResources().getDrawable(
+                        R.drawable.bg_login_n_btn));
 
-			} else {
+            } else {
 
-				loginBtn.setBackgroundDrawable(getResources().getDrawable(
-						R.drawable.bg_login_d_btn));
+                loginBtn.setBackgroundDrawable(getResources().getDrawable(
+                        R.drawable.bg_login_d_btn));
 
-			}
+            }
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			e(e);
+            e(e);
 
-		}
+        }
 
-	}
+    }
 
-	/**
-	 * checkMembershipInput
-	 */
-	public void checkMembershipInput() {
+    /**
+     * checkMembershipInput
+     */
+    public void checkMembershipInput() {
 
-		try {
+        try {
 
-			String id = idEditTextM.getText().toString();
+            String id = idEditTextM.getText().toString();
 
-			String pw = pwEditTextM.getText().toString();
-			
-			String pwCheck = pwEditTextMCheck.getText().toString();
+            String pw = pwEditTextM.getText().toString();
 
-			String sms = smsEditText.getText().toString();
+            String pwCheck = pwEditTextMCheck.getText().toString();
 
-			if (id != null && id.length() > 0 && pw != null && pw.length() > 0
-					&& pwCheck != null && pwCheck.length() > 0 && sms != null && sms.length() > 0) {
+            String sms = smsEditText.getText().toString();
 
-				membershipBtn.setBackgroundDrawable(getResources().getDrawable(
-						R.drawable.bg_login_n_btn));
+            if (id != null && id.length() > 0 && pw != null && pw.length() > 0
+                    && pwCheck != null && pwCheck.length() > 0 && sms != null && sms.length() > 0) {
 
-			} else {
+                membershipBtn.setBackgroundDrawable(getResources().getDrawable(
+                        R.drawable.bg_login_n_btn));
 
-				membershipBtn.setBackgroundDrawable(getResources().getDrawable(
-						R.drawable.bg_login_d_btn));
+            } else {
 
-			}
+                membershipBtn.setBackgroundDrawable(getResources().getDrawable(
+                        R.drawable.bg_login_d_btn));
 
-		} catch (Exception e) {
+            }
 
-			e(e);
+        } catch (Exception e) {
 
-		}
+            e(e);
 
-	}
+        }
 
-	/**
-	 * receiver
-	 * 
-	 * @author ZZooN
-	 * 
-	 */
-	public class receiver extends BroadcastReceiver {
+    }
 
-		@Override
-		public void onReceive(Context context, Intent intent) {
-			// TODO Auto-generated method stub
+    /**
+     * receiver
+     *
+     * @author ZZooN
+     */
+    public class receiver extends BroadcastReceiver {
 
-			try {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            // TODO Auto-generated method stub
 
-				if (intent.getAction().equals(ACTION_RECEIVE_SMS)) {
+            try {
 
-					Bundle bundle = intent.getExtras();
+                if (intent.getAction().equals(ACTION_RECEIVE_SMS)) {
 
-					String message = "";
+                    Bundle bundle = intent.getExtras();
 
-					if (bundle != null) {
+                    String message = "";
 
-						Object[] pdus = (Object[]) bundle.get("pdus");
+                    if (bundle != null) {
 
-						for (Object pdu : pdus) {
+                        Object[] pdus = (Object[]) bundle.get("pdus");
 
-							SmsMessage smsMessage = SmsMessage
-									.createFromPdu((byte[]) pdu);
-							message += smsMessage.getMessageBody();
+                        for (Object pdu : pdus) {
 
-						}
+                            SmsMessage smsMessage = SmsMessage
+                                    .createFromPdu((byte[]) pdu);
+                            message += smsMessage.getMessageBody();
 
-					}
+                        }
 
-					// if (message != null && mainFragment.phoneRequestNumber !=
-					// null) {
-					//
-					// if (message.contains(mainFragment.phoneRequestNumber)) {
-					//
-					// T.showToast(MainActivity.this,
-					// R.string.msg_cert_sms_completed);
-					//
-					// mainFragment.rPhoneEditTextC.setText(mainFragment.phoneRequestNumber);
-					//
-					// }
-					//
-					// }
+                    }
 
-				}
+                    // if (message != null && mainFragment.phoneRequestNumber !=
+                    // null) {
+                    //
+                    // if (message.contains(mainFragment.phoneRequestNumber)) {
+                    //
+                    // T.showToast(MainActivity.this,
+                    // R.string.msg_cert_sms_completed);
+                    //
+                    // mainFragment.rPhoneEditTextC.setText(mainFragment.phoneRequestNumber);
+                    //
+                    // }
+                    //
+                    // }
 
-			} catch (Exception e) {
+                }
 
-				L.e(e);
+            } catch (Exception e) {
 
-			}
+                L.e(e);
 
-		}
+            }
 
-	}
+        }
 
-	private String encryption(String userPassword) {
+    }
 
-		MessageDigest md;
+    private String encryption(String userPassword) {
 
-		String encritPassword = "";
+        MessageDigest md;
 
-		try {
-			md = MessageDigest.getInstance("SHA-512");
+        String encritPassword = "";
 
-			md.update(userPassword.getBytes());
-			byte[] mb = md.digest();
-			for (int i = 0; i < mb.length; i++) {
-				byte temp = mb[i];
-				String s = Integer.toHexString(new Byte(temp));
-				while (s.length() < 2) {
-					s = "0" + s;
-				}
-				s = s.substring(s.length() - 2);
-				encritPassword += s;
-			}
+        try {
+            md = MessageDigest.getInstance("SHA-512");
 
-		} catch (Exception e) {
+            md.update(userPassword.getBytes());
+            byte[] mb = md.digest();
+            for (int i = 0; i < mb.length; i++) {
+                byte temp = mb[i];
+                String s = Integer.toHexString(new Byte(temp));
+                while (s.length() < 2) {
+                    s = "0" + s;
+                }
+                s = s.substring(s.length() - 2);
+                encritPassword += s;
+            }
 
-			e(e);
-			
-		}
+        } catch (Exception e) {
 
-		return encritPassword;
-	}
-	/**
-	 * 푸시 요청
-	 */
-	private void xgPush() {
+            e(e);
 
-		XGPushConfig.enableDebug(this, true);
-		Handler handler = new HandlerExtension();
-		m = handler.obtainMessage();
-		// 注册接口
+        }
 
-		XGPushManager.registerPush(this, S.getShare(this, C.KEY_SHARED_PHONE_NUMBER,""), new XGIOperateCallback() {
+        return encritPassword;
+    }
 
-			@Override
-			public void onSuccess(Object data, int flag) {
-				d("+++ register push sucess. token:" + data);
-				m.obj = "+++ register push sucess. token:" + data;
-				m.sendToTarget();
-				
-			}
+    /**
+     * 푸시 요청
+     */
+    private void xgPush() {
 
-			@Override
-			public void onFail(Object data, int errCode, String msg) {
-				d("+++ register push fail. token:" + data + ", errCode:" + errCode + ",msg:" + msg);
+        XGPushConfig.enableDebug(this, true);
+        Handler handler = new HandlerExtension();
+        m = handler.obtainMessage();
+        // 注册接口
 
-				m.obj = "+++ register push fail. token:" + data + ", errCode:" + errCode + ",msg:" + msg;
-				m.sendToTarget();
-				
-			}
-		});
+        XGPushManager.registerPush(this, S.getShare(this, C.KEY_SHARED_PHONE_NUMBER, ""), new XGIOperateCallback() {
 
-	}
-	private static class HandlerExtension extends Handler {
+            @Override
+            public void onSuccess(Object data, int flag) {
+                d("+++ register push sucess. token:" + data);
+                m.obj = "+++ register push sucess. token:" + data;
+                m.sendToTarget();
 
-		@Override
-		public void handleMessage(Message msg) {
-			super.handleMessage(msg);
-		}
-	}
+            }
+
+            @Override
+            public void onFail(Object data, int errCode, String msg) {
+                d("+++ register push fail. token:" + data + ", errCode:" + errCode + ",msg:" + msg);
+
+                m.obj = "+++ register push fail. token:" + data + ", errCode:" + errCode + ",msg:" + msg;
+                m.sendToTarget();
+
+            }
+        });
+
+    }
+
+    private static class HandlerExtension extends Handler {
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+        }
+    }
 }

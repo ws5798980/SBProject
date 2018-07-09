@@ -36,6 +36,7 @@ public class XsMyActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout llAddress, llLive, llCoupon, llNotice, llSetting, llCollection, llActivity, llAnnouncement, llService, text_to_myshop;
     private WImageView ivPhoto;
     private LinearLayout llSet;
+    private boolean finish;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,6 @@ public class XsMyActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onResume() {
         super.onResume();
-
         initData();
     }
 
@@ -359,4 +359,5 @@ public class XsMyActivity extends AppCompatActivity implements View.OnClickListe
             return false;
         }
     }
+
 }
