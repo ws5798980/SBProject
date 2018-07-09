@@ -304,15 +304,15 @@ public class ReeditActivity extends BaseActivity {
                             requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_ASK_PERMISSIONS);
                         } else {
                             new AlertDialog.Builder(ReeditActivity.this)
-                                    .setMessage("您需要在设置里打开相机权限。")
-                                    .setPositiveButton("确认", new DialogInterface.OnClickListener() {
+                                    .setMessage(getResources().getString(R.string.common_text115))
+                                    .setPositiveButton(getResources().getString(R.string.button_sure), new DialogInterface.OnClickListener() {
                                         //                                        @RequiresApi(api = Build.VERSION_CODES.M)
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_ASK_PERMISSIONS);
                                         }
                                     })
-                                    .setNegativeButton("取消", null)
+                                    .setNegativeButton(getResources().getString(R.string.button_cancel), null)
                                     .create().show();
                         }
                         return;

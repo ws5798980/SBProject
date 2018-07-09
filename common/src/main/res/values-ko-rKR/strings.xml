@@ -597,8 +597,9 @@
     <string name="quxiaoquerenneirong">취소한 주문에 대해서는 환불처리 됩니다.</string>
     <string name="kaishipeisong">상품을 발송하시겠습니까?</string>
 
-
-
+    <string name="location_no">우편번호</string>
+    <string name="detail_location">상세 주소</string>
+    <string name="location_name">주소</string>
 
 
 

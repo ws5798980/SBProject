@@ -1097,6 +1097,7 @@
     <string name="sm_text_lguplus">LG U+</string>
     <string name="common_text068">\".\"</string>
 
+
     <string name="selling">판매중</string>
     <string name="selling_done">판매종료</string>
     <string name="commodity">상품관리</string>
@@ -1130,4 +1131,6 @@
     <string name="price_isnum">가격은 숫자여야 합니다</string>
     <string name="sure_getshelves">상품을 등록하시겠습니까?</string>
     <string name="sure_delgoods">선택한 상품을 삭제하시겠습니까?</string>
+    <string name="shop_name">점포 이름</string>
+
 </resources>

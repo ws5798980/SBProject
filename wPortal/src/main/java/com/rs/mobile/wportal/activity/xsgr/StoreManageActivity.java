@@ -14,9 +14,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.C;
+import com.rs.mobile.common.D;
 import com.rs.mobile.common.L;
 import com.rs.mobile.common.S;
 import com.rs.mobile.common.activity.BaseActivity;
@@ -30,6 +32,7 @@ import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.entity.MyShopInfoBean;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -49,6 +52,7 @@ public class StoreManageActivity extends BaseActivity {
     private String imageDownloadUrl = "";
     private Uri imageUri;
     private String imagePath = "";
+    private RelativeLayout shopName, telPhone, positionInfo;
 
 
     @Override
@@ -95,6 +99,60 @@ public class StoreManageActivity extends BaseActivity {
 
             }
         });
+        shopName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                D.showEditTextDialog(StoreManageActivity.this, -1, "", getResources().getString(R.string.shop_name), "",
+                        getResources().getString(R.string.button_sure), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String name = D.editText.getText().toString().trim();
+                                if ("".equals(name)) {
+                                    D.alertDialog.dismiss();
+                                } else {
+                                    tv_name.setText(name);
+                                    D.alertDialog.dismiss();
+                                }
+                            }
+                        }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                D.alertDialog.dismiss();
+                            }
+                        });
+            }
+        });
+        telPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                D.showEditTextDialog(StoreManageActivity.this, -1, "", getResources().getString(R.string.mk_reference_03), "",
+                        getResources().getString(R.string.button_sure), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                String name = D.editText.getText().toString().trim();
+                                if ("".equals(name)) {
+                                    D.alertDialog.dismiss();
+                                } else {
+                                    tv_phone.setText(name);
+                                    D.alertDialog.dismiss();
+                                }
+                            }
+                        }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                D.alertDialog.dismiss();
+                            }
+                        });
+            }
+        });
+        positionInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setClass(StoreManageActivity.this,LocationChangeActivity.class);
+                startActivityForResult(intent,1000);
+            }
+        });
 
     }
 
@@ -107,13 +165,99 @@ public class StoreManageActivity extends BaseActivity {
         tv_phone = (TextView) findViewById(R.id.tv_phone);
         tv_name = (TextView) findViewById(R.id.tv_name);
         wImageView = (WImageView) findViewById(R.id.img_head);
+        wImageView.setCircle(true);
+        shopName = (RelativeLayout) findViewById(R.id.tv_shop_name);
+        telPhone = (RelativeLayout) findViewById(R.id.layout_phone);
+        positionInfo = (RelativeLayout) findViewById(R.id.position_info);
         LinearLayout close_btn = (LinearLayout) findViewById(R.id.close_btn);
         close_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+              requestSave();
             }
         });
+    }
+
+    private void requestSave() {
+        try {
+
+//			HashMap<String, String> headers = new HashMap<>();
+//			headers.put("Content-Type", "application/json;Charset=UTF-8");
+
+            JSONObject j1 = new JSONObject();
+            HashMap<String, String> params = new HashMap<>();
+            try {
+
+                j1.put("lang_type", "kor");
+                j1.put("token", S.getShare(StoreManageActivity.this, C.KEY_JSON_TOKEN, ""));
+                j1.put("custom_code", S.getShare(StoreManageActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+                j1.put("store_image_url", imageDownloadUrl);
+                j1.put("custom_name", tv_name.getText().toString());
+                j1.put("telephone", tv_phone.getText().toString());
+                j1.put("zip_code", "05656");
+                j1.put("kor_addr","서울특별시 금천구 가산동");
+                j1.put("kor_addr_detail","67 당산역 한강포스빌");
+                Log.e("j1--", j1.toString());
+				/*j1.put(C.KEY_REQUEST_MEMBER_ID_TOW, "1862756329077a18"); //memberID
+				j1.put(C.KEY_JSON_NICK_NAME, "kimdsttthhjh");  //deviceNo
+				j1.put("imagePath","http:\\/\\/imfiles.dxbhtm.com:8640\\/upload\\/image\\/2018121\\/201812110163976300x250.jpg"); //s_id
+				j1.put("gender", "f");
+				j1.put("toekn", "ad-443d-bef8-bec719f4a77c|00C79862-B755-4903-92E1-20833C8A3429|1862756329077a18yc|1862756329077a18|8111100200012063");  //lang_type
+				*/
+
+
+                //Jason Type : memid,mempwd,deviceNo, s_id, ver, lang_type
+
+            } catch (JSONException e1) {
+                e1.printStackTrace();
+            }
+
+            OkHttpHelper helper = new OkHttpHelper(StoreManageActivity.this);
+            helper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+
+                @Override
+                public void onNetworkError(Request request, IOException e) {
+                    finish();
+                }
+
+                @Override
+                public void onBizSuccess(String responseDescription, final JSONObject data, final String all_data) {
+
+                    try {
+
+
+                        L.d(data.toString());
+
+                        // t(getString(R.string.complete));
+
+                    } catch (Exception e) {
+
+                        L.e(e);
+
+                    }
+
+                    setResult(RESULT_OK);
+
+                    finish();
+
+                }
+
+                @Override
+                public void onBizFailure(String responseDescription, JSONObject data, String responseCode) {
+                    String aaa = responseCode.toString();
+                    finish();
+
+                }
+            }, "http://mall.gigawon.co.kr:8800/api/AppSM/requestStoreImageUpdate", j1.toString());
+//			}, C.BASE_RS_MEMBER_URL + C.REQUEST_NICK_NAME_CHANGE, j1.toString());
+
+        } catch (Exception e) {
+
+            L.e(e);
+
+            finish();
+
+        }
     }
 
 
@@ -146,6 +290,7 @@ public class StoreManageActivity extends BaseActivity {
 //            Glide.with(XsMyShopActivity.this).load(bean.getShop_thumnail_image()).into(img_myshop);
                 if (bean.getShop_thumnail_image() != null && !bean.getShop_thumnail_image().isEmpty()) {
                     ImageUtil.drawImageFromUri(bean.getShop_thumnail_image(), wImageView);
+                    imageDownloadUrl = bean.getShop_thumnail_image();
                 }
             }
 
@@ -242,6 +387,9 @@ public class StoreManageActivity extends BaseActivity {
                             L.e(e);
                         }
                     }
+                    break;
+                case 1000:
+
                     break;
 
             }
@@ -419,7 +567,7 @@ public class StoreManageActivity extends BaseActivity {
                     filePath.add(imagePath);
                     Log.e("tag===", imagePath);
                     //C.BASE_UPLOAD_IMG_URL + C.STORE_IMAGE_UPLOAD_PATH
-                    return FileUtil.upload("http://portal.gigawon.co.kr:8488/Common/StoreFileUploader.ashx", filePath, null, "file");
+                    return FileUtil.upload("http://portal.gigawon.co.kr:8488/Common/FileUploader.ashx", filePath, null, "file");
 
                 } else {
 
@@ -450,8 +598,9 @@ public class StoreManageActivity extends BaseActivity {
                 // C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal" +
                 // S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "")
                 // + ".jpg"));
-
-                imageDownloadUrl = "http://fileserver.gigawon.co.kr:8588/store/"+ "wportal"
+//C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH
+                //http://portal.gigawon.co.kr:8488/MediaUploader/wsProfile/
+                imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH+ "wportal"
                         + S.getShare(StoreManageActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
                 Log.e("tag_img", imageDownloadUrl);
                 ImageUtil.drawImageFromUri(imageDownloadUrl, wImageView);
@@ -470,4 +619,9 @@ public class StoreManageActivity extends BaseActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        requestSave();
+    }
 }
