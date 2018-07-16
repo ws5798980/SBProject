@@ -277,7 +277,7 @@ public class SmMainActivity extends TabActivity {
 
         try {
 
-            OkHttpHelper helper = new OkHttpHelper(context, false);
+            OkHttpHelper helper = new OkHttpHelper(context, true);
 
             helper.addGetRequest(new OkHttpHelper.CallbackLogic() {
 
