@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -71,6 +72,17 @@ public class MyCommodityFragment extends BaseFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),
                 LinearLayoutManager.HORIZONTAL, R.drawable.divide_bg));
+        recyclerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if (swipeRefreshLayout.isRefreshing()) {
+                    swipeRefreshLayout.setRefreshing(false);
+                    return true;
+                }
+                return false;
+            }
+        });
         adapter = new CommodityItemAdapter(getContext(), R.layout.item_commodity_new, list);
         adapter.bindToRecyclerView(recyclerView);
         adapter.setEmptyView(emptyView);
@@ -79,30 +91,33 @@ public class MyCommodityFragment extends BaseFragment {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, final int position) {
 //adapter.getViewByPosition(recyclerView, position, R.id.layout_include)
+                if (swipeRefreshLayout.isRefreshing()) {
+                    return;
+                }
                 if (view.getId() == R.id.edit_goods) {
                     Intent intent = new Intent();
                     Bundle bundle = new Bundle();
-                    bundle.putString("groupId",list.get(position).getGroupId());
+                    bundle.putString("groupId", list.get(position).getGroupId());
                     intent.putExtras(bundle);
                     intent.setClass(getContext(), ReeditActivity.class);
                     startActivity(intent);
-                }else if (view.getId() == R.id.get_shelves){
+                } else if (view.getId() == R.id.get_shelves) {
                     D.showDialog(getContext(), -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.content_promote),
                             getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
-                        @Override
-                        public void onClick(View arg0) {
-                            D.alertDialog.dismiss();
-                            changeProductsellstate(list.get(position).getGroupId(), position);
+                                @Override
+                                public void onClick(View arg0) {
+                                    D.alertDialog.dismiss();
+                                    changeProductsellstate(list.get(position).getGroupId(), position);
 
-                        }
-                    }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            if (D.alertDialog!=null)
-                            D.alertDialog.dismiss();
-                        }
-                    });
+                                }
+                            }, getResources().getString(R.string.button_cancel), new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    if (D.alertDialog != null)
+                                        D.alertDialog.dismiss();
+                                }
+                            });
                 }
             }
         });
@@ -119,7 +134,7 @@ public class MyCommodityFragment extends BaseFragment {
         adapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                requestStoreCateList(mNextRequestPage,CommodityManagementActivity.catergoryId);
+                requestStoreCateList(mNextRequestPage, CommodityManagementActivity.catergoryId);
 
             }
         });
@@ -151,9 +166,9 @@ public class MyCommodityFragment extends BaseFragment {
 
             @Override
             public void onBizFailure(String responseDescription, JSONObject data, String flag) {
-                Log.e("responseDescription456",responseDescription);
+                Log.e("responseDescription456", responseDescription);
 //                Log.e("JSONObject",data.toString());
-                Log.e("flag145",flag);
+                Log.e("flag145", flag);
 
             }
 
@@ -175,7 +190,7 @@ public class MyCommodityFragment extends BaseFragment {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && isCreate) {
             //相当于Fragment的onResume
-            requestStoreCateList(1,CommodityManagementActivity.catergoryId);
+            requestStoreCateList(1, CommodityManagementActivity.catergoryId);
         } else {
             //相当于Fragment的onPause
         }
@@ -202,7 +217,7 @@ public class MyCommodityFragment extends BaseFragment {
         params.put("page", pg);
         params.put("pageSize", 10);
 
-        OkHttpHelper okHttpHelper = new OkHttpHelper(getContext(),false);
+        OkHttpHelper okHttpHelper = new OkHttpHelper(getContext(), false);
         okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
@@ -239,9 +254,9 @@ public class MyCommodityFragment extends BaseFragment {
 
             @Override
             public void onBizFailure(String responseDescription, JSONObject data, String flag) {
-                Log.e("responseDescription456",responseDescription);
+                Log.e("responseDescription456", responseDescription);
 //                Log.e("JSONObject",data.toString());
-                Log.e("flag145",flag);
+                Log.e("flag145", flag);
                 adapter.loadMoreComplete();
                 adapter.loadMoreEnd(true);
             }
