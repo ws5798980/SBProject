@@ -105,6 +105,7 @@ public class ReeditActivity extends BaseActivity {
     private static AlertDialog editDialog;
     private String imagePath;
     private String item_level1;
+    private String uploadTime,imgUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -287,6 +288,7 @@ public class ReeditActivity extends BaseActivity {
 
     private void showSelectPopWin() {
         //设置contentView
+        uploadTime = "" + System.currentTimeMillis();
         View contentView = LayoutInflater.from(ReeditActivity.this).inflate(R.layout.popup_take_photo_layout, null);
         mPopWindow = new PopupWindow(contentView,
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
@@ -554,9 +556,10 @@ public class ReeditActivity extends BaseActivity {
                 if ("1".equals(entity.getStatus())) {
                     Toast.makeText(ReeditActivity.this, "success", Toast.LENGTH_SHORT).show();
                     if (entity.getData().size() > 0) {
-                        String url = Constant.XSGR_TEST_URL + Constant.COMMODITY_PUSHIMG + entity.getData().get(0);
-                        Log.i("url++++", url);
-                        Glide.with(ReeditActivity.this).load(url).into(ivPhoto);
+                        //+ Constant.COMMODITY_PUSHIMG
+                        imgUrl = Constant.XSGR_TEST_URL  + entity.getData().get(0);
+                        Log.i("url++++", imgUrl);
+                        Glide.with(ReeditActivity.this).load(imgUrl).into(ivPhoto);
                     } else {
                         Toast.makeText(ReeditActivity.this, "failed", Toast.LENGTH_LONG).show();
                     }
@@ -678,6 +681,7 @@ public class ReeditActivity extends BaseActivity {
                     mList.addAll(commodityDetail.getData().getSpec());
                     specGridViewAdapter.notifyDataSetChanged();
                     editName.setText(commodityDetail.getData().getItem().getITEM_NAME());
+                    imgUrl = commodityDetail.getData().getItem().getImage_url();
                     Glide.with(ReeditActivity.this).load(commodityDetail.getData().getItem().getImage_url()).into(ivPhoto);
                 } else {
                     Toast.makeText(ReeditActivity.this, commodityDetail.getMessage(), Toast.LENGTH_LONG).show();
@@ -708,6 +712,7 @@ public class ReeditActivity extends BaseActivity {
         params.put("token", S.getShare(ReeditActivity.this, C.KEY_JSON_TOKEN, ""));
         params.put("custom_code", S.getShare(ReeditActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("groupId", groupId);
+        params.put("Image_url",imgUrl);
         String name = editName.getText().toString().trim();
         if (name.length() == 0) {
             Toast.makeText(ReeditActivity.this, getResources().getString(R.string.add_goods_name), Toast.LENGTH_SHORT).show();
@@ -727,6 +732,7 @@ public class ReeditActivity extends BaseActivity {
             SaveAndGetShelves.SpecBean specBean = new SaveAndGetShelves.SpecBean();
             specBean.setSpecName(mList.get(i).getSpecName());
             specBean.setSpecPrice(mList.get(i).getSpecPrice());
+            specBean.setItem_code(mList.get(i).getItem_code()+"");
             specBeans.add(specBean);
         }
         params.put("spec", specBeans);

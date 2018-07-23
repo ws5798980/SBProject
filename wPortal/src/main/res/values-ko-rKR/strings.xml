@@ -2,7 +2,7 @@
 <resources>
 
     <!-- clause -->
-    <string name="welcome1">우리동네 "함께가게"에 오신 여러분</string>
+    <string name="welcome1">우리동네 "우리가게"에 오신 여러분</string>
     <string name="welcome2">환영합니다!</string>
     <string name="clause">아래 약관에 동의 하시면 즐거운 여정이 시작 됩니다.</string>
     <string name="clause_all_check">전체동의</string>
@@ -14,7 +14,7 @@
     <string name="clause_next">시작하기</string>
 
     <!-- common -->
-    <string name="app_name">함께가게</string>
+    <string name="app_name">우리가게</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="ok">확인</string>
@@ -1087,6 +1087,8 @@
     <string name="kfme_addr01">주소</string>
     <string name="kfme_addr02">상세주소</string>
     <string name="str_done">완료</string>
+    <string name="kfme_post_new">우편번호:</string>
+    <string name="kfme_addr01_new">주소:</string>
 
     <string name="no_address">배송주소가 없습니다.</string>
     <string name="no_collection">찜한 내용이 없습니다.</string>

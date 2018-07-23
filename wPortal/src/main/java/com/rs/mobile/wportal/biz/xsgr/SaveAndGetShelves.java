@@ -26,6 +26,15 @@ public class SaveAndGetShelves implements Serializable {
     public static class SpecBean implements Serializable {
         private String specName;
         private String specPrice;
+        private String item_code;
+
+        public String getItem_code() {
+            return item_code;
+        }
+
+        public void setItem_code(String item_code) {
+            this.item_code = item_code;
+        }
 
         public String getSpecName() {
             return specName;

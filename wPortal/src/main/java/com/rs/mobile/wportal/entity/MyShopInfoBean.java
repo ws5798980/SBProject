@@ -2,27 +2,15 @@ package com.rs.mobile.wportal.entity;
 
 public class MyShopInfoBean {
 
-    /**
-     * status : 1
-     * flag : 1501
-     * msg : 작업완료
-     * custom_name : 셰플리-셰프의건강한한끼
-     * shop_thumnail_image : http://fileserver.gigawon.co.kr:8588/store/01071394001.PNG
-     * sales_status : 영업중
-     * address : 서울특별시 강남구 신사동 12
-     * mobilepho : 01071390001
-     * telephon : 0213230001
-     * sale_amount : 0
-     * order_amount : 9
-     */
-
     private String status;
     private String flag;
     private String msg;
     private String custom_name;
     private String shop_thumnail_image;
     private String sales_status;
-    private String address;
+    private String zip_code;
+    private String kor_addr;
+    private String kor_addr_detail;
     private String mobilepho;
     private String telephon;
     private String sale_amount;
@@ -76,12 +64,28 @@ public class MyShopInfoBean {
         this.sales_status = sales_status;
     }
 
-    public String getAddress() {
-        return address;
+    public String getZip_code() {
+        return zip_code;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setZip_code(String zip_code) {
+        this.zip_code = zip_code;
+    }
+
+    public String getKor_addr() {
+        return kor_addr;
+    }
+
+    public void setKor_addr(String kor_addr) {
+        this.kor_addr = kor_addr;
+    }
+
+    public String getKor_addr_detail() {
+        return kor_addr_detail;
+    }
+
+    public void setKor_addr_detail(String kor_addr_detail) {
+        this.kor_addr_detail = kor_addr_detail;
     }
 
     public String getMobilepho() {

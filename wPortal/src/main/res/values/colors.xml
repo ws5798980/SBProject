@@ -95,4 +95,6 @@
     <color name="invalid_day_background">#c0c0c0</color>
 
     <color name="theme_green">#21c043</color>
+    <color name="pop_button">#aec5df</color>
+    <color name="pop_recycler">#f2f4f6</color>
 </resources>

@@ -601,7 +601,11 @@
     <string name="detail_location">상세 주소</string>
     <string name="location_name">주소</string>
 
-
+    <string name="edit_change">편집</string>
+    <string name="choose_location">주소선택</string>
+    <string name="search_location">검색주소</string>
+    <string name="total_search1">검색결과</string>
+    <string name="total_search2">개</string>
 
 
 
