@@ -435,8 +435,8 @@ private  void initselect()
 {
     List<String> list = new ArrayList<String>();
     list.add("모두");
-    list.add("이");
-    list.add("없");
+    list.add("가능");
+    list.add("불가능");
 
     ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list);
     adapter.setDropDownViewResource(android.R.layout.simple_list_item_checked);
@@ -444,8 +444,8 @@ private  void initselect()
     sp.setAdapter(adapter);
 
     List<String> list2 = new ArrayList<String>();
-    list2.add("거리");
-    list2.add("판매량");
+    list2.add("거리순");
+    list2.add("판매순");
     ArrayAdapter<String> adapter2=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list2);
     adapter2.setDropDownViewResource(android.R.layout.simple_list_item_checked);
     Spinner sp2=(Spinner) findViewById(R.id.sp_select2);
@@ -456,19 +456,28 @@ private  void initselect()
     list3.add("한식");
     list3.add("중식");
     list3.add("양식");
-    list3.add("일본요리");
+    list3.add("일식");
     ArrayAdapter<String> adapter3=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list3);
     adapter3.setDropDownViewResource(android.R.layout.simple_list_item_checked);
     Spinner sp3=(Spinner) findViewById(R.id.sp_select3);
     sp3.setAdapter(adapter3);
+    List<String> list4 = new ArrayList<String>();
 
+    list4.add("모두");
+    list4.add("예");
+    list4.add("아니요");
 
-    ArrayAdapter<String> adapter4=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list);
+    ArrayAdapter<String> adapter4=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list4);
     adapter4.setDropDownViewResource(android.R.layout.simple_list_item_checked);
     Spinner sp4=(Spinner) findViewById(R.id.sp_select4);
     sp4.setAdapter(adapter4);
 
-    ArrayAdapter<String> adapter5=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list);
+    List<String> list5 = new ArrayList<String>();
+
+    list5.add("모두");
+    list5.add("예");
+    list5.add("아니요");
+    ArrayAdapter<String> adapter5=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list5);
     adapter5.setDropDownViewResource(android.R.layout.simple_list_item_checked);
     Spinner sp5=(Spinner) findViewById(R.id.sp_select5);
     sp5.setAdapter(adapter5);

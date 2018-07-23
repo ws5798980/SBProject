@@ -1,5 +1,7 @@
 package com.rs.mobile.wportal.activity.xsgr;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,13 +20,15 @@ public class XsBackOrderDetailActivity extends AppCompatActivity {
 
     LinearLayout layout_xiangqing;
     BackOrderBean.DataBean item;
-
+    ImageView callImg;
+    String phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xs_my_orderback_detail);
         item = getIntent().getParcelableExtra("item");
+        phone=item.getMobilepho();
         initView();
     }
 
@@ -44,6 +48,16 @@ public class XsBackOrderDetailActivity extends AppCompatActivity {
             }
         });
         layout_xiangqing = (LinearLayout) findViewById(R.id.layout_xiangqing);
+        callImg= (ImageView) findViewById(R.id.img_call);
+
+        callImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+phone));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
     }
 
     private void initData() {

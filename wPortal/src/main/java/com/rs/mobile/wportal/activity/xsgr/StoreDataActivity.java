@@ -644,7 +644,7 @@ public class StoreDataActivity extends BaseActivity {
 
 
     private void initView() {
-        ri = getResources().getString(R.string.nian);
+        ri = getResources().getString(R.string.ri);
         yue = getResources().getString(R.string.yue);
         nian = getResources().getString(R.string.nian);
         tabLayout = (TabLayout) findViewById(R.id.tab_layout);
