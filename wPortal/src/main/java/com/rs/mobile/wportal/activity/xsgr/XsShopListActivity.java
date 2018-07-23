@@ -80,7 +80,7 @@ public class XsShopListActivity extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Intent intent = new Intent(XsShopListActivity.this, XsStoreDetailActivity.class);
+                Intent intent = new Intent(XsShopListActivity.this, XsStoreDetailActivity2.class);
                 intent.putExtra("custom_name", mStoreList.get(position).custom_name);
                 intent.putExtra("sale_custom_code", mStoreList.get(position).custom_code);
                 startActivity(intent);

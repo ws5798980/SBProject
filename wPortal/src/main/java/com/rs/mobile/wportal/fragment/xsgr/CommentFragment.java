@@ -54,11 +54,11 @@ public class CommentFragment extends BaseFragment {
         this.type = type;
     }
 
-    public void setdata(CommentBean bean) {
-        list.clear();
-        list.addAll(bean.getShopAssessData());
-        commentAdapter.setNewData(list);
-    }
+//    public void setdata(CommentBean bean) {
+//        list.clear();
+//        list.addAll(bean.getShopAssessData());
+//        commentAdapter.setNewData(list);
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,8 +87,7 @@ public class CommentFragment extends BaseFragment {
         commentAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
             @Override
             public void onLoadMoreRequested() {
-                page += 1;
-                initShopInfoData(size, page);
+                initShopInfoData(size, page,true);
             }
         });
 
@@ -107,7 +106,7 @@ public class CommentFragment extends BaseFragment {
     }
 
 
-    public void initShopInfoData(final int size, int page) {
+    public void initShopInfoData(final int size, int pagep, final boolean add) {
         HashMap<String, String> param = new HashMap<String, String>();
 
         param.put("lang_type", AppConfig.LANG_TYPE);
@@ -115,7 +114,7 @@ public class CommentFragment extends BaseFragment {
         param.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
 //        param.put("custom_code", "010530117822fbe4");
 //        param.put("token", "186743935020f829f883e9fe-c8cf-4f60-9ed2-bd645cb1c118");
-        param.put("pg", page + "");
+        param.put("pg", (pagep+1) + "");
         param.put("pagesize", "" + size);
         param.put("view_gbn", type + "");
         OkHttpHelper okHttpHelper = new OkHttpHelper(getContext());
@@ -131,6 +130,9 @@ public class CommentFragment extends BaseFragment {
                 bean = GsonUtils.changeGsonToBean(responseDescription, CommentBean.class);
 
                 list.addAll(bean.getShopAssessData());
+                if (add){
+                    page = page + 1;
+                }
                 commentAdapter.setNewData(list);
                 commentAdapter.loadMoreComplete();
                 if (bean.getShopAssessData().size() < size) {
@@ -153,7 +155,7 @@ public class CommentFragment extends BaseFragment {
         list.clear();
         commentAdapter.setNewData(list);
         page = 0;
-        initShopInfoData(size, page);
+        initShopInfoData(size, page,true);
     }
 
 
@@ -223,7 +225,7 @@ public class CommentFragment extends BaseFragment {
                     if ("1".equals(jsonObject.getString("status"))) {
                         int i = list.size();
                         list.clear();
-                        initShopInfoData(i, 1);
+                        initShopInfoData(i, 0,false);
                         if (mDialog.isShowing()) {
                             mDialog.dismiss();
                         }

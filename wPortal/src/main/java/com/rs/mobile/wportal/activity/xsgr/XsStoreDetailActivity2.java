@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.Layout;
@@ -26,6 +27,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -67,12 +69,15 @@ import com.rs.mobile.wportal.adapter.rt.MenuCategoryListAdapter;
 import com.rs.mobile.wportal.adapter.rt.MenuListAdapter;
 import com.rs.mobile.wportal.adapter.rt.ShopCartListAdapter;
 import com.rs.mobile.wportal.adapter.sm.ElvuateAdapter;
+import com.rs.mobile.wportal.adapter.xsgr.CommentAdapter;
+import com.rs.mobile.wportal.adapter.xsgr.XsStoreCommentAdapter;
 import com.rs.mobile.wportal.adapter.xsgr.XsStoreDetailMenuAdapter3;
 import com.rs.mobile.wportal.adapter.xsgr.XsStoreDetailMenuAdapter4;
 import com.rs.mobile.wportal.adapter.xsgr.XsStoreDetailMenuAdapter5;
 import com.rs.mobile.wportal.biz.ShoppingCart;
 import com.rs.mobile.wportal.biz.ShoppingCartParent;
 import com.rs.mobile.wportal.entity.BaseEntity;
+import com.rs.mobile.wportal.entity.CommentBean;
 import com.rs.mobile.wportal.entity.StoreDetailEntity;
 import com.rs.mobile.wportal.entity.StoreItemDetailEntity;
 import com.rs.mobile.wportal.entity.StoreMenuListEntity1;
@@ -92,7 +97,7 @@ import java.util.Map;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import okhttp3.Request;
 
-public class XsStoreDetailActivity2 extends AppCompatActivity implements View.OnClickListener, XListView.IXListViewListener {
+public class XsStoreDetailActivity2 extends AppCompatActivity implements View.OnClickListener {
     private LinearLayout btnBack;
     private TextView tvTitle;
     private ImageView ivCustomImg, top_img_allbk, iv_custom_phone;
@@ -181,7 +186,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
     private int carcount = 0;
     TabLayout.Tab tab1, tab2, tab3;
 
-    private XListView commentlist1;
+    private RecyclerView commentlist1;
     private String item_code;
 
     private int pageIndex;
@@ -207,7 +212,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 
 
     private String FoodSpecCode = "";
-
+    private   XsStoreCommentAdapter commentAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -232,6 +237,16 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
     }
 
     private void initView() {
+        commentlist1 = (RecyclerView) findViewById(R.id.commentlist);
+        commentAdapter=new XsStoreCommentAdapter(XsStoreDetailActivity2.this,R.layout.item_comment_detail,new ArrayList<CommentBean.ShopAssessDataBean>());
+        View emptyView = LayoutInflater.from(XsStoreDetailActivity2.this).inflate(R.layout.layout_empty, null);
+        emptyView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        //添加空视图
+        commentAdapter.setEmptyView(emptyView);
+        commentlist1.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        commentlist1.setAdapter(commentAdapter);
 
         iconImg = (ImageView) findViewById(R.id.img_favorites);
         btnBack = (LinearLayout) findViewById(R.id.btn_back);
@@ -260,7 +275,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
         bnt_cart1.setOnClickListener(this);
 
 
-        commentlist1 = (XListView) findViewById(R.id.commentlist);
+
 
         content = (FrameLayout) findViewById(R.id.content);
         content2 = (FrameLayout) findViewById(R.id.content2);
@@ -552,8 +567,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
         requestStoreItemDetail2(S.get(XsStoreDetailActivity2.this, C.KEY_JSON_CUSTOM_CODE), mSaleCustomCode, "" + AppConfig.latitude, "" + AppConfig.longitude, 1, "10");
 
 
-        commentlist1.setXListViewListener(this);
-        commentlist1.setPullLoadEnable(true);
+
         pageIndex = 1;
         pageSize = 20;
 
@@ -747,16 +761,12 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 
     //评论列表
     public void initCommentData() {
-
         HashMap<String, String> param = new HashMap<String, String>();
-        param.put("itemCode", "FD201806011539174349");
-        param.put("pageIndex", pageIndex + "");
-        param.put("pageSize", pageSize + "");
-        param.put("div_code", div_code);
-        param.put("commnetStatus", commentStatus);
-        param.put("has_imgs", has_imgs);
-        param.put("userId", S.getShare(XsStoreDetailActivity2.this, C.KEY_REQUEST_MEMBER_ID, ""));
-
+        param.put("lang_type", "kor");
+        param.put("sale_custom_code", mSaleCustomCode);
+        param.put("pg", "1");
+        param.put("pagesize", "100");
+        param.put("orderby", "2");
         OkHttpHelper okHttpHelper = new OkHttpHelper(XsStoreDetailActivity2.this);
         okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {
 
@@ -768,36 +778,8 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
-
-                // TODO Auto-generated method stub
-                try {
-
-                    JSONObject jsonObject = data.getJSONObject(C.KEY_JSON_DATA);
-
-                    String string = data.getString("total");
-
-                    TotalCount = Integer.parseInt(string);
-                    if (TotalCount == 0) {
-                        // showNoData(v, "데이터가 없습니다", null);
-                    }
-                    if (TotalCount - pageIndex * pageSize <= 0) {
-                        commentlist1.set_booter_gone();
-                    }
-                    JSONArray jsonArray = jsonObject.getJSONArray("comment_list");
-
-                    for (int i = 0; i < jsonArray.length(); i++) {
-
-                        array.put(jsonArray.get(i));
-                    }
-
-                    // listdata=CollectionUtil.jsonArrayToListMapObject(jsonArray);
-                    ElvuateAdapter adapter = new ElvuateAdapter(array, XsStoreDetailActivity2.this, getwindowswidth() / 3, false);
-                    commentlist1.setAdapter(adapter);
-
-                } catch (JSONException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                CommentBean bean=GsonUtils.changeGsonToBean(responseDescription, CommentBean.class);
+                commentAdapter.setNewData(bean.getShopAssessData());
             }
 
             @Override
@@ -805,7 +787,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
                 // TODO Auto-generated method stub
 
             }
-        }, Constant.SM_BASE_URL + Constant.GET_GOODSOFCOMMENT, param);
+        }, Constant.XS_BASE_URL +"Assess/requestStoreAssessList", param);
 
     }
 
@@ -997,58 +979,6 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
         }, Constant.XS_BASE_URL + "StoreCate/requestStoreDetail", GsonUtils.createGsonString(params));
     }
 
-    @Override
-    public void onRefresh() {
-
-        // TODO Auto-generated method stub
-        try {
-
-            pageIndex = 1;
-            try {
-                array = new JSONArray("[]");
-                initData();
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                L.e(e);
-            }
-
-            commentlist1.stopLoadMore();
-            commentlist1.stopRefresh();
-
-        } catch (Exception e) {
-
-            L.e(e);
-
-        }
-    }
-
-    @Override
-    public void onLoadMore() {
-
-        // TODO Auto-generated method stub
-        try {
-
-            if (TotalCount - pageIndex * 20 <= 0) {
-                Toast.makeText(XsStoreDetailActivity2.this, getString(com.rs.mobile.wportal.R.string.common_text068), Toast.LENGTH_SHORT).show();
-
-                commentlist1.stopLoadMore();
-                commentlist1.stopRefresh();
-
-                return;
-            } else {
-                pageIndex++;
-                initCommentData();
-
-                commentlist1.stopLoadMore();
-                commentlist1.stopRefresh();
-            }
-
-        } catch (Exception e) {
-
-            L.e(e);
-
-        }
-    }
 
     public interface CallBackValue1 {
         public void sendData(StoreItemDetailEntity entity);

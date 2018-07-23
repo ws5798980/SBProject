@@ -26,7 +26,7 @@ public class D {
 	
 	public static EditText editText;
 
-	
+	public static boolean isshowing;
 	/**
 	 * initProgressDialog
 	 * 
@@ -101,7 +101,7 @@ public class D {
 			
 			if (context instanceof Activity) {
 				// handle activity case
-				
+
 				if (((Activity)context).isFinishing() == false && progressdialog == null ||progressdialog.isShowing() == false) {
 					
 					progressdialog = new Dialog(context);
@@ -113,7 +113,7 @@ public class D {
 	//					progressdialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
 					progressdialog.getWindow().setBackgroundDrawable(new ColorDrawable(color.transparent));
 					progressdialog.show();
-					
+					isshowing=true;
 				}
 				
 			}
@@ -160,19 +160,19 @@ public class D {
 	 * stopProgressDialog
 	 */
 	public static void hideProgressDialog() {
-		
+
 		try {
 			
 			if (progressdialog != null && progressdialog.isShowing() == true) {
-				
+
 				progressdialog.dismiss();
-				
+				isshowing=false;
 			}
 			
 			progressdialog = null;
 			
         } catch (Exception e) {
-        	
+
         	L.e(e);
         	
         }

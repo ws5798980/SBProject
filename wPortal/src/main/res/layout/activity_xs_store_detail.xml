@@ -219,10 +219,10 @@
             android:layout_height="match_parent"
             android:visibility="gone">
 
-            <com.rs.mobile.common.view.XListView
+            <android.support.v7.widget.RecyclerView
                 android:id="@+id/commentlist"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:divider="#00000000"
                 android:dividerHeight="5dp"
                 android:scrollbars="none" />

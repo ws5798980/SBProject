@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -91,6 +92,9 @@ public class MyOrderFragment2 extends BaseFragment {
         adapter1.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                if (swipeRefreshLayout.isRefreshing()){
+                    return;
+                }
 
                 if (view.getId() == R.id.layout_open) {
                     if (adapter.getViewByPosition(recyclerView, position, R.id.layout_include).getVisibility() == View.VISIBLE) {
@@ -128,7 +132,17 @@ public class MyOrderFragment2 extends BaseFragment {
                 initShopInfoData();
             }
         });
+        recyclerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
 
+                if (swipeRefreshLayout.isRefreshing()){
+                    swipeRefreshLayout.setRefreshing(false);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
 

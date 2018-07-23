@@ -107,6 +107,18 @@ public class UtilCheckLogin {
 											+ data.getString("ssoId") + "|"
 											+ data.getString("custom_code")
 											+ "|" + Util.getDeviceId(context));
+
+							S.set(context, C.KEY_JSON_TOKEN,
+									// data.getString(C.KEY_JSON_TOKEN));
+									data.getString(C.KEY_JSON_TOKEN) + "|"
+											+ data.getString("ssoId") + "|"
+											+ data.getString("custom_code")
+											+ "|" + Util.getDeviceId(context));
+
+							S.set(context, C.KEY_JSON_CUSTOM_CODE, data.getString("custom_code"));
+							S.setShare(context, C.KEY_JSON_CUSTOM_CODE, data.getString("custom_code"));
+
+
 //							S.setShare(context, C.KEY_REQUEST_MEMBER_ID,
 //									data.getString("custom_code"));
 							/*S.setShare(context, C.KEY_REQUEST_PARENT_ID, data.getString("parent_id"));*/

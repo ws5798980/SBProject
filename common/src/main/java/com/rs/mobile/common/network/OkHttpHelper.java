@@ -191,8 +191,9 @@ public class OkHttpHelper {
         try {
 
             if (isShowProgress == true) {
-
-                D.showProgressDialog(context, "", true);
+                if (D.isshowing==false){
+                    D.showProgressDialog(context, "", true);
+                }
 
             }
 
@@ -215,8 +216,9 @@ public class OkHttpHelper {
 
             if (isShowProgress == true) {
 
-                D.showProgressDialog(context, "", true);
-
+                if (D.isshowing==false){
+                    D.showProgressDialog(context, "", true);
+                }
             }
 
             Request request = createRequest(baseUrl, method, headers, body);
@@ -243,8 +245,9 @@ public class OkHttpHelper {
 
             if (isShowProgress == true) {
 
-                D.showProgressDialog(context, "", true);
-
+                if (D.isshowing==false){
+                    D.showProgressDialog(context, "", true);
+                }
             }
 
             Request request = createRequest(baseUrl);
@@ -288,7 +291,9 @@ public class OkHttpHelper {
             @Override
             public void onFailure(Call arg0, IOException arg1) {
                 try {
-                    D.hideProgressDialog();
+                    if (D.isshowing){
+                        D.hideProgressDialog();
+                    }
                     callbackLogic.onBizFailure("", null, "");
                     if (callbackLogic != null) {
                         handler.post(new Runnable() {
@@ -312,8 +317,9 @@ public class OkHttpHelper {
             public void onResponse(Call arg0, Response arg1) throws IOException {
                 try {
 
-                    D.hideProgressDialog();
-
+                    if (D.isshowing){
+                        D.hideProgressDialog();
+                    }
                     final String responseBody = arg1.body().string().trim();
                     L.d("789456" + responseBody);
                     final JSONObject json = new JSONObject(responseBody);

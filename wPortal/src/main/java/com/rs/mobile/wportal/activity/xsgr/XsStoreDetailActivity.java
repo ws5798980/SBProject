@@ -597,7 +597,7 @@ public class XsStoreDetailActivity extends AppCompatActivity implements View.OnC
         HashMap<String, String> params = new HashMap<>();
         params.put("lang_type", AppConfig.LANG_TYPE);
         params.put("custom_code", customCode);
-        params.put("sale_custom_code", "01071390009abcde");
+        params.put("sale_custom_code", saleCustomCode);
         params.put("latitude", latitude);
         params.put("longitude", longitude);
         params.put("pg", ""+pg);

@@ -341,6 +341,8 @@ public class SettingActivity extends BaseActivity {
                                                     S.set(SettingActivity.this, C.KEY_JSON_MALL_HOME_ID, "");
                                                     S.set(SettingActivity.this, C.KEY_JSON_POINT_CARD_NO, "");
                                                     S.set(SettingActivity.this, C.KEY_JSON_PARENT_ID, "");
+                                                    S.setShare(SettingActivity.this, C.KEY_JSON_TOKEN, "");
+                                                    S.setShare(SettingActivity.this, C.KEY_JSON_CUSTOM_CODE, "");
 
                                                     finish();
 
@@ -772,7 +774,7 @@ public class SettingActivity extends BaseActivity {
 
                 imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal"
                         + S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
-                Log.e("imageDownloadUrl",imageDownloadUrl);
+                Log.e("imageDownloadUrl", imageDownloadUrl);
                 ImageUtil.drawImageFromUri(imageDownloadUrl, iconImageView);
 
                 hideProgressBar();

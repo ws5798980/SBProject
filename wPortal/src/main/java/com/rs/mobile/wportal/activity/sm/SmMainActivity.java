@@ -59,6 +59,7 @@ public class SmMainActivity extends TabActivity {
 
     private long exitTime = 0;
     int checked;
+    int lastId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,9 +104,9 @@ public class SmMainActivity extends TabActivity {
 //			mTabHost.addTab(mTabHost.newTabSpec(TAB_SELF).setIndicator(TAB_SELF).setContent(i_self));
 
             mTabHost.setCurrentTabByTag(TAB_HIGHLIGHTS);
+            lastId = R.id.common_toolbar_2_home;
 
             mTabButtonGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-                private int lastId = R.id.common_toolbar_2_home;
 
                 @Override
                 public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -273,7 +274,7 @@ public class SmMainActivity extends TabActivity {
      *
      * @param context
      */
-    public void checkLogin(final Context context, final boolean needLogin, final int lastId, final int checkid, final String Tab) {
+    public void checkLogin(final Context context, final boolean needLogin, final int lastId0, final int checkid, final String Tab) {
 
         try {
 
@@ -306,16 +307,32 @@ public class SmMainActivity extends TabActivity {
                                             + data.getString("ssoId") + "|"
                                             + data.getString("custom_code")
                                             + "|" + Util.getDeviceId(context));
+
+                            S.set(SmMainActivity.this, C.KEY_JSON_CUSTOM_CODE, data.getString("custom_code"));
+                            S.setShare(SmMainActivity.this, C.KEY_JSON_CUSTOM_CODE, data.getString("custom_code"));
+
+                            S.set(SmMainActivity.this, C.KEY_REQUEST_MEMBER_ID, data.getString("custom_code"));
+                            S.set(SmMainActivity.this, C.KEY_JSON_CUSTOM_ID, data.getString("custom_id"));
+                            S.set(SmMainActivity.this, C.KEY_JSON_NICK_NAME, data.getString("nick_name"));
+                            S.set(SmMainActivity.this, C.KEY_JSON_PROFILE_IMG, data.getString("profile_img"));
+                            S.set(SmMainActivity.this, C.KEY_JSON_DIV_CODE, data.getString("div_code"));
+                            S.set(SmMainActivity.this, C.KEY_JSON_SSOID, data.getString("ssoId"));
+                            S.set(SmMainActivity.this, C.KEY_JSON_SSO_REGIKEY, data.getString("sso_regiKey"));
+                            S.set(SmMainActivity.this, C.KEY_JSON_MALL_HOME_ID, data.getString("mall_home_id"));
+                            S.set(SmMainActivity.this, C.KEY_JSON_POINT_CARD_NO, data.getString("point_card_no"));
+                            S.set(SmMainActivity.this, C.KEY_JSON_PARENT_ID, data.getString("parent_id"));
+
+
                             mTabHost.setCurrentTabByTag(Tab);
                             changeTextColor(checkid);
 
 
                         } else {
 
-                            checked = lastId;
-                            mTabButtonGroup.check(lastId);
-                            changeTextColor(lastId);
-
+                            checked = lastId0;
+                            mTabButtonGroup.check(lastId0);
+                            changeTextColor(lastId0);
+                            lastId = lastId0;
                             if (needLogin)
                                 context.startActivity(new Intent(context,
                                         LoginActivity.class));
@@ -344,7 +361,12 @@ public class SmMainActivity extends TabActivity {
                     + "&sign="
                     + encryption(Util.getDeviceId(context)
                     + "ycssologin1212121212121"));
-
+            Log.i("xyz", C.CHECK_LOGIN
+                    + "?deviceNo="
+                    + Util.getDeviceId(context)
+                    + "&sign="
+                    + encryption(Util.getDeviceId(context)
+                    + "ycssologin1212121212121"));
         } catch (Exception e) {
             e.getMessage();
 

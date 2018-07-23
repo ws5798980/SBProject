@@ -6,6 +6,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -88,6 +89,9 @@ public class BackOrderActivity extends BaseActivity {
         adapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                if (swipeRefreshLayout.isRefreshing()){
+                    return;
+                }
                 switch (view.getId()) {
                     case R.id.bt_check:
                         Intent intent = new Intent(BackOrderActivity.this, XsBackOrderDetailActivity.class);
@@ -115,7 +119,17 @@ public class BackOrderActivity extends BaseActivity {
                 initShopInfoData();
             }
         });
+        recyclerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
 
+                if (swipeRefreshLayout.isRefreshing()){
+                    swipeRefreshLayout.setRefreshing(false);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
 
