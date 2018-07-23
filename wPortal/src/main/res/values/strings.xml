@@ -1112,6 +1112,8 @@
     <string name="kfme_post">邮编</string>
     <string name="kfme_addr01">地址</string>
     <string name="kfme_addr02">详细地址</string>
+    <string name="kfme_post_new">邮编:</string>
+    <string name="kfme_addr01_new">地址:</string>
 
     <string name="no_address">您还没有收货地址哦！</string>
     <string name="no_collection">您还没有收藏哦！</string>

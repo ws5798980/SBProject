@@ -600,4 +600,10 @@
     <string name="location_no">邮编</string>
     <string name="detail_location">详细地址</string>
     <string name="location_name">地址</string>
+
+    <string name="edit_change">编辑修改</string>
+    <string name="choose_location">选择地址</string>
+    <string name="search_location">搜索地址</string>
+    <string name="total_search1">共搜索出</string>
+    <string name="total_search2">个结果</string>
 </resources>

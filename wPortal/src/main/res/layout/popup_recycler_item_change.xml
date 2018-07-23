@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/marginx3"
+    android:background="@drawable/circular_recycler_backg">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="31dp">
+
+        <TextView
+            android:id="@+id/position_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:text="@string/kfme_addr01_new"
+            android:textColor="@color/mk_text_no"
+            android:textSize="@dimen/text_size_tag" />
+
+        <TextView
+            android:id="@+id/position_content"
+            android:layout_width="220dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_toRightOf="@+id/position_title"
+            android:ellipsize="none"
+            android:inputType="textMultiLine"
+            android:lineSpacingExtra="1dp"
+            android:maxLines="2"
+            android:scrollHorizontally="false"
+            android:singleLine="false"
+            android:textColor="@color/mk_text_no"
+            android:textSize="@dimen/text_size_sb" />
+
+        <Button
+            android:id="@+id/choose_dine"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/circular_button"
+            android:text="@string/choose_pic"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_tag" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginx3">
+
+        <TextView
+            android:id="@+id/youbian_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="top"
+            android:text="@string/kfme_post_new"
+            android:textColor="@color/mk_text_no"
+            android:textSize="@dimen/text_size_tag" />
+
+        <TextView
+            android:id="@+id/youbian_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_toRightOf="@+id/youbian_title"
+            android:gravity="top"
+            android:text="000000"
+            android:textColor="@color/mk_text_no"
+            android:textSize="@dimen/text_size_tag" />
+    </RelativeLayout>
+</LinearLayout>
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="15dp"
+       android:background="@color/white"/>
+
+</LinearLayout>

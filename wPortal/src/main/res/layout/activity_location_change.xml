@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/location_change"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/gray"
@@ -48,6 +49,16 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/title_edit_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:text="@string/edit_change"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
         </RelativeLayout>
     </LinearLayout>
 
@@ -65,7 +76,8 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/youbian"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
@@ -76,11 +88,12 @@
 
         <TextView
             android:id="@+id/tv_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
             android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/img_more3"
+            android:layout_toRightOf="@+id/youbian"
             android:textColor="@color/textblack"
             android:textSize="15sp" />
 
@@ -92,7 +105,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:src="@drawable/icon_list_arrow" />
+            android:src="@drawable/icon_list_arrow"
+            android:visibility="invisible" />
 
 
     </RelativeLayout>
@@ -111,7 +125,8 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/dizhi"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
@@ -122,11 +137,12 @@
 
         <TextView
             android:id="@+id/location_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="6dp"
             android:layout_marginRight="10dp"
-            android:layout_toLeftOf="@+id/img_more2"
+            android:layout_toRightOf="@+id/dizhi"
             android:textColor="@color/textblack"
             android:textSize="15sp" />
 
@@ -138,7 +154,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:src="@drawable/icon_list_arrow" />
+            android:src="@drawable/icon_list_arrow"
+            android:visibility="invisible" />
 
 
     </RelativeLayout>
@@ -153,19 +170,46 @@
         android:layout_height="wrap_content"
         android:background="@color/white">
 
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:text="@string/detail_location"
+            android:textColor="@color/textblack"
+            android:textSize="15sp" />
+
         <EditText
             android:id="@+id/edt_location_text"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="70dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:layout_weight="1"
             android:background="@null"
             android:gravity="top"
-            android:minLines="2"
             android:hint="@string/detail_location"
+            android:minLines="2"
             android:padding="@dimen/marginx2"
             android:textColor="@color/black"
             android:textCursorDrawable="@null"
             android:textSize="@dimen/sp_14" />
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/white" />
 
+    <TextView
+        android:id="@+id/save_up"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/theme_green"
+        android:gravity="center"
+        android:text="@string/sm_text_save_address"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_mb"
+        android:textStyle="bold" />
 </LinearLayout>

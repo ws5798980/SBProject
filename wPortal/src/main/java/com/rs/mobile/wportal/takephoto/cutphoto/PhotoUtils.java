@@ -40,7 +40,7 @@ public class PhotoUtils {
      **/
     public static final int INTENT_SELECT = 4;
 
-    public static final String CROP_FILE_NAME = "crop_file.jpg";
+    public  String CROP_FILE_NAME = "crop_file.jpg";
 
     /**
      **/
@@ -60,8 +60,15 @@ public class PhotoUtils {
      */
     public void takePicture(Activity activity) {
         try {
+            File dir = new File(Environment.getExternalStorageDirectory() + "/wportal");
+            CROP_FILE_NAME = "" + System.currentTimeMillis()+".jpg";
+            if (!dir.exists())
+                dir.mkdirs();
+
+            File outputImage = new File(dir, "output_image.jpg");
+
             //创建File对象，用于存储拍照后的图片
-            File outputImage = new File(Environment.getExternalStorageDirectory(),"output_image.jpg");
+          //  File outputImage = new File(Environment.getExternalStorageDirectory()+"/","output_image.jpg");
             if(outputImage.exists())
             {
                 outputImage.delete();
@@ -105,7 +112,7 @@ public class PhotoUtils {
         try {
             //每次选择图片吧之前的图片删除
             clearCropFile(buildUri(activity));
-
+            CROP_FILE_NAME = "" + System.currentTimeMillis()+".jpg";
             Intent intent = new Intent(Intent.ACTION_PICK, null);
             intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
 
@@ -126,8 +133,10 @@ public class PhotoUtils {
      */
     private Uri buildUri(Activity activity) {
         if (CommonUtils.checkSDCard()) {
-            return Uri.fromFile(Environment.getExternalStorageDirectory()).buildUpon().appendPath(CROP_FILE_NAME).build();
+            File file = new File(Environment.getExternalStorageDirectory()+"/wportal");
+            return Uri.fromFile(file).buildUpon().appendPath(CROP_FILE_NAME).build();
         } else {
+//            File file = new File(Environment.getExternalStorageDirectory()+"/wportal");
             return Uri.fromFile(activity.getCacheDir()).buildUpon().appendPath(CROP_FILE_NAME).build();
         }
     }

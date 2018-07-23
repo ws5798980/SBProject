@@ -2,33 +2,62 @@ package com.rs.mobile.wportal.activity.xsgr;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.AssetManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder;
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener;
 import com.bigkoo.pickerview.view.OptionsPickerView;
+import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.chad.library.adapter.base.BaseViewHolder;
 import com.google.gson.Gson;
+import com.rs.mobile.common.C;
+import com.rs.mobile.common.S;
 import com.rs.mobile.common.activity.BaseActivity;
+import com.rs.mobile.common.network.OkHttpHelper;
+import com.rs.mobile.common.util.GsonUtils;
+import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.adapter.xsgr.CommodityItemAdapter;
+import com.rs.mobile.wportal.biz.xsgr.AddressSearch;
+import com.rs.mobile.wportal.biz.xsgr.CommodityList;
 import com.rs.mobile.wportal.biz.xsgr.JsonBean;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import okhttp3.Request;
 
 public class LocationChangeActivity extends BaseActivity {
 
@@ -40,9 +69,19 @@ public class LocationChangeActivity extends BaseActivity {
     private ArrayList<ArrayList<String>> options2Items = new ArrayList<>();
     private ArrayList<ArrayList<ArrayList<String>>> options3Items = new ArrayList<>();
     private Thread thread;
+    private TextView textNo, textLocation, editLocation;
     private static final int MSG_LOAD_DATA = 0x0001;
     private static final int MSG_LOAD_SUCCESS = 0x0002;
     private static final int MSG_LOAD_FAILED = 0x0003;
+    private PopupWindow popupWindow;
+    private WindowManager.LayoutParams params;
+    private boolean mIsShowing = false;
+    private MyPopupEditAdapter popAdapter;
+    private List<AddressSearch.DataBean.PostBean.ItemlistBean.ItemBean> list = new ArrayList<>();
+    private int mNextRequestPage = 2;
+    private String zipCode, addr, addrDetail;
+    private TextView totalNum,save;
+    private LinearLayout itemNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,18 +93,234 @@ public class LocationChangeActivity extends BaseActivity {
     }
 
     private void initView() {
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        zipCode = bundle.getString("zipCode");
+        addr = bundle.getString("addr");
+        addrDetail = bundle.getString("addrDetail");
         locationNo = (RelativeLayout) findViewById(R.id.tv_location_no);
         locationName = (RelativeLayout) findViewById(R.id.layout_location_name);
         back = (LinearLayout) findViewById(R.id.close_btn);
+        textNo = (TextView) findViewById(R.id.tv_name);
+        textLocation = (TextView) findViewById(R.id.location_name);
+        editText = (EditText) findViewById(R.id.edt_location_text);
+        editLocation = (TextView) findViewById(R.id.title_edit_view);
+        save = (TextView) findViewById(R.id.save_up);
+        params = getWindow().getAttributes();
+        textNo.setText(zipCode + "");
+        textLocation.setText(addr);
+        editText.setText(addrDetail);
     }
 
     private void initListener() {
-        locationName.setOnClickListener(new View.OnClickListener() {
+//        locationName.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                showPickerView();
+//            }
+//        });
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showPickerView();
+//                Intent intent = new Intent();
+//                intent.putExtra("textNo", textNo.getText().toString().trim());
+//                intent.putExtra("textLocation", textLocation.getText().toString().trim());
+//                intent.putExtra("detailLocation", editText.getText().toString().trim());
+//                setResult(RESULT_OK, intent);
+                finish();
             }
         });
+        save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.putExtra("textNo", textNo.getText().toString().trim());
+                intent.putExtra("textLocation", textLocation.getText().toString().trim());
+                intent.putExtra("detailLocation", editText.getText().toString().trim());
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        });
+
+        editLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup();
+            }
+        });
+    }
+
+
+    public void popup() {
+        if (popupWindow == null) {
+            initPopup();
+        }
+        if (!mIsShowing) {
+            params.alpha = 0.3f;
+            getWindow().setAttributes(params);
+            popupWindow.showAtLocation(findViewById(R.id.location_change), Gravity.BOTTOM, 0, 0);
+            mIsShowing = true;
+        }
+    }
+
+    private void initPopup() {
+        View emptyView = LayoutInflater.from(this).inflate(R.layout.pop_layout_empty, null);
+        emptyView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT));
+        View pop = View.inflate(this, R.layout.mypop_change_location, null);
+        popupWindow = new PopupWindow(pop, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setTouchable(true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.setFocusable(true);
+        popupWindow.setBackgroundDrawable(new BitmapDrawable(getResources(), (Bitmap) null));
+//        WindowManager.LayoutParams lp = this.getWindow().getAttributes();
+//        lp.alpha = 0.7f;
+//        this.getWindow().setAttributes(lp);
+        popupWindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+
+            @Override
+            public void onDismiss() {
+                dismiss();
+//                WindowManager.LayoutParams lp = getWindow().getAttributes();
+//                lp.alpha = 1f;
+//                getWindow().setAttributes(lp);
+//                mIsShowing = false;
+            }
+        });
+        popupWindow.setAnimationStyle(R.style.take_photo_anim);
+        ImageView close = (ImageView) pop.findViewById(R.id.title_edit_view);
+        final EditText searchText = (EditText) pop.findViewById(R.id.search_location);
+        Button search = (Button) pop.findViewById(R.id.button_get);
+        itemNum = (LinearLayout) pop.findViewById(R.id.item_num);
+        totalNum = (TextView) pop.findViewById(R.id.result_num);
+        RecyclerView popRecycler = (RecyclerView) pop.findViewById(R.id.poprecycler_view);
+        popRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        popAdapter = new MyPopupEditAdapter(R.layout.popup_recycler_item_change, list);
+        popAdapter.bindToRecyclerView(popRecycler);
+        popAdapter.setEmptyView(emptyView);
+        popAdapter.disableLoadMoreIfNotFullPage();
+        popAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
+            @Override
+            public void onLoadMoreRequested() {
+                requestData(mNextRequestPage, searchText.getText().toString().trim());
+
+            }
+        });
+        popAdapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+            @Override
+            public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                if (view.getId() == R.id.choose_dine) {
+                    textNo.setText(list.get(position).getPostcd().getCdatasection());
+                    textLocation.setText(list.get(position).getAddrjibun().getCdatasection());
+                    popupWindow.dismiss();
+                }
+            }
+        });
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupWindow.dismiss();
+            }
+        });
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                list.clear();
+                requestData(1, searchText.getText().toString().trim());
+            }
+        });
+        mIsShowing = false;
+    }
+
+    private void requestData(final int page, String str) {
+        HashMap<String, Object> params = new HashMap<>();
+//        params.put("lang_type", "kor");
+//        params.put("token", S.getShare(this, C.KEY_JSON_TOKEN, ""));
+//        params.put("custom_code", S.getShare(this, C.KEY_JSON_CUSTOM_CODE, ""));
+//        params.put("selling", 1);
+        params.put("pg", page);
+        params.put("psize", 10);
+        params.put("key", str);
+        OkHttpHelper okHttpHelper = new OkHttpHelper(this, true);
+        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                AddressSearch entity = GsonUtils.changeGsonToBean(responseDescription, AddressSearch.class);
+                Log.i("123123", "responseDescription=" + responseDescription);
+                if ("1".equals(entity.getStatus())) {
+
+                    if (page == 1) {
+                        list = entity.getData().getPost().getItemlist().getItem();
+                        mNextRequestPage = 2;
+                        popAdapter.setNewData(list);
+                        itemNum.setVisibility(View.VISIBLE);
+                        totalNum.setText(list.size() + "");
+                        //  mAdapter.loadMoreEnd(true);
+                    } else {
+                        if (entity.getData() != null && entity.getData().getPost().getItemlist().getItem().size() > 0) {
+                            mNextRequestPage++;
+                            list.addAll(entity.getData().getPost().getItemlist().getItem());
+                            popAdapter.loadMoreComplete();
+                            popAdapter.addData(entity.getData().getPost().getItemlist().getItem());
+                            totalNum.setText(list.size() + "");
+                            itemNum.setVisibility(View.VISIBLE);
+                        } else {
+                            popAdapter.loadMoreComplete();
+                            popAdapter.loadMoreEnd(true);
+                            totalNum.setText(list.size() + "");
+                            itemNum.setVisibility(View.VISIBLE);
+                        }
+                    }
+                } else {
+
+                    popAdapter.loadMoreComplete();
+                    popAdapter.loadMoreEnd(true);
+                    itemNum.setVisibility(View.GONE);
+                    Toast.makeText(LocationChangeActivity.this, entity.getMessage() + "", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                Log.e("responseDescription456", responseDescription);
+//                Log.e("JSONObject",data.toString());
+                Log.e("flag145", flag);
+                popAdapter.loadMoreComplete();
+                popAdapter.loadMoreEnd(true);
+                itemNum.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+                popAdapter.loadMoreComplete();
+                popAdapter.loadMoreEnd(true);
+                itemNum.setVisibility(View.GONE);
+            }
+        }, Constant.XSGR_TEST_URL + "common/GetKorAddressList", GsonUtils.createGsonString(params));
+    }
+
+
+    public void dismiss() {
+        if (popupWindow != null && mIsShowing) {
+            popupWindow.dismiss();
+            mIsShowing = false;
+            params.alpha = 1f;
+            getWindow().setAttributes(params);
+        }
+    }
+
+    class MyPopupEditAdapter extends BaseQuickAdapter<AddressSearch.DataBean.PostBean.ItemlistBean.ItemBean, BaseViewHolder> {
+
+        public MyPopupEditAdapter(int layoutResId, @Nullable List<AddressSearch.DataBean.PostBean.ItemlistBean.ItemBean> data) {
+            super(layoutResId, data);
+        }
+
+        @Override
+        protected void convert(BaseViewHolder helper, AddressSearch.DataBean.PostBean.ItemlistBean.ItemBean item) {
+            helper.setText(R.id.position_content, item.getAddrjibun().getCdatasection());
+            helper.setText(R.id.youbian_content, item.getPostcd().getCdatasection());
+            helper.addOnClickListener(R.id.choose_dine);
+        }
     }
 
     private void showPickerView() {
@@ -124,6 +379,7 @@ public class LocationChangeActivity extends BaseActivity {
             }
         }
     };
+
     private void initJsonData() {//解析数据
 
         /**
@@ -198,6 +454,7 @@ public class LocationChangeActivity extends BaseActivity {
             return stringBuilder.toString();
         }
     }
+
     public ArrayList<JsonBean> parseData(String result) {//Gson 解析
         ArrayList<JsonBean> detail = new ArrayList<>();
         try {
@@ -220,5 +477,16 @@ public class LocationChangeActivity extends BaseActivity {
         if (mHandler != null) {
             mHandler.removeCallbacksAndMessages(null);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+//        Intent intent = new Intent();
+//        intent.putExtra("textNo", textNo.getText().toString().trim());
+//        intent.putExtra("textLocation", textLocation.getText().toString().trim());
+//        intent.putExtra("detailLocation", editText.getText().toString().trim());
+//        setResult(RESULT_OK, intent);
+        finish();
     }
 }

@@ -48,6 +48,7 @@ public class StoreManageActivity extends BaseActivity {
     WImageView wImageView;
     private RelativeLayout bringPhothLayout;
     private String uploadTime;
+    private String zipCode,addr,addrDetail;
     private BringPhotoView bringPhotoView;
     private String imageDownloadUrl = "";
     private Uri imageUri;
@@ -61,10 +62,7 @@ public class StoreManageActivity extends BaseActivity {
         setContentView(R.layout.activity_xs_my_info);
 
         initView();
-
         initData();
-
-
         setListener();
 
     }
@@ -149,8 +147,13 @@ public class StoreManageActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-                intent.setClass(StoreManageActivity.this,LocationChangeActivity.class);
-                startActivityForResult(intent,1000);
+                Bundle bundle = new Bundle();
+                bundle.putString("zipCode",zipCode);
+                bundle.putString("addr",addr);
+                bundle.putString("addrDetail",addrDetail);
+                intent.putExtras(bundle);
+                intent.setClass(StoreManageActivity.this, LocationChangeActivity.class);
+                startActivityForResult(intent, 1000);
             }
         });
 
@@ -173,7 +176,7 @@ public class StoreManageActivity extends BaseActivity {
         close_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              requestSave();
+                requestSave();
             }
         });
     }
@@ -194,9 +197,9 @@ public class StoreManageActivity extends BaseActivity {
                 j1.put("store_image_url", imageDownloadUrl);
                 j1.put("custom_name", tv_name.getText().toString());
                 j1.put("telephone", tv_phone.getText().toString());
-                j1.put("zip_code", "05656");
-                j1.put("kor_addr","서울특별시 금천구 가산동");
-                j1.put("kor_addr_detail","67 당산역 한강포스빌");
+                j1.put("zip_code", zipCode);
+                j1.put("kor_addr", addr);
+                j1.put("kor_addr_detail", addrDetail);
                 Log.e("j1--", j1.toString());
 				/*j1.put(C.KEY_REQUEST_MEMBER_ID_TOW, "1862756329077a18"); //memberID
 				j1.put(C.KEY_JSON_NICK_NAME, "kimdsttthhjh");  //deviceNo
@@ -265,7 +268,6 @@ public class StoreManageActivity extends BaseActivity {
     public void initShopInfoData() {
 
         HashMap<String, String> param = new HashMap<String, String>();
-
         param.put("lang_type", AppConfig.LANG_TYPE);
         param.put("token", S.getShare(StoreManageActivity.this, C.KEY_JSON_TOKEN, ""));
         param.put("custom_code", S.getShare(StoreManageActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
@@ -284,8 +286,11 @@ public class StoreManageActivity extends BaseActivity {
                 bean = GsonUtils.changeGsonToBean(responseDescription, MyShopInfoBean.class);
 
                 tv_name.setText(bean.getCustom_name() + "");
-                tv_phone.setText(bean.getTelephon() + "");
-                tv_add.setText(bean.getAddress() + "");
+                tv_phone.setText(bean.getMobilepho() + "");
+                zipCode = bean.getZip_code()+"";
+                addr = bean.getKor_addr()+"";
+                addrDetail = bean.getKor_addr_detail()+"";
+                tv_add.setText(addr+" "+addrDetail);
 
 //            Glide.with(XsMyShopActivity.this).load(bean.getShop_thumnail_image()).into(img_myshop);
                 if (bean.getShop_thumnail_image() != null && !bean.getShop_thumnail_image().isEmpty()) {
@@ -389,7 +394,10 @@ public class StoreManageActivity extends BaseActivity {
                     }
                     break;
                 case 1000:
-
+                    zipCode = data.getStringExtra("textNo");
+                    addr = data.getStringExtra("textLocation");
+                    addrDetail = data.getStringExtra("detailLocation");
+                    tv_add.setText(addr+addrDetail);
                     break;
 
             }
@@ -600,7 +608,7 @@ public class StoreManageActivity extends BaseActivity {
                 // + ".jpg"));
 //C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH
                 //http://portal.gigawon.co.kr:8488/MediaUploader/wsProfile/
-                imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH+ "wportal"
+                imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal"
                         + S.getShare(StoreManageActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
                 Log.e("tag_img", imageDownloadUrl);
                 ImageUtil.drawImageFromUri(imageDownloadUrl, wImageView);
