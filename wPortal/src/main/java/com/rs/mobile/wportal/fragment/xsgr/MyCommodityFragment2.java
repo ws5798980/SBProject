@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -71,6 +72,17 @@ public class MyCommodityFragment2 extends BaseFragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),
                 LinearLayoutManager.HORIZONTAL, R.drawable.divide_bg));
+        recyclerView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                if (swipeRefreshLayout.isRefreshing()) {
+                    swipeRefreshLayout.setRefreshing(false);
+                    return true;
+                }
+                return false;
+            }
+        });
         adapter = new MyCommodityAdapter(getContext(), R.layout.item_rv_swipemenu, list);
         adapter.bindToRecyclerView(recyclerView);
         adapter.setEmptyView(emptyView);
@@ -79,6 +91,9 @@ public class MyCommodityFragment2 extends BaseFragment {
             @Override
             public void onItemChildClick(BaseQuickAdapter adapter, View view, final int position) {
 //adapter.getViewByPosition(recyclerView, position, R.id.layout_include)
+                if (swipeRefreshLayout.isRefreshing()) {
+                    return;
+                }
                 if (view.getId() == R.id.get_shelves) {
                     D.showDialog(getContext(), -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.sure_getshelves), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
