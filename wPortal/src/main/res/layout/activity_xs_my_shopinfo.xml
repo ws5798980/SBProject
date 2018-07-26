@@ -89,7 +89,6 @@
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:gravity="center_vertical"
-                    android:text="KFC(九龙城店)"
                     android:textColor="@color/white"
                     android:textSize="@dimen/text_size_mb" />
 
@@ -115,7 +114,6 @@
                             android:layout_marginLeft="5dp"
                             android:layout_weight="7"
                             android:gravity="center"
-                            android:text="营业中"
                             android:textColor="@color/found_text_color"
                             android:textSize="@dimen/text_size_s" />
 
@@ -175,7 +173,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="3524.5"
                     android:textColor="@color/unselect_kr_menu"
                     android:textSize="24sp"
                     android:textStyle="bold" />
@@ -209,7 +206,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:text="284"
                     android:textColor="@color/unselect_kr_menu"
                     android:textSize="24sp"
                     android:textStyle="bold" />

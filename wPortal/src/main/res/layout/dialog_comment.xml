@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="25dp"
-            android:text="回复评论"
+            android:text="@string/huifu"
             android:textColor="@color/black"
             android:textSize="20sp" />
 
@@ -48,7 +48,7 @@
                 android:layout_margin="10dp"
                 android:background="@null"
                 android:gravity="start"
-                android:hint="感谢您的支持与喜欢！我们将努力做得更好！"
+                android:hint="@string/huifuhint"
                 android:maxLines="5"
                 android:textColorHint="#bbbbbb"
                 android:textSize="15sp" />

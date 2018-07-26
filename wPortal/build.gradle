@@ -22,8 +22,8 @@ android {
             sourceCompatibility JavaVersion.VERSION_1_7
             targetCompatibility JavaVersion.VERSION_1_7
         }
-        versionCode 1807061039
-        versionName "1.2.2"
+        versionCode 1807231019
+        versionName "1.2.3"
         signingConfig signingConfigs.release
         multiDexEnabled true
     }

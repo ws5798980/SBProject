@@ -218,7 +218,7 @@ public class StoreCommentActivity extends BaseActivity {
                 tv_star4.setText(bean.getRating4());
                 tv_star5.setText(bean.getRating5());
 
-                String[] titles2 = new String[]{titles[0] + "(" + bean.getAssess_cnt() + ")", titles[1] + "(" + (Integer.parseInt(bean.getRating2()) + Integer.parseInt(bean.getRating1())) + ")", titles[2] + "(" + bean.getNot_conf() + ")"};
+                String[] titles2 = new String[]{titles[0] + "(" + bean.getAssess_cnt() + ")", titles[1] + "(" +  bean.getRating1()+ ")", titles[2] + "(" + bean.getNot_conf() + ")"};
 //                tabLayout.removeAllTabs();
 //                tabLayout.addTab(tabLayout.newTab().setText(titles[0] + "(" + bean.getAssess_cnt() + ")"));
 //                tabLayout.addTab(tabLayout.newTab().setText(titles[1] + "(" + (Integer.parseInt(bean.getRating2()) + Integer.parseInt(bean.getRating1())) + ")"));

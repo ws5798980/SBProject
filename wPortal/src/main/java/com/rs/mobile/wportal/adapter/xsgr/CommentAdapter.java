@@ -54,11 +54,11 @@ public class CommentAdapter extends BaseQuickAdapter<CommentBean.ShopAssessDataB
 
         if (item.getSale_content().equals("")) {
             linearLayout.setVisibility(View.GONE);
-            helper.setText(R.id.bt_huifu, "回复");
+            helper.setText(R.id.bt_huifu, context.getResources().getString(R.string.huifu));
 
         } else {
             linearLayout.setVisibility(View.VISIBLE);
-            helper.setText(R.id.bt_huifu, "修改")
+            helper.setText(R.id.bt_huifu, context.getResources().getString(R.string.change))
                     .setText(R.id.textview_backtime, item.getSale_reg_date())
                     .setText(R.id.textview_salecomment, item.getSale_content());
         }
