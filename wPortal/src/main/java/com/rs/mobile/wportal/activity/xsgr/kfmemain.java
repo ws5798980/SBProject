@@ -615,11 +615,16 @@ private void initPicList()
 
                 try {
                     JSONObject data2=(JSONObject)data.getJSONObject("data");
+                    JSONObject jsonObject = new JSONObject(responseDescription);
+                    if ("1".equals(jsonObject.getString("status"))){
+                        Intent intent = new Intent(kfmemain.this, XsStoreDetailActivity2.class);
+                        intent.putExtra("custom_name",data2.getString("visit_custom_name"));
+                        intent.putExtra("sale_custom_code", data2.getString("visit_custom_code"));
+                        startActivity(intent);
+                    }else {
+                        Toast.makeText(kfmemain.this, getResources().getString(R.string.search_no_result), Toast.LENGTH_SHORT).show();
+                    }
 
-                    Intent intent = new Intent(kfmemain.this, XsStoreDetailActivity2.class);
-                    intent.putExtra("custom_name",data2.getString("visit_custom_name"));
-                    intent.putExtra("sale_custom_code", data2.getString("visit_custom_code"));
-                    startActivity(intent);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

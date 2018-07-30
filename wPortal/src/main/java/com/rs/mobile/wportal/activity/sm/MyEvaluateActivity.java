@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.L;
 import com.rs.mobile.common.network.OkHttpHelper;
 import com.rs.mobile.common.view.XListView;
@@ -100,6 +101,7 @@ public class MyEvaluateActivity extends BaseActivity implements XListView.IXList
 
 		param.put("pageIndex", pageIndex + "");
 		param.put("pageSize", pageSize + "");
+		param.put("lang_type", AppConfig.LANG_TYPE);
 		OkHttpHelper okHttpHelper = new OkHttpHelper(MyEvaluateActivity.this);
 		okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {
 

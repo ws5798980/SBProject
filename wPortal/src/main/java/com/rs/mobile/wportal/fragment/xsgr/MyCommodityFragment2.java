@@ -347,4 +347,5 @@ public class MyCommodityFragment2 extends BaseFragment {
             }
         }, Constant.XSGR_TEST_URL + Constant.COMMODITY_DELPRODUCT, GsonUtils.createGsonString(params));
     }
+
 }
