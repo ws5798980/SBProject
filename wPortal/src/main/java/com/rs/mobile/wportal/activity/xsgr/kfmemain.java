@@ -568,8 +568,16 @@ private void initPicList()
     {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_list2);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this) {
+            @Override
+            public boolean canScrollVertically() {
+                // 直接禁止垂直滑动
+                return false;
+            }
+        };
 
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setNestedScrollingEnabled(false);
         mAdapter = new XsStoreListAdapter(this, R.layout.list_item_xs_store_list, mStoreList);
 
         mAdapter.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
@@ -731,6 +739,7 @@ private void initPicList()
 
 
                             mRecyclerView = (RecyclerView) findViewById(R.id.rv_list1);
+                            mRecyclerView.setNestedScrollingEnabled(false);
                             mRecyclerView.setLayoutManager(new GridLayoutManager(kfmemain.this, 5));
                             adapter1 = new XsIndexAdapter1(kfmemain.this, R.layout.layout_index_bigitem1, entity.data);
                             adapter1.setOnLoadMoreListener(new BaseQuickAdapter.RequestLoadMoreListener() {
