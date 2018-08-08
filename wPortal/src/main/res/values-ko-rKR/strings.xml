@@ -1174,5 +1174,22 @@
     <string name="my_shop">나의 상가</string>
     <string name="my_shoucang">장바구니 담기</string>
 
+    <string name="dianping">리뷰</string>
+    <string name="pingjia">평가</string>
+    <string name="shangjia">상가</string>
+    <string name="tuiguang">홍보</string>
+
+    <string name="frame_con1">상호:</string>
+    <string name="frame_con2">사업자번호:</string>
+    <string name="frame_con3">주소:</string>
+    <string name="frame_con4">전화번호:</string>
+    <string name="frame_con5">원산지정보</string>
+    <string name="frame_con6">전화걸기</string>
+    <string name="frame_con7">지도보기</string>
+    <string name="frame_con8">최근리뷰</string>
+    <string name="frame_con9">사장님댓글</string>
+    <string name="frame_con10">거리</string>
+    <string name="frame_con11">주문수 </string>
+
 
 </resources>

@@ -1199,5 +1199,20 @@
     <string name="my_shop">我的商家</string>加入购物车
     <string name="my_shoucang">加入购物车</string>
 
+    <string name="dianping">点评</string>
+    <string name="pingjia">评价</string>
+    <string name="shangjia">商家</string>
+    <string name="tuiguang">推广</string>
 
+    <string name="frame_con1">商户:</string>
+    <string name="frame_con2">营业执照注册号:</string>
+    <string name="frame_con3">地址:</string>
+    <string name="frame_con4">电话号码:</string>
+    <string name="frame_con5">原产地信息</string>
+    <string name="frame_con6">拨打电话</string>
+    <string name="frame_con7">查看地图</string>
+    <string name="frame_con8">最新评论</string>
+    <string name="frame_con9">商家回复</string>
+    <string name="frame_con10">距离</string>
+    <string name="frame_con11">订单数 </string>
 </resources>

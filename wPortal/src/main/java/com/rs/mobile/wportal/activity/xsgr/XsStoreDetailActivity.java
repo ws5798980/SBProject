@@ -614,7 +614,7 @@ public class XsStoreDetailActivity extends AppCompatActivity implements View.OnC
 
                 entity = GsonUtils.changeGsonToBean(responseDescription, StoreMenuListEntity1.class);
                 tv_shopmame.setText(entity.data.StoreInfo.custom_name);
-                tv_sale_m.setText("주문수 "+entity.data.StoreInfo.sale_cnt);
+                tv_sale_m.setText(getResources().getString(R.string.frame_con11)+entity.data.StoreInfo.sale_cnt);
                // mTel=entity.data.StoreInfo.
 
                 if("1".equals(entity.status)){

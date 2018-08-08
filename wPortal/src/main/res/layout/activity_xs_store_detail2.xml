@@ -123,7 +123,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="최근리뷰"
+                            android:text="@string/frame_con8"
                             android:textSize="10sp"
                             android:textColor="#a0a0a0"/>
                     </LinearLayout>
@@ -145,7 +145,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="사장님댓글"
+                            android:text="@string/frame_con9"
                             android:textSize="10sp"
                             android:textColor="#a0a0a0"/>
                     </LinearLayout>
@@ -169,7 +169,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="거리"
+                            android:text="@string/frame_con10"
                             android:textSize="10sp"
                             android:textColor="#a0a0a0"/>
                     </LinearLayout>
@@ -221,7 +221,6 @@
                         android:id="@+id/tv_shopmame"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="商户名称"
                         android:textSize="20sp"
                         android:textColor="#fff"/>
 
@@ -230,7 +229,6 @@
                         android:id="@+id/tv_sale_m"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="月售 0"
                         android:textSize="12sp"
                         android:textColor="#fff"/>
 

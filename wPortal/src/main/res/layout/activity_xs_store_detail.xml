@@ -250,7 +250,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="상호:" />
+                        android:text="@string/frame_con1" />
 
                     <TextView
                         android:id="@+id/tv_shopname"
@@ -271,7 +271,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="사업자번호:" />
+                        android:text="@string/frame_con2" />
 
                     <TextView
                         android:id="@+id/tv_licenseno"
@@ -292,7 +292,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="주소:" />
+                        android:text="@string/frame_con3" />
 
                     <TextView
                         android:id="@+id/tv_address"
@@ -313,7 +313,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="전화번호:" />
+                        android:text="@string/frame_con4" />
 
                     <TextView
                         android:id="@+id/tv_shopphone"
@@ -350,7 +350,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="원산지정보"
+                        android:text="@string/frame_con5"
                         android:textColor="#111111" />
 
                     <TextView
@@ -391,7 +391,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="전화걸기" />
+                            android:text="@string/frame_con6" />
 
                     </LinearLayout>
 
@@ -412,7 +412,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="지도보기" />
+                            android:text="@string/frame_con7" />
                     </LinearLayout>
 
                 </LinearLayout>
