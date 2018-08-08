@@ -191,7 +191,7 @@ public class StoreManageActivity extends BaseActivity {
             HashMap<String, String> params = new HashMap<>();
             try {
 
-                j1.put("lang_type", "kor");
+                j1.put("lang_type", AppConfig.LANG_TYPE);
                 j1.put("token", S.getShare(StoreManageActivity.this, C.KEY_JSON_TOKEN, ""));
                 j1.put("custom_code", S.getShare(StoreManageActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
                 j1.put("store_image_url", imageDownloadUrl);

@@ -1162,4 +1162,42 @@
     <string name="huifuhint">感谢您的支持与喜欢！我们将努力做得更好！</string>
     <string name="search_no_result">查询无结果</string>
 
+    <string name="search_no_result2">当前没有搜索结果</string>
+    <string name="choose_n">选择</string>
+    <string name="search_reason">条件搜索</string>
+    <string name="condition1">配送</string>
+    <string name="condition2">位置</string>
+    <string name="condition3">下单商品</string>
+    <string name="condition4">活动中</string>
+    <string name="condition5">使用商品券</string>
+    <string name="dialog_til">我的位置定位</string>
+    <string name="dialog_l">以当前位置重新搜索</string>
+    <string name="dialog_r">地图指定位置</string>
+    <string name="list1_1">全部</string>
+    <string name="list1_2">可以</string>
+    <string name="list1_3">不可以</string>
+    <string name="list2_1">距离排序</string>
+    <string name="list2_2">销量排序</string>
+    <string name="list3_1">韩餐</string>
+    <string name="list3_2">中餐</string>
+    <string name="list3_3">西餐</string>
+    <string name="list3_4">日餐</string>
+    <string name="list4_1">全部</string>
+    <string name="list4_2">是</string>
+    <string name="list4_3">否</string>
+    <string name="agree_service">点击开始按钮，视为同意定位服务</string>
+    <string name="radio_1">特价处理</string>
+    <string name="radio_2">距离排序</string>
+    <string name="radio_3">人气排序</string>
+    <string name="tab_detail_1">菜单</string>
+    <string name="tab_detail_2">评论</string>
+    <string name="tab_detail_3">信息</string>
+    <string name="yuan">元</string>
+    <string name="zhunbei1">收藏成功</string>
+    <string name="zhunbei2">取消收藏</string>
+    <string name="close_sure">再次点击，可关闭程序</string>
+    <string name="my_shop">我的商家</string>加入购物车
+    <string name="my_shoucang">加入购物车</string>
+
+
 </resources>

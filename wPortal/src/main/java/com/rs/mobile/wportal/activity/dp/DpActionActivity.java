@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.C;
 import com.rs.mobile.common.L;
 import com.rs.mobile.common.S;
@@ -110,7 +111,7 @@ public class DpActionActivity extends BaseActivity {
 		JSONObject obj = new JSONObject();
 
 		try {
-			obj.put("lang_type", "chn");
+			obj.put("lang_type", AppConfig.LANG_TYPE);
 			obj.put("memid", S.get(getApplicationContext(), C.KEY_SHARED_PHONE_NUMBER, ""));
 			obj.put("mall_home_id", S.get(getApplicationContext(), C.KEY_SHARED_PHONE_NUMBER, ""));
 			obj.put("mem_grade", "");

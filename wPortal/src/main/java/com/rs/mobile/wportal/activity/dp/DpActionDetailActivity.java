@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.S;
 import com.rs.mobile.common.view.WImageView;
 import com.rs.mobile.common.C;
@@ -74,7 +75,7 @@ public class DpActionDetailActivity extends BaseActivity {
 		headers.put("Content-Type", "application/json;Charset=UTF-8");
 		JSONObject obj = new JSONObject();
 		try {
-			obj.put("lang_type", "chn");
+			obj.put("lang_type", AppConfig.LANG_TYPE);
 			obj.put("memid", S.get(getApplicationContext(), C.KEY_SHARED_PHONE_NUMBER, ""));
 			obj.put("mall_home_id", S.get(getApplicationContext(), C.KEY_SHARED_PHONE_NUMBER, ""));
 			obj.put("mem_grade", "");

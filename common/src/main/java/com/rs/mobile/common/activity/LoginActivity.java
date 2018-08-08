@@ -154,7 +154,7 @@ public class LoginActivity extends BaseActivity {
 
 
                     Intent intent = new Intent(LoginActivity.this, WebActivity.class);
-                    intent.putExtra("title", "등록");
+                    intent.putExtra("title", getResources().getString(R.string.zhuce));
                     intent.putExtra("url", "http://join.gigaroom.com/10_Member/join_main");
                     startActivity(intent);
 
@@ -550,9 +550,9 @@ public class LoginActivity extends BaseActivity {
     private void dialog1() {
         final Dialog dialog = new Dialog(this, R.style.LodingDialog);
         dialog.setContentView(R.layout.dialog_item_bg);
-        ((TextView) dialog.findViewById(R.id.tv_title)).setText("단체가입");
-        ((TextView) dialog.findViewById(R.id.tv_group1)).setText("단체신청");
-        ((TextView) dialog.findViewById(R.id.tv_group1)).setText("단체찾기");
+        ((TextView) dialog.findViewById(R.id.tv_title)).setText(getResources().getString(R.string.tuanti_1));
+        ((TextView) dialog.findViewById(R.id.tv_group1)).setText(getResources().getString(R.string.tuanti_2));
+        ((TextView) dialog.findViewById(R.id.tv_group1)).setText(getResources().getString(R.string.tuanti_3));
         dialog.findViewById(R.id.iv_close).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -583,9 +583,9 @@ public class LoginActivity extends BaseActivity {
         final Dialog dialog = new Dialog(this, R.style.LodingDialog);
         dialog.setContentView(R.layout.dialog_item_bg);
         dialog.setContentView(R.layout.dialog_item_bg);
-        ((TextView) dialog.findViewById(R.id.tv_title)).setText("사업자유형선택");
-        ((TextView) dialog.findViewById(R.id.tv_group1)).setText("개인");
-        ((TextView) dialog.findViewById(R.id.tv_group1)).setText("사업자");
+        ((TextView) dialog.findViewById(R.id.tv_title)).setText(getResources().getString(R.string.shiye_1));
+        ((TextView) dialog.findViewById(R.id.tv_group1)).setText(getResources().getString(R.string.shiye_2));
+        ((TextView) dialog.findViewById(R.id.tv_group1)).setText(getResources().getString(R.string.shiye_3));
         dialog.findViewById(R.id.iv_close).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {

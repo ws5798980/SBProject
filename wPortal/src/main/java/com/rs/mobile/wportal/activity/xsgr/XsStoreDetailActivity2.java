@@ -302,9 +302,9 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 //        cart_list_view = (ListView)findViewById(R.id.cart_list_view);
 //        delete_all_btn=(TextView)findViewById(R.id.delete_all_btn);
 
-        tab1 = tabLayout1.newTab().setText("메뉴");
-        tab2 = tabLayout1.newTab().setText("리뷰");
-        tab3 = tabLayout1.newTab().setText("정보");
+        tab1 = tabLayout1.newTab().setText(getResources().getString(R.string.tab_detail_1));
+        tab2 = tabLayout1.newTab().setText(getResources().getString(R.string.tab_detail_2));
+        tab3 = tabLayout1.newTab().setText(getResources().getString(R.string.tab_detail_3));
 
         tabLayout1.addTab(tab1);
         tabLayout1.addTab(tab2);
@@ -608,10 +608,10 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
         Glide.with(XsStoreDetailActivity2.this).load(pinfo.image_url).into((ImageView) iv_itemlogo_pop);
         tv_itemname_pop.setText(pinfo.item_name);
 
-        pop_need_money_tv.setText(pinfo.item_p + "원");
+        pop_need_money_tv.setText(pinfo.item_p + getResources().getString(R.string.yuan));
         FoodSpecCode = pinfo.item_code;
         TextView tv_itemp_pop = (TextView) dialog.findViewById(R.id.tv_itemp_pop);
-        tv_itemp_pop.setText(pinfo.item_p + "원");
+        tv_itemp_pop.setText(pinfo.item_p + getResources().getString(R.string.yuan));
 
 
         TextView tv_itemremark = (TextView) dialog.findViewById(R.id.tv_itemremark);
@@ -762,7 +762,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
     //评论列表
     public void initCommentData() {
         HashMap<String, String> param = new HashMap<String, String>();
-        param.put("lang_type", "kor");
+        param.put("lang_type", AppConfig.LANG_TYPE);
         param.put("sale_custom_code", mSaleCustomCode);
         param.put("pg", "1");
         param.put("pagesize", "100");
@@ -929,11 +929,11 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 
 
                     if ("1".equals(favorites)) {
-                        Toast.makeText(XsStoreDetailActivity2.this, "찜하기가 완료되었습니다", Toast.LENGTH_LONG).show();
+                        Toast.makeText(XsStoreDetailActivity2.this, getResources().getString(R.string.zhunbei1), Toast.LENGTH_LONG).show();
                         isfavorites = true;
                         iconImg.setBackgroundDrawable(getResources().getDrawable(R.drawable.icon_collected_store));
                     } else {
-                        Toast.makeText(XsStoreDetailActivity2.this, "찜하기가 취소되었습니다", Toast.LENGTH_LONG).show();
+                        Toast.makeText(XsStoreDetailActivity2.this, getResources().getString(R.string.zhunbei2), Toast.LENGTH_LONG).show();
                         isfavorites = false;
                         iconImg.setBackgroundDrawable(getResources().getDrawable(R.drawable.icon_uncollected_store));
                     }

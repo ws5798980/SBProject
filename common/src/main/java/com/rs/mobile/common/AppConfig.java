@@ -1,7 +1,7 @@
 package com.rs.mobile.common;
 
 public class AppConfig {
-    public final static String LANG_TYPE = "kor";
+    public final static String LANG_TYPE = "chn";
 
     public static String address;
     public static double latitude;

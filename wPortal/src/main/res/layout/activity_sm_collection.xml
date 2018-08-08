@@ -99,7 +99,7 @@
             android:layout_alignParentRight="true"
             android:drawablePadding="@dimen/margin"
             android:drawableTop="@drawable/icon_shoppingcart_n"
-            android:text="장바구니 담기"
+            android:text="@string/my_shoucang"
             android:textSize="@dimen/text_size_m"
             android:layout_centerVertical="true"/>
         

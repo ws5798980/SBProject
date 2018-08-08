@@ -261,7 +261,7 @@ public class SmMainActivity extends TabActivity {
                 && event.getAction() == KeyEvent.ACTION_DOWN &&
                 (System.currentTimeMillis() - exitTime) > 2000
                 ) {
-            Toast.makeText(getApplicationContext(), "다시 한번 클릭하면 프로그램을 종료합니다.",
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.close_sure),
                     Toast.LENGTH_SHORT).show();
             exitTime = System.currentTimeMillis();
             return true;

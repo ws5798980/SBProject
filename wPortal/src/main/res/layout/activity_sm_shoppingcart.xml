@@ -134,11 +134,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:background="@color/white"
         android:paddingBottom="@dimen/margin"
         android:paddingLeft="@dimen/marginx2"
         android:paddingRight="@dimen/margin"
-        android:paddingTop="@dimen/margin" >
+        android:paddingTop="@dimen/margin">
 
         <CheckBox
             android:id="@+id/checkbox"

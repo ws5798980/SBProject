@@ -16,6 +16,7 @@ import android.widget.Toast;
 import okhttp3.Request;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
+import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.C;
 import com.rs.mobile.common.D;
 import com.rs.mobile.common.L;
@@ -143,7 +144,7 @@ public class MyCommodityFragment extends BaseFragment {
 
     private void changeProductsellstate(String groupId, final int position) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("lang_type", "kor");
+        params.put("lang_type", AppConfig.LANG_TYPE);
         params.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
         params.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("selling", "0");
@@ -209,7 +210,7 @@ public class MyCommodityFragment extends BaseFragment {
 
     public void requestStoreCateList(final int pg, String categoryId) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("lang_type", "kor");
+        params.put("lang_type", AppConfig.LANG_TYPE);
         params.put("token", S.getShare(getContext(), C.KEY_JSON_TOKEN, ""));
         params.put("custom_code", S.getShare(getContext(), C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("selling", 1);

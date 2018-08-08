@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="내 위치 지정"
+        android:text="@string/dialog_til"
         android:textSize="16dp" />
 
     <View
@@ -65,14 +65,14 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="현재위치로 재검색" />
+                android:text="@string/dialog_l" />
 
             <TextView
                 android:id="@+id/res_text_location"
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="지도로 위치지정" />
+                android:text="@string/dialog_r" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

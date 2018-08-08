@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout;
+import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.C;
 import com.rs.mobile.common.D;
 import com.rs.mobile.common.S;
@@ -191,7 +192,7 @@ public class CommodityManagementActivity extends BaseActivity {
 
     private void requestCategoryList(String catergoryId, final boolean isShow) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("lang_type", "kor");
+        params.put("lang_type", AppConfig.LANG_TYPE);
         params.put("token", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_TOKEN, ""));
         params.put("custom_code", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("CategoryId", "-1");
@@ -332,7 +333,7 @@ public class CommodityManagementActivity extends BaseActivity {
                     HashMap<String, Object> params = new HashMap<>();
                     if (item.isAdd()) {
                         method = Constant.COMMODITY_CATEGORYADD;
-                        params.put("lang_type", "kor");
+                        params.put("lang_type", AppConfig.LANG_TYPE);
                         params.put("token", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_TOKEN, ""));
                         params.put("custom_code", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
                         params.put("level_name", edit);
@@ -342,7 +343,7 @@ public class CommodityManagementActivity extends BaseActivity {
                         params.put("rid", 0);
                     } else {
                         method = Constant.COMMODITY_CATEGORYEDIT;
-                        params.put("lang_type", "kor");
+                        params.put("lang_type", AppConfig.LANG_TYPE);
                         params.put("token", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_TOKEN, ""));
                         params.put("custom_code", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
                         params.put("level_name", edit);
@@ -519,7 +520,7 @@ public class CommodityManagementActivity extends BaseActivity {
 
     private void delProduct(String id, final int position) {
         HashMap<String, Object> params = new HashMap<>();
-        params.put("lang_type", "kor");
+        params.put("lang_type", AppConfig.LANG_TYPE);
         params.put("token", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_TOKEN, ""));
         params.put("custom_code", S.getShare(CommodityManagementActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("id", id);

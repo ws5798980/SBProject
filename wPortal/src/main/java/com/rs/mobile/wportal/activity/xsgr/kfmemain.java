@@ -172,7 +172,7 @@ public class kfmemain extends Activity implements View.OnClickListener{
         AddressTitle = (TextView) findViewById(R.id._addresstitle);
         if(S.getShare(getApplicationContext(), "address_naver","").isEmpty())
         {
-            AddressTitle.setText("검색 결과가 없습니다");
+            AddressTitle.setText(getResources().getString(R.string.search_no_result2));
         } else {
             AddressTitle.setText(S.getShare(getApplicationContext(), "address_naver",""));
         }
@@ -434,9 +434,9 @@ public class kfmemain extends Activity implements View.OnClickListener{
 private  void initselect()
 {
     List<String> list = new ArrayList<String>();
-    list.add("모두");
-    list.add("가능");
-    list.add("불가능");
+    list.add(getResources().getString(R.string.list1_1));
+    list.add(getResources().getString(R.string.list1_2));
+    list.add(getResources().getString(R.string.list1_3));
 
     ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list);
     adapter.setDropDownViewResource(android.R.layout.simple_list_item_checked);
@@ -444,8 +444,8 @@ private  void initselect()
     sp.setAdapter(adapter);
 
     List<String> list2 = new ArrayList<String>();
-    list2.add("거리순");
-    list2.add("판매순");
+    list2.add(getResources().getString(R.string.list2_1));
+    list2.add(getResources().getString(R.string.list2_2));
     ArrayAdapter<String> adapter2=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list2);
     adapter2.setDropDownViewResource(android.R.layout.simple_list_item_checked);
     Spinner sp2=(Spinner) findViewById(R.id.sp_select2);
@@ -453,19 +453,19 @@ private  void initselect()
 
 
     List<String> list3 = new ArrayList<String>();
-    list3.add("한식");
-    list3.add("중식");
-    list3.add("양식");
-    list3.add("일식");
+    list3.add(getResources().getString(R.string.list3_1));
+    list3.add(getResources().getString(R.string.list3_2));
+    list3.add(getResources().getString(R.string.list3_3));
+    list3.add(getResources().getString(R.string.list3_4));
     ArrayAdapter<String> adapter3=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list3);
     adapter3.setDropDownViewResource(android.R.layout.simple_list_item_checked);
     Spinner sp3=(Spinner) findViewById(R.id.sp_select3);
     sp3.setAdapter(adapter3);
     List<String> list4 = new ArrayList<String>();
 
-    list4.add("모두");
-    list4.add("예");
-    list4.add("아니요");
+    list4.add(getResources().getString(R.string.list4_1));
+    list4.add(getResources().getString(R.string.list4_2));
+    list4.add(getResources().getString(R.string.list4_3));
 
     ArrayAdapter<String> adapter4=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list4);
     adapter4.setDropDownViewResource(android.R.layout.simple_list_item_checked);
@@ -474,9 +474,9 @@ private  void initselect()
 
     List<String> list5 = new ArrayList<String>();
 
-    list5.add("모두");
-    list5.add("예");
-    list5.add("아니요");
+    list5.add(getResources().getString(R.string.list4_1));
+    list5.add(getResources().getString(R.string.list4_2));
+    list5.add(getResources().getString(R.string.list4_3));
     ArrayAdapter<String> adapter5=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list5);
     adapter5.setDropDownViewResource(android.R.layout.simple_list_item_checked);
     Spinner sp5=(Spinner) findViewById(R.id.sp_select5);

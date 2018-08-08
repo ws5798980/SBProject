@@ -19,6 +19,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.C;
 import com.rs.mobile.common.L;
 import com.rs.mobile.common.S;
@@ -229,7 +230,7 @@ public class DpHomePageActivity extends BaseActivity
 
 			obj.put("memid", S.getShare(getApplicationContext(), C.KEY_REQUEST_MEMBER_ID, ""));
 			obj.put("token", S.getShare(getApplicationContext(), C.KEY_JSON_TOKEN, ""));
-			obj.put("lang_type", "chn");
+			obj.put("lang_type", AppConfig.LANG_TYPE);
 			obj.put("div", C.DIV_CODE);
 			// obj1.put("myData", obj.toString());
 		} catch (JSONException e1) {

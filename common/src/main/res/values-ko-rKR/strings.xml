@@ -607,6 +607,11 @@
     <string name="total_search1">검색결과</string>
     <string name="total_search2">개</string>
 
-
-
+    <string name="zhuce">등록</string>
+    <string name="tuanti_1">단체가입</string>
+    <string name="tuanti_2">단체신청</string>
+    <string name="tuanti_3">단체찾기</string>
+    <string name="shiye_1">사업자유형선택</string>
+    <string name="shiye_2">개인</string>
+    <string name="shiye_3">사업자</string>
 </resources>

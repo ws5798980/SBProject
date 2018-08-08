@@ -1136,4 +1136,43 @@
     <string name="shop_name">점포 이름</string>
     <string name="huifuhint">고객님의 성원에 감사드립니다. 더 좋은 서비스를 제공하기 위해 최선을 다하겠습니다.</string>
     <string name="search_no_result">검색결과가 없습니다</string>
+
+    <string name="search_no_result2">검색 결과가 없습니다</string>
+    <string name="choose_n">선택</string>
+    <string name="search_reason">조건검색</string>
+    <string name="condition1">배달</string>
+    <string name="condition2">위치</string>
+    <string name="condition3">주문상품</string>
+    <string name="condition4">이벤트중</string>
+    <string name="condition5">상품권사용</string>
+    <string name="dialog_til">내 위치 지정</string>
+    <string name="dialog_l">현재위치로 재검색</string>
+    <string name="dialog_r">지도로 위치지정</string>
+    <string name="list1_1">모두</string>
+    <string name="list1_2">가능</string>
+    <string name="list1_3">불가능</string>
+    <string name="list2_1">거리순</string>
+    <string name="list2_2">판매순</string>
+    <string name="list3_1">한식</string>
+    <string name="list3_2">중식</string>
+    <string name="list3_3">양식</string>
+    <string name="list3_4">일식</string>
+    <string name="list4_1">모두</string>
+    <string name="list4_2">예</string>
+    <string name="list4_3">아니요</string>
+    <string name="agree_service">시작버튼을 누르시면 위치 기반 서비스에 동의 한 것으로 간주합니다</string>
+    <string name="radio_1">땡처리</string>
+    <string name="radio_2">거리순</string>
+    <string name="radio_3">인기순</string>
+    <string name="tab_detail_1">메뉴</string>
+    <string name="tab_detail_2">리뷰</string>
+    <string name="tab_detail_3">정보</string>
+    <string name="yuan">원</string>
+    <string name="zhunbei1">찜하기가 완료되었습니다</string>
+    <string name="zhunbei2">찜하기가 취소되었습니다</string>
+    <string name="close_sure">다시 한번 클릭하면 프로그램을 종료합니다.</string>
+    <string name="my_shop">나의 상가</string>
+    <string name="my_shoucang">장바구니 담기</string>
+
+
 </resources>

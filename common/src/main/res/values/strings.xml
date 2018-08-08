@@ -606,4 +606,12 @@
     <string name="search_location">搜索地址</string>
     <string name="total_search1">共搜索出</string>
     <string name="total_search2">个结果</string>
+
+    <string name="zhuce">注册</string>
+    <string name="tuanti_1">团体注册</string>
+    <string name="tuanti_2">团体申请</string>
+    <string name="tuanti_3">团体查找</string>
+    <string name="shiye_1">事业者类型选择</string>
+    <string name="shiye_2">个人</string>
+    <string name="shiye_3">事业者</string>
 </resources>

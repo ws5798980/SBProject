@@ -49,7 +49,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:text="서울특별시 영등포구영등포동"
                     android:textSize="12sp"
                     android:textColor="#353535"
                     android:textStyle="bold"/>
@@ -293,7 +292,7 @@
                 android:layout_height="35dp"
                 android:background="@drawable/new_index_live_shape2"
                 android:gravity="center"
-                android:text="선택"
+                android:text="@string/choose_n"
                 android:textColor="#ffffff" />
             </LinearLayout>
         </LinearLayout>
@@ -368,7 +367,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:text="조건검색"
+                android:text="@string/search_reason"
                 android:layout_marginLeft="8dp"
                 android:textColor="#000"
                 android:textSize="16sp"
@@ -384,7 +383,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:text="배달"
+                android:text="@string/condition1"
                 android:layout_marginLeft="8dp"
                 android:textColor="#666666"
                 android:textSize="14sp"
@@ -399,7 +398,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:text="위치"
+                android:text="@string/condition2"
                 android:textColor="#666666"
                 android:textSize="14sp"
                 android:layout_height="wrap_content" />
@@ -412,7 +411,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:text="주문상품"
+                android:text="@string/condition3"
                 android:textColor="#666666"
                 android:textSize="14sp"
                 android:layout_height="wrap_content" />
@@ -432,7 +431,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:text="이벤트중"
+                android:text="@string/condition4"
                 android:layout_marginLeft="8dp"
                 android:textColor="#666666"
                 android:textSize="14sp"
@@ -447,7 +446,7 @@
 
             <TextView
                 android:layout_width="wrap_content"
-                android:text="상품권사용"
+                android:text="@string/condition5"
                 android:textColor="#666666"
                 android:textSize="14sp"
                 android:layout_height="wrap_content" />
@@ -466,7 +465,7 @@
                 android:paddingBottom="3dp"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
-                android:text="검색"
+                android:text="@string/sm_text_serch"
                 android:textColor="#fff"
                 android:gravity="center"
                 android:background="@drawable/new_shop_shape4"
