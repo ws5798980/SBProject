@@ -92,7 +92,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#000000"/>
+                android:background="#f2f4f6"/>
         </RelativeLayout>
     <View
         android:layout_width="match_parent"
