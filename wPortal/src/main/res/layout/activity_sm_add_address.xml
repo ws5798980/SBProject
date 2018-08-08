@@ -192,7 +192,7 @@
                 android:layout_weight="1"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginLeft="190dp"
-                android:text="주소찾기"
+                android:text="@string/search_location"
                 android:textSize="12sp"
                 android:textColor="#ffffff"
                 app:normalBackgroundColor="#1e972a"
