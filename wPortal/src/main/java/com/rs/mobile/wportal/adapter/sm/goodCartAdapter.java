@@ -93,24 +93,24 @@ public class goodCartAdapter extends BaseAdapter {
 			LayoutParams params = wImageView.getLayoutParams();
 			params.width = context.getResources().getDisplayMetrics().widthPixels / 4;
 			wImageView.setLayoutParams(params);
-			wImageView.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-
-					Bundle bundle = new Bundle();
-//					bundle.putString(C.KEY_JSON_FM_ITEM_CODE, listdata.get(position).getId());
-					bundle.putString("ItemCode", listdata.get(position).getId());
-					bundle.putString(C.KEY_DIV_CODE, listdata.get(position).getDiv_code());
-					bundle.putString("SaleCustomCode", listdata.get(position).sale_custom_code);
-					if (type == 6) {
-						PageUtil.jumpTo(context, SmGoodsDetailActivity.class, bundle);
-					} else {
-						PageUtil.jumpTo(context, DpGoodsDetailActivity.class, bundle);
-					}
-
-				}
-			});
+//			wImageView.setOnClickListener(new OnClickListener() {
+//
+//				@Override
+//				public void onClick(View v) {
+//
+//					Bundle bundle = new Bundle();
+////					bundle.putString(C.KEY_JSON_FM_ITEM_CODE, listdata.get(position).getId());
+//					bundle.putString("ItemCode", listdata.get(position).getId());
+//					bundle.putString(C.KEY_DIV_CODE, listdata.get(position).getDiv_code());
+//					bundle.putString("SaleCustomCode", listdata.get(position).sale_custom_code);
+//					if (type == 6) {
+//						PageUtil.jumpTo(context, SmGoodsDetailActivity.class, bundle);
+//					} else {
+//						PageUtil.jumpTo(context, DpGoodsDetailActivity.class, bundle);
+//					}
+//
+//				}
+//			});
 			CheckBox checkBox = (CheckBox) convertView.findViewById(com.rs.mobile.wportal.R.id.checkbox);
 
 			TextView textView001 = (TextView) convertView.findViewById(com.rs.mobile.wportal.R.id.text_goodsname);

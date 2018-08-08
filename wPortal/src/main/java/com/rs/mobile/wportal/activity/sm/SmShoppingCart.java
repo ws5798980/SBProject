@@ -217,10 +217,10 @@ public class SmShoppingCart extends BaseActivity {
                 public void onItemClick(AdapterView<?> adapter, View view, int position, long id) {
                     // TODO Auto-generated method stub
 
-                    Bundle bundle = new Bundle();
-                    bundle.putString(C.KEY_JSON_FM_ITEM_CODE, list.get(position).getId());
-                    bundle.putString(C.KEY_DIV_CODE, list.get(position).getDiv_code());
-                    PageUtil.jumpTo(SmShoppingCart.this, SmGoodsDetailActivity.class, bundle);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString(C.KEY_JSON_FM_ITEM_CODE, list.get(position).getId());
+//                    bundle.putString(C.KEY_DIV_CODE, list.get(position).getDiv_code());
+//                    PageUtil.jumpTo(SmShoppingCart.this, SmGoodsDetailActivity.class, bundle);
 
                 }
             });
