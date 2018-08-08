@@ -1215,4 +1215,16 @@
     <string name="frame_con9">商家回复</string>
     <string name="frame_con10">距离</string>
     <string name="frame_con11">订单数 </string>
+
+    <string name="dialog_con1">商品名称: </string>
+    <string name="dialog_con2">价格: </string>
+    <string name="dialog_con3">数量</string>
+    <string name="dialog_con4">个</string>
+    <string name="dialog_con5">附加菜单</string>
+    <string name="dialog_con6">材料及料理</string>
+    <string name="dialog_con7">原产地标识:</string>
+    <string name="dialog_con8">价格:</string>
+    <string name="dialog_con9">购买</string>
+    <string name="dialog_con10">原产地标识:</string>
+
 </resources>

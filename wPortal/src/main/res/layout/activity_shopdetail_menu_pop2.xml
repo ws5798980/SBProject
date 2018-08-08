@@ -104,7 +104,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="상품명: "
+                                android:text="@string/dialog_con1"
                                 android:textColor="#111111"
                                 android:textSize="12sp" />
 
@@ -113,7 +113,6 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="sdfsadfasdf"
                                 android:textColor="#111111"
                                 android:textSize="12sp" />
 
@@ -130,7 +129,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="가격: "
+                                android:text="@string/dialog_con2"
                                 android:textColor="#ee3a3a"
                                 android:textSize="12sp" />
 
@@ -157,7 +156,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="수량"
+                                android:text="@string/dialog_con3"
                                 android:textColor="#111111"
                                 android:textSize="12sp" />
 
@@ -179,7 +178,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="개"
+                                android:text="@string/dialog_con4"
                                 android:textColor="#111111"
                                 android:textSize="12sp" />
                         </LinearLayout>
@@ -196,7 +195,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
-                                android:text="추 가 메 뉴"
+                                android:text="@string/dialog_con5"
                                 android:textColor="#111111"
                                 android:textSize="12sp" />
                         </LinearLayout>
@@ -257,7 +256,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:gravity="center"
-                        android:text="재료 및 요리"
+                        android:text="@string/dialog_con6"
                         android:textColor="#111111"
                         android:textSize="14sp" />
 
@@ -292,7 +291,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:gravity="left"
-                        android:text="원산지 표기:"
+                        android:text="@string/dialog_con7"
                         android:textColor="#999999"
                         android:textSize="12sp" />
 
@@ -332,7 +331,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
                         android:gravity="center"
-                        android:text="가격:"
+                        android:text="@string/dialog_con8"
                         android:textColor="#3d3d3d"
                         android:textSize="22sp" />
 
@@ -365,7 +364,7 @@
                         android:layout_height="30dp"
                         android:background="@drawable/new_shop_shape4"
                         android:gravity="center"
-                        android:text="구매하기"
+                        android:text="@string/dialog_con9"
                         android:textColor="#fff"
                         android:textSize="@dimen/text_size_ms" />
 

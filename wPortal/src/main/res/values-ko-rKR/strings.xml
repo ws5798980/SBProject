@@ -1191,5 +1191,14 @@
     <string name="frame_con10">거리</string>
     <string name="frame_con11">주문수 </string>
 
-
+    <string name="dialog_con1">상품명: </string>
+    <string name="dialog_con2">가격: </string>
+    <string name="dialog_con3">수량</string>
+    <string name="dialog_con4">개</string>
+    <string name="dialog_con5">추 가 메 뉴</string>
+    <string name="dialog_con6">재료 및 요리</string>
+    <string name="dialog_con7">원산지 표기:</string>
+    <string name="dialog_con8">가격:</string>
+    <string name="dialog_con9">구매하기</string>
+    <string name="dialog_con10">원산지 표기:</string>
 </resources>
