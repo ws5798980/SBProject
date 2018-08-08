@@ -371,12 +371,11 @@
 
             <TextView
                 android:id="@+id/radio3"
-                android:layout_width="60dp"
+                android:layout_width="80dp"
                 android:layout_height="25dp"
                 android:background="@drawable/new_shop_shape1"
                 android:clickable="true"
                 android:gravity="center"
-                android:lines="1"
                 android:text="@string/radio_3"
                 android:textColor="#21c043"
                 android:textSize="12sp" />
@@ -384,14 +383,13 @@
 
             <TextView
                 android:id="@+id/radio2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="25dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="20dp"
                 android:background="@drawable/btn_select_off"
                 android:clickable="true"
                 android:gravity="center"
-                android:lines="1"
                 android:text="@string/radio_2"
                 android:textColor="#a0a0a0"
                 android:textSize="12sp" />
