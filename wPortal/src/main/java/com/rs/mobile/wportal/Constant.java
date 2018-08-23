@@ -22,46 +22,46 @@ public class Constant {
 //	public static final String BASE_URL_YC = "http://192.168.2.201/ImApi/api/pl_CheckGeoFenceActivity";
 //	public static final String BASE_URL_ORDER = "http://192.168.2.152:8866";
 
-    // public static final String SM_BASE_URL = "http://pay.gigawon.co.kr:81";
+    // public static final String SM_BASE_URL = "http://pay.gigawon.cn:81";
     // public static final String BASE_URL_KR =
-    // "http://klcm.gigawon.co.kr:81";
+    // "http://klcm.gigawon.cn:81";
     // public static final String BASE_URL_RT =
-    // "http://foodapi.gigawon.co.kr:843";
+    // "http://foodapi.gigawon.cn:843";
     // public static final String BASE_URL_DP =
-    // "http://api1.gigawon.co.kr:82";
+    // "http://api1.gigawon.cn:82";
     // public static final String BASE_URL_DP1 =
-    // "http://pay.gigawon.co.kr:81";
+    // "http://pay.gigawon.cn:81";
     // public static final String BASE_URL_HT =
-    // "http://hotel.gigawon.co.kr:84";
+    // "http://hotel.gigawon.cn:84";
     // public static final String BASE_URL_SSO =
-    // "http://api1.gigawon.co.kr:8088";// SSO
+    // "http://api1.gigawon.cn:8088";// SSO
     // public static final String BASE_URL_YC =
     // "https://api.gigawon.co/ImApi/api/pl_CheckGeoFenceActivity";
 
-    public static final String XS_BASE_URL = "http://mall.gigawon.co.kr:8800/api/";
-    public static final String XSGR_TEST_URL = "http://gigaMerchantManager.gigawon.co.kr:8825/";
-    public static final String XS_MEMBER_URL = "http://member.gigawon.co.kr:8808/api/";
+    public static final String XS_BASE_URL = "http://mall.gigawon.cn:8800/api/";
+    public static final String XSGR_TEST_URL = "http://gigaMerchantManager.gigawon.cn:8825/";
+    public static final String XS_MEMBER_URL = "http://member.gigawon.cn:8808/api/";
 
-    public static final String SM_BASE_URL = "http://pay.gigawon.co.kr:81";
+    public static final String SM_BASE_URL = "http://pay.gigawon.cn:81";
     public static final String BASE_URL_KR =
-            "http://klcm.dxbhtm.com:8072";
+            "http://klcm.osunggiga.cn:8072";
     public static final String BASE_URL_RT =
-            "http://foodapi.dxbhtm.com:843";
+            "http://foodapi.osunggiga.cn:843";
     public static final String BASE_URL_DP =
-            "http://api1.dxbhtm.com:82";
+            "http://api1.osunggiga.cn:82";
     public static final String BASE_URL_DP1 =
-            "http://pay.dxbhtm.com:81";
+            "http://pay.osunggiga.cn:81";
     public static final String BASE_URL_HT =
-            "http://hotel.dxbhtm.com:8863";
+            "http://hotel.osunggiga.cn:8863";
     public static final String BASE_URL_SSO =
-            "http://api1.dxbhtm.com:8088";// SSO
+            "http://api1.osunggiga.cn:8088";// SSO
     public static final String BASE_URL_YC =
-            "http://api.dxbhtm.com:8444/ImApi/api/pl_CheckGeoFenceActivity";
+            "http://api.osunggiga.cn:8444/ImApi/api/pl_CheckGeoFenceActivity";
     public static final String BASE_URL_ORDER =
-            "http://editapi.dxbhtm.com:8866";
-    public static final String BASE_URL_UPDATE = "https://api.dxbhtm.com:8444/appapi/userapi";
+            "http://editapi.osunggiga.cn:8866";
+    public static final String BASE_URL_UPDATE = "https://api.osunggiga.cn:8444/appapi/userapi";
 
-    public static final String BASE_REFERENCE_URL = "http://api1.dxbhtm.com:7778";
+    public static final String BASE_REFERENCE_URL = "http://api1.osunggiga.cn:7778";
 
 
     /***************************************************************************************

@@ -793,7 +793,7 @@ private void initPicList()
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://mall.gigawon.co.kr:8800/api/StoreCate/requestStoreCate1FavList", GsonUtils.createGsonString(params));
+        }, "http://mall.gigawon.cn:8800/api/StoreCate/requestStoreCate1FavList", GsonUtils.createGsonString(params));
     }
 
 

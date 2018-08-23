@@ -335,7 +335,7 @@ public class XsMyActivity extends AppCompatActivity implements View.OnClickListe
 
                     @Override
                     public void onDoNext() {
-//                        String realUrl="http://www.gigawon.co.kr:1314/80_StoreAdmin/storeMain.aspx?custom_code="+S.get(XsMyActivity.this, C.KEY_JSON_CUSTOM_CODE)+"&sale_custom_code=01071390009abcde&token="+S.get(XsMyActivity.this, C.KEY_JSON_TOKEN);
+//                        String realUrl="http://www.gigawon.cn:1314/80_StoreAdmin/storeMain.aspx?custom_code="+S.get(XsMyActivity.this, C.KEY_JSON_CUSTOM_CODE)+"&sale_custom_code=01071390009abcde&token="+S.get(XsMyActivity.this, C.KEY_JSON_TOKEN);
 //                        Intent intent = new Intent(XsMyActivity.this,WebActivity.class);
 //                        intent.putExtra(C.KEY_INTENT_URL,realUrl);
 //                        XsMyActivity.this.startActivity(intent);

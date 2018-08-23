@@ -359,7 +359,7 @@ public class SettingActivity extends BaseActivity {
                                                                      String responseCode) {
 
                                             }
-                                        }, "http://api1.gigawon.co.kr:8088" + Constant.SSO_LOGOUT, headers, obj.toString());
+                                        }, "http://api1.gigawon.cn:8088" + Constant.SSO_LOGOUT, headers, obj.toString());
 //										}, Constant.BASE_URL_SSO + Constant.SSO_LOGOUT,headers,obj.toString());
 
                                     } catch (Exception e) {
@@ -608,7 +608,7 @@ public class SettingActivity extends BaseActivity {
                 public void onBizFailure(String responseDescription, JSONObject data, String responseCode) {
 
                 }
-            }, "http://member.gigawon.co.kr:8808/api/member/requestProfileInfo", params);
+            }, "http://member.gigawon.cn:8808/api/member/requestProfileInfo", params);
 //			}, C.BASE_URL + Constant.PERSNAL_GET_INFO, params);
 
         } catch (Exception e) {
@@ -686,7 +686,7 @@ public class SettingActivity extends BaseActivity {
                     finish();
 
                 }
-            }, "http://member.gigawon.co.kr:8808/api/member/editProfile", j1.toString());
+            }, "http://member.gigawon.cn:8808/api/member/editProfile", j1.toString());
 //			}, C.BASE_RS_MEMBER_URL + C.REQUEST_NICK_NAME_CHANGE, j1.toString());
 
         } catch (Exception e) {

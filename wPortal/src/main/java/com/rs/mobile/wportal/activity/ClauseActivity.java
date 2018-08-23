@@ -109,7 +109,7 @@ public class ClauseActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btn_location:
                 Intent intent_web = new Intent(ClauseActivity.this, kfme_WebBrowser.class);
-                intent_web.putExtra("url", "http://www.gigawon.co.kr:1314/CS2/CS10");
+                intent_web.putExtra("url", "http://www.gigawon.cn:1314/CS2/CS10");
                 startActivity(intent_web);
 
                 break;

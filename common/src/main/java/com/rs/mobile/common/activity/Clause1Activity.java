@@ -41,7 +41,7 @@ public class Clause1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Clause1Activity.this, kfme_WebBrowser.class);
-                intent.putExtra("url", "http://www.gigawon.co.kr:1314/CS/CS10");
+                intent.putExtra("url", "http://www.gigawon.cn:1314/CS/CS10");
                 startActivity(intent);
             }
         });
@@ -50,7 +50,7 @@ public class Clause1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Clause1Activity.this, kfme_WebBrowser.class);
-                intent.putExtra("url", "http://www.gigawon.co.kr:1314/CS/CS20");
+                intent.putExtra("url", "http://www.gigawon.cn:1314/CS/CS20");
                 startActivity(intent);
             }
         });
@@ -59,7 +59,7 @@ public class Clause1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Clause1Activity.this, kfme_WebBrowser.class);
-                intent.putExtra("url", "http://www.gigawon.co.kr:1314/CS/CS30");
+                intent.putExtra("url", "http://www.gigawon.cn:1314/CS/CS30");
                 startActivity(intent);
             }
         });

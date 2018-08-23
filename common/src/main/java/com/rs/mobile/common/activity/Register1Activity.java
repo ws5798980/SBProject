@@ -109,8 +109,8 @@ public class Register1Activity extends AppCompatActivity {
                     public void onNetworkError(Request request, IOException e) {
                         //Toast.makeText(getApplicationContext(), request.toString(), Toast.LENGTH_LONG).show();
                     }
-                }, "http://sms.gigawon.co.kr:8082/api/SSonda/" + et_tel.getText().toString());
-                //Toast.makeText(getApplicationContext(), "http://sms.gigawon.co.kr:8082/api/SSonda/" + et_tel.getText().toString(), Toast.LENGTH_LONG).show();
+                }, "http://sms.gigawon.cn:8082/api/SSonda/" + et_tel.getText().toString());
+                //Toast.makeText(getApplicationContext(), "http://sms.gigawon.cn:8082/api/SSonda/" + et_tel.getText().toString(), Toast.LENGTH_LONG).show();
 
             }
         });
@@ -132,7 +132,7 @@ public class Register1Activity extends AppCompatActivity {
                     @Override
                     public void onNetworkError(Request request, IOException e) {
                     }
-                }, "http://sms.gigawon.co.kr:8082/api/SSonda/" + et_tel.getText().toString());
+                }, "http://sms.gigawon.cn:8082/api/SSonda/" + et_tel.getText().toString());
             }
         });
 
