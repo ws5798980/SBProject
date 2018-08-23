@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rs.mobile.wportal"
     android:largeHeap="true"
-    android:versionCode="1807271019"
+    android:versionCode="1808201019"
     android:versionName="1.2.2">
 
     <uses-sdk
@@ -194,6 +194,10 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".activity.sm.SmAddAddressActivity"
+            android:label=""
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.sm.SmAddAddressActivityCN"
             android:label=""
             android:screenOrientation="portrait" />
         <activity

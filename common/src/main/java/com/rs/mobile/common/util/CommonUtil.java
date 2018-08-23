@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Locale;
 
 import android.content.Context;
 import android.os.Environment;
@@ -79,5 +80,19 @@ public class CommonUtil {
 	public static boolean isExistSDcard() {
 		String state = Environment.getExternalStorageState();
         return state.equals(Environment.MEDIA_MOUNTED);
+	}
+
+	/**
+	 * 检测是否中文
+	 *
+	 * @return
+	 */
+	public static boolean isZh(Context context) {
+		Locale locale = context.getResources().getConfiguration().locale;
+		String language = locale.getLanguage();
+		if (language.endsWith("zh"))
+			return true;
+		else
+			return false;
 	}
 }

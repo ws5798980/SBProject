@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.rs.mobile.common.L;
 import com.rs.mobile.common.activity.BaseActivity;
+import com.rs.mobile.common.util.CommonUtil;
 import com.rs.mobile.common.util.PageUtil;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.fragment.sm.AddressFragment;
@@ -146,7 +147,11 @@ public class SmAddressActivity extends BaseActivity {
 
 					bundle.putString("activity", "add");
 
-					PageUtil.jumpTo(SmAddressActivity.this, SmAddAddressActivity.class, bundle);
+					if (CommonUtil.isZh(SmAddressActivity.this)){
+						PageUtil.jumpTo(SmAddressActivity.this, SmAddAddressActivityCN.class, bundle);
+					}else {
+						PageUtil.jumpTo(SmAddressActivity.this, SmAddAddressActivity.class, bundle);
+					}
 
 				}
 			});

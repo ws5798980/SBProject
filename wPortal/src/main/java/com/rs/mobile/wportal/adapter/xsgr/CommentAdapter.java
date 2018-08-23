@@ -3,21 +3,15 @@ package com.rs.mobile.wportal.adapter.xsgr;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
-import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.rs.mobile.common.image.ImageUtil;
 import com.rs.mobile.common.view.WImageView;
 import com.rs.mobile.wportal.R;
-import com.rs.mobile.wportal.entity.BaseEntity;
 import com.rs.mobile.wportal.entity.CommentBean;
 
 import java.util.List;

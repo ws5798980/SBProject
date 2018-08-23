@@ -15,9 +15,11 @@ import com.rs.mobile.common.L;
 import com.rs.mobile.common.S;
 import com.rs.mobile.common.T;
 import com.rs.mobile.common.network.OkHttpHelper;
+import com.rs.mobile.common.util.CommonUtil;
 import com.rs.mobile.common.util.PageUtil;
 import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.activity.sm.SmAddAddressActivity;
+import com.rs.mobile.wportal.activity.sm.SmAddAddressActivityCN;
 import com.rs.mobile.wportal.activity.sm.SmAddressActivity;
 import com.rs.mobile.wportal.biz.Address;
 
@@ -147,7 +149,12 @@ public class AddressAdapter extends BaseAdapter {
 				bundle.putString(C.KEY_JSON_FM_NAME, listdata.get(position).getName());
 				bundle.putString("zipCode", listdata.get(position).getZipCode());
 				bundle.putString("zipName", listdata.get(position).zipName);
-				PageUtil.jumpTo(context, SmAddAddressActivity.class, bundle);
+				if (CommonUtil.isZh(context)){
+					PageUtil.jumpTo(context, SmAddAddressActivityCN.class, bundle);
+				}else {
+					PageUtil.jumpTo(context, SmAddAddressActivity.class, bundle);
+				}
+
 			}
 		});
 		if (listdata.get(position).isSleceted()) {
