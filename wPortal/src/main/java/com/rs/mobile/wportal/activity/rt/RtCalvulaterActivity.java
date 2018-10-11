@@ -235,7 +235,7 @@ public class RtCalvulaterActivity extends BaseActivity {
 								// TODO Auto-generated method stub
 
 							}
-						}, "https://api.osunggiga.cn/appapi/pushapi", params);
+						}, "http://api.osunggiga.cn/appapi/pushapi", params);
 
 					} catch (Exception e) {
 

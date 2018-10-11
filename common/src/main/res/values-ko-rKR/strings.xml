@@ -614,4 +614,9 @@
     <string name="shiye_1">사업자유형선택</string>
     <string name="shiye_2">개인</string>
     <string name="shiye_3">사업자</string>
+
+    <string name="yingyezhong">영업중</string>
+    <string name="dayang">영업종료</string>
+
+
 </resources>

@@ -118,7 +118,7 @@ public class Activity_AddressSerche extends Activity {
         new Thread() {
             public void run() {
                 //httpConn.requestGet("https://openapi.naver.com/v1/map/geocode?query=" + addr, callback);
-                ret_value = httpConn.NaverAPIAddressToLatlng("https://openapi.naver.com/v1/map/geocode", tv_serche_text.getText().toString(),"UTF-8,","1l1JIC1pT26uwTBM565k","6NQScKKyA7");
+                ret_value = httpConn.NaverAPIAddressToLatlng("http://openapi.naver.com/v1/map/geocode", tv_serche_text.getText().toString(),"UTF-8,","1l1JIC1pT26uwTBM565k","6NQScKKyA7");
                 Message msg = mHandler.obtainMessage();
                 msg.what = 0;
                 msg.obj = ret_value;

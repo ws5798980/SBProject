@@ -1,10 +1,15 @@
 
 package com.rs.mobile.wportal.activity.sm;
 
+import android.Manifest;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -65,9 +70,58 @@ public class SmMainActivity extends TabActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         instance = this;
+
+
         setContentView(R.layout.activity_sm_main);
-        initview();
+        if (Build.VERSION.SDK_INT>=23){
+            checkPermissionForNormal();
+        }else {
+            initview();
+        }
+
+
     }
+
+    //正常获取权限
+    private void checkPermissionForNormal() {
+        //判断是否同意此权限
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED || ContextCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.CALL_PHONE, Manifest.permission.READ_PHONE_STATE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 100);
+        }else {
+            initview();
+        }
+    }
+
+    //权限的回调
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case 100: {
+                if (grantResults.length > 0) {
+                    for (int i = 0; i < grantResults.length; i++) {
+                        if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                            initview();
+                        } else {
+                            Toast.makeText(this, "Don't have permissions.", Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }
+                } else {
+                    Toast.makeText(this, "Don't have permissions.", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                return;
+            }
+        }
+    }
+
 
     private void initview() {
 

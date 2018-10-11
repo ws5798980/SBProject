@@ -3,7 +3,7 @@
     xmlns:ptr="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f2f2f2" >
+    android:background="#f2f2f2">
 
     <RelativeLayout
         android:id="@+id/navigation_area"
@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:background="#ffffff"
-        android:padding="@dimen/marginx2" >
+        android:padding="@dimen/marginx2">
 
         <LinearLayout
             android:id="@+id/close_btn"
@@ -21,7 +21,7 @@
             android:orientation="horizontal"
             android:paddingBottom="@dimen/margin"
             android:paddingRight="@dimen/marginx4"
-            android:paddingTop="@dimen/margin" >
+            android:paddingTop="@dimen/margin">
 
             <ImageView
                 android:id="@+id/branch_btn"
@@ -55,7 +55,7 @@
         android:layout_below="@id/navigation_area"
         android:background="#f2f2f2"
         android:gravity="center_horizontal|top"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/edit_photo_btn"
@@ -64,7 +64,7 @@
             android:background="#ffffff"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/marginx2" >
+            android:padding="@dimen/marginx2">
 
             <TextView
                 android:layout_width="fill_parent"
@@ -103,7 +103,7 @@
             android:background="#ffffff"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/marginx2" >
+            android:padding="@dimen/marginx2">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -127,7 +127,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
             android:background="#ffffff"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/marginx2" >
+            android:padding="@dimen/marginx2">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -168,7 +168,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -185,7 +185,7 @@
             android:background="#ffffff"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/marginx2" >
+            android:padding="@dimen/marginx2">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -200,7 +200,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -217,7 +217,7 @@
             android:background="#ffffff"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/marginx2" >
+            android:padding="@dimen/marginx2">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -237,75 +237,75 @@
         </LinearLayout>
 
         <!--<LinearLayout-->
-            <!--android:id="@+id/set_language"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="1dp"-->
-            <!--android:background="#ffffff"-->
-            <!--android:gravity="center_vertical"-->
-            <!--android:orientation="horizontal"-->
-            <!--android:padding="@dimen/marginx2" >-->
+        <!--android:id="@+id/set_language"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="1dp"-->
+        <!--android:background="#ffffff"-->
+        <!--android:gravity="center_vertical"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:padding="@dimen/marginx2" >-->
 
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="center_vertical|left"-->
-                <!--android:text="@string/main_text006"-->
-                <!--android:textColor="#333333"-->
-                <!--android:textSize="@dimen/text_size_m" />-->
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:gravity="center_vertical|left"-->
+        <!--android:text="@string/main_text006"-->
+        <!--android:textColor="#333333"-->
+        <!--android:textSize="@dimen/text_size_m" />-->
         <!--</LinearLayout>-->
 
         <!--<LinearLayout-->
-             <!--android:id="@+id/line_language"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:visibility="gone"-->
-            <!--android:orientation="vertical" >-->
+        <!--android:id="@+id/line_language"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:visibility="gone"-->
+        <!--android:orientation="vertical" >-->
 
-            <!--<RadioGroup-->
-                <!--android:id="@+id/rg_lang"-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content" >-->
+        <!--<RadioGroup-->
+        <!--android:id="@+id/rg_lang"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content" >-->
 
-                <!--<RadioButton-->
-                    <!--android:id="@+id/set_default"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="default"-->
-                    <!--android:textColor="#333333"-->
-                    <!--android:textSize="@dimen/text_size_m" />-->
+        <!--<RadioButton-->
+        <!--android:id="@+id/set_default"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="default"-->
+        <!--android:textColor="#333333"-->
+        <!--android:textSize="@dimen/text_size_m" />-->
 
-                <!--<View-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="1dp"-->
-                    <!--android:background="#ffffff" />-->
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#ffffff" />-->
 
-                <!--<RadioButton-->
-                    <!--android:id="@+id/set_china"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="简体中文"-->
-                    <!--android:textColor="#333333"-->
-                    <!--android:textSize="@dimen/text_size_m" />-->
+        <!--<RadioButton-->
+        <!--android:id="@+id/set_china"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="简体中文"-->
+        <!--android:textColor="#333333"-->
+        <!--android:textSize="@dimen/text_size_m" />-->
 
-                <!--<View-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="1dp"-->
-                    <!--android:background="#ffffff" />-->
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#ffffff" />-->
 
-                <!--<RadioButton-->
-                    <!--android:id="@+id/set_ko"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="한국어"-->
-                    <!--android:textColor="#333333"-->
-                    <!--android:textSize="@dimen/text_size_m" />-->
+        <!--<RadioButton-->
+        <!--android:id="@+id/set_ko"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="한국어"-->
+        <!--android:textColor="#333333"-->
+        <!--android:textSize="@dimen/text_size_m" />-->
 
-                <!--<View-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="1dp"-->
-                    <!--android:background="#ffffff" />-->
-            <!--</RadioGroup>-->
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1dp"-->
+        <!--android:background="#ffffff" />-->
+        <!--</RadioGroup>-->
         <!--</LinearLayout>-->
 
         <LinearLayout
@@ -316,7 +316,7 @@
             android:background="#ffffff"
             android:gravity="center"
             android:orientation="horizontal"
-            android:padding="@dimen/marginx2" >
+            android:padding="@dimen/marginx2">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -326,7 +326,18 @@
                 android:textColor="#21c043"
                 android:textSize="@dimen/text_size_m" />
         </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/app_ver_text_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center_horizontal|bottom"
+            android:paddingBottom="@dimen/marginx4"
+            android:textColor="#999999"
+            android:textSize="@dimen/text_size_m" />
     </LinearLayout>
+
 
     <RelativeLayout
         android:id="@+id/bring_photo_layout"
@@ -335,8 +346,8 @@
         android:layout_alignParentBottom="true"
         android:background="#55000000"
         android:clickable="true"
-        android:visibility="gone"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <com.rs.mobile.common.view.BringPhotoView
             android:id="@+id/bring_photo_view"
@@ -344,5 +355,6 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true" />
     </RelativeLayout>
+
 
 </RelativeLayout>

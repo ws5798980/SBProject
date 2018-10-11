@@ -78,6 +78,7 @@ public class CommentFragment extends BaseFragment {
         View emptyView = LayoutInflater.from(getContext()).inflate(R.layout.layout_empty, null);
         emptyView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
+
         //添加空视图
         commentAdapter.bindToRecyclerView(recyclerView);
         commentAdapter.setEmptyView(emptyView);

@@ -145,11 +145,11 @@ public class XsMyShopActivity extends BaseActivity {
         if (select == 1) {
             img1.setVisibility(View.VISIBLE);
             img2.setVisibility(View.GONE);
-            tv_select.setText("영업중");
+            tv_select.setText(getResources().getString(R.string.yingyezhong));
         } else {
             img2.setVisibility(View.VISIBLE);
             img1.setVisibility(View.GONE);
-            tv_select.setText("영업종료");
+            tv_select.setText(getResources().getString(R.string.dayang));
         }
 
 
@@ -211,7 +211,7 @@ public class XsMyShopActivity extends BaseActivity {
 
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
-
+                Log.i("xyz", "onBizSuccess: "+responseDescription);
                 bean = GsonUtils.changeGsonToBean(responseDescription, MyShopInfoBean.class);
 
                 tv_xs_my_shopname.setText(bean.getCustom_name() + "");
@@ -263,11 +263,11 @@ public class XsMyShopActivity extends BaseActivity {
                     if ("1".equals(status)) {
 
                         if (statu.equals("N")) {
-                            tv_select.setText("영업종료");
+                            tv_select.setText(getResources().getString(R.string.yingyezhong));
                             window.dismiss();
                             select = 2;
                         } else {
-                            tv_select.setText("영업중");
+                            tv_select.setText(getResources().getString(R.string.dayang));
                             window.dismiss();
                             select = 1;
                         }

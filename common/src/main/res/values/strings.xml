@@ -614,4 +614,8 @@
     <string name="shiye_1">事业者类型选择</string>
     <string name="shiye_2">个人</string>
     <string name="shiye_3">事业者</string>
+
+
+    <string name="yingyezhong">营业中</string>
+    <string name="dayang">打烊</string>
 </resources>

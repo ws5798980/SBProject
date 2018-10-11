@@ -155,7 +155,7 @@ public class LoginActivity extends BaseActivity {
 
                     Intent intent = new Intent(LoginActivity.this, WebActivity.class);
                     intent.putExtra("title", getResources().getString(R.string.zhuce));
-                    intent.putExtra("url", "http://join.gigaroom.com/10_Member/join_main");
+                    intent.putExtra("url", "http://join.gigaroom.cn/10_Member/join_main");
                     startActivity(intent);
 
 //

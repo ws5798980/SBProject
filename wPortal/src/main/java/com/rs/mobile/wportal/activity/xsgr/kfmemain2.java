@@ -404,6 +404,7 @@ public class kfmemain2 extends Activity implements View.OnClickListener,XListVie
 
 //                              Toast.makeText(thisActivity, "Selected :" + " " + newsData, Toast.LENGTH_LONG).show();
 
+//                String realUrl="http://www.gigaworld.co.kr:8080/newslist/NewsDetail.html?postid="+newsData.sale_custom_code;
                 String realUrl="http://www.gigaworld.co.kr:8080/newslist/NewsDetail.html?postid="+newsData.sale_custom_code;
                 Intent intent = new Intent(kfmemain2.this,WebActivity.class);
                 intent.putExtra(C.KEY_INTENT_URL,realUrl);

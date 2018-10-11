@@ -60,6 +60,7 @@ import com.rs.mobile.common.util.UtilClear;
 import com.rs.mobile.common.view.XListView;
 import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.activity.BaiduMapActivity;
 import com.rs.mobile.wportal.activity.sm.MyEvaluateActivity;
 import com.rs.mobile.wportal.activity.sm.SmGoodsDetailActivity;
 import com.rs.mobile.wportal.activity.sm.SmSeachActivity;
@@ -212,7 +213,8 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 
 
     private String FoodSpecCode = "";
-    private   XsStoreCommentAdapter commentAdapter;
+    private XsStoreCommentAdapter commentAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -238,7 +240,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 
     private void initView() {
         commentlist1 = (RecyclerView) findViewById(R.id.commentlist);
-        commentAdapter=new XsStoreCommentAdapter(XsStoreDetailActivity2.this,R.layout.item_comment_detail,new ArrayList<CommentBean.ShopAssessDataBean>());
+        commentAdapter = new XsStoreCommentAdapter(XsStoreDetailActivity2.this, R.layout.item_comment_detail, new ArrayList<CommentBean.ShopAssessDataBean>());
         View emptyView = LayoutInflater.from(XsStoreDetailActivity2.this).inflate(R.layout.layout_empty, null);
         emptyView.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT));
@@ -273,8 +275,6 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 
         bnt_cart1 = (RelativeLayout) findViewById(R.id.bnt_cart1);
         bnt_cart1.setOnClickListener(this);
-
-
 
 
         content = (FrameLayout) findViewById(R.id.content);
@@ -376,12 +376,14 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
         line_shopmaps.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent2 = new Intent(XsStoreDetailActivity2.this, com.rs.mobile.wportal.activity.NaverMap.Activity_NaverMap_Main.class);
+//                Intent intent2 = new Intent(XsStoreDetailActivity2.this, com.rs.mobile.wportal.activity.NaverMap.Activity_NaverMap_Main.class);
+                Intent intent2 = new Intent(XsStoreDetailActivity2.this, BaiduMapActivity.class);
+
                 intent2.putExtra("wiche", "compass");
                 intent2.putExtra("longitude", shop_longitude);
                 intent2.putExtra("latitude", shop_latitude);
                 intent2.putExtra("shopname", shopname);
-                startActivityForResult(intent2, 1001);
+                startActivity(intent2);
             }
         });
 
@@ -565,7 +567,6 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 
 
         requestStoreItemDetail2(S.get(XsStoreDetailActivity2.this, C.KEY_JSON_CUSTOM_CODE), mSaleCustomCode, "" + AppConfig.latitude, "" + AppConfig.longitude, 1, "10");
-
 
 
         pageIndex = 1;
@@ -778,7 +779,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
 
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
-                CommentBean bean=GsonUtils.changeGsonToBean(responseDescription, CommentBean.class);
+                CommentBean bean = GsonUtils.changeGsonToBean(responseDescription, CommentBean.class);
                 commentAdapter.setNewData(bean.getShopAssessData());
             }
 
@@ -787,7 +788,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
                 // TODO Auto-generated method stub
 
             }
-        }, Constant.XS_BASE_URL +"Assess/requestStoreAssessList", param);
+        }, Constant.XS_BASE_URL + "Assess/requestStoreAssessList", param);
 
     }
 

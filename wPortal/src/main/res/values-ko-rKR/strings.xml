@@ -1201,4 +1201,13 @@
     <string name="dialog_con8">가격:</string>
     <string name="dialog_con9">구매하기</string>
     <string name="dialog_con10">원산지 표기:</string>
+
+
+    <string name="dangqianweizhi">현재 위치 지정</string>
+    <string name="dizhisousuo">주소검색</string>
+    <string name="dinghuoshu">주문수 </string>
+
+    <string name="pinglun">최근리뷰 </string>
+    <string name="huifu">사장님댓글 </string>
+
 </resources>

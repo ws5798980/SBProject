@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -20,6 +21,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.StrictMode;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -64,6 +66,7 @@ import com.rs.mobile.common.util.UtilClear;
 import com.rs.mobile.wportal.CaptureUtil;
 import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.activity.BaiduMapActivity;
 import com.rs.mobile.wportal.activity.MainActivity;
 import com.rs.mobile.wportal.activity.NaverMap.CustomDialogListener;
 import com.rs.mobile.wportal.activity.sm.SmNew_shopcatList;
@@ -90,8 +93,8 @@ import java.util.List;
 
 import okhttp3.Request;
 
-public class kfmemain extends Activity implements View.OnClickListener{
-    private ImageView btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15,new_index_main_btn_sns2;
+public class kfmemain extends Activity implements View.OnClickListener {
+    private ImageView btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn10, btn11, btn12, btn13, btn14, btn15, new_index_main_btn_sns2;
     private Integer tb_totalCount = 16;
     private Integer side_totalCount = 10;
     private ImageView[] iv_topH = new ImageView[tb_totalCount];
@@ -103,13 +106,13 @@ public class kfmemain extends Activity implements View.OnClickListener{
     private TextView[] tv_topCollect3 = new TextView[side_totalCount];
     private TextView[] tv_topCollect4 = new TextView[tb_totalCount];
     private TextView tv_dial_btn;
-    private TextView AddressTitle,bnt_search;
-    private ImageView btnSearch,btnScan;
-    private LinearLayout new_index_main_btn_sns,thumbnailLinearLayout;
+    private TextView AddressTitle, bnt_search;
+    private ImageView btnSearch, btnScan;
+    private LinearLayout new_index_main_btn_sns, thumbnailLinearLayout;
     private WebView web_view;
-    private ScrollView LeftScrollView,programPlayParentScroll,RightScrollView;
+    private ScrollView LeftScrollView, programPlayParentScroll, RightScrollView;
 
-    private EditText et_topNumber1txt, et_topNumber2txt, et_topNumber3txt, et_topNumber4txt,et_topNumber5txt;
+    private EditText et_topNumber1txt, et_topNumber2txt, et_topNumber3txt, et_topNumber4txt, et_topNumber5txt;
 
     private ImageView[] iv_store_image;
 
@@ -123,36 +126,35 @@ public class kfmemain extends Activity implements View.OnClickListener{
     Double latitude = 0.0;
     Double longitude = 0.0;
 
-    public int page=1;
+    public int page = 1;
     LocationManager manager;
 
     public custom_dialog cdialog;
 
-    public CustomListAdapter customad=null;
+    public CustomListAdapter customad = null;
 
     private RecyclerView mRecyclerView;
     private XsIndexAdapter1 adapter1;
 
-    private List<IndexImageItem> indeximg=new ArrayList<>();
-    private  XsStoreDetailMenuItem entity;
+    private List<IndexImageItem> indeximg = new ArrayList<>();
+    private XsStoreDetailMenuItem entity;
 
     private List<StoreCateListEntity.Store> mStoreList = new ArrayList<>();
     private XsStoreListAdapter mAdapter;
-    private int mNextRequestPage=1;
+    private int mNextRequestPage = 1;
     private String mOrderBy = "1";
 
-    private final Handler mHandler = new Handler()
-    {
+    private final Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if(msg.what == 0)
-            {
+            if (msg.what == 0) {
                 S.setShare(getApplicationContext(), "address_naver", msg.obj.toString());
                 AddressTitle.setText(msg.obj.toString());
             }
         }
     };
+
 
     @SuppressLint("ClickableViewAccessibility")
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -170,24 +172,23 @@ public class kfmemain extends Activity implements View.OnClickListener{
         thisActivity = this;
 
         AddressTitle = (TextView) findViewById(R.id._addresstitle);
-        if(S.getShare(getApplicationContext(), "address_naver","").isEmpty())
-        {
+        if (S.getShare(getApplicationContext(), "address_naver", "").isEmpty()) {
             AddressTitle.setText(getResources().getString(R.string.search_no_result2));
         } else {
-            AddressTitle.setText(S.getShare(getApplicationContext(), "address_naver",""));
+            AddressTitle.setText(S.getShare(getApplicationContext(), "address_naver", ""));
         }
 
 
         btnSearch = (ImageView) findViewById(R.id.btn_serch);
         btnScan = (ImageView) findViewById(R.id.btn_scan);
-        new_index_main_btn_sns= (LinearLayout) findViewById(R.id.new_index_main_btn_scan);
-        thumbnailLinearLayout= (LinearLayout) findViewById(R.id.thumbnailLinearLayout);
-        bnt_search=(TextView) findViewById(R.id.bnt_search);
+        new_index_main_btn_sns = (LinearLayout) findViewById(R.id.new_index_main_btn_scan);
+        thumbnailLinearLayout = (LinearLayout) findViewById(R.id.thumbnailLinearLayout);
+        bnt_search = (TextView) findViewById(R.id.bnt_search);
 
-        new_index_main_btn_sns2= (ImageView) findViewById(R.id.new_index_main_btn_sns2);
+        new_index_main_btn_sns2 = (ImageView) findViewById(R.id.new_index_main_btn_sns2);
 //        LeftScrollView = (ScrollView) findViewById(R.id.LeftScrollView);
 //        programPlayParentScroll = (ScrollView) findViewById(R.id.programPlayParentScroll);
-      //  RightScrollView= (ScrollView) findViewById(R.id.RightScrollView);
+        //  RightScrollView= (ScrollView) findViewById(R.id.RightScrollView);
 
 //        LeftScrollView.setOnTouchListener(new OnTouchListener() {
 //            @Override
@@ -209,7 +210,7 @@ public class kfmemain extends Activity implements View.OnClickListener{
         et_topNumber2txt = (EditText) findViewById(R.id.topNumber2txt);
         et_topNumber3txt = (EditText) findViewById(R.id.topNumber3txt);
         et_topNumber4txt = (EditText) findViewById(R.id.topNumber4txt);
-        et_topNumber5txt= (EditText) findViewById(R.id.topNumber5txt);
+        et_topNumber5txt = (EditText) findViewById(R.id.topNumber5txt);
 
         et_topNumber1txt.addTextChangedListener(new TextWatcher() {
 
@@ -225,10 +226,9 @@ public class kfmemain extends Activity implements View.OnClickListener{
             public void afterTextChanged(Editable arg0) {
                 // 입력이 끝났을 때
                 //Toast.makeText(thisActivity, arg0.toString(), Toast.LENGTH_SHORT).show();
-                if(!arg0.toString().isEmpty()) {
+                if (!arg0.toString().isEmpty()) {
                     if (Integer.parseInt(arg0.toString()) < 17) {
-                        if(arg0.length() >= 2)
-                        {
+                        if (arg0.length() >= 2) {
                             et_topNumber2txt.requestFocus();
                             Log.d("afaf", "et_topNumber2txt.focus");
                         }
@@ -260,10 +260,9 @@ public class kfmemain extends Activity implements View.OnClickListener{
             public void afterTextChanged(Editable arg0) {
                 // 입력이 끝났을 때
                 //Toast.makeText(thisActivity, arg0.toString(), Toast.LENGTH_SHORT).show();
-                if(!arg0.toString().isEmpty()) {
+                if (!arg0.toString().isEmpty()) {
                     if (Integer.parseInt(arg0.toString()) < 11) {
-                        if(arg0.length() >= 2 || (Integer.parseInt(arg0.toString()) > 1))
-                        {
+                        if (arg0.length() >= 2 || (Integer.parseInt(arg0.toString()) > 1)) {
                             et_topNumber3txt.requestFocus();
                             Log.d("afaf", "et_topNumber2txt.focus");
                         }
@@ -302,10 +301,9 @@ public class kfmemain extends Activity implements View.OnClickListener{
             public void afterTextChanged(Editable arg0) {
                 // 입력이 끝났을 때
                 //Toast.makeText(thisActivity, arg0.toString(), Toast.LENGTH_SHORT).show();
-                if(!arg0.toString().isEmpty()) {
+                if (!arg0.toString().isEmpty()) {
                     if (Integer.parseInt(arg0.toString()) < 11) {
-                        if(arg0.length() >= 2 || (Integer.parseInt(arg0.toString()) > 1))
-                        {
+                        if (arg0.length() >= 2 || (Integer.parseInt(arg0.toString()) > 1)) {
                             et_topNumber4txt.requestFocus();
                             Log.d("afaf", "et_topNumber2txt.focus");
                         }
@@ -344,7 +342,7 @@ public class kfmemain extends Activity implements View.OnClickListener{
             public void afterTextChanged(Editable arg0) {
                 // 입력이 끝났을 때
                 //Toast.makeText(thisActivity, arg0.toString(), Toast.LENGTH_SHORT).show();
-                if(!arg0.toString().isEmpty()) {
+                if (!arg0.toString().isEmpty()) {
                     if (Integer.parseInt(arg0.toString()) < 17) {
 
                     } else {
@@ -371,7 +369,7 @@ public class kfmemain extends Activity implements View.OnClickListener{
 
         //lv_event_store_list = (ListView) findViewById(R.id.event_store_list);
 
-        if(S.getShare(getApplicationContext(), "address_naver", "").isEmpty()) {
+        if (S.getShare(getApplicationContext(), "address_naver", "").isEmpty()) {
             currentLocationAddress();
         }
 
@@ -379,8 +377,7 @@ public class kfmemain extends Activity implements View.OnClickListener{
         cdialog.setCustomDL(new CustomDialogListener() {
             @Override
             public void onDialogBtnClickListener(View v) {
-                switch(v.getId())
-                {
+                switch (v.getId()) {
                     case R.id.res_img_compass:
                         //Toast.makeText(getApplicationContext(),"compass", Toast.LENGTH_LONG).show();
                         /*Intent intent1 = new Intent(thisActivity, com.rs.mobile.wportal.activity.NaverMap.Activity_NaverMap_Main.class);
@@ -391,7 +388,10 @@ public class kfmemain extends Activity implements View.OnClickListener{
                         break;
                     case R.id.res_img_location:
                         //Toast.makeText(getApplicationContext(), "location", Toast.LENGTH_LONG).show();
-                        Intent intent2 = new Intent(thisActivity, com.rs.mobile.wportal.activity.NaverMap.Activity_NaverMap_Main.class);
+//                        Intent intent2 = new Intent(thisActivity, com.rs.mobile.wportal.activity.NaverMap.Activity_NaverMap_Main.class);
+
+                        Intent intent2 = new Intent(thisActivity, BaiduMapActivity.class);
+
                         intent2.putExtra("wiche", "location");
                         startActivityForResult(intent2, 1001);
                         break;
@@ -399,7 +399,6 @@ public class kfmemain extends Activity implements View.OnClickListener{
                 cdialog.dismiss();
             }
         });
-
 
 
         //Select Button
@@ -416,13 +415,12 @@ public class kfmemain extends Activity implements View.OnClickListener{
 //                intent.putExtra("lv4", et_topNumber4txt.getText().toString());
 //                startActivity(intent);
 
-                String addata=et_topNumber1txt.getText().toString()+"-"+et_topNumber2txt.getText().toString()+"-"+et_topNumber3txt.getText().toString()+"-"+et_topNumber4txt.getText().toString()+"-"+et_topNumber5txt.getText().toString();
-                requestFindShopInfo(addata,et_topNumber4txt.getText().toString(),et_topNumber5txt.getText().toString(),et_topNumber2txt.getText().toString(),et_topNumber3txt.getText().toString(),et_topNumber1txt.getText().toString());
+                String addata = et_topNumber1txt.getText().toString() + "-" + et_topNumber2txt.getText().toString() + "-" + et_topNumber3txt.getText().toString() + "-" + et_topNumber4txt.getText().toString() + "-" + et_topNumber5txt.getText().toString();
+                requestFindShopInfo(addata, et_topNumber4txt.getText().toString(), et_topNumber5txt.getText().toString(), et_topNumber2txt.getText().toString(), et_topNumber3txt.getText().toString(), et_topNumber1txt.getText().toString());
 
 
             }
         });
-
 
 
         initList();
@@ -431,105 +429,102 @@ public class kfmemain extends Activity implements View.OnClickListener{
         initselect();
     }
 
-private  void initselect()
-{
-    List<String> list = new ArrayList<String>();
-    list.add(getResources().getString(R.string.list1_1));
-    list.add(getResources().getString(R.string.list1_2));
-    list.add(getResources().getString(R.string.list1_3));
+    private void initselect() {
+        List<String> list = new ArrayList<String>();
+        list.add(getResources().getString(R.string.list1_1));
+        list.add(getResources().getString(R.string.list1_2));
+        list.add(getResources().getString(R.string.list1_3));
 
-    ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list);
-    adapter.setDropDownViewResource(android.R.layout.simple_list_item_checked);
-    Spinner sp=(Spinner) findViewById(R.id.sp_select1);
-    sp.setAdapter(adapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item, list);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_checked);
+        Spinner sp = (Spinner) findViewById(R.id.sp_select1);
+        sp.setAdapter(adapter);
 
-    List<String> list2 = new ArrayList<String>();
-    list2.add(getResources().getString(R.string.list2_1));
-    list2.add(getResources().getString(R.string.list2_2));
-    ArrayAdapter<String> adapter2=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list2);
-    adapter2.setDropDownViewResource(android.R.layout.simple_list_item_checked);
-    Spinner sp2=(Spinner) findViewById(R.id.sp_select2);
-    sp2.setAdapter(adapter2);
-
-
-    List<String> list3 = new ArrayList<String>();
-    list3.add(getResources().getString(R.string.list3_1));
-    list3.add(getResources().getString(R.string.list3_2));
-    list3.add(getResources().getString(R.string.list3_3));
-    list3.add(getResources().getString(R.string.list3_4));
-    ArrayAdapter<String> adapter3=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list3);
-    adapter3.setDropDownViewResource(android.R.layout.simple_list_item_checked);
-    Spinner sp3=(Spinner) findViewById(R.id.sp_select3);
-    sp3.setAdapter(adapter3);
-    List<String> list4 = new ArrayList<String>();
-
-    list4.add(getResources().getString(R.string.list4_1));
-    list4.add(getResources().getString(R.string.list4_2));
-    list4.add(getResources().getString(R.string.list4_3));
-
-    ArrayAdapter<String> adapter4=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list4);
-    adapter4.setDropDownViewResource(android.R.layout.simple_list_item_checked);
-    Spinner sp4=(Spinner) findViewById(R.id.sp_select4);
-    sp4.setAdapter(adapter4);
-
-    List<String> list5 = new ArrayList<String>();
-
-    list5.add(getResources().getString(R.string.list4_1));
-    list5.add(getResources().getString(R.string.list4_2));
-    list5.add(getResources().getString(R.string.list4_3));
-    ArrayAdapter<String> adapter5=new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item,list5);
-    adapter5.setDropDownViewResource(android.R.layout.simple_list_item_checked);
-    Spinner sp5=(Spinner) findViewById(R.id.sp_select5);
-    sp5.setAdapter(adapter5);
+        List<String> list2 = new ArrayList<String>();
+        list2.add(getResources().getString(R.string.list2_1));
+        list2.add(getResources().getString(R.string.list2_2));
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item, list2);
+        adapter2.setDropDownViewResource(android.R.layout.simple_list_item_checked);
+        Spinner sp2 = (Spinner) findViewById(R.id.sp_select2);
+        sp2.setAdapter(adapter2);
 
 
-}
-private void initPicList()
-{
-    //已经定义好的全局变量
-    int listCount = 0;
-    for(int i=0;i<entity.dataFav.size();i++){
+        List<String> list3 = new ArrayList<String>();
+        list3.add(getResources().getString(R.string.list3_1));
+        list3.add(getResources().getString(R.string.list3_2));
+        list3.add(getResources().getString(R.string.list3_3));
+        list3.add(getResources().getString(R.string.list3_4));
+        ArrayAdapter<String> adapter3 = new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item, list3);
+        adapter3.setDropDownViewResource(android.R.layout.simple_list_item_checked);
+        Spinner sp3 = (Spinner) findViewById(R.id.sp_select3);
+        sp3.setAdapter(adapter3);
+        List<String> list4 = new ArrayList<String>();
 
-        listCount++;
+        list4.add(getResources().getString(R.string.list4_1));
+        list4.add(getResources().getString(R.string.list4_2));
+        list4.add(getResources().getString(R.string.list4_3));
 
-        LayoutInflater inflater = LayoutInflater.from(this);
-        //加载布局
-        View view = inflater.inflate(R.layout.horizontal_list_item1,null);
-        //找到ImageView
-        ImageView thumImg = (ImageView)view.findViewById(R.id.img_list_item);
-        //设定图片宽高（80*80）
-        int w = 120;
-        int h = 120;
-        //图片绑定设置
+        ArrayAdapter<String> adapter4 = new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item, list4);
+        adapter4.setDropDownViewResource(android.R.layout.simple_list_item_checked);
+        Spinner sp4 = (Spinner) findViewById(R.id.sp_select4);
+        sp4.setAdapter(adapter4);
 
-        Glide.with(this).load(entity.dataFav.get(i).image_url).into(thumImg);
+        List<String> list5 = new ArrayList<String>();
 
-        view.setTag(entity.dataFav.get(i));
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        list5.add(getResources().getString(R.string.list4_1));
+        list5.add(getResources().getString(R.string.list4_2));
+        list5.add(getResources().getString(R.string.list4_3));
+        ArrayAdapter<String> adapter5 = new ArrayAdapter<String>(this, R.layout.custom_spiner_text_item, list5);
+        adapter5.setDropDownViewResource(android.R.layout.simple_list_item_checked);
+        Spinner sp5 = (Spinner) findViewById(R.id.sp_select5);
+        sp5.setAdapter(adapter5);
 
-           XsStoreDetailMenuItem.datafav d=(XsStoreDetailMenuItem.datafav)v.getTag();
-           String catid=d.level1;
 
-            if(catid.equals("1")) {
-                Intent intent = new Intent(kfmemain.this, SmNew_shopcatList.class);
-                intent.putExtra("lv1", catid);
-                startActivity(intent);
-            }
-            else
-            {
-                Intent intent = new Intent(kfmemain.this, XsStoreListActivity.class);
-                intent.putExtra("lv1", catid);
-                startActivity(intent);
-            }
-
-            }
-        });
-
-        //添加到布局中
-        thumbnailLinearLayout.addView(view);
     }
+
+    private void initPicList() {
+        //已经定义好的全局变量
+        int listCount = 0;
+        for (int i = 0; i < entity.dataFav.size(); i++) {
+
+            listCount++;
+
+            LayoutInflater inflater = LayoutInflater.from(this);
+            //加载布局
+            View view = inflater.inflate(R.layout.horizontal_list_item1, null);
+            //找到ImageView
+            ImageView thumImg = (ImageView) view.findViewById(R.id.img_list_item);
+            //设定图片宽高（80*80）
+            int w = 120;
+            int h = 120;
+            //图片绑定设置
+
+            Glide.with(this).load(entity.dataFav.get(i).image_url).into(thumImg);
+
+            view.setTag(entity.dataFav.get(i));
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    XsStoreDetailMenuItem.datafav d = (XsStoreDetailMenuItem.datafav) v.getTag();
+                    String catid = d.level1;
+
+                    if (catid.equals("1")) {
+                        Intent intent = new Intent(kfmemain.this, SmNew_shopcatList.class);
+                        intent.putExtra("lv1", catid);
+                        startActivity(intent);
+                    } else {
+                        Intent intent = new Intent(kfmemain.this, XsStoreListActivity.class);
+                        intent.putExtra("lv1", catid);
+                        startActivity(intent);
+                    }
+
+                }
+            });
+
+            //添加到布局中
+            thumbnailLinearLayout.addView(view);
+        }
 
 
 //    thumbnailLinearLayout.setOnTouchListener(new OnTouchListener() {
@@ -562,10 +557,9 @@ private void initPicList()
 //            return false;
 //        }
 //    });
-}
+    }
 
-    private void initList()
-    {
+    private void initList() {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.rv_list2);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this) {
@@ -602,7 +596,7 @@ private void initPicList()
         });
     }
 
-    private void requestFindShopInfo(String ad_num,String b_num,String c_num,String l_num,String r_num,String t_num) {
+    private void requestFindShopInfo(String ad_num, String b_num, String c_num, String l_num, String r_num, String t_num) {
         HashMap<String, String> params = new HashMap<>();
         params.put("lang_type", AppConfig.LANG_TYPE);
         params.put("div_code", S.get(kfmemain.this, C.KEY_JSON_DIV_CODE));
@@ -614,22 +608,22 @@ private void initPicList()
         params.put("l_num", l_num);
         params.put("r_num", r_num);
         params.put("t_num", t_num);
-        params.put("latitude", ""+AppConfig.latitude);
-        params.put("longitude", ""+AppConfig.longitude);
+        params.put("latitude", "" + AppConfig.latitude);
+        params.put("longitude", "" + AppConfig.longitude);
         OkHttpHelper okHttpHelper = new OkHttpHelper(kfmemain.this);
         okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
 
                 try {
-                    JSONObject data2=(JSONObject)data.getJSONObject("data");
+                    JSONObject data2 = (JSONObject) data.getJSONObject("data");
                     JSONObject jsonObject = new JSONObject(responseDescription);
-                    if ("1".equals(jsonObject.getString("status"))){
+                    if ("1".equals(jsonObject.getString("status"))) {
                         Intent intent = new Intent(kfmemain.this, XsStoreDetailActivity2.class);
-                        intent.putExtra("custom_name",data2.getString("visit_custom_name"));
+                        intent.putExtra("custom_name", data2.getString("visit_custom_name"));
                         intent.putExtra("sale_custom_code", data2.getString("visit_custom_code"));
                         startActivity(intent);
-                    }else {
+                    } else {
                         Toast.makeText(kfmemain.this, getResources().getString(R.string.search_no_result), Toast.LENGTH_SHORT).show();
                     }
 
@@ -648,7 +642,7 @@ private void initPicList()
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://apiAD.gigaroom.com:9280/api/apiNumeric/requestFindStore", GsonUtils.createGsonString(params));
+        }, "http://apiAD.gigaroom.cn:9280/api/apiNumeric/requestFindStore", GsonUtils.createGsonString(params));
     }
 
 
@@ -658,39 +652,39 @@ private void initPicList()
         params.put("div_code", S.get(kfmemain.this, C.KEY_JSON_DIV_CODE));
         params.put("custom_code", S.get(kfmemain.this, C.KEY_JSON_CUSTOM_CODE));
         params.put("token", S.get(kfmemain.this, C.KEY_JSON_TOKEN));
-        params.put("pg", ""+pg);
+        params.put("pg", "" + pg);
         params.put("pagesize", "5");
         params.put("custom_lev1", customLv1);
         params.put("custom_lev2", customLv2);
         params.put("custom_lev3", customLv3);
-        params.put("latitude", ""+AppConfig.latitude);
-        params.put("longitude", ""+AppConfig.longitude);
+        params.put("latitude", "" + AppConfig.latitude);
+        params.put("longitude", "" + AppConfig.longitude);
         params.put("order_by", orderBy);
-        Log.i("123123", "pg="+pg);
+        Log.i("123123", "pg=" + pg);
         OkHttpHelper okHttpHelper = new OkHttpHelper(kfmemain.this);
         okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
             @Override
             public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
                 StoreCateListEntity entity = GsonUtils.changeGsonToBean(responseDescription, StoreCateListEntity.class);
-                Log.i("123123", "responseDescription="+responseDescription);
-                if("1".equals(entity.status)){
+                Log.i("123123", "responseDescription=" + responseDescription);
+                if ("1".equals(entity.status)) {
 
-                    if(pg == 1){
+                    if (pg == 1) {
                         mStoreList = entity.storelist;
                         mNextRequestPage = 2;
                         mAdapter.setNewData(mStoreList);
                         mAdapter.loadMoreEnd(true);
-                    }else{
-                        if(mStoreList != null && mStoreList.size() > 0){
+                    } else {
+                        if (mStoreList != null && mStoreList.size() > 0) {
                             mNextRequestPage++;
                             mStoreList.addAll(entity.storelist);
                             mAdapter.loadMoreComplete();
                             mAdapter.addData(entity.storelist);
-                        }else{
+                        } else {
                             mAdapter.loadMoreEnd(true);
                         }
                     }
-                }else{
+                } else {
                     Toast.makeText(kfmemain.this, entity.msg, Toast.LENGTH_LONG).show();
                 }
             }
@@ -702,24 +696,22 @@ private void initPicList()
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, Constant.XS_BASE_URL+"StoreCate/requestStoreCateList", GsonUtils.createGsonString(params));
+        }, Constant.XS_BASE_URL + "StoreCate/requestStoreCateList", GsonUtils.createGsonString(params));
     }
 
 
-    private void requestStoreItemDetail(){
+    private void requestStoreItemDetail() {
         HashMap<String, String> params = new HashMap<>();
         params.put("lang_type", AppConfig.LANG_TYPE);
 
-        String custom_code=S.get(kfmemain.this, C.KEY_JSON_CUSTOM_CODE);
-        String token=S.get(kfmemain.this, C.KEY_JSON_TOKEN);
-        if(custom_code!=null && !custom_code.equals("") && token!=null && !token.equals("")) {
+        String custom_code = S.get(kfmemain.this, C.KEY_JSON_CUSTOM_CODE);
+        String token = S.get(kfmemain.this, C.KEY_JSON_TOKEN);
+        if (custom_code != null && !custom_code.equals("") && token != null && !token.equals("")) {
             params.put("user_id", custom_code);
-            params.put("token",token);
-        }
-        else
-        {
-          params.put("custom_code", "");
-          params.put("token", "");
+            params.put("token", token);
+        } else {
+            params.put("custom_code", "");
+            params.put("token", "");
         }
 
         OkHttpHelper okHttpHelper = new OkHttpHelper(this);
@@ -729,13 +721,12 @@ private void initPicList()
 
 
                 entity = GsonUtils.changeGsonToBean(responseDescription, XsStoreDetailMenuItem.class);
-                if("1".equals(entity.status)){
+                if ("1".equals(entity.status)) {
                     try {
-                        if(entity.dataFav!=null && entity.dataFav.size()>0)
-                        {
+                        if (entity.dataFav != null && entity.dataFav.size() > 0) {
                             initPicList();
                         }
-                        if(entity.data!=null && entity.data.size()>0){
+                        if (entity.data != null && entity.data.size() > 0) {
 
 
                             mRecyclerView = (RecyclerView) findViewById(R.id.rv_list1);
@@ -753,14 +744,12 @@ private void initPicList()
                             adapter1.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                                 @Override
                                 public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                                    String catid=entity.data.get(position).level1;
-                                    if(catid.equals("1")) {
+                                    String catid = entity.data.get(position).level1;
+                                    if (catid.equals("1")) {
                                         Intent intent = new Intent(kfmemain.this, SmNew_shopcatList.class);
                                         intent.putExtra("lv1", catid);
                                         startActivity(intent);
-                                    }
-                                    else
-                                    {
+                                    } else {
                                         Intent intent = new Intent(kfmemain.this, XsStoreListActivity.class);
                                         intent.putExtra("lv1", catid);
                                         startActivity(intent);
@@ -773,14 +762,14 @@ private void initPicList()
                             adapter1.loadMoreComplete();
                             adapter1.loadMoreEnd(true);
 
-                        }else{
+                        } else {
                             adapter1.loadMoreEnd(true);
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
-                }else{
+                } else {
                     adapter1.loadMoreComplete();
                     adapter1.loadMoreEnd(true);
                 }
@@ -799,10 +788,11 @@ private void initPicList()
 
     /**
      * 动态设置ListView的高度
+     *
      * @param listView
      */
     public static void setListViewHeightBasedOnChildren(XListView listView) {
-        if(listView == null) return;
+        if (listView == null) return;
         ListAdapter listAdapter = listView.getAdapter();
         if (listAdapter == null) {
             // pre-condition
@@ -844,9 +834,8 @@ private void initPicList()
         long minTime = 1000;
         float minDistance = 1;
 
-        if(ActivityCompat.checkSelfPermission(this.thisActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(thisActivity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
-        {
+        if (ActivityCompat.checkSelfPermission(this.thisActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(thisActivity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(thisActivity, "Don't have permissions.", Toast.LENGTH_LONG).show();
             return "noPermission";
         }
@@ -878,15 +867,14 @@ private void initPicList()
 
             //ret_value = httpConn.NaverAPIAddressToLatlng("https://openapi.naver.com/v1/map/geocode", tv_serche_text.getText().toString(),"UTF-8,","4chFLI5miI3dKcMQ6paO","fLSoYJawMm");
 
-            ret_value = httpConn.NaverAPILatingToAddress("https://openapi.naver.com/v1/map/reversegeocode",Double.toString(latitude), Double.toString(longitude),"UTF-8","4chFLI5miI3dKcMQ6paO","fLSoYJawMm");
+            ret_value = httpConn.NaverAPILatingToAddress("https://openapi.naver.com/v1/map/reversegeocode", Double.toString(latitude), Double.toString(longitude), "UTF-8", "4chFLI5miI3dKcMQ6paO", "fLSoYJawMm");
             //{    "errorMessage": "검색 결과가 없습니다.",    "errorCode": "MP03"}
             try {
                 String errorMessage = "";
                 //JSONArray array = new JSONArray(ret_value);
                 //for(int i = 0; i<array.length(); i++){
                 JSONObject obj = new JSONObject(ret_value);
-                if(obj.getString("errorCode") != "0")
-                {
+                if (obj.getString("errorCode") != "0") {
                     errorMessage = obj.getString("errorMessage");
                     Log.i("ErrorMessage : ", errorMessage);
                 } else {
@@ -918,12 +906,11 @@ private void initPicList()
     };
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         // 수행을 제대로 한 경우-----
-        if(requestCode == 0) {
+        if (requestCode == 0) {
             if (resultCode == RESULT_OK && data != null) {
 //                String result = data.getStringExtra("resultSetting");
                 CaptureUtil.handleResultScaning(kfmemain.this,
@@ -935,14 +922,14 @@ private void initPicList()
             else if (resultCode == RESULT_CANCELED) {
 
             }
-        } else if(requestCode == 1000) {
+        } else if (requestCode == 1000) {
             if (resultCode == RESULT_OK) {
                 String result = data.getStringExtra("result");
                 AppConfig.address = result;
                 AddressTitle.setText(result);
 
             }
-        } else if(requestCode == 1001) {
+        } else if (requestCode == 1001) {
             if (resultCode == RESULT_OK) {
                 String result = data.getStringExtra("result");
                 AddressTitle.setText(result);
@@ -953,7 +940,7 @@ private void initPicList()
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.btn_serch:
                 Intent intentSearch = new Intent(kfmemain.this, SmSeachActivity.class);
                 startActivity(intentSearch);
@@ -967,9 +954,9 @@ private void initPicList()
                 cdialog.show();
                 break;
             case R.id.new_index_main_btn_sns2:
-                UtilClear.IntentToLongLiao(kfmemain.this,"cn.sbapp.im","cn.sbapp.im.ui.activity.MainActivity");
+                UtilClear.IntentToLongLiao(kfmemain.this, "cn.sbapp.im", "cn.sbapp.im.ui.activity.MainActivity");
                 break;
-            case  R.id.bnt_search:
+            case R.id.bnt_search:
                 requestStoreCateList("", "", "", "1", 1);
                 break;
         }
@@ -1006,14 +993,14 @@ private void initPicList()
 
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) { //网页加载时的连接的网址
-            if(!url.contains("NewsList.html")){
+            if (!url.contains("NewsList.html")) {
                 //对新的URL进行截取，去掉前面的newtab:
-               // String realUrl=url.substring(7,url.length());
-                String realUrl=url;
-                Intent intent = new Intent(kfmemain.this,WebActivity.class);
-                intent.putExtra(C.KEY_INTENT_URL,realUrl);
+                // String realUrl=url.substring(7,url.length());
+                String realUrl = url;
+                Intent intent = new Intent(kfmemain.this, WebActivity.class);
+                intent.putExtra(C.KEY_INTENT_URL, realUrl);
                 kfmemain.this.startActivity(intent);
-            }else{
+            } else {
                 view.loadUrl(url);
             }
             return true;

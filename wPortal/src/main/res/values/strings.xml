@@ -1227,4 +1227,12 @@
     <string name="dialog_con9">购买</string>
     <string name="dialog_con10">原产地标识:</string>
 
+    <string name="dangqianweizhi">当前位置</string>
+    <string name="dizhisousuo">地址搜索</string>
+
+    <string name="o2o">威海欧拓欧电子商务有限公司</string>
+    <string name="dinghuoshu">销售量</string>
+    <string name="pinglun">最近评价</string>
+    <string name="huifu">商家回复</string>
+
 </resources>

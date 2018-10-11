@@ -2,6 +2,8 @@ package com.rs.mobile.wportal.persnal;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
@@ -40,6 +42,7 @@ import com.rs.mobile.common.view.BringPhotoView;
 import com.rs.mobile.common.view.WImageView;
 import com.rs.mobile.wportal.A;
 import com.rs.mobile.wportal.Constant;
+import com.rs.mobile.wportal.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -99,6 +102,27 @@ public class SettingActivity extends BaseActivity {
         try {
 
             setContentView(com.rs.mobile.wportal.R.layout.activity_setting);
+
+            try {
+
+                PackageManager pm = getPackageManager();
+
+                PackageInfo info = null;
+
+                info = pm.getPackageInfo(getApplicationContext().getPackageName(), 0);
+
+                if (info != null) {
+
+                    ((TextView)findViewById(R.id.app_ver_text_view)).setText(getResources().getString(R.string.o2o) +
+                            "Version : v" + info.versionName + "(" + (C.BASE_URL.contains("portal.gigaosung.cn")? "P":"D") + ")");
+
+                }
+
+            } catch (Exception e) {
+
+                e(e);
+
+            }
 
             titleTextView = (TextView) findViewById(com.rs.mobile.wportal.R.id.title_text_view);
             load_size = (TextView) findViewById(com.rs.mobile.wportal.R.id.load_size);

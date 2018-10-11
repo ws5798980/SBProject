@@ -1098,7 +1098,7 @@ public class MainActivity extends BaseActivity {
 				// TODO Auto-generated method stub
 
 			}
-		}, "https://api.osunggiga.cn/imver001.txt", params);
+		}, "http://api.osunggiga.cn/imver001.txt", params);
 	}
 
 	@Override

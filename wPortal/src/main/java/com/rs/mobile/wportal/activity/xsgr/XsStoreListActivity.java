@@ -450,10 +450,12 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
                         //  mAdapter.loadMoreEnd(true);
                     } else {
                         if (entity.storelist != null && entity.storelist.size() > 0) {
+                            Log.i("123123", "onBizSuccess: 123123");
                             mNextRequestPage++;
                             mStoreList.addAll(entity.storelist);
                             mAdapter.loadMoreComplete();
-                            mAdapter.addData(entity.storelist);
+//                            mAdapter.addData(entity.storelist);
+                            mAdapter.setNewData(mStoreList);
                         } else {
                             mAdapter.loadMoreComplete();
                             mAdapter.loadMoreEnd(true);

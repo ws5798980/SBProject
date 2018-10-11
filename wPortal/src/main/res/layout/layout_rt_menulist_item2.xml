@@ -84,7 +84,7 @@
 	            <TextView
 		            android:layout_width="wrap_content"
 		            android:layout_height="wrap_content"
-		            android:text="원"
+		            android:text="@string/yuan"
 		            android:textColor="#ee3a3a"
 		            android:textSize="@dimen/text_size_m" />
 

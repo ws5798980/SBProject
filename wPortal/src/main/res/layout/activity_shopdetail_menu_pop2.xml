@@ -168,6 +168,7 @@
                                 android:gravity="center"
                                 android:inputType="number"
                                 android:maxLength="7"
+                                android:layout_marginLeft="5dp"
                                 android:paddingLeft="8dp"
                                 android:paddingRight="8dp"
                                 android:text="1"
@@ -277,6 +278,7 @@
                     android:layout_height="1px"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
+                    android:visibility="gone"
                     android:background="#111111" />
 
                 <LinearLayout
@@ -284,6 +286,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:minHeight="50dp"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
                     <TextView

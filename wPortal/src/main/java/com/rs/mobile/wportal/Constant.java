@@ -56,10 +56,10 @@ public class Constant {
     public static final String BASE_URL_SSO =
             "http://api1.osunggiga.cn:8088";// SSO
     public static final String BASE_URL_YC =
-            "http://api.osunggiga.cn:8444/ImApi/api/pl_CheckGeoFenceActivity";
+            "http://api.osunggiga.cn:8083/ImApi/api/pl_CheckGeoFenceActivity";
     public static final String BASE_URL_ORDER =
             "http://editapi.osunggiga.cn:8866";
-    public static final String BASE_URL_UPDATE = "https://api.osunggiga.cn:8444/appapi/userapi";
+    public static final String BASE_URL_UPDATE = "http://api.osunggiga.cn:8083/appapi/userapi";
 
     public static final String BASE_REFERENCE_URL = "http://api1.osunggiga.cn:7778";
 
