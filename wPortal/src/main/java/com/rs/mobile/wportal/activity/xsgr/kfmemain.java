@@ -163,6 +163,17 @@ public class kfmemain extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kfmemain3);
 
+
+        ImageView topimg = (ImageView) findViewById(R.id.topimg);
+
+        if (AppConfig.CHOOSE.equals("CN")) {
+            topimg.setImageResource(R.drawable.banner);
+
+        } else {
+            topimg.setImageResource(R.drawable.banner3);
+        }
+
+
         StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
                 .detectDiskReads()
                 .detectDiskWrites()
@@ -642,7 +653,7 @@ public class kfmemain extends Activity implements View.OnClickListener {
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://apiAD.gigaroom.cn:9280/api/apiNumeric/requestFindStore", GsonUtils.createGsonString(params));
+        }, "http://apiAD.gigaroom.com:9280/api/apiNumeric/requestFindStore", GsonUtils.createGsonString(params));
     }
 
 
@@ -679,7 +690,8 @@ public class kfmemain extends Activity implements View.OnClickListener {
                             mNextRequestPage++;
                             mStoreList.addAll(entity.storelist);
                             mAdapter.loadMoreComplete();
-                            mAdapter.addData(entity.storelist);
+//                            mAdapter.addData(entity.storelist);
+                            mAdapter.setNewData(mStoreList);
                         } else {
                             mAdapter.loadMoreEnd(true);
                         }
@@ -782,7 +794,7 @@ public class kfmemain extends Activity implements View.OnClickListener {
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://mall.gigawon.cn:8800/api/StoreCate/requestStoreCate1FavList", GsonUtils.createGsonString(params));
+        }, "http://mall.gigawon.co.kr:8800/api/StoreCate/requestStoreCate1FavList", GsonUtils.createGsonString(params));
     }
 
 

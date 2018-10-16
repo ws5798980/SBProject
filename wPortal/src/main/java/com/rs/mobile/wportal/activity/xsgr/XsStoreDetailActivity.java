@@ -646,7 +646,7 @@ public class XsStoreDetailActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://mall.gigawon.cn:8800/api/StoreCate/requestStoreInfoProductList", GsonUtils.createGsonString(params));
+        }, "http://mall.gigawon.co.kr:8800/api/StoreCate/requestStoreInfoProductList", GsonUtils.createGsonString(params));
     }
 
     private void requestStoreSmallItemDetail(String Groupid){
@@ -757,7 +757,7 @@ public class XsStoreDetailActivity extends AppCompatActivity implements View.OnC
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://mall.gigawon.cn:8800/api/StoreCate/requestStoreDetailByGroupid", GsonUtils.createGsonString(params));
+        }, "http://mall.gigawon.co.kr:8800/api/StoreCate/requestStoreDetailByGroupid", GsonUtils.createGsonString(params));
     }
 
 

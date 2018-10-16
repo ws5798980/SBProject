@@ -155,7 +155,7 @@ public class LoginActivity extends BaseActivity {
 
                     Intent intent = new Intent(LoginActivity.this, WebActivity.class);
                     intent.putExtra("title", getResources().getString(R.string.zhuce));
-                    intent.putExtra("url", "http://join.gigaroom.cn/10_Member/join_main");
+                    intent.putExtra("url", "http://join.gigaroom.com/10_Member/join_main");
                     startActivity(intent);
 
 //
@@ -459,10 +459,10 @@ public class LoginActivity extends BaseActivity {
                 if (info != null) {
 
                     app_ver_login.setText(getResources().getString(R.string.app_name) +
-                            "Version : v" + info.versionName + "(" + (C.BASE_URL.contains("portal.osunggiga.cn") ? "P" : "D") + ")");
+                            "Version : v" + info.versionName + "(" + (C.BASE_URL.contains("portal.osunggiga.com") ? "P" : "D") + ")");
                     if (app_ver_memvership != null) {
                         app_ver_memvership.setText(getResources().getString(R.string.app_name) +
-                                "Version : v" + info.versionName + "(" + (C.BASE_URL.contains("portal.osunggiga.cn") ? "P" : "D") + ")");
+                                "Version : v" + info.versionName + "(" + (C.BASE_URL.contains("portal.osunggiga.com") ? "P" : "D") + ")");
                     }
 
                 }
@@ -682,7 +682,7 @@ public class LoginActivity extends BaseActivity {
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://member.gigawon.cn:8808/api/Login/requestLoginCheck", GsonUtils.createGsonString(params));
+        }, "http://member.gigawon.co.kr:8808/api/Login/requestLoginCheck", GsonUtils.createGsonString(params));
     }
 
     /**

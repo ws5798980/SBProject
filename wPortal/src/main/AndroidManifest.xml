@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rs.mobile.wportal"
     android:largeHeap="true"
-    android:versionCode="1809041430"
+    android:versionCode="1810151430"
     android:versionName="1.2.3">
 
     <uses-sdk
@@ -848,8 +848,7 @@
             android:theme="@android:style/Theme.DeviceDefault.Light.Dialog.NoActionBar" />
         <activity
             android:name=".activity.SplashActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppIntro">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

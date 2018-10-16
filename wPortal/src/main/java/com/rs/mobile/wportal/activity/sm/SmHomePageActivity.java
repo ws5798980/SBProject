@@ -360,7 +360,7 @@ public class SmHomePageActivity extends BaseActivity {
 
 					try {
 						Bundle bundle = new Bundle();
-						bundle.putString(C.KEY_INTENT_URL, "http://ssadmin.osunggiga.cn:8090/20_CM/cmList.aspx");
+						bundle.putString(C.KEY_INTENT_URL, "http://ssadmin.osunggiga.com:8090/20_CM/cmList.aspx");
 						PageUtil.jumpTo(activity, WebActivity.class, bundle);
 					} catch (Exception e) {
 						L.e(e);

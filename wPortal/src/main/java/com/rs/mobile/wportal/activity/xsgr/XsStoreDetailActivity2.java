@@ -239,6 +239,14 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
     }
 
     private void initView() {
+
+        ImageView topimg = (ImageView) findViewById(R.id.topimg);
+        if (AppConfig.CHOOSE.equals("CN")) {
+            topimg.setImageResource(R.drawable.img_top_slogan);
+        } else {
+            topimg.setImageResource(R.drawable.img_top_slogan3);
+        }
+
         commentlist1 = (RecyclerView) findViewById(R.id.commentlist);
         commentAdapter = new XsStoreCommentAdapter(XsStoreDetailActivity2.this, R.layout.item_comment_detail, new ArrayList<CommentBean.ShopAssessDataBean>());
         View emptyView = LayoutInflater.from(XsStoreDetailActivity2.this).inflate(R.layout.layout_empty, null);
@@ -1066,7 +1074,8 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
                             allitemlist.addAll(entity.data.plist);
                             mNextRequestPage++;
                             mAdapter.loadMoreComplete();
-                            mAdapter.addData(entity.data.plist);
+//                            mAdapter.addData(entity.data.plist);
+                            mAdapter.setNewData(allitemlist);
                             if (entity.data.plist.size() < 10) {
                                 mAdapter.loadMoreEnd(true);
                             }
@@ -1092,7 +1101,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://mall.gigawon.cn:8800/api/StoreCate/requestStoreInfoProductList", GsonUtils.createGsonString(params));
+        }, "http://mall.gigawon.co.kr:8800/api/StoreCate/requestStoreInfoProductList", GsonUtils.createGsonString(params));
     }
 
     private void requestStoreSmallItemDetail(String Groupid, final Dialog dialog) {

@@ -155,7 +155,7 @@ public class PersnalCenterActivity extends BaseActivity {
 						Intent sendIntent = new Intent();
 						sendIntent.setAction(Intent.ACTION_SEND);
 						sendIntent.putExtra(Intent.EXTRA_SUBJECT, getString(com.rs.mobile.wportal.R.string.share));
-						sendIntent.putExtra(Intent.EXTRA_TEXT, "http://portal.gigawon.cn:8488/AppDownload/index");
+						sendIntent.putExtra(Intent.EXTRA_TEXT, "http://portal.gigawon.co.kr:8488/AppDownload/index");
 						sendIntent.setType("text/plain");
 						startActivity(sendIntent);
 						
@@ -387,7 +387,7 @@ public class PersnalCenterActivity extends BaseActivity {
 			if (info != null) {
 				
 				((TextView)findViewById(com.rs.mobile.wportal.R.id.app_ver_text_view)).setText(getResources().getString(com.rs.mobile.wportal.R.string.app_name) +
-						"Version : v" + info.versionName + "(" + (C.BASE_URL.contains("portal.osunggiga.cn")? "P":"D") + ")");
+						"Version : v" + info.versionName + "(" + (C.BASE_URL.contains("portal.osunggiga.com")? "P":"D") + ")");
 				
 			}
 			

@@ -20,8 +20,7 @@
         <!-- 底部导航栏颜色，API21+才可以 -->
        <!--   <item name="android:navigationBarColor">@android:color/white</item> -->
     <style name="AppIntro" parent="AppBaseTheme" >
-        <item name="android:windowBackground">@drawable/loadingpage</item>
-        
+        <item name="android:background">@drawable/loadingpage</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowTranslucentNavigation">false</item>
         <item name="windowNoTitle">true</item>

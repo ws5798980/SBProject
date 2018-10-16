@@ -45,7 +45,7 @@ public class ShareView {
         final UMWeb web = new UMWeb(url);
         web.setTitle(title);
         web.setDescription(content);
-        web.setThumb(new UMImage(context,imgUrl.equals("")?"http://portal.gigawon.cn:8488/img/11.png":imgUrl));
+        web.setThumb(new UMImage(context,imgUrl.equals("")?"http://portal.gigawon.co.kr:8488/img/11.png":imgUrl));
         
     	
         if (popupWindow != null && popupWindow.isShowing())

@@ -180,6 +180,13 @@ public class XsStoreListActivity extends AppCompatActivity implements TextView.O
     }
 
     private void initView() {
+
+        ImageView topimg= (ImageView) findViewById(R.id.topimg);
+        if (AppConfig.CHOOSE.equals("CN")){
+            topimg.setImageResource(R.drawable.img_top_slogan);
+        }else {
+            topimg.setImageResource(R.drawable.img_top_slogan3);
+        }
         btnBack = (LinearLayout) findViewById(R.id.btn_back);
         btnBack.setOnClickListener(this);
         llLv3 = (LinearLayout) findViewById(R.id.ll_lv3);

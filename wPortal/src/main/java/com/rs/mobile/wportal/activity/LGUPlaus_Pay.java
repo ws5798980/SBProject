@@ -114,7 +114,7 @@ public class LGUPlaus_Pay extends Activity {
 
         String getParameter = "?OrderNumber=" + OrderNumber + "&OrderMoney=" + OrderMoney + "&OrderUserName=" + OrderUserName + "&GiftInfo=" + GiftInfo;
 
-        mWeb.loadUrl("http://lgpay.gigawon.cn:8083" + getParameter); // ????URL?? ????????
+        mWeb.loadUrl("http://lgpay.gigawon.co.kr:8083" + getParameter); // ????URL?? ????????
     }
 
     class MyWebChromeClient extends WebChromeClient {

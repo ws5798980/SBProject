@@ -304,6 +304,7 @@
                 android:background="#f2f4f6"
                 android:gravity="center">
        <ImageView
+           android:id="@+id/topimg"
            android:layout_width="match_parent"
            android:src="@drawable/banner"
            android:scaleType="fitXY"

@@ -4,7 +4,7 @@ import java.util.List;
 
 public class CommentBean {
     /**
-     * ShopAssessData : [{"list_num":"17","id":"92","custom_name":"JUSTBOSS","img_path":"http://portal.gigawon.cn:8488/MediaUploader/wsProfile/WPortal20180416112634.jpg","reg_date":"2018-05-22 20:28:24.460","score":"4","rep_content":"评论 内容 添加评论 test","sale_content":"商家模块切图标注感谢您的支持与喜欢商商家模块切图标注商家模块切图标注商家模块切图标注商家模块切图标注","sale_reg_date":"2018-07-02 13:27:10.400"},{"list_num":"16","id":"79","custom_name":"yechung Mart","img_path":"http://portal.gigawon.cn:8488/MediaUploader/wsProfile/WPortal20180330094823.jpg","reg_date":"2018-05-22 20:02:20.790","score":"5","rep_content":"평가하기 테스트","sale_content":"感谢您的支持与喜欢！我们会努力做到更好","sale_reg_date":"2018-07-02 13:09:21.440"},{"list_num":"15","id":"80","custom_name":"","img_path":"http://fileserver.gigawon.cn:8588/18874097957.jpg","reg_date":"2018-05-22 20:02:20.790","score":"4","rep_content":"평가하기 테스트1","sale_content":"","sale_reg_date":""},{"list_num":"14","id":"81","custom_name":"","img_path":"http://fileserver.gigawon.cn:8588/18874097957.jpg","reg_date":"2018-05-22 20:02:20.790","score":"3","rep_content":"평가하기 테스트2","sale_content":"","sale_reg_date":""},{"list_num":"13","id":"82","custom_name":"","img_path":"http://fileserver.gigawon.cn:8588/18874097957.jpg","reg_date":"2018-05-22 20:02:20.790","score":"4","rep_content":"평가하기 테스트3","sale_content":"","sale_reg_date":""}]
+     * ShopAssessData : [{"list_num":"17","id":"92","custom_name":"JUSTBOSS","img_path":"http://portal.gigawon.co.kr:8488/MediaUploader/wsProfile/WPortal20180416112634.jpg","reg_date":"2018-05-22 20:28:24.460","score":"4","rep_content":"评论 内容 添加评论 test","sale_content":"商家模块切图标注感谢您的支持与喜欢商商家模块切图标注商家模块切图标注商家模块切图标注商家模块切图标注","sale_reg_date":"2018-07-02 13:27:10.400"},{"list_num":"16","id":"79","custom_name":"yechung Mart","img_path":"http://portal.gigawon.co.kr:8488/MediaUploader/wsProfile/WPortal20180330094823.jpg","reg_date":"2018-05-22 20:02:20.790","score":"5","rep_content":"평가하기 테스트","sale_content":"感谢您的支持与喜欢！我们会努力做到更好","sale_reg_date":"2018-07-02 13:09:21.440"},{"list_num":"15","id":"80","custom_name":"","img_path":"http://fileserver.gigawon.co.kr:8588/18874097957.jpg","reg_date":"2018-05-22 20:02:20.790","score":"4","rep_content":"평가하기 테스트1","sale_content":"","sale_reg_date":""},{"list_num":"14","id":"81","custom_name":"","img_path":"http://fileserver.gigawon.co.kr:8588/18874097957.jpg","reg_date":"2018-05-22 20:02:20.790","score":"3","rep_content":"평가하기 테스트2","sale_content":"","sale_reg_date":""},{"list_num":"13","id":"82","custom_name":"","img_path":"http://fileserver.gigawon.co.kr:8588/18874097957.jpg","reg_date":"2018-05-22 20:02:20.790","score":"4","rep_content":"평가하기 테스트3","sale_content":"","sale_reg_date":""}]
      * status : 1
      * flag : 1501
      * msg : 작업완료
@@ -192,7 +192,7 @@ public class CommentBean {
          * list_num : 17
          * id : 92
          * custom_name : JUSTBOSS
-         * img_path : http://portal.gigawon.cn:8488/MediaUploader/wsProfile/WPortal20180416112634.jpg
+         * img_path : http://portal.gigawon.co.kr:8488/MediaUploader/wsProfile/WPortal20180416112634.jpg
          * reg_date : 2018-05-22 20:28:24.460
          * score : 4
          * rep_content : 评论 内容 添加评论 test

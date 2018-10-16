@@ -306,7 +306,7 @@ public class A extends Application {
 		 	QueuedWork.isUseThreadPool = false;
 	        UMShareAPI.get(this);
 	        PlatformConfig.setWeixin("wx8ab5a1f852d8663c", "b57c0626ccab1ef315b4ad7225e08da3");
-	        PlatformConfig.setSinaWeibo("3859364376", "1f3a02ed0032b94a661bd9e8e8864754","http://pay.osunggiga.cn");
+	        PlatformConfig.setSinaWeibo("3859364376", "1f3a02ed0032b94a661bd9e8e8864754","http://pay.osunggiga.com");
 	        PlatformConfig.setQQZone("1105955455", "sh0sSUOnMosPpbhZ");
 //	        PlatformConfig.setYixin("yxc0614e80c9304c11b0391514d09f13bf");
 //	        PlatformConfig.setTwitter("3aIN7fuF685MuZ7jtXkQxalyi", "MK6FEYG63eWcpDFgRYw4w9puJhzDl0tyuqWjZ3M7XJuuG7mMbO");

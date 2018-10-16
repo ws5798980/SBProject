@@ -21,10 +21,16 @@
     </style>
 
     <style name="AppIntro" parent="AppBaseTheme">
-        <item name="android:windowBackground">@drawable/loadingpage</item>
         <item name="android:fitsSystemWindows">true</item>
         <item name="windowActionBar">false</item>
+        <item name="android:background">@drawable/loadingpage</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 
+    <style name="AppIntro_KO" parent="AppBaseTheme">
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:background">@drawable/loadingpage3</item>
         <item name="windowNoTitle">true</item>
     </style>
 

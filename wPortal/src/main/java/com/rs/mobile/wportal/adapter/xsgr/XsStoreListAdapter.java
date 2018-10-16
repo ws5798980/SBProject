@@ -7,6 +7,8 @@ import android.widget.RatingBar;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.rs.mobile.common.AppConfig;
+import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.entity.StoreCateListEntity;
 import com.rs.mobile.wportal.entity.StoreListItem;
@@ -30,6 +32,13 @@ public class XsStoreListAdapter extends BaseQuickAdapter<StoreCateListEntity.Sto
         helper.setText(R.id.tv_distance, item.distance + "km");
         helper.setText(R.id.tv_address, item.kor_addr);
         Glide.with(mContext).load(item.shop_thumnail_image).into((ImageView) helper.getView(R.id.iv_img_res));
+        if (AppConfig.CHOOSE.equals("CN")) {
+            ((ImageView) helper.getView(R.id.new_shoplist_tools_price)).setImageResource(R.drawable.icon_price_list);
+            ((ImageView) helper.getView(R.id.new_shoplist_tools_order)).setImageResource(R.drawable.icon_order_list);
+        } else {
+            ((ImageView) helper.getView(R.id.new_shoplist_tools_price)).setImageResource(R.drawable.icon_price_list3);
+            ((ImageView) helper.getView(R.id.new_shoplist_tools_order)).setImageResource(R.drawable.icon_order_list3);
+        }
 
         try {
             ((RatingBar) helper.getView(R.id.rating_bar)).setRating(Float.parseFloat(item.score));

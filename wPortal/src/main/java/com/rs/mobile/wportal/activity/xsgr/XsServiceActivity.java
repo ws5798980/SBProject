@@ -23,7 +23,7 @@ public class XsServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xs_service);
 
-        initWebview("http://www.gigawon.cn:1314/QnA/sub_02");
+        initWebview("http://www.gigawon.co.kr:1314/QnA/sub_02");
     }
 
     private void initWebview(String url) {

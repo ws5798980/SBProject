@@ -126,6 +126,6 @@ public class SelectGroupActivity extends BaseActivity {
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://member.gigawon.cn:8808/api/Group/requestGroupList", GsonUtils.createGsonString(params));
+        }, "http://member.gigawon.co.kr:8808/api/Group/requestGroupList", GsonUtils.createGsonString(params));
     }
 }

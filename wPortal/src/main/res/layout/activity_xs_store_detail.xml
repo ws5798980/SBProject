@@ -442,6 +442,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/topimg"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_marginBottom="8dp"
