@@ -117,6 +117,6 @@ public class Register4Activity extends AppCompatActivity {
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://member.gigawon.co.kr:8808/api/Login/joinMember", GsonUtils.createGsonString(params));
+        }, "http://member."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8808/api/Login/joinMember", GsonUtils.createGsonString(params));
     }
 }

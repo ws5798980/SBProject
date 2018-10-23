@@ -1107,7 +1107,7 @@ public class MainActivity extends BaseActivity {
                 // TODO Auto-generated method stub
 
             }
-        }, "http://api.osunggiga.com/imver001.txt", params);
+        }, "http://api."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+"/imver001.txt", params);
     }
 
     @Override

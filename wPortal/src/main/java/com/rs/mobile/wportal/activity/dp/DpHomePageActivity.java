@@ -525,7 +525,7 @@ public class DpHomePageActivity extends BaseActivity
 			break;
 		case com.rs.mobile.wportal.R.id.dp_menu_08:
 			Bundle bundle2 = new Bundle();
-			bundle2.putString(C.KEY_INTENT_URL, "http://ssadmin.osunggiga.com:8090/20_CM/cmList.aspx");
+			bundle2.putString(C.KEY_INTENT_URL, "http://ssadmin."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":8090/20_CM/cmList.aspx");
 			PageUtil.jumpTo(DpHomePageActivity.this, WebActivity.class, bundle2);
 			break;
 		case com.rs.mobile.wportal.R.id.rela_001:

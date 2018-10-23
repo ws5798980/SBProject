@@ -1,5 +1,7 @@
 package com.rs.mobile.wportal;
 
+import com.rs.mobile.common.AppConfig;
+
 /**
  * Constant
  *
@@ -22,45 +24,45 @@ public class Constant {
 //	public static final String BASE_URL_YC = "http://192.168.2.201/ImApi/api/pl_CheckGeoFenceActivity";
 //	public static final String BASE_URL_ORDER = "http://192.168.2.152:8866";
 
-    // public static final String SM_BASE_URL = "http://pay.gigawon.co.kr:81";
+    // public static final String SM_BASE_URL = "http://pay."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":81";
     // public static final String BASE_URL_KR =
-    // "http://klcm.gigawon.co.kr:81";
+    // "http://klcm."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":81";
     // public static final String BASE_URL_RT =
-    // "http://foodapi.gigawon.co.kr:843";
+    // "http://foodapi."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":843";
     // public static final String BASE_URL_DP =
-    // "http://api1.gigawon.co.kr:82";
+    // "http://api1."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":82";
     // public static final String BASE_URL_DP1 =
-    // "http://pay.gigawon.co.kr:81";
+    // "http://pay."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":81";
     // public static final String BASE_URL_HT =
-    // "http://hotel.gigawon.co.kr:84";
+    // "http://hotel."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":84";
     // public static final String BASE_URL_SSO =
-    // "http://api1.gigawon.co.kr:8088";// SSO
+    // "http://api1."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8088";// SSO
     // public static final String BASE_URL_YC =
     // "https://api.gigawon.co/ImApi/api/pl_CheckGeoFenceActivity";
-    public static final String XS_BASE_URL = "http://mall.gigawon.co.kr:8800/api/";
-    public static final String XSGR_TEST_URL = "http://gigaMerchantManager.gigawon.co.kr:8825/";
-    public static final String XS_MEMBER_URL = "http://member.gigawon.co.kr:8808/api/";
+    public static final String XS_BASE_URL = "http://mall."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8800/api/";
+    public static final String XSGR_TEST_URL = "http://gigaMerchantManager."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8825/";
+    public static final String XS_MEMBER_URL = "http://member."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8808/api/";
 
-    public static final String SM_BASE_URL = "http://pay.gigawon.co.kr:81";
+    public static final String SM_BASE_URL = "http://pay."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":81";
     public static final String BASE_URL_KR =
-            "http://klcm.osunggiga.com:8072";
+            "http://klcm."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":8072";
     public static final String BASE_URL_RT =
-            "http://foodapi.osunggiga.com:843";
+            "http://foodapi."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":843";
     public static final String BASE_URL_DP =
-            "http://api1.osunggiga.com:82";
+            "http://api1."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":82";
     public static final String BASE_URL_DP1 =
-            "http://pay.osunggiga.com:81";
+            "http://pay."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":81";
     public static final String BASE_URL_HT =
-            "http://hotel.osunggiga.com:8863";
+            "http://hotel."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":8863";
     public static final String BASE_URL_SSO =
-            "http://api1.osunggiga.com:8088";// SSO
+            "http://api1."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":8088";// SSO
     public static final String BASE_URL_YC =
-            "http://api.osunggiga.com:8083/ImApi/api/pl_CheckGeoFenceActivity";
+            "http://api."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":8083/ImApi/api/pl_CheckGeoFenceActivity";
     public static final String BASE_URL_ORDER =
-            "http://editapi.osunggiga.com:8866";
-    public static final String BASE_URL_UPDATE = "http://api.osunggiga.com:8083/appapi/userapi";
+            "http://editapi."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":8866";
+    public static final String BASE_URL_UPDATE = "http://api."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":8083/appapi/userapi";
 
-    public static final String BASE_REFERENCE_URL = "http://api1.osunggiga.com:7778";
+    public static final String BASE_REFERENCE_URL = "http://api1."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":7778";
 
 
     /***************************************************************************************

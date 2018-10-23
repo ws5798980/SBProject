@@ -15,6 +15,7 @@ import android.widget.PopupWindow;
 import android.widget.Toast;
 import android.widget.PopupWindow.OnDismissListener;
 
+import com.rs.mobile.common.AppConfig;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -45,7 +46,7 @@ public class ShareView {
         final UMWeb web = new UMWeb(url);
         web.setTitle(title);
         web.setDescription(content);
-        web.setThumb(new UMImage(context,imgUrl.equals("")?"http://portal.gigawon.co.kr:8488/img/11.png":imgUrl));
+        web.setThumb(new UMImage(context,imgUrl.equals("")?"http://portal."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8488/img/11.png":imgUrl));
         
     	
         if (popupWindow != null && popupWindow.isShowing())

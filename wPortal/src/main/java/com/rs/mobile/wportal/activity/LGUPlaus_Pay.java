@@ -29,6 +29,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.activity.sm.MyOrderActivity;
 
@@ -114,7 +115,7 @@ public class LGUPlaus_Pay extends Activity {
 
         String getParameter = "?OrderNumber=" + OrderNumber + "&OrderMoney=" + OrderMoney + "&OrderUserName=" + OrderUserName + "&GiftInfo=" + GiftInfo;
 
-        mWeb.loadUrl("http://lgpay.gigawon.co.kr:8083" + getParameter); // ????URL?? ????????
+        mWeb.loadUrl("http://lgpay."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8083" + getParameter); // ????URL?? ????????
     }
 
     class MyWebChromeClient extends WebChromeClient {

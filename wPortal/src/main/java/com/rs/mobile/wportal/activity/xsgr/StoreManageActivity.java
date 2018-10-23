@@ -251,7 +251,7 @@ public class StoreManageActivity extends BaseActivity {
                     finish();
 
                 }
-            }, "http://mall.gigawon.co.kr:8800/api/AppSM/requestStoreImageUpdate", j1.toString());
+            }, "http://mall."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8800/api/AppSM/requestStoreImageUpdate", j1.toString());
 //			}, C.BASE_RS_MEMBER_URL + C.REQUEST_NICK_NAME_CHANGE, j1.toString());
 
         } catch (Exception e) {
@@ -575,7 +575,7 @@ public class StoreManageActivity extends BaseActivity {
                     filePath.add(imagePath);
                     Log.e("tag===", imagePath);
                     //C.BASE_UPLOAD_IMG_URL + C.STORE_IMAGE_UPLOAD_PATH
-                    return FileUtil.upload("http://portal.gigawon.co.kr:8488/Common/FileUploader.ashx", filePath, null, "file");
+                    return FileUtil.upload("http://portal."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8488/Common/FileUploader.ashx", filePath, null, "file");
 
                 } else {
 
@@ -607,7 +607,7 @@ public class StoreManageActivity extends BaseActivity {
                 // S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "")
                 // + ".jpg"));
 //C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH
-                //http://portal.gigawon.co.kr:8488/MediaUploader/wsProfile/
+                //http://portal."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8488/MediaUploader/wsProfile/
                 imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal"
                         + S.getShare(StoreManageActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
                 Log.e("tag_img", imageDownloadUrl);

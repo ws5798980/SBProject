@@ -26,6 +26,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.C;
 import com.rs.mobile.common.L;
 import com.rs.mobile.common.S;
@@ -360,7 +361,7 @@ public class SmHomePageActivity extends BaseActivity {
 
 					try {
 						Bundle bundle = new Bundle();
-						bundle.putString(C.KEY_INTENT_URL, "http://ssadmin.osunggiga.com:8090/20_CM/cmList.aspx");
+						bundle.putString(C.KEY_INTENT_URL, "http://ssadmin."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":8090/20_CM/cmList.aspx");
 						PageUtil.jumpTo(activity, WebActivity.class, bundle);
 					} catch (Exception e) {
 						L.e(e);

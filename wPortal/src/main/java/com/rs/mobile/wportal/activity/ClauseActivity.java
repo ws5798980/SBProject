@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.view.StateButton;
 import com.rs.mobile.wportal.A;
 import com.rs.mobile.wportal.R;
@@ -109,7 +110,7 @@ public class ClauseActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btn_location:
                 Intent intent_web = new Intent(ClauseActivity.this, kfme_WebBrowser.class);
-                intent_web.putExtra("url", "http://www.gigawon.co.kr:1314/CS2/CS10");
+                intent_web.putExtra("url", "http://www."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":1314/CS2/CS10");
                 startActivity(intent_web);
 
                 break;

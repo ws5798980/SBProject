@@ -653,7 +653,7 @@ public class kfmemain extends Activity implements View.OnClickListener {
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://apiAD.gigaroom.com:9280/api/apiNumeric/requestFindStore", GsonUtils.createGsonString(params));
+        }, "http://apiAD." + (AppConfig.CHOOSE.equals("CN") ? "gigaroom.cn" : "gigaroom.co.kr") + ":9280/api/apiNumeric/requestFindStore", GsonUtils.createGsonString(params));
     }
 
 
@@ -794,7 +794,7 @@ public class kfmemain extends Activity implements View.OnClickListener {
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://mall.gigawon.co.kr:8800/api/StoreCate/requestStoreCate1FavList", GsonUtils.createGsonString(params));
+        }, "http://mall." + (AppConfig.CHOOSE.equals("CN") ? "gigawon.cn" : "gigawon.co.kr") + ":8800/api/StoreCate/requestStoreCate1FavList", GsonUtils.createGsonString(params));
     }
 
 

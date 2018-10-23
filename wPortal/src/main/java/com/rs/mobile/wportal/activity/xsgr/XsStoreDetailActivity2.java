@@ -1101,7 +1101,7 @@ public class XsStoreDetailActivity2 extends AppCompatActivity implements View.On
             @Override
             public void onNetworkError(Request request, IOException e) {
             }
-        }, "http://mall.gigawon.co.kr:8800/api/StoreCate/requestStoreInfoProductList", GsonUtils.createGsonString(params));
+        }, "http://mall."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8800/api/StoreCate/requestStoreInfoProductList", GsonUtils.createGsonString(params));
     }
 
     private void requestStoreSmallItemDetail(String Groupid, final Dialog dialog) {

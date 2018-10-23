@@ -12,6 +12,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.L;
 import com.rs.mobile.wportal.R;
 
@@ -23,7 +24,7 @@ public class XsServiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xs_service);
 
-        initWebview("http://www.gigawon.co.kr:1314/QnA/sub_02");
+        initWebview("http://www."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":1314/QnA/sub_02");
     }
 
     private void initWebview(String url) {

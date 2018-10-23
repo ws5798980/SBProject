@@ -7,6 +7,7 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.S;
 import com.rs.mobile.common.view.WImageView;
 import com.rs.mobile.common.C;
@@ -235,7 +236,7 @@ public class RtCalvulaterActivity extends BaseActivity {
 								// TODO Auto-generated method stub
 
 							}
-						}, "http://api.osunggiga.com/appapi/pushapi", params);
+						}, "http://api."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+"/appapi/pushapi", params);
 
 					} catch (Exception e) {
 

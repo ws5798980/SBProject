@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.R;;
 
 public class Clause1Activity extends AppCompatActivity {
@@ -41,7 +42,7 @@ public class Clause1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Clause1Activity.this, kfme_WebBrowser.class);
-                intent.putExtra("url", "http://www.gigawon.co.kr:1314/CS/CS10");
+                intent.putExtra("url", "http://www."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":1314/CS/CS10");
                 startActivity(intent);
             }
         });
@@ -50,7 +51,7 @@ public class Clause1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Clause1Activity.this, kfme_WebBrowser.class);
-                intent.putExtra("url", "http://www.gigawon.co.kr:1314/CS/CS20");
+                intent.putExtra("url", "http://www."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":1314/CS/CS20");
                 startActivity(intent);
             }
         });
@@ -59,7 +60,7 @@ public class Clause1Activity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Clause1Activity.this, kfme_WebBrowser.class);
-                intent.putExtra("url", "http://www.gigawon.co.kr:1314/CS/CS30");
+                intent.putExtra("url", "http://www."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":1314/CS/CS30");
                 startActivity(intent);
             }
         });

@@ -28,18 +28,18 @@ public class C {
 //	public static final String WPAYMENT_OFFLINE_POS = "http://192.168.2.179:82/api/QRPayment/posQRAppPayment";
 //	public static final String CHECK_LOGIN = "http://192.168.2.165:89/ws2016/srvJoinModule/10_Login/checkLogin_0911";
 	
-//	 	public static final String BASE_URL = "https://portal.gigawon.co.kr";
-//		public static final String BASE_PLAYER_URL_KR = "http://klcm.gigawon.co.kr:89";
-//		public static final String ALIPAY="https://pay.gigawon.co.kr/Payment/CreateOrder_AliPay";
-//		public static final String UNIONPAY="https://pay.gigawon.co.kr/Payment/CreateOrder_UnionPay";
-//		public static final String URL_POINT = "https://api.gigawon.co.kr/pl_Point/api/PointGetListAndBalance";
-//		public static final String WPAYMENT="https://api.gigawon.co.kr/wpayment/api/wPayment";
-//		public static final String WPAYMENT_OFFLINE="https://api.gigawon.co.kr/wPayment/api/wPayment_Offline ";
-//		public static final String GET_ZIP_CODE = "http://api1.gigawon.co.kr:82/api/ycZipCode/getZipCode";
-//		public static final String CHANGE_PW="http://api1.gigawon.co.kr:82/api/MemberInfo/changePassword";
+//	 	public static final String BASE_URL = "https://portal."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+"";
+//		public static final String BASE_PLAYER_URL_KR = "http://klcm."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":89";
+//		public static final String ALIPAY="https://pay."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+"/Payment/CreateOrder_AliPay";
+//		public static final String UNIONPAY="https://pay."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+"/Payment/CreateOrder_UnionPay";
+//		public static final String URL_POINT = "https://api."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+"/pl_Point/api/PointGetListAndBalance";
+//		public static final String WPAYMENT="https://api."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+"/wpayment/api/wPayment";
+//		public static final String WPAYMENT_OFFLINE="https://api."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+"/wPayment/api/wPayment_Offline ";
+//		public static final String GET_ZIP_CODE = "http://api1."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":82/api/ycZipCode/getZipCode";
+//		public static final String CHANGE_PW="http://api1."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":82/api/MemberInfo/changePassword";
 //		public static final String CreateOfflinePosOrder = "http://192.168.26.6:8089/Order/CreateOfflinePosOrder" ;
-//		public static final String WPAYMENT_OFFLINE_POS="http://api1.gigawon.co.kr:89/ws2016/wsRecharge/40_Barcode/getBarcodeAuthority.aspx";
-//		public static final String CHECK_LOGIN = "http://member.gigawon.co.kr:89/ws2016/srvJoinModule/10_Login/checkLogin_0911";
+//		public static final String WPAYMENT_OFFLINE_POS="http://api1."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":89/ws2016/wsRecharge/40_Barcode/getBarcodeAuthority.aspx";
+//		public static final String CHECK_LOGIN = "http://member."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":89/ws2016/srvJoinModule/10_Login/checkLogin_0911";
 //	 dxbhtm
 /*	public static final String BASE_URL = "https://portal.shelongwang.com:443";
 	public static final String BASE_PLAYER_URL_KR = "http://klcm.shelongwang.com:8071";
@@ -54,27 +54,27 @@ public class C {
 	public static final String CHECK_LOGIN = "http://member.shelongwang.com:89/ws2016/srvJoinModule/10_Login/checkLogin_0911";*/
 
 //
-	public static final String BASE_URL = "http://portal.gigawon.co.kr:8488";
-//	public static final String BASE_URL = "http://gigawon.co.kr:8488";
+	public static final String BASE_URL = "http://portal."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8488";
+//	public static final String BASE_URL = "http://"+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8488";
 	/*
 	수정일 / 수정인 : 2017.12.25 Jack Kim
 	회원가입 Direct 접속을 위한 수정
 	 */
-	public static final String BASE_MEMBER_RS_URL = "http://member.osunggiga.com:8800";
-	public static final String BASE_RS_MEMBER_URL = "http://rsmember.osunggiga.com:8800";
+	public static final String BASE_MEMBER_RS_URL = "http://member."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":8800";
+	public static final String BASE_RS_MEMBER_URL = "http://rsmember."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":8800";
 	/*==========================*/
-	public static final String BASE_PLAYER_URL_KR = "http://klcm.gigawon.co.kr:8071";
-	public static final String ALIPAY="http://pay.gigawon.co.kr:8089/Payment/CreateOrder_AliPay";
-	public static final String UNIONPAY="http://pay.osunggiga.com:8089/Payment/CreateOrder_UnionPay";
-	public static final String URL_POINT = "http://api.gigawon.co.kr:8083/pl_Point/api/PointGetListAndBalance";
-	public static final String WPAYMENT="http://api.gigawon.co.kr:8083/wpayment/api/wPayment";
-	public static final String GIGA_PAYMENT = "http://api1.gigawon.co.kr:82/api/wPay/requestQRpayment";
-	public static final String WPAYMENT_OFFLINE="http://api.gigawon.co.kr:8083/wPayment/api/wPayment_Offline ";
-	public static final String GET_ZIP_CODE = "http://api1.gigawon.co.kr:82/api/ycZipCode/getZipCode";
-	public static final String CHANGE_PW="http://api1.gigawon.co.kr:82/api/MemberInfo/changePassword";
-	public static final String WPAYMENT_OFFLINE_POS="http://api1.gigawon.co.kr:8074/ws2016/wsRecharge/40_Barcode/getBarcodeAuthority.aspx";
-	public static final String CHECK_LOGIN = "http://member.gigawon.co.kr:89/ws2016/srvJoinModule/10_Login/checkLogin_0911";
-	public static final String BASE_UPLOAD_IMG_URL = "http://mall.gigawon.co.kr:8800";
+	public static final String BASE_PLAYER_URL_KR = "http://klcm."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8071";
+	public static final String ALIPAY="http://pay."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8089/Payment/CreateOrder_AliPay";
+	public static final String UNIONPAY="http://pay."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":8089/Payment/CreateOrder_UnionPay";
+	public static final String URL_POINT = "http://api."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8083/pl_Point/api/PointGetListAndBalance";
+	public static final String WPAYMENT="http://api."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8083/wpayment/api/wPayment";
+	public static final String GIGA_PAYMENT = "http://api1."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":82/api/wPay/requestQRpayment";
+	public static final String WPAYMENT_OFFLINE="http://api."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8083/wPayment/api/wPayment_Offline ";
+	public static final String GET_ZIP_CODE = "http://api1."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":82/api/ycZipCode/getZipCode";
+	public static final String CHANGE_PW="http://api1."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":82/api/MemberInfo/changePassword";
+	public static final String WPAYMENT_OFFLINE_POS="http://api1."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8074/ws2016/wsRecharge/40_Barcode/getBarcodeAuthority.aspx";
+	public static final String CHECK_LOGIN = "http://member."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":89/ws2016/srvJoinModule/10_Login/checkLogin_0911";
+	public static final String BASE_UPLOAD_IMG_URL = "http://mall."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8800";
 //
 
 	//주소로 위도 경도 가져오기
@@ -127,7 +127,7 @@ public class C {
 	public static final String LOGIN_ENC_RS_URL = "/api/Login/memberLogin";
 
 	//RS Create URL
-	public static final String BASE_URL_APISELLER = "http://api1.osunggiga.com:7778";
+	public static final String BASE_URL_APISELLER = "http://api1."+(AppConfig.CHOOSE.equals("CN")?"osunggiga.cn":"osunggiga.com")+":7778";
 
 	//RS APLLY API
 	public static final String RS_CREATE_APISELLER_DOCTOR = "/api/apiSeller/joinDoctorSeller";
