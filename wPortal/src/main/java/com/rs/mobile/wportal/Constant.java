@@ -645,4 +645,6 @@ public class Constant {
     public static final String COMMODITY_PUSHIMG = "fileUp/postFile";
     // 商品管理 重新编辑 商品修改
     public static final String COMMODITY_UPDATA = "product/updateproduct";
+    // 商品管理 商品上传
+    public static final String COMMODITY_UPLOAD = "product/appendproductEx";
 }

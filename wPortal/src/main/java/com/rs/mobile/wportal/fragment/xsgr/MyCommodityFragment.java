@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import okhttp3.Request;
@@ -48,6 +49,7 @@ public class MyCommodityFragment extends BaseFragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private int mNextRequestPage = 2;
     protected boolean isCreate = false;
+    private TextView textUp;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -70,6 +72,19 @@ public class MyCommodityFragment extends BaseFragment {
                 ViewGroup.LayoutParams.MATCH_PARENT));
         //添加空视图
         recyclerView = (RecyclerView) rootView.findViewById(R.id.swrecycler_view);
+        textUp = rootView.findViewById(R.id.goods_up);
+        textUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+
+                bundle.putString("key","up");
+                intent.putExtras(bundle);
+                intent.setClass(getContext(), ReeditActivity.class);
+                startActivity(intent);
+            }
+        });
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),
                 LinearLayoutManager.HORIZONTAL, R.drawable.divide_bg));
@@ -99,6 +114,7 @@ public class MyCommodityFragment extends BaseFragment {
                     Intent intent = new Intent();
                     Bundle bundle = new Bundle();
                     bundle.putString("groupId", list.get(position).getGroupId());
+                    bundle.putString("key","re");
                     intent.putExtras(bundle);
                     intent.setClass(getContext(), ReeditActivity.class);
                     startActivity(intent);

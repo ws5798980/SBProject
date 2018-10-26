@@ -70,6 +70,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -101,11 +102,11 @@ public class ReeditActivity extends BaseActivity {
     private PhotoUtils photoUtils;
     public String imageBase64 = "";
     private List<QueryCategoryList.DataBean> mData = new ArrayList<>();
-    private String groupId;
+    private String groupId, key;
     private static AlertDialog editDialog;
     private String imagePath;
     private String item_level1;
-    private String uploadTime,imgUrl;
+    private String uploadTime, imgUrl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -156,9 +157,15 @@ public class ReeditActivity extends BaseActivity {
     }
 
     private void initView() {
+        TextView titleView = (TextView) findViewById(R.id.title_text_view);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        groupId = bundle.getString("groupId");
+        key = bundle.getString("key");
+        if ("re".equals(key)) {
+            groupId = bundle.getString("groupId");
+        } else {
+            titleView.setText(R.string.upgoods);
+        }
         cancel = (TextView) findViewById(R.id.tv_cancel);
         back = (ImageView) findViewById(R.id.branch_btn);
         changeImg = (LinearLayout) findViewById(R.id.change_img);
@@ -215,7 +222,12 @@ public class ReeditActivity extends BaseActivity {
 
                     @Override
                     public void onClick(View arg0) {
-                        requestUpData(commodityDetail);
+                        if (TextUtils.isEmpty(groupId)) {
+                            requestUpLoad();
+                        } else {
+                            requestUpData(commodityDetail);
+                        }
+
                         D.alertDialog.dismiss();
 
                     }
@@ -236,13 +248,53 @@ public class ReeditActivity extends BaseActivity {
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requestProductByGid(groupId);
+                requestProductByGid();
             }
         });
 
     }
 
-    private void requestProductByGid(String groupId) {
+    private void requestType() {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("lang_type", "kor");
+        params.put("token", S.getShare(ReeditActivity.this, C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(ReeditActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+        params.put("CategoryId", "-1");
+
+        OkHttpHelper okHttpHelper = new OkHttpHelper(this);
+        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                QueryCategoryList entity = GsonUtils.changeGsonToBean(responseDescription, QueryCategoryList.class);
+                Log.i("123123", "responseDescription=" + responseDescription);
+                if ("1".equals(entity.getStatus())) {
+                    if (entity.getData() != null && entity.getData().size() > 0) {
+                        if (mData.size() > 0) {
+                            mData.clear();
+                        }
+                        mData.addAll(entity.getData());
+                        textSpec.setText(mData.get(0).getLevel_name());
+                        item_level1 = mData.get(0).getId();
+                    }
+
+                } else {
+                    Toast.makeText(ReeditActivity.this, entity.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+
+            }
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+
+            }
+        }, Constant.XSGR_TEST_URL + Constant.COMMODITY_QUERYCATEGORY, GsonUtils.createGsonString(params));
+    }
+
+    private void requestProductByGid() {
         HashMap<String, Object> params = new HashMap<>();
         params.put("lang_type", "kor");
         params.put("token", S.getShare(ReeditActivity.this, C.KEY_JSON_TOKEN, ""));
@@ -264,6 +316,7 @@ public class ReeditActivity extends BaseActivity {
                                 ReeditActivity.this, false, ViewGroup.LayoutParams.WRAP_CONTENT);
                         mData.addAll(entity.getData());
                         recyclerView.getAdapter().notifyDataSetChanged();
+
                     } else {
                     }
 
@@ -347,7 +400,11 @@ public class ReeditActivity extends BaseActivity {
 
 
     private void initData() {
-        requestDetail(groupId);
+        if (!TextUtils.isEmpty(groupId)) {
+            requestDetail(groupId);
+        } else {
+            requestType();
+        }
 
         specGridViewAdapter = new SpecGridViewAdapter(this, mList);
         specification.setAdapter(specGridViewAdapter);
@@ -356,7 +413,7 @@ public class ReeditActivity extends BaseActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 if (mList.size() != position) {
-                    if ("".equals(mList.get(position).getItem_code())) {
+                    if ("".equals(mList.get(position).getItem_code()) || TextUtils.isEmpty(groupId)) {
                         D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.del_spec), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                             @Override
@@ -425,7 +482,7 @@ public class ReeditActivity extends BaseActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
                 if (mFlavorList.size() != position) {
-                    if (!"".equals(mFlavorList.get(position).getAdd())) {
+                    if (!"".equals(mFlavorList.get(position).getAdd()) || TextUtils.isEmpty(groupId)) {
                         D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), "", getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                             @Override
@@ -510,22 +567,36 @@ public class ReeditActivity extends BaseActivity {
         protected String doInBackground(Object... params) {
 
             try {
-
                 if (imagePath != null && !imagePath.equals("")) {
 
-                    // S.set(SettingActivity.this, C.KEY_SHARED_ICON_PATH, imagePath);
+                    S.set(ReeditActivity.this, C.KEY_SHARED_ICON_PATH, imagePath);
 
                     ArrayList<String> filePath = new ArrayList<String>();
 
                     filePath.add(imagePath);
-
-                    return FileUtil.upload(Constant.XSGR_TEST_URL + Constant.COMMODITY_PUSHIMG, filePath, null, "file");
+                    Log.e("imagePath==", imagePath);
+                    return FileUtil.upload(C.BASE_URL + C.PERSNAL_IMAGE_UPLOAD_PATH, filePath, null, "file");
 
                 } else {
 
                     return "";
 
                 }
+//                if (imagePath != null && !imagePath.equals("")) {
+//
+//                    // S.set(SettingActivity.this, C.KEY_SHARED_ICON_PATH, imagePath);
+//
+//                    ArrayList<String> filePath = new ArrayList<String>();
+//
+//                    filePath.add(imagePath);
+////Constant.XSGR_TEST_URL + Constant.COMMODITY_PUSHIMG
+//                    return FileUtil.upload(C.BASE_URL + C.PERSNAL_IMAGE_UPLOAD_PATH, filePath, null, "file");
+//
+//                } else {
+//
+//                    return "";
+//
+//                }
 
             } catch (Exception e) {
 
@@ -542,7 +613,6 @@ public class ReeditActivity extends BaseActivity {
             super.onPostExecute(result);
 
             try {
-
                 L.d(result);
 
                 // ImageUtil.drawIamge(iconImageView,Uri.parse(C.BASE_URL +
@@ -550,27 +620,34 @@ public class ReeditActivity extends BaseActivity {
                 // S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "")
                 // + ".jpg"));
 
-//                imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal"
-//                        + S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
-                PushImg entity = GsonUtils.changeGsonToBean(result, PushImg.class);
-                if ("1".equals(entity.getStatus())) {
-                    Toast.makeText(ReeditActivity.this, "success", Toast.LENGTH_SHORT).show();
-                    if (entity.getData().size() > 0) {
-                        //+ Constant.COMMODITY_PUSHIMG
-                        imgUrl = Constant.XSGR_TEST_URL  + entity.getData().get(0);
-                        Log.i("url++++", imgUrl);
-                        Glide.with(ReeditActivity.this).load(imgUrl).into(ivPhoto);
-                    } else {
-                        Toast.makeText(ReeditActivity.this, "failed", Toast.LENGTH_LONG).show();
-                    }
-
-                } else {
-                    Toast.makeText(ReeditActivity.this, "failed", Toast.LENGTH_LONG).show();
-
-                }
-
-
+//                imgUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal"
+//                        + S.getShare(ReeditActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
+                imgUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH
+                        + photoUtils.CROP_FILE_NAME;
+                Log.e("imageDownloadUrl", imgUrl);
+                Glide.with(ReeditActivity.this).load(imgUrl).into(ivPhoto);
                 hideProgressBar();
+//                L.d(result);
+//
+//                PushImg entity = GsonUtils.changeGsonToBean(result, PushImg.class);
+//                if ("1".equals(entity.getStatus())) {
+//                    Toast.makeText(ReeditActivity.this, "success", Toast.LENGTH_SHORT).show();
+//                    if (entity.getData().size() > 0) {
+//                        //+ Constant.COMMODITY_PUSHIMG
+//                        imgUrl = Constant.XSGR_TEST_URL + entity.getData().get(0);
+//                        Log.i("url++++", imgUrl);
+//                        Glide.with(ReeditActivity.this).load(imgUrl).into(ivPhoto);
+//                    } else {
+//                        Toast.makeText(ReeditActivity.this, "failed", Toast.LENGTH_LONG).show();
+//                    }
+//
+//                } else {
+//                    Toast.makeText(ReeditActivity.this, "failed", Toast.LENGTH_LONG).show();
+//
+//                }
+//
+//
+//                hideProgressBar();
 
             } catch (Exception e) {
 
@@ -707,12 +784,13 @@ public class ReeditActivity extends BaseActivity {
         if (commodityDetail == null) {
             return;
         }
+
         HashMap<String, Object> params = new HashMap<>();
         params.put("lang_type", "kor");
         params.put("token", S.getShare(ReeditActivity.this, C.KEY_JSON_TOKEN, ""));
         params.put("custom_code", S.getShare(ReeditActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
         params.put("groupId", groupId);
-        params.put("Image_url",imgUrl);
+        params.put("Image_url", imgUrl);
         String name = editName.getText().toString().trim();
         if (name.length() == 0) {
             Toast.makeText(ReeditActivity.this, getResources().getString(R.string.add_goods_name), Toast.LENGTH_SHORT).show();
@@ -732,9 +810,98 @@ public class ReeditActivity extends BaseActivity {
             SaveAndGetShelves.SpecBean specBean = new SaveAndGetShelves.SpecBean();
             specBean.setSpecName(mList.get(i).getSpecName());
             specBean.setSpecPrice(mList.get(i).getSpecPrice());
-            specBean.setItem_code(mList.get(i).getItem_code()+"");
+            specBean.setItem_code(mList.get(i).getItem_code() + "");
             specBeans.add(specBean);
         }
+        params.put("spec", specBeans);
+        List<SaveAndGetShelves.FlavorBean> flavorBeans = new ArrayList<>();
+        for (int i = 0; i < mFlavorList.size(); i++) {
+            SaveAndGetShelves.FlavorBean flavorBean = new SaveAndGetShelves.FlavorBean();
+            flavorBean.setFlavorName(mFlavorList.get(i).getFlavorName());
+            flavorBeans.add(flavorBean);
+        }
+        params.put("Flavor", flavorBeans);
+        JSONObject jsonObject= new JSONObject();
+        try {
+            jsonObject.put("SYSDATA",params);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        System.out.println(jsonObject.toString());
+        OkHttpHelper okHttpHelper = new OkHttpHelper(this);
+        okHttpHelper.addPostRequest(new OkHttpHelper.CallbackLogic() {
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+                CommodityDetail response = GsonUtils.changeGsonToBean(responseDescription, CommodityDetail.class);
+                Log.i("123123", "responseDescription=" + responseDescription);
+                if ("1".equals(response.getStatus())) {
+                    Toast.makeText(ReeditActivity.this, response.getMessage(), Toast.LENGTH_SHORT).show();
+                    finish();
+                } else {
+                    Toast.makeText(ReeditActivity.this, response.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                Log.e("responseDescription456", responseDescription);
+//                Log.e("JSONObject",data.toString());
+                Log.e("flag145", flag);
+
+            }
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+
+            }
+        }, Constant.XSGR_TEST_URL + Constant.COMMODITY_UPDATA, GsonUtils.createGsonString(params));
+    }
+
+    private void requestUpLoad() {
+
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("lang_type", "kor");
+        params.put("token", S.getShare(ReeditActivity.this, C.KEY_JSON_TOKEN, ""));
+        params.put("custom_code", S.getShare(ReeditActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+        params.put("groupId", groupId);
+        params.put("Image_url", imgUrl);
+        String name = editName.getText().toString().trim();
+        if (name.length() == 0) {
+            Toast.makeText(ReeditActivity.this, getResources().getString(R.string.add_goods_name), Toast.LENGTH_SHORT).show();
+            return;
+        }
+        params.put("item_name", name);
+        params.put("custom_item_code", S.getShare(ReeditActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+        params.put("custom_item_name", S.getShare(ReeditActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+        params.put("custom_item_spec", "1");
+        params.put("dom", "1");
+        if (TextUtils.isEmpty(item_level1)){
+            item_level1 = "1";
+        }
+        params.put("item_level1", item_level1);
+//        params.put("item_level2", "2");
+//        params.put("item_level3", "3");
+//        params.put("price", commodityDetail.getData().getItem().getITEM_P());
+        List<SaveAndGetShelves.SpecBean> specBeans = new ArrayList<>();
+        for (int i = 0; i < mList.size(); i++) {
+            SaveAndGetShelves.SpecBean specBean = new SaveAndGetShelves.SpecBean();
+            specBean.setSpecName(mList.get(i).getSpecName());
+            specBean.setSpecPrice(mList.get(i).getSpecPrice());
+            specBean.setItem_code(mList.get(i).getItem_code() + "");
+            specBeans.add(specBean);
+        }
+        String price = "";
+        List<Float> listFloat=  new ArrayList<Float> ();
+        for (int i = 0;i<specBeans.size();i++){
+           String s =  specBeans.get(i).getSpecPrice();
+            float f =  Float.parseFloat(s);
+            listFloat.add(f);
+        }
+        Collections.sort(listFloat);
+        if (listFloat.size()>0){
+            price = listFloat.get(0).toString();
+        }
+        params.put("price", price);
         params.put("spec", specBeans);
         List<SaveAndGetShelves.FlavorBean> flavorBeans = new ArrayList<>();
         for (int i = 0; i < mFlavorList.size(); i++) {
@@ -769,7 +936,7 @@ public class ReeditActivity extends BaseActivity {
             public void onNetworkError(Request request, IOException e) {
 
             }
-        }, Constant.XSGR_TEST_URL + Constant.COMMODITY_UPDATA, GsonUtils.createGsonString(params));
+        }, Constant.XSGR_TEST_URL + Constant.COMMODITY_UPLOAD, GsonUtils.createGsonString(params));
     }
 
     class SpecItemClickListener implements AdapterView.OnItemClickListener {
@@ -1036,7 +1203,7 @@ public class ReeditActivity extends BaseActivity {
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK){
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             D.showDialog(ReeditActivity.this, -1, getResources().getString(R.string.title_promote), getResources().getString(R.string.cancel_edit), getResources().getString(R.string.button_sure), new View.OnClickListener() {
 
                 @Override
