@@ -617,5 +617,8 @@
 
 
     <string name="yingyezhong">营业中</string>
-    <string name="dayang">打烊</string>
+    <string name="dayang">停业</string>
+
+
+    <string name="newstore">新店入驻</string>
 </resources>

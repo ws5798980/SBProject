@@ -222,7 +222,7 @@ public class XsMyShopActivity extends BaseActivity {
                 if (bean.getShop_thumnail_image() != null && !bean.getShop_thumnail_image().isEmpty()) {
                     ImageUtil.drawImageFromUri(bean.getShop_thumnail_image(), img_myshop);
                 }
-                if ("영업중".equals(bean.getSales_status())) {
+                if ("영업중".equals(bean.getSales_status()) || "营业中".equals(bean.getSales_status())) {
                     select = 1;
                 } else {
                     select = 2;
@@ -263,11 +263,11 @@ public class XsMyShopActivity extends BaseActivity {
                     if ("1".equals(status)) {
 
                         if (statu.equals("N")) {
-                            tv_select.setText(getResources().getString(R.string.yingyezhong));
+                            tv_select.setText(getResources().getString(R.string.dayang));
                             window.dismiss();
                             select = 2;
                         } else {
-                            tv_select.setText(getResources().getString(R.string.dayang));
+                            tv_select.setText(getResources().getString(R.string.yingyezhong));
                             window.dismiss();
                             select = 1;
                         }

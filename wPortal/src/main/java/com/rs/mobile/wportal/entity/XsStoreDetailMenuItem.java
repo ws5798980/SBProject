@@ -20,6 +20,17 @@ public class XsStoreDetailMenuItem implements Serializable{
         public String level_name;
         public String image_url;
 
+
+        public datafav toStoreitem(){
+
+            datafav bean=new datafav();
+            bean.level1=level1;
+            bean.level2=level2;
+            bean.level3=level3;
+            bean.level_name=level_name;
+            bean.image_url=image_url;
+            return bean;
+        }
     }
     public class datafav implements Serializable{
         public String level1;

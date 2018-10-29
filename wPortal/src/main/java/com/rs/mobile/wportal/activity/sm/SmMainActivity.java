@@ -30,6 +30,7 @@ import com.rs.mobile.common.util.Util;
 import com.rs.mobile.common.util.UtilCheckLogin;
 import com.rs.mobile.common.util.UtilClear;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.activity.NewMainActivity;
 import com.rs.mobile.wportal.activity.xsgr.XsMyActivity;
 import com.rs.mobile.wportal.activity.xsgr.XsStoreDetailActivity;
 import com.rs.mobile.wportal.activity.xsgr.XsStoreListActivity;
@@ -141,7 +142,8 @@ public class SmMainActivity extends TabActivity {
             //Intent i_self = new Intent(this, PersnalCenterActivity.class);
             Intent i_classify = new Intent(this, SmClassifyActivity.class);
 
-            Intent xsHomeIntent = new Intent(this, kfmemain.class);
+//            Intent xsHomeIntent = new Intent(this, kfmemain.class);
+            Intent xsHomeIntent = new Intent(this, NewMainActivity.class);
             Intent xsStoreListIntent = new Intent(this, XsStoreListActivity.class);
             Intent xsStoreDetailIntent = new Intent(this, XsStoreDetailActivity.class);
             Intent xsMyIntent = new Intent(this, XsMyActivity.class);
