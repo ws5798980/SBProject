@@ -1211,5 +1211,39 @@
     <string name="huifu">사장님댓글 </string>
 
     <string name="upgoods">상품등록</string>
-
+    <string name="text_chuanzhen">팩스번호</string>
+    <string name="text_web">회사 홈페이지</string>
+    <string name="text_type">업종분류</string>
+    <string name="text_zhizhao">영업 면허번호</string>
+    <string name="text_faren">법인 번호</string>
+    <string name="text_jy">경영자 분류</string>
+    <string name="text_shui">과세여부</string>
+    <string name="text_state">계약상태</string>
+    <string name="text_people">대표자</string>
+    <string name="text_mobile">핸드폰</string>
+    <string name="text_settlement">결산계좌</string>
+    <string name="text_logistics">물류회사</string>
+    <string name="text_after_sales">AS전화</string>
+    <string name="refunds_add">반품주소</string>
+    <string name="choose_hint">선택</string>
+    <string name="card_owen_hint">카드 소유자</string>
+    <string name="bank_hint">개설 은행</string>
+    <string name="cardno_hint">카드번호</string>
+    <string name="cardno_promit">정확한 카드번호를 입력해 주세요.</string>
+    <string name="sdcard_no_exist">SD카드 존재하지 않습니다.</string>
+    <string name="camera_not_prepared">카메라가 준비되지 않았습니다.</string>
+    <string name="cancel_value">취소</string>
+    <string name="take_photo">좔영</string>
+    <string name="choose_photo">앨범에서 선택</string>
+    <string name="permission_request_error">"권한신청 실패</string>
+    <string name="permission_storage">등록시 읽기/쓰기 권한이 필요합니다,권한 설정으로 들어가 수동으로 권한 부여하세요.아니면 정상적으로 사용할수 없습니다!</string>
+    <string name="permission_image">사진 좔영과 메모리 일기/쓰기 권한을 거절되었거나 시스템 에라발생으로 신청이 실패를 하였습니다.권한 설정으로 들어가 수동으로 권한 부여하세요.아니면 정상적으로 사용할수 없습니다!</string>
+    <string name="normal_jy">일반 경영장</string>
+    <string name="faren_jy">법인 경영자</string>
+    <string name="small_jy">소규모 경영자</string>
+    <string name="yingshui_company">과세 기업</string>
+    <string name="mianshui_company">면세 기업</string>
+    <string name="no_choose_company">선택하지 않음</string>
+    <string name="on_going">진행중</string>
+    <string name="has_ended">종결</string>
 </resources>
