@@ -13,6 +13,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -103,11 +104,11 @@ public class LocationChangeActivity2 extends BaseActivity {
         editLocation = (TextView) findViewById(R.id.title_edit_view);
         save = (TextView) findViewById(R.id.save_up);
         params = getWindow().getAttributes();
-        if (!"".equals(zipCode))
+        if (zipCode!= null && !"null".equals(zipCode))
             textNo.setText(Util.formatStr(zipCode));
-        if (!"".equals(addr))
+        if (addr!=null&& !"null".equals(addr))
             textLocation.setText(Util.formatStr(addr));
-        if (!"".equals(addrDetail))
+        if (addrDetail!=null&& !"null".equals(addrDetail))
             editText.setText(Util.formatStr(addrDetail));
     }
 

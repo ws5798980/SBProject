@@ -403,9 +403,12 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
             case R.id.position_refunds:
                 Intent intent = new Intent();
                 Bundle bundle = new Bundle();
-                bundle.putString("zipCode", zipCode2 + "");
-                bundle.putString("addr", addr2 + "");
-                bundle.putString("addrDetail", addrDetail2 + "");
+                bundle.putString("zipCode", zipCode2 );
+
+                bundle.putString("addr", addr2 );
+
+                bundle.putString("addrDetail", addrDetail2 );
+
                 intent.putExtras(bundle);
                 intent.setClass(StoreManageActivity.this, LocationChangeActivity2.class);
                 startActivityForResult(intent, 2000);
