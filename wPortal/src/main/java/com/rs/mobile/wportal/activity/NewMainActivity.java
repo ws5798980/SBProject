@@ -11,6 +11,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.StrictMode;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,9 +24,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
 import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.jude.rollviewpager.RollPagerView;
+import com.jude.rollviewpager.adapter.LoopPagerAdapter;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.C;
@@ -39,6 +45,7 @@ import com.rs.mobile.wportal.R;
 import com.rs.mobile.wportal.activity.NaverMap.CustomDialogListener;
 import com.rs.mobile.wportal.activity.sm.SmNew_shopcatList;
 import com.rs.mobile.wportal.activity.sm.SmSeachActivity;
+import com.rs.mobile.wportal.activity.xsgr.NewWaimaiActivity;
 import com.rs.mobile.wportal.activity.xsgr.XsStoreDetailActivity2;
 import com.rs.mobile.wportal.activity.xsgr.XsStoreListActivity;
 import com.rs.mobile.wportal.activity.xsgr.custom_dialog;
@@ -47,10 +54,13 @@ import com.rs.mobile.wportal.adapter.xsgr.NewshopAdapter;
 import com.rs.mobile.wportal.adapter.xsgr.XsIndexAdapter1;
 import com.rs.mobile.wportal.adapter.xsgr.XsIndexAdapter2;
 import com.rs.mobile.wportal.biz.xsgr.BotBannerBeans;
+import com.rs.mobile.wportal.biz.xsgr.NavarMapBean;
 import com.rs.mobile.wportal.biz.xsgr.NewShopBean;
 import com.rs.mobile.wportal.biz.xsgr.TopBannerBeans;
 import com.rs.mobile.wportal.entity.XsStoreDetailMenuItem;
 import com.rs.mobile.wportal.network.HttpConnection;
+import com.squareup.picasso.MemoryPolicy;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -76,6 +86,9 @@ public class NewMainActivity extends BaseActivity {
     ImageView botbannerImg;
     NewshopAdapter newshopAdapter;
     LocationManager manager;
+    private final String TAG = "MainActivity";
+    private LocationClient mLocationClient;
+    private BDLocationListener mBDLocationListener;
 
     public custom_dialog cdialog;
 
@@ -99,7 +112,11 @@ public class NewMainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.newmainactivity);
-
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+                .detectDiskReads()
+                .detectDiskWrites()
+                .detectNetwork()
+                .penaltyLog().build());
         thisActivity = this;
         initView();
         initData();
@@ -134,6 +151,7 @@ public class NewMainActivity extends BaseActivity {
         });
 
         AddressTitle = (TextView) findViewById(R.id._addresstitle);
+
         if (S.getShare(getApplicationContext(), "address_naver", "").isEmpty()) {
             AddressTitle.setText(getResources().getString(R.string.search_no_result2));
         } else {
@@ -148,12 +166,12 @@ public class NewMainActivity extends BaseActivity {
         recyclerView = (RecyclerView) findViewById(R.id.list);
         recyclerView.setNestedScrollingEnabled(false);
         recyclerView.setLayoutManager(new GridLayoutManager(NewMainActivity.this, 3));
-        recyclerView.addItemDecoration(new RecycleViewDivider(this, GridLayoutManager.HORIZONTAL, 1, getResources().getColor(R.color.textcolor_dp_666)));
-        recyclerView.addItemDecoration(new RecycleViewDivider(this, GridLayoutManager.VERTICAL, 1, getResources().getColor(R.color.textcolor_dp_666)));
-        topImgAdapter = new TestNomalAdapter();
+        recyclerView.addItemDecoration(new RecycleViewDivider(this, GridLayoutManager.HORIZONTAL, 1, getResources().getColor(R.color.greywhite2)));
+        recyclerView.addItemDecoration(new RecycleViewDivider(this, GridLayoutManager.VERTICAL, 1, getResources().getColor(R.color.greywhite2)));
         rollPagerView = (RollPagerView) findViewById(R.id.viewPager);
+        topImgAdapter = new TestNomalAdapter(rollPagerView);
         rollPagerView.setAdapter(topImgAdapter);
-
+        rollPagerView.pause();
         cdialog = new custom_dialog(this);
         cdialog.setCustomDL(new CustomDialogListener() {
             @Override
@@ -217,15 +235,16 @@ public class NewMainActivity extends BaseActivity {
     }
 
 
-    private class TestNomalAdapter extends StaticPagerAdapter {
+    private class TestNomalAdapter extends LoopPagerAdapter {
         boolean isload = false;
         List<TopBannerBeans.DataBean.TopBannerBean> lists;
         private int[] imgs = {
                 R.drawable.banner01,
-                R.drawable.banner02,
-                R.drawable.banner03,
-                R.drawable.banner04,
         };
+
+        public TestNomalAdapter(RollPagerView viewPager) {
+            super(viewPager);
+        }
 
         public void setImgs(List<TopBannerBeans.DataBean.TopBannerBean> lists) {
             this.lists = lists;
@@ -236,18 +255,20 @@ public class NewMainActivity extends BaseActivity {
         @Override
         public View getView(ViewGroup container, int position) {
             ImageView view = new ImageView(container.getContext());
+            view.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             if (isload) {
-                Glide.with(NewMainActivity.this).load(lists.get(position).getAd_image()).into(view);
+                Picasso.get().load(lists.get(position).getAd_image()).into(view);
+//                Glide.with(NewMainActivity.this).load(lists.get(position).getAd_image()).into(view);
+
             } else {
                 view.setImageResource(imgs[position]);
             }
-            view.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             return view;
         }
 
         @Override
-        public int getCount() {
+        public int getRealCount() {
             if (isload) {
                 return lists.size();
             }
@@ -286,7 +307,7 @@ public class NewMainActivity extends BaseActivity {
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
                         String catid = lists.get(position).level1;
                         if (catid.equals("1")) {
-                            Intent intent = new Intent(NewMainActivity.this, SmNew_shopcatList.class);
+                            Intent intent = new Intent(NewMainActivity.this, NewWaimaiActivity.class);
                             intent.putExtra("lv1", catid);
                             startActivity(intent);
                         } else {
@@ -322,6 +343,7 @@ public class NewMainActivity extends BaseActivity {
                 List<TopBannerBeans.DataBean.TopBannerBean> beans = new ArrayList<>();
                 if (topBannerBeans.getData() != null) {
                     if (topBannerBeans.getData().getTopBanner() != null && topBannerBeans.getData().getTopBanner().size() != 0) {
+                        rollPagerView.resume();
                         topImgAdapter.setImgs(topBannerBeans.getData().getTopBanner());
                     }
                 }
@@ -397,19 +419,29 @@ public class NewMainActivity extends BaseActivity {
 
     //GPS Start
     public String currentLocationAddress() {
-
-        manager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
-        long minTime = 1000;
-        float minDistance = 1;
-
-        if (ActivityCompat.checkSelfPermission(this.thisActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(thisActivity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Toast.makeText(thisActivity, "Don't have permissions.", Toast.LENGTH_LONG).show();
-            return "noPermission";
-        }
-        manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime, minDistance, mLocationListener);
-        manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, minTime, minDistance, mLocationListener);
+        mLocationClient = new LocationClient(getApplicationContext());
+        mBDLocationListener = new MyBDLocationListener();
+        mLocationClient.registerLocationListener(mBDLocationListener);
+        LocationClientOption option = new LocationClientOption();
+        option.setOpenGps(true);
+        option.setLocationMode(LocationClientOption.LocationMode.Hight_Accuracy);
+        option.setCoorType("bd09ll");
+        option.setIsNeedAddress(true);
+        option.setPriority(LocationClientOption.NetWorkFirst);
+        mLocationClient.setLocOption(option);
+        mLocationClient.start();
+//        manager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+//
+//        long minTime = 1000;
+//        float minDistance = 1;
+//
+//        if (ActivityCompat.checkSelfPermission(this.thisActivity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+//                && ActivityCompat.checkSelfPermission(thisActivity, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            Toast.makeText(thisActivity, "Don't have permissions.", Toast.LENGTH_LONG).show();
+//            return "noPermission";
+//        }
+////        manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTime, minDistance, mLocationListener);
+//        manager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, minTime, minDistance, mLocationListener);
         return "";
     }
 
@@ -473,5 +505,54 @@ public class NewMainActivity extends BaseActivity {
 
         }
     };
+
+    private class MyBDLocationListener implements BDLocationListener {
+
+        @Override
+        public void onReceiveLocation(BDLocation location) {
+
+            if (location != null) {
+                double latitude = location.getLatitude();
+                double longitude = location.getLongitude();
+
+                S.setShare(getApplicationContext(), "pointX", latitude + "");
+                S.setShare(getApplicationContext(), "pointY", longitude + "");
+                String ret_value;
+
+                //ret_value = httpConn.NaverAPIAddressToLatlng("https://openapi.naver.com/v1/map/geocode", tv_serche_text.getText().toString(),"UTF-8,","4chFLI5miI3dKcMQ6paO","fLSoYJawMm");
+//                ret_value = httpConn.NaverAPILatingToAddress("https://openapi.naver.com/v1/map/reversegeocode", Double.toString(longitude), Double.toString(latitude), "UTF-8", "4chFLI5miI3dKcMQ6paO", "fLSoYJawMm");
+
+                ret_value = httpConn.NaverAPILatingToAddress("https://openapi.naver.com/v1/map/reversegeocode", Double.toString(longitude), Double.toString(latitude), "UTF-8", "4chFLI5miI3dKcMQ6paO", "fLSoYJawMm");
+                //{    "errorMessage": "검색 결과가 없습니다.",    "errorCode": "MP03"}
+                try {
+                    String errorMessage = "";
+                    //JSONArray array = new JSONArray(ret_value);
+                    //for(int i = 0; i<array.length(); i++){
+                    JSONObject obj = new JSONObject(ret_value);
+
+                    if (obj.has("errorCode")) {
+                        errorMessage = obj.getString("errorMessage");
+                        Log.i("ErrorMessage : ", errorMessage);
+                    } else {
+                        NavarMapBean bean = GsonUtils.changeGsonToBean(obj.toString(), NavarMapBean.class);
+                        errorMessage = bean.getResult().getItems().get(0).getAddress();
+                    }
+                    Message msg = mHandler.obtainMessage();
+                    msg.what = 0;
+                    msg.obj = errorMessage;
+                    mHandler.sendMessage(msg);
+                    //}
+                } catch (JSONException ex) {
+
+                }
+
+
+                if (mLocationClient.isStarted()) {
+
+                    mLocationClient.stop();
+                }
+            }
+        }
+    }
 
 }

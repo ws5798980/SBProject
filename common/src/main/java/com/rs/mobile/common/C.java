@@ -366,6 +366,8 @@ public class C {
 
 	public static final String KEY_SP_HISTORYKEY = "historyKey";
 
+	public static final String KEY_SP_HISTORYKEY_level1 = "historyKey_level1";
+
 	public static final String KEY_KR_SEARCH_HISTORY = "kr_search_history";
 
 	public static final String SM_JSON_URL = "/fmarket_json/main_data.js";

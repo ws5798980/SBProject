@@ -139,6 +139,14 @@
             android:label=""
             android:screenOrientation="portrait" />
         <activity
+            android:name=".activity.sm.SmSeachLevelActivity"
+            android:label=""
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.xsgr.XsShopLevelListActivity"
+            android:label=""
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.rs.mobile.common.activity.LocationActivity"
             android:label=""
             android:screenOrientation="portrait" />
@@ -991,6 +999,16 @@
                 <!--<action android:name="android.intent.action.MAIN" />-->
 
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+
+        </activity>
+        <activity
+            android:name=".activity.xsgr.NewWaimaiActivity"
+            android:screenOrientation="portrait">
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
 
         </activity>

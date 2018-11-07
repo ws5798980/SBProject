@@ -2,7 +2,7 @@ package com.rs.mobile.wportal.biz.xsgr;
 
 import java.util.List;
 
-public class NewShopBean {
+public class NewShopWaimaiBean {
 
 
     private DataBean data;
@@ -85,12 +85,18 @@ public class NewShopBean {
 
 
              *왕족(스페인,독일) *돼지고기(스페인) *미니족(스페인,독일) *돼지고기(스페인) *돼지껍데기(국내산) *쌀(국내산)
+             * FAV_CNT : 0
+             * SCORE : 0.00
+             * distance : 428.43
              */
 
             private String CUSTOM_CODE;
             private String CUSTOM_NAME;
             private String SHOP_THUMNAIL_IMAGE;
             private String SHOP_INFO;
+            private String FAV_CNT;
+            private String SCORE;
+            private String distance;
 
             public String getCUSTOM_CODE() {
                 return CUSTOM_CODE;
@@ -122,6 +128,30 @@ public class NewShopBean {
 
             public void setSHOP_INFO(String SHOP_INFO) {
                 this.SHOP_INFO = SHOP_INFO;
+            }
+
+            public String getFAV_CNT() {
+                return FAV_CNT;
+            }
+
+            public void setFAV_CNT(String FAV_CNT) {
+                this.FAV_CNT = FAV_CNT;
+            }
+
+            public String getSCORE() {
+                return SCORE;
+            }
+
+            public void setSCORE(String SCORE) {
+                this.SCORE = SCORE;
+            }
+
+            public String getDistance() {
+                return distance;
+            }
+
+            public void setDistance(String distance) {
+                this.distance = distance;
             }
         }
     }

@@ -116,9 +116,9 @@ public class HttpConnection {
             System.out.println(response.toString());
             return response.toString();
         } catch (Exception e) {
-            System.out.println(e);
-            return "-1";
-        }
+        System.out.println(e);
+        return "-1";
+    }
     }
 
     public String PostORGToAddress(String urls, String txtAddr, String encoding, String authkey)
