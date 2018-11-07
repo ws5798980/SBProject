@@ -35,7 +35,7 @@ public class XsMyActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tvOrder;
     private LinearLayout llAddress, llLive, llCoupon, llNotice, llSetting, llCollection, llActivity, llAnnouncement, llService, text_to_myshop;
     private WImageView ivPhoto;
-    private LinearLayout llSet;
+    private LinearLayout llSet, mBusiness;
     private boolean finish;
 
     @Override
@@ -53,6 +53,7 @@ public class XsMyActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
+        mBusiness = (LinearLayout) findViewById(R.id.my_business);
         llLogined = (LinearLayout) findViewById(R.id.ll_logined);
         tvLogin = (TextView) findViewById(R.id.tv_login);
         tvNickname = (TextView) findViewById(R.id.tv_nickname);
@@ -88,7 +89,9 @@ public class XsMyActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initData() {
-
+        if ("5".equals(S.get(XsMyActivity.this, C.KEY_JSON_BUSINEISS_TYPE))) {
+            mBusiness.setVisibility(View.GONE);
+        }
         if (S.get(XsMyActivity.this, C.KEY_JSON_TOKEN) != null && !S.get(XsMyActivity.this, C.KEY_JSON_TOKEN).isEmpty()) {
             tvLogin.setVisibility(View.GONE);
             llLogined.setVisibility(View.VISIBLE);

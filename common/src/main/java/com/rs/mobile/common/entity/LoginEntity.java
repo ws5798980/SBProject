@@ -18,4 +18,5 @@ public class LoginEntity implements Serializable{
     public String mall_home_id;
     public String point_card_no;
     public String parent_id;
+    public String business_type;
 }

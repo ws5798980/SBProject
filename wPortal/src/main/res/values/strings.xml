@@ -1237,4 +1237,39 @@
 
     <string name="upgoods">上传商品</string>
 
+    <string name="text_chuanzhen">传真号码</string>
+    <string name="text_web">公司主页</string>
+    <string name="text_type">行业分类</string>
+    <string name="text_zhizhao">营业执照编号</string>
+    <string name="text_faren">法人编号</string>
+    <string name="text_jy">经营者分类</string>
+    <string name="text_shui">是否应税</string>
+    <string name="text_state">合同状态</string>
+    <string name="text_people">代表人</string>
+    <string name="text_mobile">手机号</string>
+    <string name="text_settlement">结算账户</string>
+    <string name="text_logistics">物流公司</string>
+    <string name="text_after_sales">售后电话</string>
+    <string name="refunds_add">退货地址</string>
+    <string name="choose_hint">请选择</string>
+    <string name="card_owen_hint">持卡人</string>
+    <string name="bank_hint">开户行</string>
+    <string name="cardno_hint">卡号</string>
+    <string name="cardno_promit">请输入正确卡号</string>
+    <string name="sdcard_no_exist">SD卡不存在</string>
+    <string name="camera_not_prepared">摄像头尚未准备好</string>
+    <string name="cancel_value">取消</string>
+    <string name="take_photo">拍照</string>
+    <string name="choose_photo">从相册选择</string>
+    <string name="permission_request_error">"申请权限失败"</string>
+    <string name="permission_storage">登录需要读写内存权限，被您拒绝或者系统发生错误申请失败，请您到权限设置页面手动授权，否则功能无法正常使用！</string>
+    <string name="permission_image">我们需要拍照和读写内存权限的被您拒绝或者系统发生错误申请失败，请您到权限设置页面手动授权，否则功能无法正常使用！</string>
+    <string name="normal_jy">一般经营者</string>
+    <string name="faren_jy">法人经营者</string>
+    <string name="small_jy">小规模经营者</string>
+    <string name="yingshui_company">应税企业</string>
+    <string name="mianshui_company">免税企业</string>
+    <string name="no_choose_company">不选择</string>
+    <string name="on_going">进行中</string>
+    <string name="has_ended">已结束</string>
 </resources>

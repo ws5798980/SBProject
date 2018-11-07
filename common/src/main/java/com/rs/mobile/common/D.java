@@ -24,7 +24,7 @@ public class D {
 	
 	public static Dialog progressdialog;
 	
-	public static EditText editText;
+	public static EditText editText,editText2,editText3;
 
 	public static boolean isshowing;
 	/**
@@ -482,7 +482,50 @@ public class D {
         }
     	
     }
+	public static void show3EditTextDialog(Context context, int img, String title, String hint, String msg1,  String msg2, String msg3,String selectText, OnClickListener selectListener, String cancelText, OnClickListener cancelListener) {
 
+		try {
+
+			AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+			LayoutInflater inflator = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			View v = inflator.inflate(R.layout.dialog_3edit_text, null);
+
+			ImageView icon = (ImageView)v.findViewById(R.id.icon_view);
+			TextView titleTextView = (TextView)v.findViewById(R.id.title_text_view);
+			editText = (EditText)v.findViewById(R.id.msg_edit_text);
+			 editText2 = (EditText)v.findViewById(R.id.msg_edit_text2);
+			 editText3 = (EditText)v.findViewById(R.id.msg_edit_text3);
+			TextView selectTextView = (TextView)v.findViewById(R.id.ok_text_view);
+			TextView cancelTextView = (TextView)v.findViewById(R.id.cancel_text_view);
+
+			if (img == -1) icon.setVisibility(View.GONE);
+			else icon.setBackgroundResource(img);
+			titleTextView.setText(title);
+			editText.setHint(hint);
+			if (msg1 != null && !msg1.equals(""))
+				editText.setText(msg1);
+			if (msg2 != null && !msg2.equals(""))
+				editText2.setText(msg2);
+			if (msg3 != null && !msg3.equals(""))
+				editText3.setText(msg3);
+			selectTextView.setText(selectText);
+			cancelTextView.setText(cancelText);
+			selectTextView.setOnClickListener(selectListener);
+			cancelTextView.setOnClickListener(cancelListener);
+			builder.setView(v);
+			builder.setCancelable(true);
+
+			alertDialog = builder.create();
+			alertDialog.show();
+
+		} catch (Exception e) {
+
+			L.e(e);
+
+		}
+
+	}
 	/**
 	 * showDialog
 	 * @param context

@@ -9,7 +9,7 @@ android {
         }
     }
     compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    buildToolsVersion '28.0.3'
     aaptOptions {
         cruncherEnabled = false
         useNewCruncher = false
@@ -68,4 +68,7 @@ dependencies {
     api 'com.contrarywind:Android-PickerView:4.1.4'
     api files('libs/BaiduLBS_Android.jar')
     api 'com.jude:rollviewpager:1.4.6'
+    implementation ('com.yanzhenjie:permission:1.1.2'){
+        exclude group: 'com.android.support'
+    }
 }

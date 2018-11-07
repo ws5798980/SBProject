@@ -17,6 +17,7 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import com.rs.mobile.common.L;
 import com.rs.mobile.wportal.R;
 
 import java.util.HashMap;

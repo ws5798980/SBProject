@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
-        android:id="@+id/take_photo"
+        android:id="@+id/normal_person"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/gray"
@@ -13,7 +13,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/take_photo"
+            android:text="@string/normal_jy"
             android:layout_centerInParent="true"
             android:textColor="@color/textcolor_black"
             android:textSize="@dimen/text_size_day"/>
@@ -23,7 +23,7 @@
         android:layout_height="1dp"
         android:background="@color/gray"/>
     <RelativeLayout
-        android:id="@+id/choose_photo"
+        android:id="@+id/faren_person"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:background="@color/gray"
@@ -31,7 +31,25 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/choose_photo"
+            android:text="@string/faren_jy"
+            android:layout_centerInParent="true"
+            android:textColor="@color/textcolor_black"
+            android:textSize="@dimen/text_size_day"/>
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
+    <RelativeLayout
+        android:id="@+id/small_person"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/gray"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/small_jy"
             android:layout_centerInParent="true"
             android:textColor="@color/textcolor_black"
             android:textSize="@dimen/text_size_day"/>
@@ -44,6 +62,7 @@
         android:id="@+id/cancel_pop"
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:visibility="gone"
         android:background="@color/maingreen"
         android:orientation="horizontal">
         <TextView

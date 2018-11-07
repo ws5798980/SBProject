@@ -54,6 +54,8 @@ import com.rs.mobile.wportal.biz.xsgr.CommodityDetail;
 import com.rs.mobile.wportal.biz.xsgr.PushImg;
 import com.rs.mobile.wportal.biz.xsgr.QueryCategoryList;
 import com.rs.mobile.wportal.biz.xsgr.SaveAndGetShelves;
+import com.rs.mobile.wportal.takephoto.cutphoto.CheckPermission;
+import com.rs.mobile.wportal.takephoto.cutphoto.CropImageUtils;
 import com.rs.mobile.wportal.takephoto.cutphoto.PhotoUtils;
 import com.rs.mobile.wportal.view.DividerItemDecoration;
 
@@ -99,7 +101,7 @@ public class ReeditActivity extends BaseActivity {
     CommodityDetail commodityDetail;
     private PopupWindow popupWindow;
     private PopupWindow mPopWindow;
-    private PhotoUtils photoUtils;
+//    private PhotoUtils photoUtils;
     public String imageBase64 = "";
     private List<QueryCategoryList.DataBean> mData = new ArrayList<>();
     private String groupId, key;
@@ -107,6 +109,8 @@ public class ReeditActivity extends BaseActivity {
     private String imagePath;
     private String item_level1;
     private String uploadTime, imgUrl;
+    private CheckPermission checkPermission;
+    private CropImageUtils cropImageUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,6 +161,24 @@ public class ReeditActivity extends BaseActivity {
     }
 
     private void initView() {
+        //初始化裁剪工具
+        cropImageUtils = new CropImageUtils(this);
+        //申请权限
+        checkPermission = new CheckPermission(this){
+            @Override
+            public void permissionSuccess()
+            {
+
+            }
+
+            @Override
+            public void negativeButton()
+            {
+                //如果不重写，默认是finish
+                //super.negativeButton();
+
+            }
+        };
         TextView titleView = (TextView) findViewById(R.id.title_text_view);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -375,14 +397,16 @@ public class ReeditActivity extends BaseActivity {
                 }
                 // Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 //  startActivityForResult(intent, 1);
-                photoUtils.takePicture(ReeditActivity.this);
+//                photoUtils.takePicture(ReeditActivity.this);
+                cropImageUtils.takePhoto();
                 mPopWindow.dismiss();
             }
         });
         tv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                photoUtils.selectPicture(ReeditActivity.this);
+//                photoUtils.selectPicture(ReeditActivity.this);
+                cropImageUtils.openAlbum();
                 mPopWindow.dismiss();
             }
         });
@@ -400,6 +424,10 @@ public class ReeditActivity extends BaseActivity {
 
 
     private void initData() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            checkPermission.permission(CheckPermission.REQUEST_CODE_PERMISSION_CAMERA);
+        }
         if (!TextUtils.isEmpty(groupId)) {
             requestDetail(groupId);
         } else {
@@ -532,26 +560,26 @@ public class ReeditActivity extends BaseActivity {
         });
         recyclerView.setAdapter(popAdapter);
 
-        photoUtils = new PhotoUtils(new PhotoUtils.OnPhotoResultListener() {
-            @Override
-            public void onPhotoResult(Uri uri) {
-                if (uri != null && !TextUtils.isEmpty(uri.getPath())) {
-                    imageBase64 = bitmapToString(uri);
-                    imagePath = uri.getPath().toString();
-                    Log.e("uri:", uri.getPath().toString());
-                    Log.e("uri2:", imageBase64);
-//                    String itemId=setUserName.getText().toString();
-//                    Bitmap bitmap = BitmapFactory.decodeFile(uri.getPath().toString());
-//                    ivPhoto.setImageBitmap(bitmap);
-                    new ImageUploadAsyncTask().execute();
-                }
-            }
-
-            @Override
-            public void onPhotoCancel() {
-
-            }
-        });
+//        photoUtils = new PhotoUtils(new PhotoUtils.OnPhotoResultListener() {
+//            @Override
+//            public void onPhotoResult(Uri uri) {
+//                if (uri != null && !TextUtils.isEmpty(uri.getPath())) {
+//                    imageBase64 = bitmapToString(uri);
+//                    imagePath = uri.getPath().toString();
+//                    Log.e("uri:", uri.getPath().toString());
+//                    Log.e("uri2:", imageBase64);
+////                    String itemId=setUserName.getText().toString();
+////                    Bitmap bitmap = BitmapFactory.decodeFile(uri.getPath().toString());
+////                    ivPhoto.setImageBitmap(bitmap);
+//                    new ImageUploadAsyncTask().execute();
+//                }
+//            }
+//
+//            @Override
+//            public void onPhotoCancel() {
+//
+//            }
+//        });
     }
 
     private class ImageUploadAsyncTask extends AsyncTask<Object, Integer, String> {
@@ -582,21 +610,6 @@ public class ReeditActivity extends BaseActivity {
                     return "";
 
                 }
-//                if (imagePath != null && !imagePath.equals("")) {
-//
-//                    // S.set(SettingActivity.this, C.KEY_SHARED_ICON_PATH, imagePath);
-//
-//                    ArrayList<String> filePath = new ArrayList<String>();
-//
-//                    filePath.add(imagePath);
-////Constant.XSGR_TEST_URL + Constant.COMMODITY_PUSHIMG
-//                    return FileUtil.upload(C.BASE_URL + C.PERSNAL_IMAGE_UPLOAD_PATH, filePath, null, "file");
-//
-//                } else {
-//
-//                    return "";
-//
-//                }
 
             } catch (Exception e) {
 
@@ -623,7 +636,7 @@ public class ReeditActivity extends BaseActivity {
 //                imgUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal"
 //                        + S.getShare(ReeditActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
                 imgUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH
-                        + photoUtils.CROP_FILE_NAME;
+                        + "giga"+"_crop_" + CropImageUtils.DATE+".jpeg";
                 Log.e("imageDownloadUrl", imgUrl);
                 Glide.with(ReeditActivity.this).load(imgUrl).into(ivPhoto);
                 hideProgressBar();
@@ -1100,17 +1113,49 @@ public class ReeditActivity extends BaseActivity {
         }
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode) {
-            case PhotoUtils.INTENT_CROP:
-            case PhotoUtils.INTENT_TAKE:
-            case PhotoUtils.INTENT_SELECT:
-                photoUtils.onActivityResult(ReeditActivity.this, requestCode, resultCode, data);
-                break;
-
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        switch (requestCode) {
+//            case PhotoUtils.INTENT_CROP:
+//            case PhotoUtils.INTENT_TAKE:
+//            case PhotoUtils.INTENT_SELECT:
+//                photoUtils.onActivityResult(ReeditActivity.this, requestCode, resultCode, data);
+//                break;
+//
+//        }
+//    }
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data)
+{
+    super.onActivityResult(requestCode, resultCode, data);
+    cropImageUtils.onActivityResult(requestCode, resultCode, data, new CropImageUtils.OnResultListener()
+    {
+        @Override
+        public void takePhotoFinish(String path)
+        {
+            //拍照回调，去裁剪
+            cropImageUtils.cropPicture(path);
         }
-    }
+
+        @Override
+        public void selectPictureFinish(String path)
+        {
+            //相册回调，去裁剪
+            cropImageUtils.cropPicture(path);
+        }
+
+        @Override
+        public void cropPictureFinish(String path)
+        {
+            imagePath = path;
+            //裁剪回调
+            new ImageUploadAsyncTask().execute();
+//            Glide.with(MainActivity.this)
+//                    .load(path)
+//                    .into((ImageView) findViewById(R.id.image_result));
+        }
+    });
+}
 
     // 根据路径获得图片并压缩，返回bitmap用于显示
     public static Bitmap getSmallBitmap(String filePath) {
