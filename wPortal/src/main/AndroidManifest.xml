@@ -6,9 +6,7 @@
     android:versionCode="1810261430"
     android:versionName="1.2.3">
 
-    <uses-sdk
-        android:minSdkVersion="16"
-        android:targetSdkVersion="27" />
+    <!--<uses-sdk android:targetSdkVersion="27" />-->
 
 
     <uses-feature
@@ -112,7 +110,15 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
-
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.rs.mobile.wportal.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
@@ -991,7 +997,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize|stateHidden" />
         <activity android:name=".activity.xsgr.LocationChangeActivity"></activity>
-
+        <activity android:name=".activity.xsgr.LocationChangeActivity2"></activity>
         <activity
             android:name=".activity.NewMainActivity"
             android:screenOrientation="portrait">

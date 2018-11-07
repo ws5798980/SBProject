@@ -32,6 +32,7 @@ import com.guanaj.easyswipemenulibrary.EasySwipeMenuLayout;
 import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.C;
 import com.rs.mobile.common.D;
+import com.rs.mobile.common.L;
 import com.rs.mobile.common.S;
 import com.rs.mobile.common.activity.BaseActivity;
 import com.rs.mobile.common.network.OkHttpHelper;
@@ -207,17 +208,16 @@ public class CommodityManagementActivity extends BaseActivity {
 //                    if (list.size() <= 0) {
 //                        list = entity.getData();
 //                    }
-                    if (entity.getData() != null && entity.getData().size() > 0) {
                         if (mData.size() > 0) {
                             mData.clear();
                         }
                         if (!isShow) {
                             showCategoryPop();
                         }
-                        mData.addAll(entity.getData());
-                        recyclerView.getAdapter().notifyDataSetChanged();
-                    } else {
-                    }
+                        if (entity.getData() != null && entity.getData().size() > 0){
+                            mData.addAll(entity.getData());
+                            recyclerView.getAdapter().notifyDataSetChanged();
+                        }
 
                 } else {
                     Toast.makeText(CommodityManagementActivity.this, entity.getMessage(), Toast.LENGTH_LONG).show();

@@ -7,9 +7,13 @@ import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.util.Log;
+
+import com.rs.mobile.common.L;
 
 import java.io.File;
 import java.io.IOException;
@@ -82,15 +86,25 @@ public class PhotoUtils {
                 }
             }
 
-           imageUri = Uri.fromFile(outputImage);
-
+//           imageUri = Uri.fromFile(outputImage);
+            imageUri =  FileProvider.getUriForFile(activity, "com.rs.mobile.wportal.fileprovider", outputImage);
             //每次选择图片吧之前的图片删除
             clearCropFile(buildUri(activity));
 
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+            {
+                //添加这一句表示对目标应用临时授权该Uri所代表的文件
+                intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                //通过FileProvider创建一个content类型的Uri
+                Uri picurl=buildUri(activity);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT,picurl);
+            } else
+            {
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, buildUri2(activity));
+            }
             intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-            Uri picurl=buildUri(activity);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT,picurl);
+
             if (!isIntentAvailable(activity, intent)) {
                 return;
             }
@@ -134,13 +148,26 @@ public class PhotoUtils {
     private Uri buildUri(Activity activity) {
         if (CommonUtils.checkSDCard()) {
             File file = new File(Environment.getExternalStorageDirectory()+"/wportal");
-            return Uri.fromFile(file).buildUpon().appendPath(CROP_FILE_NAME).build();
+            return FileProvider.getUriForFile(activity, "com.rs.mobile.wportal.fileprovider", file).buildUpon().appendPath(CROP_FILE_NAME).build();
         } else {
 //            File file = new File(Environment.getExternalStorageDirectory()+"/wportal");
             return Uri.fromFile(activity.getCacheDir()).buildUpon().appendPath(CROP_FILE_NAME).build();
         }
     }
+    private Uri buildUri2(Activity activity) {
 
+        if (CommonUtils.checkSDCard()) {
+            L.d("565656565");
+            File file = new File(Environment.getExternalStorageDirectory()+"/wportal");
+            L.d("7878787");
+            Uri uri = Uri.fromFile(file).buildUpon().appendPath(CROP_FILE_NAME).build();
+            L.d(uri.getPath());
+            return uri;
+        } else {
+//            File file = new File(Environment.getExternalStorageDirectory()+"/wportal");
+            return Uri.fromFile(activity.getCacheDir()).buildUpon().appendPath(CROP_FILE_NAME).build();
+        }
+    }
     /**
      * @param intent
      * @return
@@ -152,8 +179,36 @@ public class PhotoUtils {
     }
 
     private boolean corp(Activity activity, Uri uri) {
+        L.d("11111111");
+        Uri uri2 = uri;
+        L.d(uri.getPath());
         Intent cropIntent = new Intent("com.android.camera.action.CROP");
-        cropIntent.setDataAndType(uri, "image/*");
+        Uri cropuri ;
+        File file = new File(uri2.getPath());
+        L.d("222222222");
+        if (!file.getParentFile().exists())
+        {
+            file.getParentFile().mkdirs();
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
+        {
+            //添加这一句表示对目标应用临时授权该Uri所代表的文件
+            cropIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            L.d("7777777");
+            //TODO:访问相册需要被限制，需要通过FileProvider创建一个content类型的Uri
+            uri2 = FileProvider.getUriForFile(activity, "com.rs.mobile.wportal.fileprovider", file);
+            L.d("8888888");
+            cropuri  = buildUri2(activity);
+            L.d("999999999");
+            //TODO:裁剪整个流程，估计授权一次就好outputUri不需要ContentUri,否则失败
+            //outputUri = FileProvider.getUriForFile(activity, "com.solux.furniture.fileprovider", new File(crop_image));
+        } else
+        {
+            imageUri = Uri.fromFile(file);
+            cropuri  = buildUri2(activity);
+//            outputUri = Uri.fromFile(new File(crop_image));
+        }
+        cropIntent.setDataAndType(uri2, "image/*");
         cropIntent.putExtra("crop", "false");
         cropIntent.putExtra("aspectX", 1);
         cropIntent.putExtra("aspectY", 1);
@@ -163,13 +218,17 @@ public class PhotoUtils {
         cropIntent.putExtra("return-data", false);
         cropIntent.putExtra("circleCrop",true);
         cropIntent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
-        Uri cropuri = buildUri(activity);
+
         cropIntent.putExtra(MediaStore.EXTRA_OUTPUT, cropuri);
+        L.d("33333333333");
         if (!isIntentAvailable(activity, cropIntent)) {
+            L.d("232323232");
             return false;
         } else {
             try {
+
                 activity.startActivityForResult(cropIntent, INTENT_CROP);
+                L.d("555555555");
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();
@@ -194,12 +253,15 @@ public class PhotoUtils {
         switch (requestCode) {
             //拍照
             case INTENT_TAKE:
-                if (new File(buildUri(activity).getPath()).exists()) {
-                    if (corp(activity, buildUri(activity))) {
+                L.d("12121212121");
+//                if (new File(buildUri2(activity).getPath()).exists()) {
+                    L.d("44444444");
+                    if (corp(activity, buildUri2(activity))) {
+                        L.d("666666666");
                         return;
                     }
                     onPhotoResultListener.onPhotoCancel();
-                }
+//                }
                 break;
 
             //选择图片
@@ -215,7 +277,10 @@ public class PhotoUtils {
 
             //截图
             case INTENT_CROP:
-                if (resultCode == Activity.RESULT_OK && new File(buildUri(activity).getPath()).exists()) {
+                L.d("6666666999999"+"===="+resultCode);
+                //&& new File(buildUri(activity).getPath()).exists()
+                if (resultCode == Activity.RESULT_OK) {
+                    L.d("6689945656123");
                     onPhotoResultListener.onPhotoResult(buildUri(activity));
                 }
                 break;

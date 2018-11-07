@@ -1,5 +1,7 @@
 package com.rs.mobile.wportal.persnal;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -9,20 +11,26 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.rs.mobile.common.AppConfig;
 import com.rs.mobile.common.C;
 import com.rs.mobile.common.D;
@@ -43,6 +51,8 @@ import com.rs.mobile.common.view.WImageView;
 import com.rs.mobile.wportal.A;
 import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
+import com.rs.mobile.wportal.takephoto.cutphoto.CheckPermission;
+import com.rs.mobile.wportal.takephoto.cutphoto.CropImageUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -59,7 +69,8 @@ public class SettingActivity extends BaseActivity {
     private LinearLayout closeBtn;
 
     private TextView titleTextView;
-
+    private CheckPermission checkPermission;
+    private CropImageUtils cropImageUtils;
     private WImageView iconImageView;
 
     private TextView nameTextView, load_size;
@@ -80,7 +91,7 @@ public class SettingActivity extends BaseActivity {
     private BringPhotoView bringPhotoView;
 
     private String imagePath = "";
-
+    private PopupWindow mPopWindow;
     private Uri imageUri;
 
     private String uploadTime;
@@ -171,7 +182,23 @@ public class SettingActivity extends BaseActivity {
 //					});
 //				}
 //			});
+            //初始化裁剪工具
+            cropImageUtils = new CropImageUtils(this);
+            //申请权限
+            checkPermission = new CheckPermission(this)
+            {
+                @Override
+                public void permissionSuccess()
+                {
+                }
 
+                @Override
+                public void negativeButton()
+                {
+                    //如果不重写，默认是finish
+                    //super.negativeButton();
+                }
+            };
             change_pw_btn.setOnClickListener(new OnClickListener() {
 
                 @Override
@@ -225,8 +252,8 @@ public class SettingActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
                     // TODO Auto-generated method stub
-
-                    showBringPhotoView();
+                    showSelectPopWin();
+//                    showBringPhotoView();
 
                 }
             });
@@ -417,7 +444,10 @@ public class SettingActivity extends BaseActivity {
                 }
             }, 500);
 
-
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            {
+                checkPermission.permission(CheckPermission.REQUEST_CODE_PERMISSION_CAMERA);
+            }
         } catch (Exception e) {
 
             e(e);
@@ -425,8 +455,67 @@ public class SettingActivity extends BaseActivity {
         }
 
     }
-
-
+    static public final int REQUEST_CODE_ASK_PERMISSIONS = 101;
+    private void showSelectPopWin() {
+        //设置contentView
+        uploadTime = "" + System.currentTimeMillis();
+        View contentView = LayoutInflater.from(SettingActivity.this).inflate(R.layout.popup_take_photo_layout, null);
+        mPopWindow = new PopupWindow(contentView,
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        //设置各个控件的点击响应
+        RelativeLayout tv1 = (RelativeLayout) contentView.findViewById(R.id.take_photo);
+        RelativeLayout tv2 = (RelativeLayout) contentView.findViewById(R.id.choose_photo);
+        RelativeLayout tv3 = (RelativeLayout) contentView.findViewById(R.id.cancel_pop);
+        tv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= 23) {
+                    int checkPermission = checkSelfPermission(Manifest.permission.CAMERA);
+                    if (checkPermission != PackageManager.PERMISSION_GRANTED) {
+                        if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+                            requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_ASK_PERMISSIONS);
+                        } else {
+                            new AlertDialog.Builder(SettingActivity.this)
+                                    .setMessage(getResources().getString(R.string.common_text115))
+                                    .setPositiveButton(getResources().getString(R.string.button_sure), new DialogInterface.OnClickListener() {
+                                        //                                        @RequiresApi(api = Build.VERSION_CODES.M)
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_ASK_PERMISSIONS);
+                                        }
+                                    })
+                                    .setNegativeButton(getResources().getString(R.string.button_cancel), null)
+                                    .create().show();
+                        }
+                        return;
+                    }
+                }
+                // Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                //  startActivityForResult(intent, 1);
+//                photoUtils.takePicture(ReeditActivity.this);
+                cropImageUtils.takePhoto();
+                mPopWindow.dismiss();
+            }
+        });
+        tv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                photoUtils.selectPicture(ReeditActivity.this);
+                cropImageUtils.openAlbum();
+                mPopWindow.dismiss();
+            }
+        });
+        tv3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPopWindow.dismiss();
+            }
+        });
+        //显示PopupWindow
+        View rootview = LayoutInflater.from(SettingActivity.this).inflate(R.layout.activity_reedit, null);
+        mPopWindow.setAnimationStyle(R.style.take_photo_anim);
+        mPopWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
+    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -443,8 +532,8 @@ public class SettingActivity extends BaseActivity {
 
                     try {
 
-                        new TakePhotoAsyncTask().execute();
-
+//                        new TakePhotoAsyncTask().execute();
+                        cropImageUtils.takePhoto();
                     } catch (Exception e) {
                         // TODO Auto-generated catch block
                         L.e(e);
@@ -457,8 +546,8 @@ public class SettingActivity extends BaseActivity {
                     if (data != null) {
 
                         try {
-
-                            new GetPhotoFromGallaryAsyncTask().execute(data.getData());
+                            cropImageUtils.openAlbum();
+                    //        new GetPhotoFromGallaryAsyncTask().execute(data.getData());
 
                         } catch (Exception e) {
                             L.e(e);
@@ -469,9 +558,34 @@ public class SettingActivity extends BaseActivity {
             }
 
         }
-
         super.onActivityResult(requestCode, resultCode, data);
+        cropImageUtils.onActivityResult(requestCode, resultCode, data, new CropImageUtils.OnResultListener()
+        {
+            @Override
+            public void takePhotoFinish(String path)
+            {
+                //拍照回调，去裁剪
+                cropImageUtils.cropPicture(path);
+            }
 
+            @Override
+            public void selectPictureFinish(String path)
+            {
+                //相册回调，去裁剪
+                cropImageUtils.cropPicture(path);
+            }
+
+            @Override
+            public void cropPictureFinish(String path)
+            {
+                imagePath = path;
+                //裁剪回调
+                new ImageUploadAsyncTask().execute();
+//            Glide.with(MainActivity.this)
+//                    .load(path)
+//                    .into((ImageView) findViewById(R.id.image_result));
+            }
+        });
     }
 
     public void showBringPhotoView() {
@@ -791,16 +905,15 @@ public class SettingActivity extends BaseActivity {
 
                 L.d(result);
 
-                // ImageUtil.drawIamge(iconImageView,Uri.parse(C.BASE_URL +
-                // C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal" +
-                // S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "")
-                // + ".jpg"));
-
-                imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal"
-                        + S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
+//                imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal"
+//                        + S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
+//                Log.e("imageDownloadUrl", imageDownloadUrl);
+//                ImageUtil.drawImageFromUri(imageDownloadUrl, iconImageView);
+//                hideProgressBar();
+                imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH
+                        + "giga"+"_crop_" + CropImageUtils.DATE+".jpeg";
                 Log.e("imageDownloadUrl", imageDownloadUrl);
-                ImageUtil.drawImageFromUri(imageDownloadUrl, iconImageView);
-
+                Glide.with(SettingActivity.this).load(imageDownloadUrl).into(iconImageView);
                 hideProgressBar();
 
             } catch (Exception e) {

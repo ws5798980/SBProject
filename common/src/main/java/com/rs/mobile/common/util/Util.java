@@ -22,7 +22,28 @@ import android.widget.Toast;
 import okhttp3.Request;
 
 public class Util {
-	
+	public static String formatStr(String str) {
+		return isNull(str) ? "" : str;
+	}
+	/**
+	 * 判断给定字符串是否空白串。
+	 *
+	 * @param input
+	 * @return boolean
+	 */
+	public static boolean isNull(String input) {
+		//return str == null || "".equals(str) || str.trim().equals("null") ? true : false;
+		if (input == null || "".equals(input))
+			return true;
+
+		for (int i = 0; i < input.length(); i++) {
+			char c = input.charAt(i);
+			if (c != ' ' && c != '\t' && c != '\r' && c != '\n') {
+				return false;
+			}
+		}
+		return true;
+	}
 	public static boolean isNumeric(String s) {
 		
 		return s.replaceAll("[+-]?\\d+", "").equals("");

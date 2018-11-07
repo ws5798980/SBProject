@@ -635,6 +635,7 @@ public class LoginActivity extends BaseActivity {
                     S.set(LoginActivity.this, C.KEY_JSON_CUSTOM_ID, entity.custom_id);
                     S.set(LoginActivity.this, C.KEY_JSON_CUSTOM_NAME, entity.custom_name);
                     S.set(LoginActivity.this, C.KEY_JSON_NICK_NAME, entity.nick_name);
+                    S.set(LoginActivity.this, C.KEY_JSON_BUSINEISS_TYPE, entity.business_type);
 //					C.KEY_JSON_TOKEN,
 //							// data.getString(C.KEY_JSON_TOKEN));
 //							data.getString(C.KEY_JSON_TOKEN) + "|"

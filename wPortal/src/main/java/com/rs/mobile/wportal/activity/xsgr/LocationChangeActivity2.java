@@ -7,13 +7,13 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -35,17 +35,13 @@ import com.bigkoo.pickerview.view.OptionsPickerView;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.google.gson.Gson;
-import com.rs.mobile.common.C;
-import com.rs.mobile.common.S;
 import com.rs.mobile.common.activity.BaseActivity;
 import com.rs.mobile.common.network.OkHttpHelper;
 import com.rs.mobile.common.util.GsonUtils;
 import com.rs.mobile.common.util.Util;
 import com.rs.mobile.wportal.Constant;
 import com.rs.mobile.wportal.R;
-import com.rs.mobile.wportal.adapter.xsgr.CommodityItemAdapter;
 import com.rs.mobile.wportal.biz.xsgr.AddressSearch;
-import com.rs.mobile.wportal.biz.xsgr.CommodityList;
 import com.rs.mobile.wportal.biz.xsgr.JsonBean;
 
 import org.json.JSONArray;
@@ -60,7 +56,7 @@ import java.util.List;
 
 import okhttp3.Request;
 
-public class LocationChangeActivity extends BaseActivity {
+public class LocationChangeActivity2 extends BaseActivity {
 
     private RelativeLayout locationNo;
     private RelativeLayout locationName;
@@ -108,11 +104,11 @@ public class LocationChangeActivity extends BaseActivity {
         editLocation = (TextView) findViewById(R.id.title_edit_view);
         save = (TextView) findViewById(R.id.save_up);
         params = getWindow().getAttributes();
-        if (!"".equals(zipCode))
+        if (zipCode!= null && !"null".equals(zipCode))
             textNo.setText(Util.formatStr(zipCode));
-        if (!"".equals(addr))
+        if (addr!=null&& !"null".equals(addr))
             textLocation.setText(Util.formatStr(addr));
-        if (!"".equals(addrDetail))
+        if (addrDetail!=null&& !"null".equals(addrDetail))
             editText.setText(Util.formatStr(addrDetail));
     }
 
@@ -280,7 +276,7 @@ public class LocationChangeActivity extends BaseActivity {
                     popAdapter.loadMoreComplete();
                     popAdapter.loadMoreEnd(true);
                     itemNum.setVisibility(View.GONE);
-                    Toast.makeText(LocationChangeActivity.this, entity.getMessage() + "", Toast.LENGTH_LONG).show();
+                    Toast.makeText(LocationChangeActivity2.this, entity.getMessage() + "", Toast.LENGTH_LONG).show();
                 }
             }
 
@@ -336,7 +332,7 @@ public class LocationChangeActivity extends BaseActivity {
                         options2Items.get(options1).get(options2) +
                         options3Items.get(options1).get(options2).get(options3);
 
-                Toast.makeText(LocationChangeActivity.this, tx, Toast.LENGTH_SHORT).show();
+                Toast.makeText(LocationChangeActivity2.this, tx, Toast.LENGTH_SHORT).show();
             }
         })
 
@@ -374,11 +370,11 @@ public class LocationChangeActivity extends BaseActivity {
                     break;
 
                 case MSG_LOAD_SUCCESS:
-                    Toast.makeText(LocationChangeActivity.this, "Parse Succeed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LocationChangeActivity2.this, "Parse Succeed", Toast.LENGTH_SHORT).show();
                     break;
 
                 case MSG_LOAD_FAILED:
-                    Toast.makeText(LocationChangeActivity.this, "Parse Failed", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LocationChangeActivity2.this, "Parse Failed", Toast.LENGTH_SHORT).show();
                     break;
             }
         }

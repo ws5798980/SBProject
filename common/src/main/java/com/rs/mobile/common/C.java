@@ -437,7 +437,7 @@ public class C {
 	public static final String KEY_JSON_NAME = "name";
 
 	public static final String KEY_JSON_NICK_NAME = "nickName";
-
+	public static final String KEY_JSON_BUSINEISS_TYPE = "businessType";
 	public static final String KEY_JSON_TOKEN = "token";
 	
 	public static final String KEY_JSON_DEVICE_ID = "deviceNo";
