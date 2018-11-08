@@ -913,24 +913,21 @@
 
 
             </RelativeLayout>
+
+            <TextView
+                android:id="@+id/save_up"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="8dp"
+                android:background="@color/theme_green"
+                android:gravity="center"
+                android:text="@string/save_info"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_mb"
+                android:textStyle="bold" />
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/bring_photo_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentBottom="true"
-            android:background="#55000000"
-            android:clickable="true"
-            android:orientation="vertical"
-            android:visibility="gone" >
 
-            <com.rs.mobile.common.view.BringPhotoView
-                android:id="@+id/bring_photo_view"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true" />
-        </RelativeLayout>
     </RelativeLayout>
 
 </ScrollView>

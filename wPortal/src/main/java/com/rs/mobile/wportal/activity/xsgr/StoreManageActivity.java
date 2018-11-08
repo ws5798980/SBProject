@@ -13,6 +13,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -54,6 +55,8 @@ import com.rs.mobile.wportal.entity.ListPopBean;
 import com.rs.mobile.wportal.entity.MyShopInfoBean;
 import com.rs.mobile.wportal.entity.OtherInfoNew;
 import com.rs.mobile.wportal.entity.ShopMannageBean;
+import com.rs.mobile.wportal.takephoto.cutphoto.CheckPermission;
+import com.rs.mobile.wportal.takephoto.cutphoto.CropImageUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -70,16 +73,14 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
     ShopMannageBean bean;
     TextView tv_name, tv_phone, tv_add, tv_czh_phone, tv_url, tv_type1, tv_type2,
             tv_zhizhao_no, tv_faren_no, tv_jy_type, tv_is_shui, tv_ht_state, tv_people,
-            tv_mobile_phone, tv_settlement, tv_logistics, tv_after_sales, tv_refunds;
+            tv_mobile_phone, tv_settlement, tv_logistics, tv_after_sales, tv_refunds, save;
     WImageView wImageView;
     private PopupWindow popupWindow;
-    private RelativeLayout bringPhothLayout;
     private boolean mIsShowing = false;
     private int index = 0;
     private MyPopupEditAdapter popAdapter;
     private String uploadTime;
     private String zipCode, addr, addrDetail, zipCode2, addr2, addrDetail2;
-    private BringPhotoView bringPhotoView;
     private PopupWindow mPopWindow;
     private String imageDownloadUrl = "";
     private Uri imageUri;
@@ -91,8 +92,8 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
     private List<ListPopBean> list = new ArrayList<>();
     private String code1, code2, code3, regiGubun, key1, key2, key3, contract_date, bankCard, holder,
             bank, from_site, from_site_code, md_id, md_rate, ceoNo2, ceoNo3, supplierCode, makerCode;
-//    private List<ListPopBean> list2 = new ArrayList<>();
-//    private List<ListPopBean> list3 = new ArrayList<>();
+    private CheckPermission checkPermission;
+    private CropImageUtils cropImageUtils;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -105,36 +106,99 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
 
     }
 
+    static public final int REQUEST_CODE_ASK_PERMISSIONS = 101;
+
+    private void showSelectPopWin() {
+        //设置contentView
+        uploadTime = "" + System.currentTimeMillis();
+        View contentView = LayoutInflater.from(StoreManageActivity.this).inflate(R.layout.popup_take_photo_layout, null);
+        mPopWindow = new PopupWindow(contentView,
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        //设置各个控件的点击响应
+        RelativeLayout tv1 = (RelativeLayout) contentView.findViewById(R.id.take_photo);
+        RelativeLayout tv2 = (RelativeLayout) contentView.findViewById(R.id.choose_photo);
+        RelativeLayout tv3 = (RelativeLayout) contentView.findViewById(R.id.cancel_pop);
+        tv1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Build.VERSION.SDK_INT >= 23) {
+                    int checkPermission = checkSelfPermission(Manifest.permission.CAMERA);
+                    if (checkPermission != PackageManager.PERMISSION_GRANTED) {
+                        if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)) {
+                            requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_ASK_PERMISSIONS);
+                        } else {
+                            new AlertDialog.Builder(StoreManageActivity.this)
+                                    .setMessage(getResources().getString(R.string.common_text115))
+                                    .setPositiveButton(getResources().getString(R.string.button_sure), new DialogInterface.OnClickListener() {
+                                        //                                        @RequiresApi(api = Build.VERSION_CODES.M)
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            requestPermissions(new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_ASK_PERMISSIONS);
+                                        }
+                                    })
+                                    .setNegativeButton(getResources().getString(R.string.button_cancel), null)
+                                    .create().show();
+                        }
+                        return;
+                    }
+                }
+                // Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                //  startActivityForResult(intent, 1);
+//                photoUtils.takePicture(ReeditActivity.this);
+                cropImageUtils.takePhoto();
+                mPopWindow.dismiss();
+            }
+        });
+        tv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                photoUtils.selectPicture(ReeditActivity.this);
+                cropImageUtils.openAlbum();
+                mPopWindow.dismiss();
+            }
+        });
+        tv3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mPopWindow.dismiss();
+            }
+        });
+        //显示PopupWindow
+        View rootview = LayoutInflater.from(StoreManageActivity.this).inflate(R.layout.activity_reedit, null);
+        mPopWindow.setAnimationStyle(R.style.take_photo_anim);
+        mPopWindow.showAtLocation(rootview, Gravity.BOTTOM, 0, 0);
+    }
+
     private void setListener() {
         wImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showBringPhotoView();
+                showSelectPopWin();
             }
         });
-        bringPhothLayout = (RelativeLayout) findViewById(com.rs.mobile.wportal.R.id.bring_photo_layout);
-        bringPhothLayout.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-
-                hideBringPhotoView();
-
-            }
-        });
-
-        bringPhotoView = (BringPhotoView) findViewById(com.rs.mobile.wportal.R.id.bring_photo_view);
-        bringPhotoView.setOnItemSeletedListener(new BringPhotoView.OnItemSeletedListener() {
-
-            @Override
-            public void onItemClick(int position) {
-                // TODO Auto-generated method stub
-
-                hideBringPhotoView();
-
-            }
-        });
+//        bringPhothLayout = (RelativeLayout) findViewById(com.rs.mobile.wportal.R.id.bring_photo_layout);
+//        bringPhothLayout.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View v) {
+//                // TODO Auto-generated method stub
+//
+//                hideBringPhotoView();
+//
+//            }
+//        });
+//
+//        bringPhotoView = (BringPhotoView) findViewById(com.rs.mobile.wportal.R.id.bring_photo_view);
+//        bringPhotoView.setOnItemSeletedListener(new BringPhotoView.OnItemSeletedListener() {
+//
+//            @Override
+//            public void onItemClick(int position) {
+//                // TODO Auto-generated method stub
+//
+//                hideBringPhotoView();
+//
+//            }
+//        });
         shopName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -209,12 +273,15 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
         refundsLayout.setOnClickListener(this);
         layoutType1.setOnClickListener(this);
         layoutType2.setOnClickListener(this);
-
+        save.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
+            case R.id.save_up:
+                requestSaveNew();
+                break;
             case R.id.layout_chuanzhen_no:
                 D.showEditTextDialog(StoreManageActivity.this, -1, "", getResources().getString(R.string.text_chuanzhen), "",
                         getResources().getString(R.string.button_sure), new View.OnClickListener() {
@@ -403,12 +470,9 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
             case R.id.position_refunds:
                 Intent intent = new Intent();
                 Bundle bundle = new Bundle();
-                bundle.putString("zipCode", zipCode2 );
-
-                bundle.putString("addr", addr2 );
-
-                bundle.putString("addrDetail", addrDetail2 );
-
+                bundle.putString("zipCode", zipCode2);
+                bundle.putString("addr", addr2);
+                bundle.putString("addrDetail", addrDetail2);
                 intent.putExtras(bundle);
                 intent.setClass(StoreManageActivity.this, LocationChangeActivity2.class);
                 startActivityForResult(intent, 2000);
@@ -430,6 +494,23 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void initView() {
+        //初始化裁剪工具
+        cropImageUtils = new CropImageUtils(this);
+        //申请权限
+        checkPermission = new CheckPermission(this) {
+            @Override
+            public void permissionSuccess() {
+
+            }
+
+            @Override
+            public void negativeButton() {
+                //如果不重写，默认是finish
+                //super.negativeButton();
+
+            }
+        };
+        save = (TextView) findViewById(R.id.save_up);
         tv_add = (TextView) findViewById(R.id.tv_add);
         tv_phone = (TextView) findViewById(R.id.tv_phone);
         tv_name = (TextView) findViewById(R.id.tv_name);
@@ -476,6 +557,9 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
                 requestSaveNew();
             }
         });
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            checkPermission.permission(CheckPermission.REQUEST_CODE_PERMISSION_CAMERA);
+        }
     }
 
     private void requestSave() {
@@ -487,7 +571,6 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
             JSONObject j1 = new JSONObject();
             HashMap<String, String> params = new HashMap<>();
             try {
-
                 j1.put("lang_type", AppConfig.LANG_TYPE);
                 j1.put("token", S.getShare(StoreManageActivity.this, C.KEY_JSON_TOKEN, ""));
                 j1.put("custom_code", S.getShare(StoreManageActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
@@ -537,8 +620,12 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
                     }
 
                     setResult(RESULT_OK);
+                    new Handler().postDelayed(new Runnable(){
+                        public void run() {
+                            finish();
+                        }
+                    }, 500);
 
-                    finish();
 
                 }
 
@@ -598,7 +685,7 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
         params.put("md_id", md_id);
         params.put("md_commission_rate", md_rate);
         try {
-            L.d(allJson.put("SSSS",params).toString());
+            L.d(allJson.put("SSSS", params).toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -630,6 +717,7 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
             }
         }, Constant.XSGR_TEST_URL + "merchantinfo/updateInfo", params);
     }
+
     private void requestSaveNew2() {
         HashMap<String, String> params = new HashMap<>();
         params.put("lang_type", AppConfig.LANG_TYPE);
@@ -657,14 +745,15 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
                 } catch (Exception e) {
                     L.e(e);
                 }
-                setResult(RESULT_OK);
-                finish();
+                requestSave();
+//                setResult(RESULT_OK);
+//                finish();
             }
 
             @Override
             public void onBizFailure(String responseDescription, JSONObject data, String flag) {
                 // TODO Auto-generated method stub
-                finish();
+                // finish();
             }
         }, Constant.XSGR_TEST_URL + "merchantinfo/updateotherInfo", params);
     }
@@ -804,7 +893,7 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
                     zipCode2 = bean.getData().getOtherInfo().getReturn_post_no() + "";
 
                 }
-
+                initImgInfoData();
 
             }
 
@@ -951,78 +1040,50 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
             }
         }, Constant.XSGR_TEST_URL + "merchantinfo/requestCate2DepthList", param);
     }
-//    public void initShopInfoData() {
-//
-//        HashMap<String, String> param = new HashMap<String, String>();
-//        param.put("lang_type", AppConfig.LANG_TYPE);
-//        param.put("token", S.getShare(StoreManageActivity.this, C.KEY_JSON_TOKEN, ""));
-//        param.put("custom_code", S.getShare(StoreManageActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
-//        OkHttpHelper okHttpHelper = new OkHttpHelper(StoreManageActivity.this);
-//        okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {
-//
-//            @Override
-//            public void onNetworkError(Request request, IOException e) {
-//                // TODO Auto-generated method stub
-//
-//            }
-//
-//            @Override
-//            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
-//
-//                bean = GsonUtils.changeGsonToBean(responseDescription, MyShopInfoBean.class);
-//
+
+    public void initImgInfoData() {
+
+        HashMap<String, String> param = new HashMap<String, String>();
+        param.put("lang_type", AppConfig.LANG_TYPE);
+        param.put("token", S.getShare(StoreManageActivity.this, C.KEY_JSON_TOKEN, ""));
+        param.put("custom_code", S.getShare(StoreManageActivity.this, C.KEY_JSON_CUSTOM_CODE, ""));
+        OkHttpHelper okHttpHelper = new OkHttpHelper(StoreManageActivity.this);
+        okHttpHelper.addSMPostRequest(new OkHttpHelper.CallbackLogic() {
+
+            @Override
+            public void onNetworkError(Request request, IOException e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void onBizSuccess(String responseDescription, JSONObject data, String flag) {
+
+                MyShopInfoBean bean = GsonUtils.changeGsonToBean(responseDescription, MyShopInfoBean.class);
+
 //                tv_name.setText(bean.getCustom_name() + "");
 //                tv_phone.setText(bean.getMobilepho() + "");
 //                zipCode = bean.getZip_code() + "";
 //                addr = bean.getKor_addr() + "";
 //                addrDetail = bean.getKor_addr_detail() + "";
 //                tv_add.setText(addr + " " + addrDetail);
-//
-////            Glide.with(XsMyShopActivity.this).load(bean.getShop_thumnail_image()).into(img_myshop);
-//                if (bean.getShop_thumnail_image() != null && !bean.getShop_thumnail_image().isEmpty()) {
-//                    ImageUtil.drawImageFromUri(bean.getShop_thumnail_image(), wImageView);
-//                    imageDownloadUrl = bean.getShop_thumnail_image();
-//                }
-//            }
-//
-//            @Override
-//            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
-//                // TODO Auto-generated method stub
-//
-//            }
-//        }, Constant.XS_BASE_URL + "AppSM/requestSaleOrderAmount", param);
-//
-//    }
 
-    public void showBringPhotoView() {
+//            Glide.with(XsMyShopActivity.this).load(bean.getShop_thumnail_image()).into(img_myshop);
+                if (bean.getShop_thumnail_image() != null && !bean.getShop_thumnail_image().isEmpty()) {
+                    ImageUtil.drawImageFromUri(bean.getShop_thumnail_image(), wImageView);
+                    imageDownloadUrl = bean.getShop_thumnail_image();
+                }
+            }
 
-        try {
+            @Override
+            public void onBizFailure(String responseDescription, JSONObject data, String flag) {
+                // TODO Auto-generated method stub
 
-            uploadTime = "" + System.currentTimeMillis();
-            bringPhothLayout.setVisibility(View.VISIBLE);
-            bringPhotoView.setVisibility(View.VISIBLE);
-
-        } catch (Exception e) {
-
-            L.e(e);
-
-        }
+            }
+        }, Constant.XS_BASE_URL + "AppSM/requestSaleOrderAmount", param);
 
     }
 
-    public void hideBringPhotoView() {
-
-        try {
-            bringPhothLayout.setVisibility(View.GONE);
-            bringPhotoView.setVisibility(View.GONE);
-
-        } catch (Exception e) {
-
-            L.e(e);
-
-        }
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -1031,32 +1092,6 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
         if (resultCode == RESULT_OK) {
 
             switch (requestCode) {
-                case BringPhotoView.PHOTO_REQUEST_TAKEPHOTO:
-
-                    try {
-
-                        new TakePhotoAsyncTask().execute();
-
-                    } catch (Exception e) {
-                        // TODO Auto-generated catch block
-                        L.e(e);
-                    }
-
-                    break;
-
-                case BringPhotoView.PHOTO_REQUEST_GALLERY:
-
-                    if (data != null) {
-
-                        try {
-
-                            new GetPhotoFromGallaryAsyncTask().execute(data.getData());
-
-                        } catch (Exception e) {
-                            L.e(e);
-                        }
-                    }
-                    break;
                 case 1000:
                     zipCode = data.getStringExtra("textNo");
                     addr = data.getStringExtra("textLocation");
@@ -1074,141 +1109,29 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
         }
 
         super.onActivityResult(requestCode, resultCode, data);
-
-    }
-
-
-    private class TakePhotoAsyncTask extends AsyncTask<Object, Integer, Drawable> {
-
-        @Override
-        protected void onPreExecute() {
-            // TODO Auto-generated method stub
-            super.onPreExecute();
-
-            showProgressBar();
-        }
-
-        @Override
-        protected Drawable doInBackground(Object... params) {
-            // TODO Auto-generated method stub
-
-            try {
-
-                // uploadTime = "" + System.currentTimeMillis();
-
-                File dir = new File(Environment.getExternalStorageDirectory() + "/wportal");
-
-                if (!dir.exists())
-                    dir.mkdirs();
-
-                File f = new File(dir, bringPhotoView.getFileName() + ".jpg");// localTempImgDir和localTempImageFileName是自己定义的名字
-
-                // File f = new File(Environment.getExternalStorageDirectory() +
-                // "/wportal/"
-                // + S.getShare(SettingActivity.this, C.KEY_REQUEST_MEMBER_ID,
-                // "") + uploadTime + ".jpg");
-
-                imageUri = Uri.parse(android.provider.MediaStore.Images.Media.insertImage(getContentResolver(),
-                        f.getAbsolutePath(), null, null));
-
-                Bitmap bm = ImageUtil.getBitmapFromUri(StoreManageActivity.this, imageUri);
-                L.d(bm.getByteCount() + "frist");
-
-                imagePath = ImageUtil.savePublishPicture(ImageUtil.comp(bm),
-                        S.getShare(StoreManageActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime);
-
-                return new BitmapDrawable(bm);
-
-            } catch (Exception e) {
-
-                L.e(e);
-
+        cropImageUtils.onActivityResult(requestCode, resultCode, data, new CropImageUtils.OnResultListener() {
+            @Override
+            public void takePhotoFinish(String path) {
+                //拍照回调，去裁剪
+                cropImageUtils.cropPicture(path);
             }
 
-            return null;
+            @Override
+            public void selectPictureFinish(String path) {
+                //相册回调，去裁剪
+                cropImageUtils.cropPicture(path);
+            }
 
-        }
-
-        @Override
-        protected void onPostExecute(Drawable result) {
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-
-            try {
-
-                hideProgressBar();
-
+            @Override
+            public void cropPictureFinish(String path) {
+                imagePath = path;
+                //裁剪回调
                 new ImageUploadAsyncTask().execute();
-
-                // ImageUtil.drawIamge(iconImageView, result);
-
-            } catch (Exception e) {
-
-                L.e(e);
-
+//            Glide.with(MainActivity.this)
+//                    .load(path)
+//                    .into((ImageView) findViewById(R.id.image_result));
             }
-
-        }
-
-    }
-
-    private class GetPhotoFromGallaryAsyncTask extends AsyncTask<Object, Integer, Drawable> {
-
-        @Override
-        protected void onPreExecute() {
-            // TODO Auto-generated method stub
-            super.onPreExecute();
-
-            showProgressBar();
-        }
-
-        @Override
-        protected Drawable doInBackground(Object... params) {
-            // TODO Auto-generated method stub
-
-            try {
-
-                // uploadTime = "" + System.currentTimeMillis();
-
-                imageUri = (Uri) params[0]; // 获得图片的uri
-
-                Bitmap bm = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
-
-                imagePath = ImageUtil.savePublishPicture(ImageUtil.comp(bm),
-                        S.getShare(StoreManageActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime);
-                return new BitmapDrawable(bm);
-
-            } catch (Exception e) {
-
-                L.e(e);
-
-            }
-
-            return null;
-
-        }
-
-        @Override
-        protected void onPostExecute(Drawable result) {
-            // TODO Auto-generated method stub
-            super.onPostExecute(result);
-
-            try {
-
-                hideProgressBar();
-
-                new ImageUploadAsyncTask().execute();
-
-                // ImageUtil.drawIamge(iconImageView, result);
-
-            } catch (Exception e) {
-
-                L.e(e);
-
-            }
-
-        }
-
+        });
     }
 
     private class ImageUploadAsyncTask extends AsyncTask<Object, Integer, String> {
@@ -1278,8 +1201,8 @@ public class StoreManageActivity extends BaseActivity implements View.OnClickLis
                 // + ".jpg"));
 //C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH
                 //http://portal."+(AppConfig.CHOOSE.equals("CN")?"gigawon.cn":"gigawon.co.kr")+":8488/MediaUploader/wsProfile/
-                imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH + "wportal"
-                        + S.getShare(StoreManageActivity.this, C.KEY_REQUEST_MEMBER_ID, "") + uploadTime + ".jpg";
+                imageDownloadUrl = C.BASE_URL + C.PERSNAL_IMAGE_DOWNLOAD_PATH
+                        + "giga" + "_crop_" + CropImageUtils.DATE + ".jpeg";
                 Log.e("tag_img", imageDownloadUrl);
                 ImageUtil.drawImageFromUri(imageDownloadUrl, wImageView);
 

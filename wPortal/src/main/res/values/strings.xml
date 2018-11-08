@@ -1272,4 +1272,5 @@
     <string name="no_choose_company">不选择</string>
     <string name="on_going">进行中</string>
     <string name="has_ended">已结束</string>
+    <string name="save_info">保存</string>
 </resources>
