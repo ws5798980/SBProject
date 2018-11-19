@@ -441,7 +441,7 @@ public class SmConfirmActivity extends BaseActivity {
 					 selector_pay_way_wecaht.setImageResource(R.drawable.icon_selected_s);
 					 selector_pay_way_alipay.setImageResource(R.drawable.icon_selected_n);
 					 selector_pay_way_unionpay.setImageResource(R.drawable.icon_selected_n);
-					t(getString(R.string.cancel));
+
 
 				}
 			});
